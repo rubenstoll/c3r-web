@@ -1,0 +1,18 @@
+PREFIX ontoCC: <http://www.owl-ontologies.com/Ontology1205837312.owl#>
+select ?bati ?hallentree display xml 
+where
+{
+?bati		rdf:type 		ontoCC:IfcBuilding
+
+?bati		ontoCC:containsElements	?el
+?el  		rdf:type		ontoCC:IfcRelContainedInSpatialStructure
+?el 		ontoCC:relatedElements	?hallentree
+?el 		ontoCC:relatingStructure ?bati
+?hallentree	rdf:type		ontoCC:HallEntree
+OPTIONAL 
+{
+?hallentree	rdf:type		 ?t
+FILTER ( ?t = ontoCC:HallEntreeAccessible)
+}
+FILTER ( ! bound( ?t ) )
+}

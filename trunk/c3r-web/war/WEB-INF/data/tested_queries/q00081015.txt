@@ -1,0 +1,13 @@
+PREFIX ontoCC: <http://www.owl-ontologies.com/Ontology1205837312.owl#>
+select ?porte display xml 
+where
+{
+?porte 	rdf:type 		ontoCC:IfcDoor
+?porte	ontoCC:automaticIfcDoor	TRUE
+OPTIONAL 
+{
+?porte 	ontoCC:dureeOuverture	?do
+FILTER ( xsd:integer(?do) >= 60)
+}
+FILTER (! bound( ?do) )
+} 

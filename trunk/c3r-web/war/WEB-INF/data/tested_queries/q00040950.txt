@@ -1,0 +1,23 @@
+PREFIX ontoCC: <http://www.owl-ontologies.com/Ontology1205837312.owl#>
+select ?porte display xml 
+where
+{
+?porte 	rdf:type 		ontoCC:IfcDoor
+?porte	ontoCC:automaticIfcDoor	TRUE
+?rfe 	rdf:type		ontoCC:IfcRelFillsElement 
+?rfe 	ontoCC:relatingOpeningElement	?ro
+?ro	rdf:type		ontoCC:Ascenseur 
+?rfe 	ontoCC:relatedBuildingElement	?porte 
+OPTIONAL 
+{
+?porte	ontoCC:isDefinedBy	?idb
+?idb	rdf:type		ontoCC:IfcRelDefinesByType
+?idb	ontoCC:relatingType	?t
+?t	rdf:type		ontoCC:IfcDoorSlide
+?t	ontoCC:operationType	?op
+FILTER ( ?op < "SLIDING" )
+?porte 	ontoCC:dureeOuverture	?do
+FILTER ( xsd:integer(?do) >= 60)
+}
+FILTER (! bound( ?do) )
+} 

@@ -1,0 +1,12 @@
+PREFIX ontoCC: <http://www.owl-ontologies.com/Ontology1205837312.owl#>
+select ?bati ?hallentree display xml 
+where
+{
+?loc		rdf:type 		ontoCC:Cave
+OPTIONAL 
+{
+?hallentree	rdf:type		 ?t
+FILTER ( ?t = ontoCC:LocauxAccessible)
+}
+FILTER ( ! bound( ?t ) )
+}

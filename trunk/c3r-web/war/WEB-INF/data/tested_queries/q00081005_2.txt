@@ -1,0 +1,27 @@
+PREFIX ontoCC: <http://www.owl-ontologies.com/Ontology1205837312.owl#>
+select ?porte display xml 
+where
+{
+?porte 	rdf:type 		ontoCC:PortePrincipale
+?porte 	ontoCC:isDefinedBy 	?def
+?def 	rdf:type 		ontoCC:IfcRelDefinesByType
+?def 	ontoCC:relatingType 	?pstyle
+?pstyle rdf:type 		ontoCC:IfcTypeObject
+?pstyle ontoCC:operationType 	"DOUBLE_DOOR"
+?porte 	ontoCC:objectPlacement 	?opl
+?opl 	rdf:type 		ontoCC:IfcLocalPlacement 
+
+?locaux rdf:type 		ontoCC:Locaux
+?locaux ontoCC:objectPlacement 	?opl    
+?locaux ontoCC:effectifAdmisLocaux ?el
+FILTER ( xsd:integer(?el) > 100) 
+
+OPTIONAL 
+{
+?pstyle ontoCC:hasPropertySets 	?panel
+?panel rdf:type 		ontoCC:IfcDoorPanelProperties 
+?panel ontoCC:panelWidth 	?pwidth
+FILTER ( xsd:integer(?pwidth) >= 90)
+}
+FILTER (! bound( ?pwidth) )
+} 

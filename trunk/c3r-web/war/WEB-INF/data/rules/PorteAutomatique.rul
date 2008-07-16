@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    
+   <rdf:RDF 
+       xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xmlns:xsd="http://www.w3.org/2001/XMLSchema#" 
+       xsi:schemaLocation="http://www.w3.org/1999/02/22-rdf-syntax-ns# http://www.w3.org/2000/07/rdf.xsd" 
+       xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+       xmlns:owl="http://www.w3.org/2002/07/owl#"
+       xmlns:ontoCC="http://www.owl-ontologies.com/Ontology1205837312.owl#" 
+       xmlns:cos="http://www.inria.fr/acacia/corese#" 
+       xmlns="http://www.w3.org/2000/01/rdf-schema#">    
+    
+  
+    <cos:rule rdf:ID="PorteAutomatique">
+        <cos:if>
+            PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl&gt;
+            {
+            { 
+            ?x rdf:type ontoCC:IfcDoor .
+            ?x ontoCC:automaticIfcDoor  "true".
+            }
+            UNION 
+            { 
+            ?x rdf:type ontoCC:Porte .
+            ?x ontoCC:automaticIfcDoor "true" .
+            }
+            }
+        </cos:if>
+        
+        <cos:then>
+            { 
+            ?x rdf:type ontoCC:PorteAutomatique .
+            }
+        </cos:then>
+    </cos:rule>
+        
+</rdf:RDF>
