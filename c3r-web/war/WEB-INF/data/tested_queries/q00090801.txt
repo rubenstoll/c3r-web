@@ -1,0 +1,20 @@
+PREFIX ontoCC: <http://www.owl-ontologies.com/Ontology1205837312.owl#>
+select ?porte display xml 
+where
+{
+?porte rdf:type ontoCC:IfcDoor
+?porte 	ontoCC:objectPlacement 	?opl
+?opl 	rdf:type 		ontoCC:IfcLocalPlacement
+
+?locaux rdf:type ontoCC:Locaux
+?locaux ontoCC:objectPlacement 	?opl 
+?locaux ontoCC:occupancyNumberPeak ?el
+FILTER ( xsd:integer(?el) > 100)
+
+OPTIONAL 
+{
+?porte ontoCC:overallWidth ?largeur
+FILTER ( xsd:integer(?largeur) >= 80)
+}
+FILTER (! bound( ?largeur) )
+} 

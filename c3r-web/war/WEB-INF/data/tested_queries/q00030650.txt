@@ -1,0 +1,13 @@
+PREFIX ontoCC: <http://www.owl-ontologies.com/Ontology1205837312.owl#>
+select ?cuvette display xml 
+where
+{
+?cuvette 	rdf:type 		ontoCC:Cuvette
+OPTIONAL 
+{
+?cuvette	ontoCC:overallHeight 	?h
+FILTER ( xsd:integer(?h) >= 46)
+FILTER ( xsd:integer(?h) <= 50)
+}
+FILTER (! bound( ?h) )
+} 

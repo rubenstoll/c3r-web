@@ -1,0 +1,38 @@
+PREFIX ontoCC: <http://www.owl-ontologies.com/Ontology1205837312.owl#>
+select ?bati ?storey ?locaux ?asc display xml 
+where
+{{
+{
+?strloc	rdf:type	ontoCC:IfcRelContainedInSpatialStructure	
+?strloc	ontoCC:relatedElements	?tapis
+?tapis	rdf:type	ontoCC:TapisRoulant
+?strloc	ontoCC:relatingStructure	?storey
+?storey	rdf:type	ontoCC:IfcBuildingStorey
+}
+UNION
+{
+?strloc	rdf:type	ontoCC:IfcRelContainedInSpatialStructure	
+?strloc	ontoCC:relatedElements	?escmec
+?escmec	rdf:type	ontoCC:EscalierMecanique
+?strloc	ontoCC:relatingStructure	?storey
+?storey	rdf:type	ontoCC:IfcBuildingStorey
+}
+UNION 
+{
+?strloc	rdf:type	ontoCC:IfcRelContainedInSpatialStructure	
+?strloc	ontoCC:relatedElements	?pl
+?pl	rdf:type	ontoCC:PlanInclineMecanique
+?strloc	ontoCC:relatingStructure	?storey
+?storey	rdf:type	ontoCC:IfcBuildingStorey
+}
+}
+OPTIONAL 
+{
+?spstr	rdf:type	ontoCC:IfcRelContainedInSpatialStructure	
+?spstr	ontoCC:relatedElements	?asc
+?spstr	ontoCC:relatingStructure	?storey
+?asc	rdf:type	?t
+FILTER ( ?t = ontoCC:Ascenseur)
+}
+FILTER (! bound( ?t))
+} 

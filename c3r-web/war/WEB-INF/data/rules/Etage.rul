@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF 
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"  
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance#" 
+    xmlns:cos="http://www.inria.fr/acacia/corese#"  
+    xmlns:ontoCC="http://www.owl-ontologies.com/Ontology1205837312.owl#">
+    
+    <!-- definition of the IfcBuildingStorey subclasses -->
+    
+    <!-- Etage = IfcBuildingStorey -->
+    <cos:rule rdf:ID="Etage"> 
+        <cos:if>
+            PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl#&gt;
+            { 
+            ?x rdf:type ontoCC:IfcBuildingStorey
+            }
+        </cos:if>        
+        <cos:then>
+            { ?x rdf:type ontoCC:Etage .}
+        </cos:then>
+    </cos:rule>
+    
+    <!-- EnEtage = not GroundFloor -->
+    <cos:rule rdf:ID="EnEtage">
+        <cos:if>
+            PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl#&gt;
+            { 
+            ?x    rdf:type                                ontoCC:IfcBuildingStorey.
+            ?x    ontoCC:entranceLevel    "false"
+            }
+        </cos:if>        
+        <cos:then>
+            { ?x rdf:type ontoCC:EnEtage .}
+        </cos:then>
+    </cos:rule>
+    
+    <!-- EnEtage = not GroundFloor AND fully aboveGround AND related to the same building_structure that a roof            -->
+    <cos:rule rdf:ID="Mezzanine">
+        <cos:if>
+            PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl#&gt;
+            {
+            ?x                        rdf:type                                ontoCC:IfcBuildingStorey.
+            ?x                        ontoCC:entranceLevel    "false".
+            ?x                       ontoCC:aboveGround    "true".
+            ?relStructure    rdf:type                                    ontoCC:IfcRelContainedInSpatialStructure.
+            ?relStructure    ontoCC:relatedElements    ?roof .    
+            ?roof                 rdf:type                                    ontoCC:IfcRoof
+            ?relStructure    ontoCC:relatingStructure    ?x .
+            }
+        </cos:if>        
+        <cos:then>
+            { ?x rdf:type ontoCC:Mezzanine .}
+        </cos:then>
+    </cos:rule>
+    
+    <!-- entranceLevel = true  -->
+    <cos:rule rdf:ID="RDC">
+        <cos:if>
+            PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl#&gt;
+            { 
+            ?x    rdf:type                                ontoCC:IfcBuildingStorey.
+            ?x    ontoCC:entranceLevel    "true".
+            }
+        </cos:if>        
+        <cos:then>
+            { ?x rdf:type ontoCC:RDC .}
+        </cos:then>
+    </cos:rule>
+    
+    <!-- EnEtage = not GroundFloor AND NOT aboveGround AND             -->
+    <cos:rule rdf:ID="SousSol">
+        <cos:if>
+            PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl#&gt;
+            { 
+            ?x    rdf:type                                ontoCC:IfcBuildingStorey.
+            ?x    ontoCC:aboveGround    "false".
+            }
+        </cos:if>        
+        <cos:then>
+            { ?x rdf:type ontoCC:SousSol .}
+        </cos:then>
+    </cos:rule>
+    
+    
+</rdf:RDF>

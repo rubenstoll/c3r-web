@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+    <rdf:RDF 
+        xmlns:rdf ="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+        xmlns:xsd ="http://www.w3.org/2001/XMLSchema#"
+        xmlns     = "http://rainbow.essi.fr/~anastasiya/data/annotationsRegles/annoComplexe.rdfs#" 
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance#"
+        xmlns:annoComplexe  = "http://rainbow.essi.fr/~anastasiya/data/annotationsRegles/annoComplexe.rdfs#"
+        xml:base  = "http://rainbow.essi.fr/~anastasiya/data/annotationsRegles/annoComplexe.rdfs-instances"
+     >
+       
+        <rdfs:Class rdf:ID="AnnotationRegle"/>
+        
+        <rdf:Property rdf:ID="verifiableRegle">
+            <rdfs:domain rdf:resource="http://rainbow.essi.fr/~anastasiya/data/annotationsRegles/annoComplexe.rdfs#AnnotationRegle"/> 
+            <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema-instance#string"/>
+            <!-- VC VP NV -->
+            <!-- rdfs:range rdf:resource="http://rainbow.essi.fr/~anastasiya/data/annotationsRegles/annoComplexe.rdfs#OrigineRegleType"/> <defined here: enumeration -->
+        </rdf:Property>
+
+        <rdf:Property rdf:ID="origineRegle">
+            <rdfs:domain rdf:resource="http://rainbow.essi.fr/~anastasiya/data/annotationsRegles/annoComplexe.rdfs#AnnotationRegle"/> 
+            <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema-instance#string"/>
+            <!-- rdfs:range rdf:resource="http://rainbow.essi.fr/~anastasiya/data/annotationsRegles/annoComplexe.rdfs#OrigineRegleType"/> <defined here: enumeration -->
+        </rdf:Property>
+        
+        <rdf:Property rdf:ID="actualiteRegle">
+            <rdfs:domain rdf:resource="http://rainbow.essi.fr/~anastasiya/data/annotationsRegles/annoComplexe.rdfs#AnnotationRegle"/> 
+            <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema-instance#string"/> <!-- defined here : enumeration -->
+        </rdf:Property>
+        
+        <rdf:Property rdf:ID="thematiqueRegle">
+            <rdfs:domain rdf:resource="http://rainbow.essi.fr/~anastasiya/data/annotationsRegles/annoComplexe.rdfs#AnnotationRegle"/> 
+            <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema-instance#string"/> <!-- defined here : enumeration -->
+        </rdf:Property>
+        
+        <rdf:Property rdf:ID="exigenceRegle">
+            <rdfs:domain rdf:resource="http://rainbow.essi.fr/~anastasiya/data/annotationsRegles/annoComplexe.rdfs#AnnotationRegle"/> 
+            <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema-instance#string"/>
+             <!-- defined in  annoTypeDef : enumeration -->
+        </rdf:Property>
+            
+        <rdf:Property rdf:ID="sujetRegle">
+            <rdfs:domain rdf:resource="http://rainbow.essi.fr/~anastasiya/data/annotationsRegles/annoComplexe.rdfs#AnnotationRegle"/> 
+            <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/> <!-- to define later -->
+        </rdf:Property>
+        
+        <rdf:Property rdf:ID="domaineApplication">
+            <rdfs:domain rdf:resource="http://rainbow.essi.fr/~anastasiya/data/annotationsRegles/annoComplexe.rdfs#AnnotationRegle"/> 
+            <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema-instance#string"/>
+             <!-- defined here ; not finished!!!  -->
+        </rdf:Property>
+        
+        <rdf:Property rdf:ID="sousDomaineApplication">
+            <rdfs:domain rdf:resource="http://rainbow.essi.fr/~anastasiya/data/annotationsRegles/annoComplexe.rdfs#AnnotationRegle"/> 
+            
+            <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema-instance#string"/><!-- defined here ; not finished!!!  -->
+        </rdf:Property>
+        
+        <rdf:Property rdf:ID="destinationRegle">
+            <rdfs:domain rdf:resource="http://rainbow.essi.fr/~anastasiya/data/annotationsRegles/annoComplexe.rdfs#AnnotationRegle"/> 
+            <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema-instance#string"/> 
+        </rdf:Property>
+        
+        <rdf:Property rdf:ID="textRegle">
+            <rdfs:domain rdf:resource="http://rainbow.essi.fr/~anastasiya/data/annotationsRegles/annoComplexe.rdfs#AnnotationRegle"/> 
+            <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/> <!-- just text -->
+        </rdf:Property>
+        
+        <rdf:Property rdf:ID="interpretationExpert">
+            <rdfs:domain rdf:resource="http://rainbow.essi.fr/~anastasiya/data/annotationsRegles/annoComplexe.rdfs#AnnotationRegle"/> 
+            <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/> <!-- URI -->
+        </rdf:Property>
+
+        <rdf:Property rdf:ID="contenuRegle">
+            <rdfs:domain rdf:resource="http://rainbow.essi.fr/~anastasiya/data/annotationsRegles/annoComplexe.rdfs#AnnotationRegle"/> 
+            <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/> <!-- URI -->
+        </rdf:Property>
+        
+        <rdf:Property rdf:ID="extraitTypeTexteReglementaire">
+            <rdfs:domain rdf:resource="http://rainbow.essi.fr/~anastasiya/data/annotationsRegles/annoComplexe.rdfs#AnnotationRegle"/> 
+            <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema-instance#string"/> <!-- defined here ; not finished!!!  -->
+        </rdf:Property>
+        
+        <rdf:Property rdf:ID="extraitTypeLEG">
+            <rdfs:domain rdf:resource="http://rainbow.essi.fr/~anastasiya/data/annotationsRegles/annoComplexe.rdfs#AnnotationRegle"/> 
+            <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema-instance#string"/> <!-- defined here ; not finished!!!  --> <!-- defined here ; not finished!!!  -->
+        </rdf:Property>
+        
+        <rdf:Property rdf:ID="extraitEmanant">
+            <rdfs:domain rdf:resource="http://rainbow.essi.fr/~anastasiya/data/annotationsRegles/annoComplexe.rdfs#AnnotationRegle"/> 
+            <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema-instance#string"/> <!-- defined here ; not finished!!!  --> <!-- defined here ; not finished!!!  -->
+        </rdf:Property>
+        
+        <rdf:Property rdf:ID="extraitSigle">
+            <rdfs:domain rdf:resource="http://rainbow.essi.fr/~anastasiya/data/annotationsRegles/annoComplexe.rdfs#AnnotationRegle"/> 
+            <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/> <!-- to define later -->
+        </rdf:Property>
+        
+        <rdf:Property rdf:ID="extraitNumero">
+            <rdfs:domain rdf:resource="http://rainbow.essi.fr/~anastasiya/data/annotationsRegles/annoComplexe.rdfs#AnnotationRegle"/> 
+            <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/> <!-- to define later -->
+            <!-- e.g. how to represent number 82-81  -->
+        </rdf:Property>
+        
+        <rdfs:Class rdf:ID="extraitDate">
+            <rdfs:subClassOf rdf:resource="http://www.w3.org/2001/XMLSchema#date"/> 
+        </rdfs:Class>  
+        
+        <rdf:Property rdf:ID="extraitTitre">
+            <rdfs:domain rdf:resource="http://rainbow.essi.fr/~anastasiya/data/annotationsRegles/annoComplexe.rdfs#AnnotationRegle"/> 
+            <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/> 
+        </rdf:Property>
+        
+        <rdf:Property rdf:ID="extraitRelatifA">
+            <rdfs:domain rdf:resource="http://rainbow.essi.fr/~anastasiya/data/annotationsRegles/annoComplexe.rdfs#AnnotationRegle"/> 
+            <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>  
+        </rdf:Property>
+                
+        <rdf:Property rdf:ID="extraitReference">
+            <rdfs:domain rdf:resource="http://rainbow.essi.fr/~anastasiya/data/annotationsRegles/annoComplexe.rdfs#AnnotationRegle"/> 
+            <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>  
+        </rdf:Property>
+        
+        <rdf:Property rdf:ID="extraitInfoExtractionUIS">
+            <rdfs:domain rdf:resource="http://rainbow.essi.fr/~anastasiya/data/annotationsRegles/annoComplexe.rdfs#AnnotationRegle"/> 
+            <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>  
+            <!-- take the list of the UIS !!! from CD REEF -->
+        </rdf:Property>
+        
+        <rdf:Property rdf:ID="extraitInfoExtractionArticle">
+            <rdfs:domain rdf:resource="http://rainbow.essi.fr/~anastasiya/data/annotationsRegles/annoComplexe.rdfs#AnnotationRegle"/> 
+            <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/> 
+            <!-- e.g. how define article 1.1.1  -->
+        </rdf:Property>        
+        
+        <rdf:Property rdf:ID="extraitInfoExtractionParagraphe">
+            <rdfs:domain rdf:resource="http://rainbow.essi.fr/~anastasiya/data/annotationsRegles/annoComplexe.rdfs#AnnotationRegle"/> 
+            <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#positiveInteger"/>
+        </rdf:Property> 
+         
+        <rdf:Property rdf:ID="extraitInfoExtractionNumeroOrdreDansParagraphe">
+            <rdfs:domain rdf:resource="http://rainbow.essi.fr/~anastasiya/data/annotationsRegles/annoComplexe.rdfs#AnnotationRegle"/> 
+            <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#positiveInteger"/>
+        </rdf:Property> 
+        
+        <rdf:Property rdf:ID="aboutIFCData">
+            <rdfs:domain rdf:resource="http://rainbow.essi.fr/~anastasiya/data/annotationsRegles/annoComplexe.rdfs#AnnotationRegle"/> 
+            <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        </rdf:Property>
+        
+        <rdf:Description rdf:about="http://rainbow.essi.fr/~anastasiya/data/annotationsRegles/annoComplexe.rdfs#OrigineRegleType">
+            <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>   
+            <rdfs:isDefinedBy>
+                <rdf:Alt>
+                    <rdf:li>validation</rdf:li>
+                    <rdf:li>enrichissement_expert</rdf:li>
+                </rdf:Alt>
+            </rdfs:isDefinedBy>
+        </rdf:Description>
+        
+        <rdf:Description rdf:about="http://rainbow.essi.fr/~anastasiya/data/annotationsRegles/annoComplexe.rdfs#ActualiteRegleType">
+            <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+            <rdfs:isDefinedBy>
+                <rdf:Alt>
+                    <rdf:li>nouveau</rdf:li>
+                    <rdf:li>modifie</rdf:li>
+                </rdf:Alt>
+            </rdfs:isDefinedBy>	
+        </rdf:Description>
+        
+        <rdf:Description rdf:about="http://rainbow.essi.fr/~anastasiya/data/annotationsRegles/annoComplexe.rdfs#ThematiqueRegleType">
+            <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+            <rdfs:isDefinedBy>
+                <rdf:Bag>
+                    <rdf:li>accessibilite_des_handicapes</rdf:li>
+                    <rdf:li>acoustique</rdf:li>
+                    <rdf:li>aération</rdf:li>
+                    <rdf:li>amiante</rdf:li>
+                    <rdf:li>ascenseurs</rdf:li>
+                    <rdf:li>assurance_construction</rdf:li>
+                    <rdf:li>autorisations_urbanisme</rdf:li>
+                    <rdf:li>baies_fenetres</rdf:li>
+                    <rdf:li>contrôle_technique</rdf:li>
+                    <rdf:li>coordination_SPS</rdf:li>
+                    <rdf:li>déchets_de_chantier</rdf:li>
+                    <rdf:li>diagnostics_immobiliers</rdf:li>
+                    <rdf:li>DTU_retirés</rdf:li>
+                    <rdf:li>eau_et_santé</rdf:li>
+                    <rdf:li>énergies_durables</rdf:li>
+                    <rdf:li>Europe</rdf:li>
+                    <rdf:li>fondations</rdf:li>
+                    <rdf:li>installation_de_chauffage_à_eau_chaude</rdf:li>
+                    <rdf:li>légionellose</rdf:li>
+                    <rdf:li>marchés_publics_et_privés</rdf:li>                    
+                    <rdf:li>parasismique</rdf:li>                    
+                    <rdf:li>piscines</rdf:li>
+                    <rdf:li>plans</rdf:li>
+                    <rdf:li>plomb_saturnisme</rdf:li>
+                    <rdf:li>qualité_de_eau_intérieure</rdf:li>
+                    <rdf:li>règlement_sanitaire_départementale_type</rdf:li>
+                    <rdf:li>réglementation_thermique_2000</rdf:li>
+                    <rdf:li>réglementation_thermique_2005</rdf:li>
+                    <rdf:li>sécurité_incendie</rdf:li>
+                    <rdf:li>stationnement_parc_et_garage</rdf:li>
+                    <rdf:li>surface</rdf:li>
+                    <rdf:li>termites</rdf:li>
+                </rdf:Bag>
+            </rdfs:isDefinedBy>	
+        </rdf:Description>                                
+        
+        <rdf:Description rdf:about="http://rainbow.essi.fr/~anastasiya/data/annotationsRegles/annoComplexe.rdfs#ExigenceRegleType"> 
+            <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+            <rdfs:isDefinedBy>
+                <rdf:Alt>
+                    <!-- now only one for testing -->
+                    <rdf:li>Accessibilité</rdf:li>
+                                        
+                    <rdf:li>Economie_d_energie_et_isolation_thermique</rdf:li>
+                    <rdf:li>Hygiène_santé_et_environnement</rdf:li>
+                    <rdf:li>Protection_contre_le_bruit</rdf:li>
+                    <rdf:li>Résistance_mécanique_et_stabilité</rdf:li>
+                    <rdf:li>Sécurité_incendie</rdf:li>
+                    <rdf:li>ddd</rdf:li>
+                    <!-- not finished -->   
+                </rdf:Alt>
+            </rdfs:isDefinedBy>       
+        </rdf:Description>
+        
+   
+        <rdf:Description rdf:about="http://rainbow.essi.fr/~anastasiya/data/annotationsRegles/annoComplexe.rdfs#DomaineApplicationType"> 
+            <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+            <rdfs:isDefinedBy>
+                <rdf:Bag>
+                    <rdf:li>adaptabilité_des_logements</rdf:li>
+                    <rdf:li>cheminements</rdf:li>
+                    <rdf:li>divers</rdf:li>
+                    <rdf:li>locaux_de_service</rdf:li>
+                    <rdf:li>pièces</rdf:li>
+                    <rdf:li>pièces_d_habitation</rdf:li>
+                    <rdf:li>places_de_stationnement</rdf:li>
+                    <rdf:li>salles_d_hygiène</rdf:li>
+                </rdf:Bag>
+            </rdfs:isDefinedBy>           
+        </rdf:Description>
+        
+        <rdf:Description rdf:about="http://rainbow.essi.fr/~anastasiya/data/annotationsRegles/annoComplexe.rdfs#SousDomaineApplicationType"> 
+            <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+            <rdfs:isDefinedBy>
+                <rdf:Bag>
+                    <rdf:li>cheminements_pente</rdf:li>
+                    <rdf:li>cheminements_pente_et_palier_de_repos_exytérieure</rdf:li>
+                    <rdf:li>cheminements_palier_de_repos</rdf:li>
+                    <rdf:li>cheminements_ressauts</rdf:li>
+                    <rdf:li>cheminements_profil_en_travers</rdf:li>
+                    <rdf:li>cheminements_portes_situées_sur_les_cheminements</rdf:li>
+                    <rdf:li>cheminements_sol</rdf:li>
+                    <rdf:li>cheminements_ascenseurs</rdf:li>
+                    <rdf:li>cheminements_escaliers</rdf:li>
+                    <rdf:li>cheminements_entrée_et_couloirs</rdf:li>
+                    
+                    <rdf:li>divers_signalisation</rdf:li>
+                    <rdf:li>divers_établissements_recevant_du_public_assis</rdf:li>
+                    <rdf:li>divers_établissements_d_hébergement_hôtelier</rdf:li>
+                    <rdf:li>divers_installations_sportives_et_socio_éducatives</rdf:li>
+                    <rdf:li>divers_téléphone</rdf:li>
+                    <rdf:li>divers_accessoires</rdf:li>
+                    
+                    <rdf:li>locaux_de_service_cuisine</rdf:li>
+                    <rdf:li>locaux_de_service_salle_de_bains</rdf:li>
+                    <rdf:li>locaux_de_service_WC_séparés</rdf:li>
+                    
+                    <rdf:li>pièces_WC</rdf:li>
+                    <rdf:li>pièces_local_de_restauration_et_de_repos</rdf:li>
+                    
+                    <rdf:li>salles_d_hygiène_WC</rdf:li>
+                    <rdf:li>salles_d_hygiène_douches</rdf:li>
+                </rdf:Bag>
+            </rdfs:isDefinedBy>           
+        </rdf:Description>
+        
+        <rdf:Description rdf:about="http://rainbow.essi.fr/~anastasiya/data/annotationsRegles/annoComplexe.rdfs#DestinationRegleType"> 
+            <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+            <rdfs:isDefinedBy>
+                <rdf:Bag>
+                    <!-- only main types 2 levels from CD REEF -->
+                    <rdf:li>Habitation_collective</rdf:li>
+                    <rdf:li>Habitation_individuelle</rdf:li>
+                    <rdf:li>Agricole</rdf:li>
+                    <rdf:li>ERP</rdf:li>
+                    <rdf:li>GA</rdf:li>
+                    <rdf:li>IGH</rdf:li>
+                    <rdf:li>Industriel</rdf:li>
+                    
+                    <!-- from ISTforCE used for accessibility  NOW IN WORK -->     
+
+                    <rdf:li>BHCN</rdf:li> <!-- bâtiments d'habitation collectifs neufs -->
+                    <rdf:li>ERP</rdf:li>
+                    <rdf:li>LT</rdf:li> <!-- lieux de travail --> 
+                    <rdf:li>CHP</rdf:li> <!-- CHP : Constructions pour handicapés physiques--> 
+                </rdf:Bag>
+            </rdfs:isDefinedBy>           
+        </rdf:Description>
+        
+        <rdf:Description rdf:about="http://rainbow.essi.fr/~anastasiya/data/annotationsRegles/annoComplexe.rdfs#TexteReglementaireType"> 
+            <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+            <rdfs:isDefinedBy>
+                <rdf:Alt>
+                    <rdf:li>LEG</rdf:li>
+                    <rdf:li>DTU</rdf:li>
+                    <rdf:li>NOR</rdf:li>
+                    <rdf:li>TEC</rdf:li> 
+                </rdf:Alt>
+            </rdfs:isDefinedBy>           
+        </rdf:Description>
+        
+        <rdfs:Class rdf:ID="http://rainbow.essi.fr/~anastasiya/data/annotationsRegles/annoComplexe.rdfs#TexteLEGType"> <!-- to define by enumeration lois, arrete, circulaire, etc.-->
+            <rdfs:subClassOf rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            <rdfs:isDefinedBy>
+                <rdf:Alt>
+                    <rdf:li>lois</rdf:li>
+                    <rdf:li>décret</rdf:li>
+                    <rdf:li>arrêté</rdf:li>
+                    <rdf:li>code</rdf:li>
+                    <rdf:li>question_écrite</rdf:li>  
+                    <!-- not finished ! to finish -->
+                </rdf:Alt>
+            </rdfs:isDefinedBy>   
+         </rdfs:Class>
+                
+        <rdfs:Class rdf:ID="http://rainbow.essi.fr/~anastasiya/data/annotationsRegles/annoComplexe.rdfs#EmanantType">
+            <rdfs:subClassOf rdf:resource="http://www.w3.org/2001/XMLSchema#string"/> <!-- to define by enumeration-->
+            <rdfs:isDefinedBy>
+                <rdf:Alt>
+                    <rdf:li>gouvernement</rdf:li>
+                    <rdf:li>interministériel</rdf:li>
+                    <rdf:li>ministériel</rdf:li>
+                    <!-- ajouter type de ministériel -->
+                    <rdf:li>préfectoral</rdf:li>
+                    <rdf:li>municipal</rdf:li>  
+                    <!-- not finished ! to finish -->
+                </rdf:Alt>
+            </rdfs:isDefinedBy>   
+        </rdfs:Class>        
+                    
+    </rdf:RDF>

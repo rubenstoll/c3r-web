@@ -1,0 +1,29 @@
+PREFIX ontoCC: <http://www.owl-ontologies.com/Ontology1205837312.owl#>
+select ?bati ?storey ?locaux ?asc display xml 
+where
+{
+?bati 	rdf:type 	ontoCC:IfcBuilding
+
+?ireagg	rdf:type	ontoCC:IfcRelAggregates
+?ireagg	ontoCC:relatingObject	?bati
+?ireagg	ontoCC:relatedObjects	?storey
+?storey	rdf:type	ontoCC:EnEtage
+
+?strloc	rdf:type	ontoCC:IfcRelContainedInSpatialStructure	
+?strloc	ontoCC:relatedElements	?locaux
+?strloc	ontoCC:relatingStructure	?storey
+?locaux	rdf:type	ontoCC:Locaux
+?locaux	ontoCC:occupancyNumberPeak ?eff
+FILTER ( xsd:integer(?eff) >= 50 ).
+
+OPTIONAL 
+{
+?spstr	rdf:type	ontoCC:IfcRelContainedInSpatialStructure	
+?spstr	ontoCC:relatedElements	?asc
+?spstr	ontoCC:relatingStructure	?storey
+?asc	rdf:type	?t
+
+FILTER ( ?t = ontoCC:Ascenseur)
+}
+FILTER (! bound( ?t))
+} 

@@ -1,0 +1,12 @@
+            PREFIX ontoCC: <http://www.owl-ontologies.com/Ontology1205837312.owl#>
+            select ?portique display xml 
+            where
+            {
+            ?portique rdf:type ontoCC:PortiqueSecurite
+            OPTIONAL 
+            {
+            ?portique ontoCC:overallWidth ?width
+            FILTER ( xsd:integer(?width) >= 80)
+            }
+            FILTER (! bound( ?width) )
+            }     

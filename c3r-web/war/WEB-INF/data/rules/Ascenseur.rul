@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF 
+    
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"  
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance#" 
+    xmlns:cos="http://www.inria.fr/acacia/corese#"  
+    xmlns:ontoCC="http://www.owl-ontologies.com/Ontology1205837312.owl#">
+    
+    
+   
+    <cos:rule rdf:ID="Ascenseur">
+        <cos:if>
+            PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl#&gt;
+            {
+            {
+            ?x     rdf:type    ontoCC:IfcTransportElement .
+            ?x     ontoCC:operationType    "elevator"
+            ?x     ontoCC:destinationTransportElement    "transportPersonnes"
+            }
+            UNION
+            {
+            ?x     rdf:type    ontoCC:IfcTransportElement .
+            ?x     ontoCC:operationType    "ELEVATOR"
+            ?x     ontoCC:destinationTransportElement    "transportPersonnes"
+            }
+            }
+        </cos:if>
+        
+        <cos:then>
+            { ?x rdf:type ontoCC:Ascenseur .}
+        </cos:then>
+    </cos:rule>
+    
+    <cos:rule rdf:ID="AppareilElevateur">
+        <cos:if>
+            PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl#&gt;
+            {
+            {
+            ?x     rdf:type    ontoCC:IfcTransportElement .
+            ?x     ontoCC:operationType    "elevator"
+            }
+            UNION
+            {
+            ?x     rdf:type    ontoCC:IfcTransportElement .
+            ?x     ontoCC:operationType    "ELEVATOR"
+            }
+            }
+        </cos:if>        
+        <cos:then>
+            { ?x rdf:type ontoCC:AppareilElevateur .}
+        </cos:then>
+    </cos:rule>
+    
+    <cos:rule rdf:ID="Escalator">
+        <cos:if>
+            PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl#&gt;
+            {
+            {
+            ?x     rdf:type    ontoCC:IfcTransportElement .
+            ?x     ontoCC:operationType    "ESCALATOR"
+            }
+            UNION
+            {
+            ?x     rdf:type    ontoCC:IfcTransportElement .
+            ?x     ontoCC:operationType    "escalator"
+            }
+            }
+        </cos:if>        
+        <cos:then>
+            { ?x rdf:type ontoCC:Escalator .}
+        </cos:then>
+    </cos:rule>
+    
+    <cos:rule rdf:ID="TapisRoulant">
+        <cos:if>
+            PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl#&gt;
+            {
+            {
+            ?x     rdf:type    ontoCC:IfcTransportElement .
+            ?x     ontoCC:operationType    "MOVINGWALKWAY"
+            }
+            UNION
+            {
+            ?x     rdf:type    ontoCC:IfcTransportElement .
+            ?x     ontoCC:operationType    "movingwalkway"
+            }
+            }
+        </cos:if>        
+        <cos:then>
+            { ?x rdf:type ontoCC:TapisRoulant .}
+        </cos:then>
+    </cos:rule>
+        
+</rdf:RDF>

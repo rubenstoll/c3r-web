@@ -1,0 +1,13 @@
+PREFIX ontoCC: <http://www.owl-ontologies.com/Ontology1205837312.owl#>
+        select ?stair display xml 
+        where
+        {
+        ?stair rdf:type ontoCC:IfcStairFlight
+        OPTIONAL 
+        {        
+          ?stair ontoCC:treadLength ?l        
+        FILTER ( xsd:integer(?l) > 28)     
+
+        }
+        FILTER (! bound( ?l  ) )
+        } 

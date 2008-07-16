@@ -1,0 +1,15 @@
+PREFIX ontoCC: <http://www.owl-ontologies.com/Ontology1205837312.owl#>
+select ?porte ?asso ?op display xml 
+where
+{
+?porte 	rdf:type 		ontoCC:PortePrincipale
+?porte	ontoCC:hasAssociations	?asso
+?asso	rdf:type		ontoCC:IfcRelAssigns
+OPTIONAL
+{
+?asso	ontoCC:relatingProduct 	?op
+?op 	rdf:type		 ?t
+FILTER ( ?t = ontoCC:SystemeOuverturePorte )
+}
+FILTER ( ! bound( ?t ) )
+}

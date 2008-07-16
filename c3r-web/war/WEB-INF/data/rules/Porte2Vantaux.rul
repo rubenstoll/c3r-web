@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF 
+    
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"  
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance#" 
+    xmlns:cos="http://www.inria.fr/acacia/corese#"  
+    xmlns:ontoCC="http://www.owl-ontologies.com/Ontology1205837312.owl#">
+    
+    
+   
+    <cos:rule rdf:ID="Porte2Vantaux">
+        <cos:if>
+            PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl#&gt;
+            {{
+            ?x     rdf:type    ontoCC:IfcDoor .
+            ?x     ontoCC:isDefinedBy    ?db
+            ?db    rdf:type    ontoCC:IfcRelDefinesByType
+            ?db    ontoCC:relatingType    ?rt
+            ?rt    rdf:type    ontoCC:IfcDoorStyle
+            ?rt    ontoCC:operationType    "DOUBLE_DOOR_SINGLE_SWING"        
+            }
+            UNION
+            {
+            ?x     rdf:type    ontoCC:IfcDoor .
+            ?x     ontoCC:isDefinedBy    ?db
+            ?db    rdf:type    ontoCC:IfcRelDefinesByType
+            ?db    ontoCC:relatingType    ?rt
+            ?rt    rdf:type    ontoCC:IfcDoorStyle
+            ?rt    ontoCC:operationType    "DOUBLE_DOOR_DOUBLE_SWING"       
+            }
+            UNION
+            {
+            ?x     rdf:type    ontoCC:IfcDoor .
+            ?x     ontoCC:isDefinedBy    ?db
+            ?db    rdf:type    ontoCC:IfcRelDefinesByType
+            ?db    ontoCC:relatingType    ?rt
+            ?rt    rdf:type    ontoCC:IfcDoorStyle
+            ?rt    ontoCC:operationType    "DOUBLE_DOOR_SINGLE_SWING_OPPOSITE_LEFT"          
+            }
+            UNION
+            {
+            ?x     rdf:type    ontoCC:IfcDoor .
+            ?x     ontoCC:isDefinedBy    ?db
+            ?db    rdf:type    ontoCC:IfcRelDefinesByType
+            ?db    ontoCC:relatingType    ?rt
+            ?rt    rdf:type    ontoCC:IfcDoorStyle
+            ?rt    ontoCC:operationType    "DOUBLE_DOOR_SINGLE_SWING_OPPOSITE_RIGHT"
+
+            }}
+        </cos:if>
+        
+        <cos:then>
+            { ?x rdf:type ontoCC:Porte2Vantaux .}
+        </cos:then>
+    </cos:rule>
+        
+</rdf:RDF>

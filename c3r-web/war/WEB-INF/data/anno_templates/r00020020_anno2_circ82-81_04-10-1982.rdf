@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<rdf:RDF 
+    xmlns:rdf ="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:xsd ="http://www.w3.org/2001/XMLSchema#" 
+    xmlns:annoComplexe     ="http://rainbow.essi.fr/~anastasiya/data/annotationsRegles/annoComplexe.rdfs#" 
+    xmlns     ="http://rainbow.essi.fr/~anastasiya/data/annotationsRegles/annoComplexe.rdfs#" 
+    xml:base  ="http://rainbow.essi.fr/~anastasiya/data/annotationsRegles/annoComplexe.rdfs-instances"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance#"
+    >
+    
+<AnnotationRegle rdf:ID="r00020020">
+    <verifiableRegle>VC</verifiableRegle>
+    <origineRegle>validation</origineRegle>
+    <actualiteRegle>nouveau</actualiteRegle>
+    <thematiqueRegle>accessibilite_des_handicapes</thematiqueRegle>
+    <exigenceRegle>Accessibilite</exigenceRegle>
+    <extraitTypeTexteReglementaire>
+        LEG
+    </extraitTypeTexteReglementaire>
+    <extraitTypeLEG>
+        circulaire
+    </extraitTypeLEG>            
+    <extraitEmanant></extraitEmanant>
+    <extraitSigle></extraitSigle>
+    <extraitNumero>82-81</extraitNumero>
+    <extraitDate>       
+        1982-10-04
+    </extraitDate>
+    <extraitJO>       
+        non paru
+    </extraitJO>
+    <extraitTitre>
+        Circulaire n° 82-81 du 4 octobre 1982 relative à l'application du décret n° 80-637 du 4 août 1980 concernant l'accessibilité et l'adaptabilité des logements aux personnes handicapées dans les bâtiments d'habitation, et de ses arrêtés d'application du 24 décembre 1980 et du 21 septembre 1982        
+    </extraitTitre>
+    <extraitRelatifA>
+        l'application du décret n° 80-637 du 4 août 1980 concernant l'accessibilité et l'adaptabilité des logements aux personnes handicapées dans les bâtiments d'habitation, et de ses arrêtés d'application du 24 décembre 1980 et du 21 septembre 1982       
+    </extraitRelatifA>
+    <extraitReference>
+        Le décret n° 80-637 du 4 août 1980 (J.O. du 10 août 1980), Le décret n° 80-637 du 4 août 1980 (J.O. du 10 août 1980), 
+        Les arrêtés du 24 décembre 1980 (J.O. du 31 décembre 1980) et du 21 septembre 1982 (J.O. du 30 septembre 1982) en fixent les modalités d'application    </extraitReference>
+    <extraitInfoExtractionUIS></extraitInfoExtractionUIS>
+    <extraitInfoExtractionArticle>1.1.1</extraitInfoExtractionArticle>
+    <extraitInfoExtractionParagraphe></extraitInfoExtractionParagraphe>
+    <extraitInfoExtractionNumeroOrdreDansParagraphe></extraitInfoExtractionNumeroOrdreDansParagraphe>
+    <classificationISTforCE>VP</classificationISTforCE>
+    
+    <sujetRegle></sujetRegle>
+    
+    <conceptsCle>Cheminement, HallEntree</conceptsCle>
+    
+    <domaineApplication>Cheminement</domaineApplication>
+    <sousDomaineApplication>HallEntree</sousDomaineApplication>
+    <destinationRegle>ERP</destinationRegle>
+    <textRegle>
+        Dans les bâtiments comportant plusieurs halls d'entrée, tous les halls doivent être accessibles, ainsi que les logements situés à rez-de-chaussée avec accès particulier (par l'extérieur
+        également).
+    </textRegle>
+    <aboutIFCData>
+    </aboutIFCData>
+    <notesFormalisation>   
+        Cette règle se vérifie lorsque le chemin à parcourir vérifie les différentes règles applicables aux cheminements dans le cas des bâtiments d'habitation collectifs neufs.        
+    </notesFormalisation>
+    <interpretationVersions>
+    </interpretationVersions>    
+   
+    <interpretationExpert> 
+        (2 requêtes)
+        HallEntree est accessible AND LogementRDCAvecAcces Particulier accessible
+    </interpretationExpert>
+    
+    <contenuRegle rdf:ID="r00020020q1">
+        PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl#&gt;
+        select ?bati ?hallentree display xml 
+        where
+        {
+        ?bati		rdf:type 		ontoCC:IfcBuilding
+        ?bati		ontoCC:containsElements	?el
+        ?el  		rdf:type		ontoCC:IfcRelContainedInSpatialStructure
+        ?el 		ontoCC:relatedElements 	?hallentree
+        ?el 		ontoCC:relatingStructure             ?bati
+        ?hallentree rdf:type		ontoCC:LogementRDCAvecAccesParticulier
+        OPTIONAL 
+        {
+        ?hallentree	rdf:type		 ?t
+        FILTER ( ?t = ontoCC:LogementRDCAvecAccesParticulierAccessible)
+        }
+        FILTER ( ! bound( ?t ) )
+        }
+        } 
+    </contenuRegle>
+    
+    <contenuRegle rdf:ID="r00020020q2">
+        PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl#&gt;
+        select ?bati ?hallentree display xml 
+        where
+        {
+        ?bati		rdf:type 		ontoCC:IfcBuilding
+        
+        ?bati		ontoCC:containsElements	?el
+        ?el  		rdf:type		ontoCC:IfcRelContainedInSpatialStructure
+        ?el 		ontoCC:relatedElements	?hallentree
+        ?el 		ontoCC:relatingStructure             ?bati
+        ?hallentree	rdf:type		ontoCC:LogementRDCAvecAccesParticulier
+        OPTIONAL 
+        {
+        ?hallentree	rdf:type		 ?t
+        FILTER ( ?t = ontoCC:LogementRDCAvecAccesParticulierAccessible)
+        }
+        FILTER ( ! bound( ?t ) )
+        }
+    </contenuRegle>
+    
+    <!-- added by Birahim -->
+    <proprieteConcerne rdf:resource="http://rainbow.essi.fr/~anastasiya/data/ifc.rdfs#overallWidth"/>
+    
+    <conditionAVerifier>être supérieur ou égal à 10</conditionAVerifier>
+       
+</AnnotationRegle>
+    
+</rdf:RDF>

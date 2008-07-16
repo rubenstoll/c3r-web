@@ -1,0 +1,21 @@
+PREFIX ontoCC: <http://www.owl-ontologies.com/Ontology1205837312.owl#>
+        select ?stair display xml 
+        where
+        {
+        ?stair rdf:type 		ontoCC:IfcStairFlight
+	?stair ontoCC:overallWidth	?w
+	FILTER (xsd:integer(?w) > 100)
+        OPTIONAL 
+        {        
+        ?stair ontoCC:hasStructuralMember ?m
+	?m	rdf:type		ontoCC:IfcRelConnectsStructuralElement
+	?m	ontoCC:relatingElement	?mc1
+	?mc1 	rdf:type		?t
+	?m	ontoCC:relatingElement	?mc2
+	?mc2 	rdf:type		?t	 
+     
+        FILTER ( ?t = ontoCC:MainCourante)     
+
+        }
+        FILTER (! bound( ?t  ) )
+        } 

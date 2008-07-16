@@ -1,0 +1,43 @@
+PREFIX ontoCC: <http://www.owl-ontologies.com/Ontology1205837312.owl#>
+        select ?stair display xml 
+        where
+        {
+        ?stair	rdf:type 		ontoCC:IfcStairFlight
+        OPTIONAL 
+        {        
+	?rst 	rdf:type		ontoCC:RelContainedInSpacialStructure
+	?rst	ontoCC:relatedElements	?stair
+	?rst	ontoCC:relatedElements	?mc1
+	?rst	ontoCC:relatedElements	?mc2
+	?mc1	rdf:type		ontoCC:IfcRailing
+	?mc2	rdf:type		ontoCC:IfcRailing
+	?mc1	ontoCC:objectPlacement	?op1
+	?mc1	ontoCC:objectPlacement	?op2
+	?op1	rdf:type		ontoCC:IfcLocalPlacement
+	?op2	rdf:type		ontoCC:IfcLocalPlacement
+	?op1	ontoCC:relativePlacement	?ax1
+	?op2	ontoCC:relativePlacement	?ax2
+	?ax1	rdf:type		ontoCC:IfcAxis2Placement
+	?ax2	rdf:type		ontoCC:IfcAxis2Placement
+	?ax1	ontoCC:location 	?cp1
+	?ax2	ontoCC:location 	?cp2
+	?cp1	rdf:type		ontoCC:IfcCartesianPoint
+	?cp2	rdf:type		ontoCC:IfcCartesianPoint
+	?cp1	ontoCC:coordinates	?cc1
+	?cp2	ontoCC:coordinates	?cc2
+	?cp1	rdf:type		ontoCC:IfcLengthMeasure
+	?cp2	rdf:type		ontoCC:IfcLengthMeasure	 
+	CONSTRUCT	
+	{
+	?width	rdf:type		ontoCC:IfcReal
+	WHERE	
+	{
+	
+	}
+	}
+     
+        FILTER ( xsd:integer(?width) >= 100)     
+
+        }
+        FILTER (! bound( ?width  ) )
+        } 
