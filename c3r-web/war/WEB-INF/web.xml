@@ -12,21 +12,23 @@
 		<param-value>org.unitedstollutions.c3r.messages.C3RWebMessages</param-value>
 	</context-param>
 	<servlet>
-		<display-name>rulechecker</display-name>
-		<servlet-name>rulechecker</servlet-name>
-		<jsp-file>/jsp/rulechecker.jsp</jsp-file>
-	</servlet>
-	<servlet>
-		<display-name>date</display-name>
-		<servlet-name>date</servlet-name>
-		<jsp-file>/jsp/date.jsp</jsp-file>
+		<servlet-name>c3rapp</servlet-name>
+		<servlet-class> org.unitedstollutions.c3r.dispatcher.Dispatcher 
+		</servlet-class>
+		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>rulechecker</servlet-name>
-		<url-pattern>/rules/checker</url-pattern>
+		<servlet-name>c3rapp</servlet-name>
+		<url-pattern>*.htm</url-pattern>
 	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>date</servlet-name>
-		<url-pattern>/date</url-pattern>
-	</servlet-mapping>
+	<jsp-config>
+		<jsp-property-group>
+			<display-name>c3r-web</display-name>
+			<url-pattern>*.jsp</url-pattern>
+			<el-ignored>false</el-ignored>
+			<scripting-invalid>false</scripting-invalid>
+			<is-xml>false</is-xml>
+			<include-prelude>/template/prelude.jspf</include-prelude>
+		</jsp-property-group>
+	</jsp-config>
 </web-app>

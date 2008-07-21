@@ -38,6 +38,11 @@ public class Query {
 	}
 
 	
+	public Query() {
+		// TODO Auto-generated constructor stub
+	}
+
+
 	/**
 	 * Sets a new location where to get the queries and updates the query files list.
 	 * 
