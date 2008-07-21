@@ -27,7 +27,7 @@
 
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="/WEB-INF/tags/functions.tld" prefix="f"%>
+<%@ taglib uri="/WEB-INF/tld/functions.tld" prefix="f"%>
 
 <html>
 <head>
