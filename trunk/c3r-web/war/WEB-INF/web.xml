@@ -1,7 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
-  <display-name>c3r-web</display-name>
-  <welcome-file-list>
-    <welcome-file>index.jsp</welcome-file>
-  </welcome-file-list>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+	<display-name>c3r-web</display-name>
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	<context-param>
+		<param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
+		<param-value>org.unitedstollutions.c3r.messages.C3RWebMessages</param-value>
+	</context-param>
+	<servlet>
+		<display-name>rulechecker</display-name>
+		<servlet-name>rulechecker</servlet-name>
+		<jsp-file>/jsp/rulechecker.jsp</jsp-file>
+	</servlet>
+	<servlet>
+		<display-name>date</display-name>
+		<servlet-name>date</servlet-name>
+		<jsp-file>/jsp/date.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>rulechecker</servlet-name>
+		<url-pattern>/rules/checker</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>date</servlet-name>
+		<url-pattern>/date</url-pattern>
+	</servlet-mapping>
 </web-app>
