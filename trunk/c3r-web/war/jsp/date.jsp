@@ -27,7 +27,7 @@
 
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="/WEB-INF/tld/functions.tld" prefix="f"%>
+<%@ taglib uri="/WEB-INF/tags/functions.tld" prefix="f"%>
 
 <html>
 <head>
@@ -38,7 +38,7 @@
 <jsp:useBean id="locales" scope="application"
 	class="org.unitedstollutions.c3r.utils.MyLocales" />
 
-<form name="localeForm" action="index.jsp" method="post">
+<form name="localeForm" action="date.jsp" method="post">
 </p>
 <c:set var="selectedLocaleString" value="${param.locale}" /> <c:set
 	var="selectedFlag" value="${!empty selectedLocaleString}" /> <b>Locale:</b>

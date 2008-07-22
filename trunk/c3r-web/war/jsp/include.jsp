@@ -6,3 +6,5 @@
 <%@ page session="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="stl" uri="http://ns.inria.fr/sewese/semtags/" %>
+<%@ page errorPage="/jsp/error/errorpage.jsp" %>

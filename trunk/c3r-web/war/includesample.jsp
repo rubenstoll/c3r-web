@@ -5,12 +5,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Insert title here</title>
+<title>Sample Include</title>
 </head>
 <body>
 
 Going to include simpledate.jsp...<BR>
-<jsp:include page="jsp/simpledate.jsp"/>
+<jsp:include page="/jsp/simpledate.jsp"/>
+
+<jsp:forward page="/hello.htm"/>
 
 </body>
 </html>
