@@ -13,7 +13,7 @@
 	</context-param>
 	<servlet>
 		<servlet-name>c3rapp</servlet-name>
-		<servlet-class> org.unitedstollutions.c3r.dispatcher.Dispatcher 
+		<servlet-class> org.unitedstollutions.c3r.web.Dispatcher 
 		</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>

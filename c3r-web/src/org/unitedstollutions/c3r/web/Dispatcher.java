@@ -6,7 +6,7 @@
  * http://developer.sun.com/berkeley_license.html
  */
 
-package org.unitedstollutions.c3r.dispatcher;
+package org.unitedstollutions.c3r.web;
 
 import java.io.IOException;
 import java.util.ArrayList;
