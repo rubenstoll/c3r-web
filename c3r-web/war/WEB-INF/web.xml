@@ -17,9 +17,22 @@
 		</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
+	<servlet>
+		<display-name>rulechecker</display-name>
+		<servlet-name>rulechecker</servlet-name>
+		<jsp-file>/jsp/checkrules.jsp</jsp-file>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>c3rapp</servlet-name>
 		<url-pattern>*.htm</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>c3rapp</servlet-name>
+		<url-pattern>/justdoit</url-pattern>
+	</servlet-mapping>
+		<servlet-mapping>
+		<servlet-name>rulechecker</servlet-name>
+		<url-pattern>/check</url-pattern>
 	</servlet-mapping>
 	<jsp-config>
 		<jsp-property-group>
@@ -28,7 +41,7 @@
 			<el-ignored>false</el-ignored>
 			<scripting-invalid>false</scripting-invalid>
 			<is-xml>false</is-xml>
-			<include-prelude>/template/prelude.jspf</include-prelude>
+			<include-prelude>/jsp/template/prelude.jspf</include-prelude>
 		</jsp-property-group>
 	</jsp-config>
 </web-app>

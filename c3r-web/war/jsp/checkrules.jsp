@@ -1,44 +1,43 @@
-<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
-	xmlns:stl="http://ns.inria.fr/sewese/semtags/"
-	xmlns:c="http://java.sun.com/jsp/jstl/core#"
-	xmlns:fn="http://java.sun.com/jsp/jstl/functions#" version="2.0">
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ include file="/jsp/include.jsp"%>
 
-	<jsp:output omit-xml-declaration="yes" />
-	<jsp:output doctype-root-element="html"
-		doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN"
-		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" />
-	<jsp:directive.page contentType="text/html;charset=UTF-8" />
-	<html>
-	<head>
-	<title>Conformity Checking in Construction : Reasoning</title>
-	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-	<link rel="stylesheet" type="text/css" href="c3r.css" />
-	</head>
+<html>
+<head>
+<title>Conformity Checking in Construction : Reasoning</title>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="c3r.css" />
+</head>
 
-	<body>
+<body>
 
-	<h1>Conformity Checking in Construction : Reasoning</h1>
-	<c:if test="${empty applicationScope['defaultEngineWrapper']}">
-		<stl:init ontoDir="WEB-INF/data/schemas"
-			annotDir="WEB-INF/data/annotations" ruleDir="WEB-INF/data/rules"
-			ontoCC="http://www.owl-ontologies.com/Ontology1205837312.owl#" />
-			<h2>Engine initialization</h2>			
-	</c:if>
-	
-	<h2>Test Query</h2>
-	<div>
-	<ul>
-		<stl:for-each-result
-			query="SELECT ?x ?name WHERE { ?x ontoCC:overallWidth ?name }">
-			<li>${x}  has length   ${name}</li>
-		</stl:for-each-result>
-	</ul>
-	</div>
-		<h2>Second Test Query</h2>
-	<div>
-	<ul>
-		<stl:for-each-result
-			query="select distinct ?porte ?rfe ?ro ?locaux display xml 
+<h1>Conformity Checking in Construction : Reasoning</h1>
+<c:if test="${empty applicationScope['defaultEngineWrapper']}">
+	<stl:init ontoDir="/data/schemas" annotDir="/data/annotations"
+		ruleDir="/data/rules"
+		ontoCC="http://www.owl-ontologies.com/Ontology1205837312.owl#" />
+	<h2>Engine initialization</h2>
+</c:if>
+
+<h2>Test Query</h2>
+<div>
+<ul>
+	<stl:for-each-result
+		query="SELECT ?x ?name WHERE { ?x ontoCC:overallWidth ?name }">
+		<li>${x} has length ${name}</li>
+	</stl:for-each-result>
+</ul>
+</div>
+<h2>Second Test Query</h2>
+<div>
+
+<ul>
+
+	<%-- 
+	<stl:for-each-result
+		query="select distinct ?porte ?rfe ?ro ?locaux display xml 
 where
 {
 {
@@ -79,11 +78,14 @@ FILTER ( xsd:integer(?width) &gt;= 90)
 }
 FILTER (! bound( ?width) )
 }">
-			<li>${porte} hh ${rfe} ff  ${ro} jj ${locaux}</li>
-		</stl:for-each-result>
-	</ul>
-	</div>
+		<li>${porte} hh ${rfe} ff ${ro} jj ${locaux}</li>
+	</stl:for-each-result>
+	--%>
 
-	</body>
-	</html>
-</jsp:root>
+</ul>
+
+
+</div>
+
+</body>
+</html>
