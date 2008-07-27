@@ -38,7 +38,9 @@
 <jsp:useBean id="locales" scope="application"
 	class="org.unitedstollutions.c3r.utils.MyLocales" />
 
-<form name="localeForm" action="date.jsp" method="post">
+<a href="<c:url value="home"/>">Home</a>
+
+<form name="localeForm" action="date" method="post">
 </p>
 <c:set var="selectedLocaleString" value="${param.locale}" /> <c:set
 	var="selectedFlag" value="${!empty selectedLocaleString}" /> <b>Locale:</b>

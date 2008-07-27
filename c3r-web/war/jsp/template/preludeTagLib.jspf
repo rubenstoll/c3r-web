@@ -30,5 +30,5 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
 
-
+<%@ taglib uri="http://ns.inria.fr/sewese/semtags/" prefix="stl" %>
 

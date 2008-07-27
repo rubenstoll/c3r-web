@@ -22,7 +22,16 @@
 		<servlet-name>rulechecker</servlet-name>
 		<jsp-file>/jsp/checkrules.jsp</jsp-file>
 	</servlet>
-	<servlet-mapping>
+	<servlet>
+		<display-name>date</display-name>
+		<servlet-name>date</servlet-name>
+		<jsp-file>/jsp/date.jsp</jsp-file>
+	</servlet>
+	<servlet>
+		<display-name>home</display-name>
+		<servlet-name>home</servlet-name>
+		<jsp-file>/index.jsp</jsp-file>
+	</servlet>	<servlet-mapping>
 		<servlet-name>c3rapp</servlet-name>
 		<url-pattern>*.htm</url-pattern>
 	</servlet-mapping>
@@ -30,9 +39,17 @@
 		<servlet-name>c3rapp</servlet-name>
 		<url-pattern>/justdoit</url-pattern>
 	</servlet-mapping>
-		<servlet-mapping>
+	<servlet-mapping>
 		<servlet-name>rulechecker</servlet-name>
 		<url-pattern>/check</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>date</servlet-name>
+		<url-pattern>/date</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>home</servlet-name>
+		<url-pattern>/home</url-pattern>
 	</servlet-mapping>
 	<jsp-config>
 		<jsp-property-group>
@@ -42,6 +59,9 @@
 			<scripting-invalid>false</scripting-invalid>
 			<is-xml>false</is-xml>
 			<include-prelude>/jsp/template/prelude.jspf</include-prelude>
+			<include-prelude>/jsp/template/preludeTagLib.jspf</include-prelude>
+			<include-prelude>/jsp/template/preludeErrorPage.jspf</include-prelude>
+			<include-coda>/jsp/template/coda.jspf</include-coda>
 		</jsp-property-group>
 	</jsp-config>
 </web-app>
