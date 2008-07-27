@@ -1,7 +1,3 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@ include file="/jsp/include.jsp"%>
 
 <html>
@@ -12,6 +8,10 @@
 </head>
 
 <body>
+<a href="<c:url value="home"/>">Home</a><p />
+
+Note: Fix this page because once results have been rendered to user the servlet is
+not executed again<p />
 
 <h1>Conformity Checking in Construction : Reasoning</h1>
 <c:if test="${empty applicationScope['defaultEngineWrapper']}">
@@ -30,61 +30,36 @@
 	</stl:for-each-result>
 </ul>
 </div>
-<h2>Second Test Query</h2>
+
+
+<h2>Browse the ontology</h2>
 <div>
+  Open a page to <a href="browse.jsp">browse ontology.</a>
+</div>
 
-<ul>
+<h2>Add a rule</h2>
+<div>
+  <form action="add_person.jsp" method="post">
+    Add a person named: <input type="TEXT" name="name" size="30"></input>
+    <input type="SUBMIT" name="Submit"></input>
+  </form>
+</div>
 
-	<%-- 
-	<stl:for-each-result
-		query="select distinct ?porte ?rfe ?ro ?locaux display xml 
-where
-{
-{
-?porte 	rdf:type 		ontoCC:IfcDoor
+<h2>Edit a rule</h2>
+<div>
+  <form action="edit_person.jsp" method="post">
+    Actual name: <input type="TEXT" name="name_before" size="30"></input>
+    New name: <input type="TEXT" name="name_after" size="30"></input>
+    <input type="SUBMIT" name="Submit"></input>
+  </form>
+</div>
 
-?rfe	rdf:type		ontoCC:IfcRelFillsElement
-?rfe	ontoCC:relatingOpeningElement	?ro
-?ro	rdf:type		ontoCC:IfcOpeningElement
-?rfe	ontoCC:relatedBuildingElement	?porte
-
-?rsb	rdf:type		ontoCC:IfcRelSpaceBoundary
-?rsb	ontoCC:relatingSpace	?locaux
-?rsb	ontoCC:relatedBuildingElement	?ro
-
-?locaux	rdf:type		ontoCC:LocauxMoins100Personnes
-}
-UNION
-{
-?porte 	rdf:type 		ontoCC:IfcDoor
-
-?rfe	rdf:type		ontoCC:IfcRelFillsElement
-?rfe	ontoCC:relatingOpeningElement	?ro
-?ro	rdf:type		ontoCC:IfcOpeningElement
-?rfe	ontoCC:relatedBuildingElement	?porte
-
-?rsb	rdf:type		ontoCC:IfcRelSpaceBoundary
-?rsb	ontoCC:relatingSpace	?locaux
-?rsb	ontoCC:relatedBuildingElement	?ro
-
-?locaux	rdf:type		ontoCC:Locaux
-?locaux ontoCC:occupancyNumberPeak ?eff
-FILTER ( xsd:integer(?eff) &lt;= 100 ).
-}
-OPTIONAL 
-{
-?porte ontoCC:overallWidth 	?width
-FILTER ( xsd:integer(?width) &gt;= 90)
-}
-FILTER (! bound( ?width) )
-}">
-		<li>${porte} hh ${rfe} ff ${ro} jj ${locaux}</li>
-	</stl:for-each-result>
-	--%>
-
-</ul>
-
-
+<h2>Delete a rule</h2>
+<div>
+  <form action="delete_person.jsp" method="post">
+    Delete the person named: <input type="TEXT" name="name" size="30"></input>
+    <input type="SUBMIT" name="Submit"></input>
+  </form>
 </div>
 
 </body>
