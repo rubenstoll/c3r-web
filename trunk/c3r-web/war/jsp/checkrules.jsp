@@ -47,7 +47,7 @@ not executed again<p />
 
 <h2>Edit a rule</h2>
 <div>
-  <form action="edit_person.jsp" method="post">
+  <form action="editrules" method="post">
     Actual name: <input type="TEXT" name="name_before" size="30"></input>
     New name: <input type="TEXT" name="name_after" size="30"></input>
     <input type="SUBMIT" name="Submit"></input>
