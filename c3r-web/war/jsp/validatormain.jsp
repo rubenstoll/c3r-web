@@ -12,29 +12,14 @@
 </head>
 
 <body>
-<a href="<c:url value="home"/>">Home</a><p />
+<!--<a href="<c:url value="home"/>">Home</a><p />-->
 
-Note: Fix this page because once results have been rendered to user the servlet is
-not executed again<p />
-
-<h1>Conformity Checking in Construction : Reasoning</h1>
-<c:if test="${empty applicationScope['defaultEngineWrapper']}">
-	<stl:init ontoDir="/data/schemas" annotDir="/data/annotations"
-		ruleDir="/data/rules"
-		ontoCC="http://www.owl-ontologies.com/Ontology1205837312.owl#" />
-	<h2>Engine initialization</h2>
-</c:if>
-
-<h2>Test Query</h2>
+<h2>Run defined query</h2>
 <div>
-<ul>
-	<stl:for-each-result
-		query="SELECT ?x ?name WHERE { ?x ontoCC:overallWidth ?name }">
-		<li>${x} has length ${name}</li>
-	</stl:for-each-result>
-</ul>
+  <form action="check" method="post">
+    Run query <input type="SUBMIT" name="Submit"></input>
+  </form>
 </div>
-
 
 <h2>Browse the ontology</h2>
 <div>

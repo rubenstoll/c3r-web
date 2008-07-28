@@ -31,12 +31,22 @@
 		<display-name>home</display-name>
 		<servlet-name>home</servlet-name>
 		<jsp-file>/index.jsp</jsp-file>
-	</servlet>	
+	</servlet>
 	<servlet>
 		<display-name>editrules</display-name>
 		<servlet-name>editrules</servlet-name>
 		<jsp-file>/jsp/editrules.jsp</jsp-file>
-	</servlet>		
+	</servlet>
+	<servlet>
+		<display-name>browse</display-name>
+		<servlet-name>browse</servlet-name>
+		<jsp-file>/jsp/browse.jsp</jsp-file>
+	</servlet>
+	<servlet>
+		<display-name>validator</display-name>
+		<servlet-name>validator</servlet-name>
+		<jsp-file>/jsp/validatormain.jsp</jsp-file>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>c3rapp</servlet-name>
 		<url-pattern>*.htm</url-pattern>
@@ -57,9 +67,17 @@
 		<servlet-name>home</servlet-name>
 		<url-pattern>/home</url-pattern>
 	</servlet-mapping>
-		<servlet-mapping>
+	<servlet-mapping>
 		<servlet-name>editrules</servlet-name>
 		<url-pattern>/editrules</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>browse</servlet-name>
+		<url-pattern>/browse</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>validator</servlet-name>
+		<url-pattern>/validator</url-pattern>
 	</servlet-mapping>
 	<jsp-config>
 		<jsp-property-group>

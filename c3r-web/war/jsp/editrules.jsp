@@ -1,3 +1,7 @@
+<%--
+ * Copyright (c) 2003 UnitedStollutions, Inc.  All rights reserved.  Switzerland.
+--%>
+
 <%@ include file="/jsp/include.jsp"%>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
