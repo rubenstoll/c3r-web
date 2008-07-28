@@ -31,7 +31,13 @@
 		<display-name>home</display-name>
 		<servlet-name>home</servlet-name>
 		<jsp-file>/index.jsp</jsp-file>
-	</servlet>	<servlet-mapping>
+	</servlet>	
+	<servlet>
+		<display-name>editrules</display-name>
+		<servlet-name>editrules</servlet-name>
+		<jsp-file>/jsp/editrules.jsp</jsp-file>
+	</servlet>		
+	<servlet-mapping>
 		<servlet-name>c3rapp</servlet-name>
 		<url-pattern>*.htm</url-pattern>
 	</servlet-mapping>
@@ -50,6 +56,10 @@
 	<servlet-mapping>
 		<servlet-name>home</servlet-name>
 		<url-pattern>/home</url-pattern>
+	</servlet-mapping>
+		<servlet-mapping>
+		<servlet-name>editrules</servlet-name>
+		<url-pattern>/editrules</url-pattern>
 	</servlet-mapping>
 	<jsp-config>
 		<jsp-property-group>
