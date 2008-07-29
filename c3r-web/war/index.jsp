@@ -10,9 +10,9 @@
 </head>
 <body bgcolor="white">
 
-<a href="<c:url value="validator"/>">Rule Checker</a>
+<a href="<c:url value="/checker/home"/>">Rule Checker</a>
 <p />
-<a href="<c:url value="date"/>">Date Application</a>
+<a href="<c:url value="/checker/date"/>">Date Application</a>
 
 </body>
 </html>

@@ -6,24 +6,37 @@
 
 <head>
 
-<title>
-
-C3R Construction Rule Checker
-</title>
+<title>C3R Construction Rule Checker</title>
 
 </head>
-<body  bgcolor="#FFFFFF">
+<body bgcolor="#FFFFFF">
 
-<center> 
+<center>
 <hr>
-<br>&nbsp;
-<h1> 
-<font size="+3" color="#CC0066">Duke's </font> 
-<img src="jsp/template/duke.books.gif" alt="Duke holding books">
-<font size="+3" color="black">Bookstore</font> 
-</h1> 
+<br>
+&nbsp;
+<h1><font size="+3" color="#CC0066">Duke's </font> <img
+	src="jsp/template/duke.books.gif" alt="Duke holding books"> <font
+	size="+3" color="black">Bookstore</font></h1>
 </center>
-<br>&nbsp;
+<jsp:plugin type="applet"
+	code="org/unitedstollutions/c3r/utils/DigitalClock.class"
+	codebase="/c3r-web" jreversion="1.4" align="center" height="25"
+	width="300" nspluginurl="http://java.sun.com/j2se/1.4/download.html"
+	iepluginurl="http://java.sun.com/j2se/1.4/download.html">
+	<jsp:params>
+		<jsp:param name="language"
+			value="<%=request.getLocale().getLanguage()%>" />
+		<jsp:param name="country"
+			value="<%=request.getLocale().getCountry()%>" />
+		<jsp:param name="bgcolor" value="FFFFFF" />
+		<jsp:param name="fgcolor" value="CC0066" />
+	</jsp:params>
+	<jsp:fallback>
+    <p>Unable to start plugin.</p>
+  </jsp:fallback>
+</jsp:plugin>
+<br>
+&nbsp;
 <hr>
 </center>
-

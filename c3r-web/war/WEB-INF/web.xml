@@ -11,78 +11,27 @@
 		<param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
 		<param-value>org.unitedstollutions.c3r.messages.C3RWebMessages</param-value>
 	</context-param>
+	<listener>
+		<listener-class>org.unitedstollutions.c3r.listeners.ContextListener</listener-class>
+	</listener>
 	<servlet>
-		<servlet-name>c3rapp</servlet-name>
-		<servlet-class> org.unitedstollutions.c3r.web.Dispatcher 
-		</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
-	<servlet>
-		<display-name>rulechecker</display-name>
-		<servlet-name>rulechecker</servlet-name>
-		<jsp-file>/jsp/checkrules.jsp</jsp-file>
-	</servlet>
-	<servlet>
-		<display-name>date</display-name>
-		<servlet-name>date</servlet-name>
-		<jsp-file>/jsp/date.jsp</jsp-file>
-	</servlet>
-	<servlet>
-		<display-name>home</display-name>
-		<servlet-name>home</servlet-name>
-		<jsp-file>/index.jsp</jsp-file>
-	</servlet>
-	<servlet>
-		<display-name>editrules</display-name>
-		<servlet-name>editrules</servlet-name>
-		<jsp-file>/jsp/editrules.jsp</jsp-file>
-	</servlet>
-	<servlet>
-		<display-name>browse</display-name>
-		<servlet-name>browse</servlet-name>
-		<jsp-file>/jsp/browse.jsp</jsp-file>
-	</servlet>
-	<servlet>
-		<display-name>validator</display-name>
-		<servlet-name>validator</servlet-name>
-		<jsp-file>/jsp/validatormain.jsp</jsp-file>
+		<display-name>Dispatcher</display-name>
+		<servlet-name>Dispatcher</servlet-name>
+		<servlet-class>org.unitedstollutions.c3r.web.Dispatcher</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>c3rapp</servlet-name>
-		<url-pattern>*.htm</url-pattern>
+		<servlet-name>Dispatcher</servlet-name>
+		<url-pattern>/checker/home</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
-		<servlet-name>c3rapp</servlet-name>
-		<url-pattern>/justdoit</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>rulechecker</servlet-name>
-		<url-pattern>/check</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>date</servlet-name>
-		<url-pattern>/date</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>home</servlet-name>
-		<url-pattern>/home</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>editrules</servlet-name>
-		<url-pattern>/editrules</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>browse</servlet-name>
-		<url-pattern>/browse</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>validator</servlet-name>
-		<url-pattern>/validator</url-pattern>
+		<servlet-name>Dispatcher</servlet-name>
+		<url-pattern>/checker/date</url-pattern>
 	</servlet-mapping>
 	<jsp-config>
 		<jsp-property-group>
 			<display-name>c3r-web</display-name>
-			<url-pattern>*.jsp</url-pattern>
+			<url-pattern>/checker/*</url-pattern>
+			<url-pattern>index.jsp</url-pattern>
 			<el-ignored>false</el-ignored>
 			<scripting-invalid>false</scripting-invalid>
 			<is-xml>false</is-xml>
@@ -90,6 +39,16 @@
 			<include-prelude>/jsp/template/preludeTagLib.jspf</include-prelude>
 			<include-prelude>/jsp/template/preludeErrorPage.jspf</include-prelude>
 			<include-coda>/jsp/template/coda.jspf</include-coda>
+		</jsp-property-group>
+		<jsp-property-group>
+			<display-name>c3r-web</display-name>
+			<url-pattern>/error/*</url-pattern>
+			<el-ignored>false</el-ignored>
+			<scripting-invalid>false</scripting-invalid>
+			<is-xml>false</is-xml>
+			<include-prelude>/template/preludeTagLib.jspf</include-prelude>
+			<include-prelude>/template/prelude.jspf</include-prelude>
+			<include-coda>/template/coda.jspf</include-coda>
 		</jsp-property-group>
 	</jsp-config>
 </web-app>
