@@ -8,6 +8,7 @@ package org.unitedstollutions.c3r.web;
  * http://developer.sun.com/berkeley_license.html
  */
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,64 +16,56 @@ import javax.servlet.http.HttpSession;
 
 import org.unitedstollutions.c3r.model.Query;
 
-
-
 public class Dispatcher extends HttpServlet {
-	
-    public void doGet(
-        HttpServletRequest request,
-        HttpServletResponse response) {
-        String bookId = null;
-        String clear = null;
 
-        HttpSession session = request.getSession();
-        String selectedScreen = request.getServletPath();
+	public void doGet(HttpServletRequest request, HttpServletResponse response) {
+		String bookId = null;
+		String clear = null;
 
-        Query qry = (Query) session.getAttribute("cart");
+		HttpSession session = request.getSession();
+		String selectedScreen = request.getServletPath();
 
-        if (qry == null) {
-            qry = new Query();
-            session.setAttribute("cart", qry);
-        }
+		Query qry = (Query) session.getAttribute("cart");
 
-        if (selectedScreen.equals("/validatormain")) {
-            bookId = request.getParameter("Add");
+		if (qry == null) {
+			qry = new Query();
+			session.setAttribute("cart", qry);
+		}
 
-            if (!bookId.equals("")) {
-/*                try {
-                    book = bookDBAO.getBook(bookId);
-                    cart.add(bookId, book);
-                } catch (BookNotFoundException ex) {
-                    // not possible
-                }
-                */
-            	
-            }
-        
-        }
+		if (selectedScreen.equals("/validator")) {
+			bookId = request.getParameter("Add");
+			bookId = "";
 
-        String screen = selectedScreen + ".jsp";
+			if (!bookId.equals("")) {
+				/*
+				 * try { book = bookDBAO.getBook(bookId); cart.add(bookId,
+				 * book); } catch (BookNotFoundException ex) { // not possible }
+				 */
 
-        try {
-            request.getRequestDispatcher(screen)
-                   .forward(request, response);
-        } catch (Exception ex) {
-            System.out.println("hey hey!");
-            ex.printStackTrace();
-        }
-    }
+			}
 
-    public void doPost(
-        HttpServletRequest request,
-        HttpServletResponse response) {
-        String screen = request.getServletPath() + ".jsp";
+		}
 
-        try {
-            request.getRequestDispatcher(screen)
-                   .forward(request, response);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
+		String screen = "/jsp/" + selectedScreen + ".jsp";
+
+		try {
+			// RequestDispatcher dispatcher = request
+			// .getRequestDispatcher("/jsp/validatormain.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher(screen);
+			dispatcher.forward(request, response);
+		} catch (Exception ex) {
+			System.out.println("hey hey!");
+			ex.printStackTrace();
+		}
+	}
+
+	public void doPost(HttpServletRequest request, HttpServletResponse response) {
+		String screen = request.getServletPath() + ".jsp";
+
+		try {
+			request.getRequestDispatcher(screen).forward(request, response);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+	}
 }
-
