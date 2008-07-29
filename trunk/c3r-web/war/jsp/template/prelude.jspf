@@ -16,7 +16,7 @@
 <br>
 &nbsp;
 <h1><font size="+3" color="#CC0066">Duke's </font> <img
-	src="jsp/template/duke.books.gif" alt="Duke holding books"> <font
+	src="../jsp/template/duke.books.gif" alt="Duke holding books"> <font
 	size="+3" color="black">Bookstore</font></h1>
 </center>
 <jsp:plugin type="applet"

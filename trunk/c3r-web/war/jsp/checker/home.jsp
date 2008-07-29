@@ -14,6 +14,13 @@
 <body>
 <!--<a href="<c:url value="home"/>">Home</a><p />-->
 
+<h2>Date page</h2>
+<div>
+  <form action="date" method="post">
+    Do dates <input type="SUBMIT" name="Submit"></input>
+  </form>
+</div>
+
 <h2>Run defined query</h2>
 <div>
   <form action="check" method="post">
@@ -23,7 +30,7 @@
 
 <h2>Browse the ontology</h2>
 <div>
-  Open a page to <a href="browse">browse ontology.</a>
+  Open a page to <a href="checker/check">browse ontology.</a>
 </div>
 
 <h2>Add a rule</h2>
