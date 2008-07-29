@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
 
 import org.unitedstollutions.c3r.model.Query;
 
-public class Dispatcher extends HttpServlet {
+public class CustomerDispatcher extends HttpServlet {
 
 	protected void processRequest(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
