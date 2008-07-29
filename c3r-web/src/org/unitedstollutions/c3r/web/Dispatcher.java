@@ -8,7 +8,11 @@ package org.unitedstollutions.c3r.web;
  * http://developer.sun.com/berkeley_license.html
  */
 
+import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,10 +22,12 @@ import org.unitedstollutions.c3r.model.Query;
 
 public class Dispatcher extends HttpServlet {
 
-	public void doGet(HttpServletRequest request, HttpServletResponse response) {
+	protected void processRequest(HttpServletRequest request,
+			HttpServletResponse response) {
+
 		String bookId = null;
 		String clear = null;
-
+		String submit = request.getParameter("submit");
 		HttpSession session = request.getSession();
 		String selectedScreen = request.getServletPath();
 
@@ -49,23 +55,28 @@ public class Dispatcher extends HttpServlet {
 		String screen = "/jsp/" + selectedScreen + ".jsp";
 
 		try {
-			// RequestDispatcher dispatcher = request
-			// .getRequestDispatcher("/jsp/validatormain.jsp");
 			RequestDispatcher dispatcher = request.getRequestDispatcher(screen);
 			dispatcher.forward(request, response);
 		} catch (Exception ex) {
 			System.out.println("hey hey!");
 			ex.printStackTrace();
 		}
+
 	}
 
-	public void doPost(HttpServletRequest request, HttpServletResponse response) {
-		String screen = request.getServletPath() + ".jsp";
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-		try {
-			request.getRequestDispatcher(screen).forward(request, response);
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
+		processRequest(request, response);
+	}
+
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		processRequest(request, response);
+	}
+
+	public String getServletInfo() {
+		return "Short description";
 	}
 }

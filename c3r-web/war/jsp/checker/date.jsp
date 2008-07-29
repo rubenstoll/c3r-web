@@ -38,7 +38,7 @@
 <jsp:useBean id="locales" scope="application"
 	class="org.unitedstollutions.c3r.utils.MyLocales" />
 
-<a href="<c:url value="home"/>">Home</a>
+<a href="<c:url value="/checker/home"/>">Home</a>
 
 <form name="localeForm" action="date" method="post">
 </p>
