@@ -11,13 +11,15 @@
 <link rel="stylesheet" type="text/css" href="c3r.css" />
 </head>
 
+<!--<c:out value="${pageContext.servletContext}"/>-->
+
 <body>
 <!--<a href="<c:url value="home"/>">Home</a><p />-->
 
 <h2>Date page</h2>
 <div>
   <form action="date" method="post">
-    Do dates <input type="SUBMIT" name="Submit"></input>
+    Do dates <input type="SUBMIT" name="Submit" value="Do Dates"></input>
   </form>
 </div>
 
