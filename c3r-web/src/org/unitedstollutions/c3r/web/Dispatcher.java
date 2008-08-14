@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.unitedstollutions.c3r.model.Query;
+import org.unitedstollutions.c3r.old.Query;
 
 public class Dispatcher extends HttpServlet {
 
@@ -70,10 +70,14 @@ public class Dispatcher extends HttpServlet {
 		processRequest(request, response);
 	}
 
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) {
 
 		processRequest(request, response);
+		/*
+		 * String screen = request.getServletPath() + ".jsp"; try {
+		 * request.getRequestDispatcher(screen).forward(request, response); }
+		 * catch (Exception ex) { ex.printStackTrace(); }
+		 */
 	}
 
 	public String getServletInfo() {

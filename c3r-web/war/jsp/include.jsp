@@ -9,4 +9,5 @@
 
 <%@ page session="false"%>
 <%@ page errorPage="/jsp/error/errorpage.jsp" %>
-<%@ taglib uri="/WEB-INF/tags/functions.tld" prefix="f"%>
+<!--<%@ taglib uri="/WEB-INF/tags/functions.tld" prefix="f"%>-->
+

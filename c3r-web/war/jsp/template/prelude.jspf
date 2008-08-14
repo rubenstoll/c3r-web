@@ -1,6 +1,7 @@
 <%--
  * Copyright (c) 2003 UnitedStollutions, Inc.  All rights reserved.  Switzerland.
 --%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <html>
 
@@ -9,16 +10,22 @@
 <title>C3R Construction Rule Checker</title>
 
 </head>
+
 <body bgcolor="#FFFFFF">
 
 <!--<center>-->
 <hr>
 <br>
 <h1><font size="+3" color="#CC0066">C3R Construction </font> <img
-	src="../jsp/template/e-blueprints.gif" alt="Construction Rules" width="100"
-	height="150"> <font
-	size="+3" color="black"> Rules Validator</font></h1>
+	src="../jsp/template/e-blueprints.gif" alt="Construction Rules"
+	width="100" height="150"> <font size="+3" color="black">
+Rules Validator</font></h1>
+
 <!--</center>-->
+
+<!-- this applet doesn't work because it cannot find the class for some reason. -->
+<!-- TODO: Fix -->
+<!--
 <jsp:plugin type="applet"
 	code="org/unitedstollutions/c3r/utils/DigitalClock.class"
 	codebase="/c3r-web" jreversion="1.4" align="center" height="25"
@@ -36,6 +43,11 @@
     <p>Unable to start plugin.</p>
   </jsp:fallback>
 </jsp:plugin>
-<br>
+-->
+
+<div class="top_menu">
+	<a href="<c:url value="/checker/main"/>">Home</a>
+	<a href="<c:url value="/checker/about"/>">About</a>
+</div>
+
 <hr>
-</center>

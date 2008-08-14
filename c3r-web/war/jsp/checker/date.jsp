@@ -38,12 +38,12 @@
 <jsp:useBean id="locales" scope="application"
 	class="org.unitedstollutions.c3r.utils.MyLocales" />
 
-<a href="<c:url value="/checker/home"/>">Home</a>
-
 <form name="localeForm" action="date" method="post">
 </p>
-<c:set var="selectedLocaleString" value="${param.locale}" /> <c:set
-	var="selectedFlag" value="${!empty selectedLocaleString}" /> <b>Locale:</b>
+<c:set var="selectedLocaleString" value="${param.locale}" /> 
+<c:set var="selectedFlag" value="${!empty selectedLocaleString}" /> 
+
+<b>Locale:</b>
 <select name=locale>
 	<c:forEach var="localeString" items="${locales.localeNames}">
 		<c:choose>
