@@ -1,5 +1,6 @@
 <%--
- * Copyright (c) 2003 UnitedStollutions, Inc.  All rights reserved.  Switzerland.
+ * Copyright (c) 2003 UnitedStollutions, Inc.  
+ * All rights reserved. Switzerland.
 --%>
 
 <%@ include file="/jsp/include.jsp"%>

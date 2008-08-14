@@ -27,7 +27,8 @@ public final class ContextListener implements ServletContextListener {
 		 * context.setAttribute("bookDBAO", bookDBAO); } catch (Exception ex) {
 		 * System.out.println( "Couldn't create bookstore database bean: " +
 		 * ex.getMessage()); }
-		 */}
+		 */
+	}
 
 	public void contextDestroyed(ServletContextEvent event) {
 		context = event.getServletContext();

@@ -15,22 +15,52 @@
 	<listener>
 		<listener-class>org.unitedstollutions.c3r.listeners.ContextListener</listener-class>
 	</listener>
+	<!--
+	<servlet>
+		<description></description>
+		<display-name>Log4jInit</display-name>
+		<servlet-name>Log4jInit</servlet-name>
+		<servlet-class>org.unitedstollutions.c3r.web.Log4jInit</servlet-class>
+		<init-param>
+			<param-name>log4j-init-file</param-name>
+			<param-value>WEB-INF/classes/log4j.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	-->
 	<servlet>
 		<display-name>Dispatcher</display-name>
 		<servlet-name>Dispatcher</servlet-name>
 		<servlet-class>org.unitedstollutions.c3r.web.Dispatcher</servlet-class>
+		<load-on-startup>1</load-on-startup>
 	</servlet>
+	<servlet-mapping>
+		<servlet-name>Dispatcher</servlet-name>
+		<url-pattern>/checker/main</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Dispatcher</servlet-name>
+		<url-pattern>/checker/about</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Dispatcher</servlet-name>
+		<url-pattern>/checker/configure</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Dispatcher</servlet-name>
+		<url-pattern>/checker/loadProject</url-pattern>
+	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>Dispatcher</servlet-name>
 		<url-pattern>/checker/home</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>Dispatcher</servlet-name>
-		<url-pattern>/checker/date</url-pattern>
+		<url-pattern>/checker/check</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>Dispatcher</servlet-name>
-		<url-pattern>/checker/check</url-pattern>
+		<url-pattern>/checker/date</url-pattern>
 	</servlet-mapping>
 	<jsp-config>
 		<jsp-property-group>
@@ -56,4 +86,5 @@
 			<include-coda>/template/coda.jspf</include-coda>
 		</jsp-property-group>
 	</jsp-config>
+
 </web-app>
