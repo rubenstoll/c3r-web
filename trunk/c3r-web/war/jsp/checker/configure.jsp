@@ -9,8 +9,8 @@
 
 <script type="text/javascript">
 	function displaymessage() {
-		alert("Hello World!" + "The current value of the selected item is:" +
-				document.qryCfg.domainApp.value);
+		alert("Hello World!" + "The current value of the selected item is:"
+				+ document.qryCfg.domainApp.value);
 	}
 
 	function displayFormData() {
@@ -23,14 +23,14 @@
 		for (i = 0; i < document.forms.length; ++i) {
 			win2.document.writeln("Form " + i + " has "
 					+ document.forms[i].elements.length + " elements.")
-			win2.document.writeln("Form name:" 	+ document.forms[i].name)
+			win2.document.writeln("Form name:" + document.forms[i].name)
 			for (j = 0; j < document.forms[i].elements.length; ++j) {
 				win2.document.writeln((j + 1) + " A "
 						+ document.forms[i].elements[j].type + " element.")
 				win2.document.writeln((j + 1) + " Name: "
-								+ document.forms[i].elements[j].name + " !")
+						+ document.forms[i].elements[j].name + " !")
 				win2.document.writeln((j + 1) + " Value: "
-								+ document.forms[i].elements[j].value + " ...")
+						+ document.forms[i].elements[j].value + " ...")
 			}
 		}
 		win2.document.close()
@@ -48,12 +48,13 @@
 
 
 
-<form name="qryCfg" method="POST" action="/checker/main">Thematic <jsp:useBean
+<form name="qryCfg" method="POST"
+	action="processQueryGroupConfigurations">Thematic <jsp:useBean
 	id="thematicConfig"
-	class="org.unitedstollutions.c3r.model.ThematicQueryGroupConfiguration" />
+	class="org.unitedstollutions.c3r.model.ThematicQueryGroupConfiguration" scope="application"/>
 <select name="thematic" size="1">
 	<c:forEach var="configurations" items="${thematicConfig.contents}">
-		<option value="${configurations.key}">${configurations.value}</option>
+		<option value="${configurations.key}" name="value">${configurations.value} </option>
 	</c:forEach>
 </select><br />
 <br />
@@ -62,7 +63,7 @@ destination Request <jsp:useBean id="destinationRequete"
 	class="org.unitedstollutions.c3r.model.DestinationQueryGroupConfiguration" />
 <select name="destination" size="1">
 	<c:forEach var="configurations" items="${destinationRequete.contents}">
-		<option value="${configurations.key}">${configurations.value}</option>
+		<option value="${configurations.key}"  name="value">${configurations.value}</option>
 	</c:forEach>
 </select><br />
 <br />
@@ -71,7 +72,7 @@ extrait Type LEG <jsp:useBean id="extraitTypeLEG"
 	class="org.unitedstollutions.c3r.model.ExtraiteTypeLEGQueryGroupConfiguration" />
 <select name="extraitTyp" size="1">
 	<c:forEach var="configurations" items="${extraitTypeLEG.contents}">
-		<option value="${configurations.key}">${configurations.value}</option>
+		<option value="${configurations.key}"  name="value">${configurations.value}</option>
 	</c:forEach>
 </select><br />
 <br />
@@ -80,7 +81,7 @@ extrait Titre <jsp:useBean id="extraitTitre"
 	class="org.unitedstollutions.c3r.model.ExtraiteTitreQueryGroupConfiguration" />
 <select name="extraitTitre" size="1">
 	<c:forEach var="configurations" items="${extraitTitre.contents}">
-		<option value="${configurations.key}">${configurations.value}</option>
+		<option value="${configurations.key}"  name="value">${configurations.value}</option>
 	</c:forEach>
 </select><br />
 <br />
@@ -89,7 +90,7 @@ domaine Application <jsp:useBean id="domainApplication"
 	class="org.unitedstollutions.c3r.model.DomainApplicationQueryGroupConfiguration" />
 <select name="domainApp" onchange="displaymessage()" size="1">
 	<c:forEach var="configurations" items="${domainApplication.contents}">
-		<option value="${configurations.key}">${configurations.value}</option>
+		<option value="${configurations.key}"  name="value">${configurations.value}</option>
 	</c:forEach>
 </select><br />
 <br />
@@ -101,14 +102,13 @@ sousDomaineApplication <jsp:useBean id="subDomainApplication"
 <select name="subDomainApp" onchange="displayFormData()" size="1">
 	<c:forEach var="configurations"
 		items="${subDomainApplication.contents}">
-		<option value="${configurations.key}">${configurations.value}</option>
+		<option value="${configurations.key}"  name="value">${configurations.value}</option>
 	</c:forEach>
 </select><br />
 <br />
 
 
 <input type="submit" name="Submit" value="Configure"></form>
-
 
 
 </body>
