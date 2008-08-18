@@ -1,0 +1,4 @@
+#Mon Aug 18 16:22:39 CEST 2008
+classpath.helper/org.eclipse.jdt.launching.JRE_CONTAINER\:\:org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType\:\:jdk1.6.0/owners=jst.java\:6.0
+classpath.helper/org.eclipse.jst.server.core.container\:\:com.sun.enterprise.jst.server.runtimeTarget\:\:GlassFish\ V2\ Java\ EE\ 5/owners=jst.web\:2.5
+eclipse.preferences.version=1
