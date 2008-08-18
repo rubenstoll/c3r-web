@@ -28,16 +28,18 @@ public class Dispatcher extends HttpServlet {
 		String bookId = null;
 		String clear = null;
 		String submit = request.getParameter("submit");
-		HttpSession session = request.getSession();
+//		HttpSession session = request.getSession();
 		String selectedScreen = request.getServletPath();
 
-		Query qry = (Query) session.getAttribute("cart");
+//		Query qry = (Query) session.getAttribute("cart");
+		Query qry = (Query) getServletContext().getAttribute("cart");
 
 		if (qry == null) {
 			qry = new Query();
-			session.setAttribute("cart", qry);
+			getServletContext().setAttribute("cart", qry);
 		}
 
+		// never enters here for now
 		if (selectedScreen.equals("/validator")) {
 			bookId = request.getParameter("Add");
 			bookId = "";
