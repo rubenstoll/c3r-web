@@ -6,109 +6,124 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <title>Configure Project</title>
-
-<script type="text/javascript">
-	function displaymessage() {
-		alert("Hello World!" + "The current value of the selected item is:"
-				+ document.qryCfg.domainApp.value);
-	}
-
-	function displayFormData() {
-		win2 = open("", "window2")
-		win2.document.open("text/plain")
-		win2.document.writeln("This document has " + document.forms.length
-				+ " forms.")
-		var i = 0;
-		var j = 0;
-		for (i = 0; i < document.forms.length; ++i) {
-			win2.document.writeln("Form " + i + " has "
-					+ document.forms[i].elements.length + " elements.")
-			win2.document.writeln("Form name:" + document.forms[i].name)
-			for (j = 0; j < document.forms[i].elements.length; ++j) {
-				win2.document.writeln((j + 1) + " A "
-						+ document.forms[i].elements[j].type + " element.")
-				win2.document.writeln((j + 1) + " Name: "
-						+ document.forms[i].elements[j].name + " !")
-				win2.document.writeln((j + 1) + " Value: "
-						+ document.forms[i].elements[j].value + " ...")
-			}
-		}
-		win2.document.close()
-		return false
-	}
-</script>
-
 </head>
 <body>
+
+<%@ page import="javax.servlet.http.*" %>
+servlet path:
+<% out.print(request.getServletPath()); %>
+
 
 <center>
 <h1>Query Configuration</h1>
 </center>
 <br />
 
-
-
-<form name="qryCfg" method="POST"
-	action="processQueryGroupConfigurations">Thematic <jsp:useBean
+<!-- query configuration beans available. -->
+<jsp:useBean
 	id="thematicConfig"
-	class="org.unitedstollutions.c3r.model.ThematicQueryGroupConfiguration" scope="application"/>
+	class="org.unitedstollutions.c3r.model.ThematicQueryGroupConfiguration" scope="session"/>
+<jsp:useBean id="destinationRequete"
+	class="org.unitedstollutions.c3r.model.DestinationQueryGroupConfiguration" scope="session"/>
+<jsp:useBean id="extraitTypeLEG"
+	class="org.unitedstollutions.c3r.model.ExtraiteTypeLEGQueryGroupConfiguration" scope="session"/>
+<jsp:useBean id="extraitTitre"
+	class="org.unitedstollutions.c3r.model.ExtraiteTitreQueryGroupConfiguration" scope="session"/>
+<jsp:useBean id="domainApplication"
+	class="org.unitedstollutions.c3r.model.DomainApplicationQueryGroupConfiguration" scope="session"/>
+<jsp:useBean id="subDomainApplication"
+	class="org.unitedstollutions.c3r.model.SubDomainApplicationQueryGroupConfiguration" scope="session"/>
+
+
+<form name="qryCfg" method="post"
+	action="processQueryGroupConfigurations">
+
+Thematic 
+<c:set var="selected" value="${thematicConfig.value}" />
 <select name="thematic" size="1">
 	<c:forEach var="configurations" items="${thematicConfig.contents}">
-		<option value="${configurations.key}" name="value">${configurations.value} </option>
+		<c:if test="${configurations.key == selected}">
+			<option selected value="${configurations.key}" name="value">${configurations.value} </option>
+		</c:if>
+		<c:if test="${configurations.key != selected}">
+			<option value="${configurations.key}" name="value">${configurations.value} </option>
+		</c:if>
 	</c:forEach>
 </select><br />
 <br />
 
-destination Request <jsp:useBean id="destinationRequete"
-	class="org.unitedstollutions.c3r.model.DestinationQueryGroupConfiguration" />
+Destination Request 
+<c:set var="selected" value="${destinationRequete.value}" />
 <select name="destination" size="1">
 	<c:forEach var="configurations" items="${destinationRequete.contents}">
-		<option value="${configurations.key}"  name="value">${configurations.value}</option>
-	</c:forEach>
+		<c:if test="${configurations.key == selected}">
+			<option selected value="${configurations.key}" name="value">${configurations.value} </option>
+		</c:if>
+		<c:if test="${configurations.key != selected}">
+			<option value="${configurations.key}" name="value">${configurations.value} </option>
+		</c:if>	</c:forEach>
 </select><br />
 <br />
 
-extrait Type LEG <jsp:useBean id="extraitTypeLEG"
-	class="org.unitedstollutions.c3r.model.ExtraiteTypeLEGQueryGroupConfiguration" />
+Extrait Type LEG 
+<c:set var="selected" value="${extraitTypeLEG.value}" />
 <select name="extraitTyp" size="1">
 	<c:forEach var="configurations" items="${extraitTypeLEG.contents}">
-		<option value="${configurations.key}"  name="value">${configurations.value}</option>
-	</c:forEach>
+		<c:if test="${configurations.key == selected}">
+			<option selected value="${configurations.key}" name="value">${configurations.value} </option>
+		</c:if>
+		<c:if test="${configurations.key != selected}">
+			<option value="${configurations.key}" name="value">${configurations.value} </option>
+		</c:if>	</c:forEach>
 </select><br />
 <br />
 
-extrait Titre <jsp:useBean id="extraitTitre"
-	class="org.unitedstollutions.c3r.model.ExtraiteTitreQueryGroupConfiguration" />
+Extrait Titre 
+<c:set var="selected" value="${extraitTitre.value}" />
 <select name="extraitTitre" size="1">
 	<c:forEach var="configurations" items="${extraitTitre.contents}">
-		<option value="${configurations.key}"  name="value">${configurations.value}</option>
-	</c:forEach>
+		<c:if test="${configurations.key == selected}">
+			<option selected value="${configurations.key}" name="value">${configurations.value} </option>
+		</c:if>
+		<c:if test="${configurations.key != selected}">
+			<option value="${configurations.key}" name="value">${configurations.value} </option>
+		</c:if>	</c:forEach>
 </select><br />
 <br />
 
-domaine Application <jsp:useBean id="domainApplication"
-	class="org.unitedstollutions.c3r.model.DomainApplicationQueryGroupConfiguration" />
-<select name="domainApp" onchange="displaymessage()" size="1">
+Domaine Application 
+<c:set var="selected" value="${domainApplication.value}" />
+<select name="domainApp" size="1">
 	<c:forEach var="configurations" items="${domainApplication.contents}">
-		<option value="${configurations.key}"  name="value">${configurations.value}</option>
-	</c:forEach>
+		<c:if test="${configurations.key == selected}">
+			<option selected value="${configurations.key}" name="value">${configurations.value} </option>
+		</c:if>
+		<c:if test="${configurations.key != selected}">
+			<option value="${configurations.key}" name="value">${configurations.value} </option>
+		</c:if>	</c:forEach>
 </select><br />
 <br />
 
 <!-- The sub domain depends on what is chosen for the application
-domain.  There is a one to one mapping in the C3R descriptions document. -->
-sousDomaineApplication <jsp:useBean id="subDomainApplication"
-	class="org.unitedstollutions.c3r.model.SubDomainApplicationQueryGroupConfiguration" />
-<select name="subDomainApp" onchange="displayFormData()" size="1">
+domain.  There is a one to one mapping in the C3R descriptions document.
+A master detail list is needed to implement this. -->
+SousDomaineApplication 
+<c:set var="selected" value="${subDomainApplication.value}" />
+<select name="subDomainApp" size="1">
 	<c:forEach var="configurations"
 		items="${subDomainApplication.contents}">
-		<option value="${configurations.key}"  name="value">${configurations.value}</option>
-	</c:forEach>
+		<c:if test="${configurations.key == selected}">
+			<option selected value="${configurations.key}" name="value">${configurations.value} </option>
+		</c:if>
+		<c:if test="${configurations.key != selected}">
+			<option value="${configurations.key}" name="value">${configurations.value} </option>
+		</c:if>	</c:forEach>
 </select><br />
 <br />
 
-
-<input type="submit" name="Submit" value="Configure"></form>
+<input type="submit" name="submit" value="Cancel">
+<input type="submit" name="submit" value="Configure">
+</form>
 
 
 </body>

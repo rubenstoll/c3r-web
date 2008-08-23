@@ -11,6 +11,13 @@ package org.unitedstollutions.c3r.model;
 public class SubDomainApplicationQueryGroupConfiguration extends
 		QueryGroupConfiguration {
 
+	/*
+	 * Set the available types of configurations and set
+	 * the default value and label for the query
+	 * group configuration. 
+	 * The value and label represent the value and label in 
+	 * a drop down list
+	 */
 	public SubDomainApplicationQueryGroupConfiguration() {
 		/*
 		 * The first array element is the composition of the parent domain
@@ -23,6 +30,11 @@ public class SubDomainApplicationQueryGroupConfiguration extends
 				{ "Cheminement.Pente", "Pente" } };
 		
 		setContents(contents);
+
+		// sets the default here from available list above
+		String defaultValue = "Cheminement.Pente";
+		setDefaults(defaultValue);
+		
 	}
 
 }
