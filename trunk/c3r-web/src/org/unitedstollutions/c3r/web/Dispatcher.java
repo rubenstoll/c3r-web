@@ -25,36 +25,25 @@ public class Dispatcher extends HttpServlet {
 	protected void processRequest(HttpServletRequest request,
 			HttpServletResponse response) {
 
-		String bookId = null;
-		String clear = null;
-		String submit = request.getParameter("submit");
 //		HttpSession session = request.getSession();
 		String selectedScreen = request.getServletPath();
 
-//		Query qry = (Query) session.getAttribute("cart");
-		Query qry = (Query) getServletContext().getAttribute("cart");
+//		Object something = getServletContext().getAttribute("someattribute");
+//		if (something == null) {
+//			something = new Object();
+//			getServletContext().setAttribute("cart", something);
+//		}
 
-		if (qry == null) {
-			qry = new Query();
-			getServletContext().setAttribute("cart", qry);
-		}
-
-		// never enters here for now
-		if (selectedScreen.equals("/validator")) {
-			bookId = request.getParameter("Add");
-			bookId = "";
-
-			if (!bookId.equals("")) {
-				/*
-				 * try { book = bookDBAO.getBook(bookId); cart.add(bookId,
-				 * book); } catch (BookNotFoundException ex) { // not possible }
-				 */
-
+		if (selectedScreen.equals("/checker/process.do")) {
+			String submit = request.getParameter("submit");
+			if(submit == "Cancel") {
+				selectedScreen = "main";
+			} else {
+				selectedScreen = "processQueryGroupConfigurations";
 			}
-
 		}
 
-		String screen = "/jsp/" + selectedScreen + ".jsp";
+		String screen = "/jsp" + selectedScreen + ".jsp";
 
 		try {
 			RequestDispatcher dispatcher = request.getRequestDispatcher(screen);

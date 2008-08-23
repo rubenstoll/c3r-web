@@ -2,10 +2,12 @@
  * Copyright (c) 2003 UnitedStollutions, Inc.  
  * All rights reserved. Switzerland.
 --%>
+<%@ page import="javax.servlet.http.*" %>
+servlet path:
+<% out.print(request.getServletPath()); %>
 
 <c:set var="contextPath"
-	value="/${pageContext.servletContext.servletContextName}" />
-
+	value="${pageContext.servletContext.servletContextName}" />
 <!--<c:out value="${contextPath}"/>-->
 
 <jsp:useBean

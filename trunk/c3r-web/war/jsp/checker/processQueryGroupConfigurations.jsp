@@ -26,8 +26,6 @@
 
 
 <jsp:setProperty name="thematicConfig" property="value" value="${param.thematic}" />
-
-
 <jsp:setProperty name="destinationRequete" property="value" value="${param.destination}" />
 <jsp:setProperty name="extraitTypeLEG" property="value" value="${param.extraitTyp}" />
 <jsp:setProperty name="extraitTitre" property="value" value="${param.extraitTitre}" />
