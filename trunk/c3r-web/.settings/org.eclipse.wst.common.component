@@ -4,7 +4,7 @@
         <wb-resource deploy-path="/" source-path="/war"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/test"/>
-        <property name="context-root" value="c3r-web"/>
         <property name="java-output-path"/>
+        <property name="context-root" value="c3r-web"/>
     </wb-module>
 </project-modules>

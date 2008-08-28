@@ -3,6 +3,7 @@
  */
 package org.unitedstollutions.c3r.old;
 
+import org.unitedstollutions.c3r.model.AnnotationRegle;
 import org.xml.sax.Attributes;
 import org.xml.sax.Locator;
 import org.xml.sax.SAXException;
