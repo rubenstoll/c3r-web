@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.unitedstollutions.c3r.old;
+package org.unitedstollutions.c3r.model;
 
 import java.util.ArrayList;
 

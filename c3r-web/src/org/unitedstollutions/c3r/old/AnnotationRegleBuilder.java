@@ -14,6 +14,7 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.unitedstollutions.c3r.model.AnnotationRegle;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;

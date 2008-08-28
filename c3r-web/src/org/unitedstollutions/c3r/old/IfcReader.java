@@ -1,5 +1,6 @@
 package org.unitedstollutions.c3r.old;
 
+import org.unitedstollutions.c3r.model.AnnotationRegle;
 import org.xml.sax.*;
 import org.xml.sax.helpers.XMLReaderFactory;
 import java.io.IOException;
