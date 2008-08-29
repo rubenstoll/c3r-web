@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<rdf:RDF 
+    xmlns:rdf ="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:xsd ="http://www.w3.org/2001/XMLSchema#" 
+    xmlns:annoComplexe     ="http://www.owl-ontologies.com/Ontology1215697160.owl#" 
+    xmlns:ontoCC     ="http://www.owl-ontologies.com/Ontology1205837312.owl#" 
+    xmlns     ="http://www.owl-ontologies.com/Ontology1215697160.owl#" 
+    xml:base  ="http://www.owl-ontologies.com/Ontology1215697160.owl-instances"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance#"
+    >
+
+<AnnotationRequete rdf:ID="r00010220">
+    <verifiableRequete>VP-E</verifiableRequete>
+    <origineRequete>validation</origineRequete>
+    <actualiteRequete>modifie</actualiteRequete>
+    <thematiqueRequete>accessibilite_des_handicapes</thematiqueRequete>
+    <exigenceRequete>Accessibilite</exigenceRequete>
+    <extraitTypeTexteReglementaire>
+        LEG
+    </extraitTypeTexteReglementaire>
+    <extraitTypeLEG>
+        arrete
+    </extraitTypeLEG>            
+    <extraitEmanant></extraitEmanant>
+    <extraitSigle></extraitSigle>
+    <extraitNumero></extraitNumero>
+    <extraitDate>       
+        1980-12-24
+    </extraitDate>
+    <extraitJO>       
+        1980-12-31
+    </extraitJO>
+    <extraitTitre>
+        arrêté du 24 décembre 1980 dispositions relatives à l'application du décret 80-637 du 4 août 1980 modifiant le code de la construction et de l'habitation (partie réglementaire) en vue de rendre accessibles et adaptables aux personnes handicapées à mobilité réduite les bâtiments d'habitation collectifs neufs et les logements qu'ils contiennent.        
+    </extraitTitre>
+    <extraitRelatifA></extraitRelatifA>
+    <extraitReference>
+        le code de la construction et de l'habitation ;
+        le décret n° 80-637 du 4 août 1980 modifiant le code de la construction et de l'habitation (partie réglementaire) en vue de rendre accessibles et adaptables aux personnes handicapées à mobilité réduite les bâtiments d'habitation collectifs neufs et les logements qu'ils contiennent       
+    </extraitReference>
+    <extraitInfoExtractionUIS></extraitInfoExtractionUIS>
+    <extraitInfoExtractionArticle>2</extraitInfoExtractionArticle>
+    <extraitInfoExtractionParagraphe></extraitInfoExtractionParagraphe>
+    <extraitInfoExtractionNumeroOrdreDansParagraphe></extraitInfoExtractionNumeroOrdreDansParagraphe>
+    <classificationISTforCE>NV</classificationISTforCE>
+    <sujetRequete></sujetRequete>
+    <domaineApplication>
+        <ontoCC:Cheminement/>
+    </domaineApplication>
+    <sousDomaineApplication>
+        <ontoCC:Sol/>
+    </sousDomaineApplication>
+    <domaineSimple>
+        CirculationInterieureHorizontale
+    </domaineSimple>     
+    <sousDomaineSimple>
+        Sol
+    </sousDomaineSimple>
+    <destinationRequete>ERP</destinationRequete>
+    <textRequete>
+        Les trous ou fentes dans le sol (grilles, etc.) doivent avoir un diamètre, ou une largeur, inférieur à 2 cm.        
+    </textRequete>
+    <aboutIFCData>
+    </aboutIFCData>
+    <notesFormalisation>   
+        Cette règle s'applique principalement à l'extérieur des bâtiments le long des cheminements menant à l'entrée de ces bâtiments. Par conséquent, il ne nous est pas possible 
+        de vérifier cette règle. Pour ce qui est de l'intérieur des bâtiments, à priori, les trous ou fentes dans le sol ne doivent pas avoir lieu d'être.        
+    </notesFormalisation>
+    <interpretationVersions>       
+    </interpretationVersions>
+
+
+    <!-- added by Birahim -->
+    <proprieteConcerne rdf:resource="http://rainbow.essi.fr/~anastasiya/data/ifc.rdfs#overallWidth"/>
+    
+    <conditionAVerifier>être supérieur ou égal à 10</conditionAVerifier>
+    
+    <contenuRequete>
+        PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl#&gt;
+        select distinct ?sol ?troufente display xml
+        where
+        {
+        ?sol rdf:type ontoCC:Sol
+        ?troufente ontoCC:referencedBy ?sol
+        ?troufente rdf:type ontoCC:TrouFente
+        OPTIONAL 
+        {
+        {
+        ?troufente ontoCC:overallWidth ?sizeTrou 
+        FILTER ( xsd:integer(?sizeTrou ) &lt;2)
+        }
+        UNION
+        {
+        ?troufente ontoCC:diametre ?sizeTrou 
+        FILTER ( xsd:integer(?sizeTrou ) &lt; 2)
+        }
+        }
+        FILTER (! bound( ?sizeTrou ) )
+        } 
+    </contenuRequete>    
+
+    
+</AnnotationRequete>
+    
+    
+</rdf:RDF>

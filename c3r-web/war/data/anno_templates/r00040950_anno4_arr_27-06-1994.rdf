@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<rdf:RDF 
+    xmlns:rdf ="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:xsd ="http://www.w3.org/2001/XMLSchema#" 
+    xmlns:annoComplexe     ="http://www.owl-ontologies.com/Ontology1215697160.owl#" 
+    xmlns:ontoCC     ="http://www.owl-ontologies.com/Ontology1205837312.owl#" 
+    xmlns     ="http://www.owl-ontologies.com/Ontology1215697160.owl#" 
+    xml:base  ="http://www.owl-ontologies.com/Ontology1215697160.owl-instances"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance#"
+    >
+    
+    <AnnotationRequete rdf:ID="r00040950">
+     <verifiableRequete>VP-E</verifiableRequete>
+    <origineRequete>validation</origineRequete>
+    <actualiteRequete>nouveau</actualiteRequete>
+    <thematiqueRequete>accessibilite_des_handicapes</thematiqueRequete>
+    <exigenceRequete>Accessibilite</exigenceRequete>
+     <extraitTypeTexteReglementaire>
+        LEG
+    </extraitTypeTexteReglementaire>
+    <extraitTypeLEG>
+        arrete
+    </extraitTypeLEG>            
+    <extraitEmanant></extraitEmanant>
+    <extraitSigle></extraitSigle>
+    <extraitNumero></extraitNumero>
+    <extraitDate>       
+        1994-06-27
+    </extraitDate>
+    <extraitJO>       
+        
+    </extraitJO>
+        <extraitTitre>
+            Arrêté du 27 juin 1994 fixant les dispositions destinées à rendre accessibles les lieux de travail aux personnes handicapées (nouvelles constructions ou aménagements) en application de l'article R. 235-3-18 du code du travail        
+        </extraitTitre>
+        <extraitRelatifA>
+            dispositions destinées à rendre accessibles les lieux de travail aux personnes handicapées (nouvelles constructions ou aménagements) en application de l'article R. 235-3-18 du code du travail        
+        </extraitRelatifA>
+        <extraitReference>
+            l'article L.111-7 du code de la construction;
+            les articles R.235-1, R.235-2-13, R.235-3-18 et R.235-4-2 du code du travail;
+            l'arrêté du 5 août 1992 pris pour l'application des articles R.235-4-8 et R.235-4-15 du code du travail; Vu l'avis de la Commission nationale d'hygiène et de sécurité du travail en agriculture;
+            l'avis du Conseil supérieur de la prévention des risques professionnels        
+        </extraitReference>
+    <extraitInfoExtractionUIS></extraitInfoExtractionUIS>
+    <extraitInfoExtractionArticle>3</extraitInfoExtractionArticle>
+    <extraitInfoExtractionParagraphe></extraitInfoExtractionParagraphe>
+    <extraitInfoExtractionNumeroOrdreDansParagraphe></extraitInfoExtractionNumeroOrdreDansParagraphe>
+    <classificationISTforCE>NV</classificationISTforCE>
+    <sujetRequete></sujetRequete>
+        <conceptsCle>IfcDoor, Ascenseur</conceptsCle>
+        <domaineApplication>
+            <ontoCC:Cheminement/>
+        </domaineApplication>
+        <sousDomaineApplication>
+            <ontoCC:Ascenseur/>
+        </sousDomaineApplication>
+        <domaineSimple>
+            CirculationInterieureVerticale
+        </domaineSimple>     
+        <sousDomaineSimple>
+            Ascenseur
+        </sousDomaineSimple>
+    <destinationRequete>ERP</destinationRequete>
+    <textRequete>
+        Les temps d'ouverture de la porte d'accès doivent être suffisants pour le passage d'un fauteuil roulant. Les portes coulissantes sont obligatoires.        
+    </textRequete>
+    <aboutIFCData>
+    </aboutIFCData>
+    <notesFormalisation> 
+        Les ascenseurs ne sont pas représentés dans les IFC.        
+    </notesFormalisation>
+        <interpretationVersions>
+        </interpretationVersions>
+        <interpretationExpert> 
+            (1 requêtes)
+            PorteAscenseur coulissante AND dureeOuverture MORE 1 min
+        </interpretationExpert>
+        
+        <contenuRequete rdf:ID="r00040950q">
+            PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl#&gt;
+            select ?porte ?rfe ?ro display xml 
+            where
+            {{
+            ?porte 	rdf:type 		ontoCC:IfcDoor
+            ?porte	ontoCC:automaticIfcDoor	"true"
+            } 
+            UNION	
+            {
+            ?porte 	rdf:type 		ontoCC:IfcDoor
+            ?porte	ontoCC:automaticIfcDoor	"TRUE"
+            }
+            ?rfe 	rdf:type		ontoCC:IfcRelFillsElement 
+            ?rfe 	ontoCC:relatingOpeningElement	?ro
+            ?ro	rdf:type		ontoCC:Ascenseur 
+            ?rfe 	ontoCC:relatedBuildingElement	?porte
+            OPTIONAL 
+            {
+            ?porte	ontoCC:isDefinedBy	?idb
+            ?idb	rdf:type		ontoCC:IfcRelDefinesByType
+            ?idb	ontoCC:relatingType	?t
+            ?t	rdf:type		ontoCC:IfcDoorSlide
+            ?t	ontoCC:operationType	?op
+            FILTER ( ?op ~ "SLIDING" )
+            ?porte 	ontoCC:dureeOuverture	?do
+            FILTER ( xsd:integer(?do) &gt;= 60)
+            }
+            FILTER (! bound( ?do) )
+            }
+        </contenuRequete>
+        
+    
+    <!-- added by Birahim -->
+    <proprieteConcerne rdf:resource="http://rainbow.essi.fr/~anastasiya/data/ifc.rdfs#overallWidth"/>
+    
+    <conditionAVerifier>être supérieur ou égal à 10</conditionAVerifier>
+
+    
+</AnnotationRequete>
+    
+
+</rdf:RDF>

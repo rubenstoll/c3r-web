@@ -1,0 +1,798 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns="http://www.owl-ontologies.com/Ontology1215697160.owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:ontoCC="http://www.owl-ontologies.com/Ontology1205837312.owl#"
+  xml:base="http://www.owl-ontologies.com/Ontology1215697160.owl">
+  <owl:Ontology rdf:about=""/>
+  <owl:Class rdf:ID="TapisA">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="RevetementSolMurPlafondA"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="PointAccueilA">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="DispositifAccueiEquipementDispositifCommandA"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="InformationSignalisationA"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="CheminementExterieurA">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="DomaineApplicationType"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InformationSignalisationA"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="EtablissementAvecDoucheCabineA">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#DomaineApplicationType"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="PoigneePorteA">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="PortePortiqueSasA"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="EtablissementPublicAssisA">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#DomaineApplicationType"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#PortePortiqueSasA">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#DomaineApplicationType"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="CirculationsInterieuresHorizontalesA">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#DomaineApplicationType"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InformationSignalisationA"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="DispositifAccesA">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="AccesBatimentEtLocauxOuvertsPublicA"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ElementSignalisationInformationA">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InformationSignalisationA"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="AnnotationRequete">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:ID="ActualiteRequeteType"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="actualiteRequete"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="CirculationsInterieuresVerticalesA">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#DomaineApplicationType"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InformationSignalisationA"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="PorteOuvertureAutomatiqueA">
+    <rdfs:subClassOf rdf:resource="#PortePortiqueSasA"/>
+  </owl:Class>
+  <owl:Class rdf:ID="CabinetAmenageA">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="SanitairesA"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="DoucheA">
+    <rdfs:subClassOf rdf:resource="#EtablissementAvecDoucheCabineA"/>
+  </owl:Class>
+  <owl:Class rdf:ID="PalierReposA">
+    <rdfs:subClassOf rdf:resource="#CirculationsInterieuresHorizontalesA"/>
+    <rdfs:subClassOf rdf:resource="#CheminementExterieurA"/>
+  </owl:Class>
+  <owl:Class rdf:ID="SystemeCommunicationA">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#AccesBatimentEtLocauxOuvertsPublicA"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="CabineA">
+    <rdfs:subClassOf rdf:resource="#EtablissementAvecDoucheCabineA"/>
+  </owl:Class>
+  <owl:Class rdf:ID="PlaceStationnementA">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#DomaineApplicationType"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1205837312.owl#PlaceStationnement"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="DomaineSimple">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="TypesEnum"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ChambreA">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="EtablissementLocauxSommeilA"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="PenteA">
+    <rdfs:subClassOf rdf:resource="#CirculationsInterieuresHorizontalesA"/>
+    <rdfs:subClassOf rdf:resource="#CheminementExterieurA"/>
+  </owl:Class>
+  <owl:Class rdf:ID="EscalierPlus3MarchesA">
+    <rdfs:subClassOf rdf:resource="#CirculationsInterieuresHorizontalesA"/>
+    <rdfs:subClassOf rdf:resource="#CheminementExterieurA"/>
+  </owl:Class>
+  <owl:Class rdf:ID="EspaceManoeuvrePorteA">
+    <rdfs:subClassOf rdf:resource="#CirculationsInterieuresHorizontalesA"/>
+    <rdfs:subClassOf rdf:resource="#CheminementExterieurA"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Ministre">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="ActeurReglementation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#RevetementSolMurPlafondA">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#DomaineApplicationType"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#DispositifAccueiEquipementDispositifCommandA">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#DomaineApplicationType"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="CaissePaiementA">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#DomaineApplicationType"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="SeuilA">
+    <rdfs:subClassOf rdf:resource="#CirculationsInterieuresHorizontalesA"/>
+    <rdfs:subClassOf rdf:resource="#CheminementExterieurA"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AccueilSonoroseA">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InformationSignalisationA"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="AppareilElevateurA">
+    <rdfs:subClassOf rdf:resource="#CirculationsInterieuresVerticalesA"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1205837312.owl#SalleHygiene"/>
+  <owl:Class rdf:ID="TexteReglementaireType">
+    <rdfs:subClassOf rdf:resource="#TypesEnum"/>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:oneOf rdf:parseType="Collection">
+          <TexteReglementaireType rdf:ID="DTU">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </TexteReglementaireType>
+          <TexteReglementaireType rdf:ID="LEG">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </TexteReglementaireType>
+          <TexteReglementaireType rdf:ID="NOR">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </TexteReglementaireType>
+          <TexteReglementaireType rdf:ID="TEC">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </TexteReglementaireType>
+        </owl:oneOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Maire">
+    <rdfs:subClassOf rdf:resource="#ActeurReglementation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="SortieA">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#DomaineApplicationType"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="EspaceUsageA">
+    <rdfs:subClassOf rdf:resource="#CirculationsInterieuresHorizontalesA"/>
+    <rdfs:subClassOf rdf:resource="#CheminementExterieurA"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Gouvernement">
+    <rdfs:subClassOf rdf:resource="#ActeurReglementation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="TapisRoulantA">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1205837312.owl#TapisRoulant"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="TapisEscalierPlanInclineMecaniqueA"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#SanitairesA">
+    <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1205837312.owl#SalleHygiene"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#DomaineApplicationType"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="EscalierA">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1205837312.owl#Escalier"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#CirculationsInterieuresVerticalesA"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#TapisEscalierPlanInclineMecaniqueA"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ChambreAdapteeA">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#EtablissementLocauxSommeilA"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#ChambreA"/>
+  </owl:Class>
+  <owl:Class rdf:ID="EquipementDiversAccessiblesPublicA">
+    <rdfs:subClassOf rdf:resource="#DispositifAccueiEquipementDispositifCommandA"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="EquipementsDiversA"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="PublicationReglementation">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:oneOf rdf:parseType="Collection">
+          <PublicationReglementation rdf:ID="BOMP">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </PublicationReglementation>
+          <PublicationReglementation rdf:ID="JO">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </PublicationReglementation>
+          <PublicationReglementation rdf:ID="CD_REEF">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </PublicationReglementation>
+          <PublicationReglementation rdf:ID="Code_permanent_de_la_Construction">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </PublicationReglementation>
+          <PublicationReglementation rdf:ID="JO_Lois_et_Decrets">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </PublicationReglementation>
+          <PublicationReglementation rdf:ID="Recueil_des_actes_administratifs_du_département">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </PublicationReglementation>
+          <PublicationReglementation rdf:ID="REEF">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </PublicationReglementation>
+        </owl:oneOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >defined as a set of its values</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1205837312.owl#Porte"/>
+  <owl:Class rdf:about="#ActualiteRequeteType">
+    <rdfs:subClassOf rdf:resource="#TypesEnum"/>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:oneOf rdf:parseType="Collection">
+          <ActualiteRequeteType rdf:ID="modifie">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </ActualiteRequeteType>
+          <ActualiteRequeteType rdf:ID="nouveau">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </ActualiteRequeteType>
+          <ActualiteRequeteType rdf:ID="consolide">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </ActualiteRequeteType>
+        </owl:oneOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="EspaceManoeuvrePossibiliteDemiTourA">
+    <rdfs:subClassOf rdf:resource="#CheminementExterieurA"/>
+    <rdfs:subClassOf rdf:resource="#SanitairesA"/>
+  </owl:Class>
+  <owl:Class rdf:about="#AccesBatimentEtLocauxOuvertsPublicA">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#DomaineApplicationType"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1205837312.owl#Porte"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InformationSignalisationA"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TexteLEGType">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >definition is NOT exhaustive: e.g. types of codes not specified</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#TypesEnum"/>
+  </owl:Class>
+  <owl:Class rdf:about="#TapisEscalierPlanInclineMecaniqueA">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#DomaineApplicationType"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1205837312.owl#Porte"/>
+  </owl:Class>
+  <owl:Class rdf:ID="DestinationRequeteType">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >from CD REEF (only 2 first levels) + ISTforCE used</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#TypesEnum"/>
+  </owl:Class>
+  <owl:Class rdf:ID="EscalierMoins3MarchesA">
+    <rdfs:subClassOf rdf:resource="#CirculationsInterieuresHorizontalesA"/>
+    <rdfs:subClassOf rdf:resource="#CheminementExterieurA"/>
+  </owl:Class>
+  <owl:Class rdf:ID="CheminementSansObstacleA">
+    <rdfs:subClassOf rdf:resource="#CirculationsInterieuresHorizontalesA"/>
+    <rdfs:subClassOf rdf:resource="#CheminementExterieurA"/>
+  </owl:Class>
+  <owl:Class rdf:ID="PlanInclineMecaniqueA">
+    <rdfs:subClassOf rdf:resource="#TapisEscalierPlanInclineMecaniqueA"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Escalier">
+    <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1205837312.owl#Escalier"/>
+  </owl:Class>
+  <owl:Class rdf:about="#InformationSignalisationA">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#DomaineApplicationType"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#EtablissementLocauxSommeilA">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#DomaineApplicationType"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="RessautA">
+    <rdfs:subClassOf rdf:resource="#CirculationsInterieuresHorizontalesA"/>
+    <rdfs:subClassOf rdf:resource="#CheminementExterieurA"/>
+  </owl:Class>
+  <owl:Class rdf:about="#EquipementsDiversA">
+    <rdfs:subClassOf rdf:resource="#InformationSignalisationA"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AscenseurA">
+    <rdfs:subClassOf rdf:resource="#CirculationsInterieuresVerticalesA"/>
+  </owl:Class>
+  <owl:Class rdf:about="#DomaineApplicationType">
+    <rdfs:subClassOf rdf:resource="#TypesEnum"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ExigenceRequeteType">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:oneOf rdf:parseType="Collection">
+          <ExigenceRequeteType rdf:ID="Accessibilite">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >
+              comment
+            </rdfs:comment>
+          </ExigenceRequeteType>
+          <ExigenceRequeteType rdf:ID="Economie_d_energie_et_isolation_thermique">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >
+              comment
+            </rdfs:comment>
+          </ExigenceRequeteType>
+          <ExigenceRequeteType rdf:ID="Hygiene_sante_et_environnement">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >
+              comment
+            </rdfs:comment>
+          </ExigenceRequeteType>
+          <ExigenceRequeteType rdf:ID="Protection_contre_le_bruit">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >
+              comment
+            </rdfs:comment>
+          </ExigenceRequeteType>
+          <ExigenceRequeteType rdf:ID="Resistance_mecanique_et_stabilite">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >
+              comment
+            </rdfs:comment>
+          </ExigenceRequeteType>
+          <ExigenceRequeteType rdf:ID="Securite_incendie">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >
+              comment
+            </rdfs:comment>
+          </ExigenceRequeteType>
+        </owl:oneOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#TypesEnum"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AmenagementsInterieursCabinetsA">
+    <rdfs:subClassOf rdf:resource="#SanitairesA"/>
+  </owl:Class>
+  <owl:Class rdf:ID="LavaboAccessibleA">
+    <rdfs:subClassOf rdf:resource="#SanitairesA"/>
+  </owl:Class>
+  <owl:Class rdf:ID="CabinetAisanceAccessibleA">
+    <rdfs:subClassOf rdf:resource="#EtablissementLocauxSommeilA"/>
+  </owl:Class>
+  <owl:Class rdf:ID="OrigineRequeteType">
+    <rdfs:subClassOf rdf:resource="#TypesEnum"/>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:oneOf rdf:parseType="Collection">
+          <OrigineRequeteType rdf:ID="validation">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </OrigineRequeteType>
+          <OrigineRequeteType rdf:ID="enrichissement_expert">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </OrigineRequeteType>
+        </owl:oneOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Conseil_des_ministres">
+    <rdfs:subClassOf rdf:resource="#ActeurReglementation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ThematiqueRequeteType">
+    <rdfs:subClassOf rdf:resource="#TypesEnum"/>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:oneOf rdf:parseType="Collection">
+          <ThematiqueRequeteType rdf:ID="accessibilite_des_handicapes">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </ThematiqueRequeteType>
+          <ThematiqueRequeteType rdf:ID="acoustique">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </ThematiqueRequeteType>
+          <ThematiqueRequeteType rdf:ID="aeration">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </ThematiqueRequeteType>
+          <ThematiqueRequeteType rdf:ID="amiante">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </ThematiqueRequeteType>
+          <ThematiqueRequeteType rdf:ID="ascenseurs">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </ThematiqueRequeteType>
+          <ThematiqueRequeteType rdf:ID="assurance_construction">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </ThematiqueRequeteType>
+          <ThematiqueRequeteType rdf:ID="autorisations_urbanisme">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </ThematiqueRequeteType>
+          <ThematiqueRequeteType rdf:ID="baies_fenetres">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </ThematiqueRequeteType>
+          <ThematiqueRequeteType rdf:ID="controle_technique">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </ThematiqueRequeteType>
+          <ThematiqueRequeteType rdf:ID="coordination_SPS">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </ThematiqueRequeteType>
+          <ThematiqueRequeteType rdf:ID="dechets_de_chantier">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </ThematiqueRequeteType>
+          <ThematiqueRequeteType rdf:ID="diagnostics_immobiliers">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </ThematiqueRequeteType>
+          <ThematiqueRequeteType rdf:ID="DTU_retires">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </ThematiqueRequeteType>
+          <ThematiqueRequeteType rdf:ID="eau_et_sante">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </ThematiqueRequeteType>
+          <ThematiqueRequeteType rdf:ID="energies_durables">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </ThematiqueRequeteType>
+          <ThematiqueRequeteType rdf:ID="Europe">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </ThematiqueRequeteType>
+          <ThematiqueRequeteType rdf:ID="fondations">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </ThematiqueRequeteType>
+          <ThematiqueRequeteType rdf:ID="installation_de_chauffage_a_eau_chaude">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </ThematiqueRequeteType>
+          <ThematiqueRequeteType rdf:ID="legionellose">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </ThematiqueRequeteType>
+          <ThematiqueRequeteType rdf:ID="marches_publics_et_prives">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </ThematiqueRequeteType>
+          <ThematiqueRequeteType rdf:ID="parasismique">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </ThematiqueRequeteType>
+          <ThematiqueRequeteType rdf:ID="piscines">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </ThematiqueRequeteType>
+          <ThematiqueRequeteType rdf:ID="plans">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </ThematiqueRequeteType>
+          <ThematiqueRequeteType rdf:ID="plomb_saturnisme">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </ThematiqueRequeteType>
+          <ThematiqueRequeteType rdf:ID="qualite_de_eau_interieure">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </ThematiqueRequeteType>
+          <ThematiqueRequeteType rdf:ID="reglement_sanitaire_departementale_type">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </ThematiqueRequeteType>
+          <ThematiqueRequeteType rdf:ID="reglementation_thermique_2000">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </ThematiqueRequeteType>
+          <ThematiqueRequeteType rdf:ID="reglementation_thermique_2005">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </ThematiqueRequeteType>
+          <ThematiqueRequeteType rdf:ID="securite_incendie">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </ThematiqueRequeteType>
+          <ThematiqueRequeteType rdf:ID="stationnement_parc_et_garage">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </ThematiqueRequeteType>
+          <ThematiqueRequeteType rdf:ID="surface">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </ThematiqueRequeteType>
+          <ThematiqueRequeteType rdf:ID="termites">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </ThematiqueRequeteType>
+        </owl:oneOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="PorteA">
+    <rdfs:subClassOf rdf:resource="#PortePortiqueSasA"/>
+    <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1205837312.owl#Porte"/>
+  </owl:Class>
+  <owl:Class rdf:ID="EclairageA">
+    <rdfs:subClassOf rdf:resource="#DomaineApplicationType"/>
+  </owl:Class>
+  <owl:Class rdf:ID="PremierMinistre">
+    <rdfs:subClassOf rdf:resource="#ActeurReglementation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="EmanantType">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:oneOf rdf:parseType="Collection">
+          <EmanantType rdf:ID="gouvernement">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </EmanantType>
+          <EmanantType rdf:ID="interministeriel">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </EmanantType>
+          <EmanantType rdf:ID="ministeriel">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </EmanantType>
+          <EmanantType rdf:ID="municipal">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </EmanantType>
+          <EmanantType rdf:ID="prefectoral">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            ></rdfs:comment>
+          </EmanantType>
+        </owl:oneOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#TypesEnum"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Prefet">
+    <rdfs:subClassOf rdf:resource="#ActeurReglementation"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="contenuRequete">
+    <rdfs:domain rdf:resource="#AnnotationRequete"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="domaineApplication">
+    <rdfs:domain rdf:resource="#AnnotationRequete"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="extraitInfoExtractionParagraphe">
+    <rdfs:domain rdf:resource="#AnnotationRequete"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="exigenceRequete">
+    <rdfs:domain rdf:resource="#AnnotationRequete"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="extraitInfoExtractionArticle">
+    <rdfs:domain rdf:resource="#AnnotationRequete"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="extraitReference">
+    <rdfs:domain rdf:resource="#AnnotationRequete"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="extraitTypeTexteReglementaire">
+    <rdfs:domain rdf:resource="#AnnotationRequete"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="verifiableRequete">
+    <rdfs:domain rdf:resource="#AnnotationRequete"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="domaineSimple">
+    <rdfs:domain rdf:resource="#AnnotationRequete"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="extraitTitre">
+    <rdfs:domain rdf:resource="#AnnotationRequete"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="extraitInfoExtractionNumeroOrdreDansParagraphe">
+    <rdfs:domain rdf:resource="#AnnotationRequete"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="extraitDate">
+    <rdfs:domain rdf:resource="#AnnotationRequete"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="extraitSigle">
+    <rdfs:domain rdf:resource="#AnnotationRequete"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="textRequete">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#AnnotationRequete"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="extraitEmanant">
+    <rdfs:domain rdf:resource="#AnnotationRequete"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="aboutIFCData">
+    <rdfs:domain rdf:resource="#AnnotationRequete"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="extraitRelatifA">
+    <rdfs:domain rdf:resource="#AnnotationRequete"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="extraitTypeLEG">
+    <rdfs:domain rdf:resource="#AnnotationRequete"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="extraitNumero">
+    <rdfs:domain rdf:resource="#AnnotationRequete"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="extraitInfoExtractionUIS">
+    <rdfs:domain rdf:resource="#AnnotationRequete"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="interpretationExpert">
+    <rdfs:domain rdf:resource="#AnnotationRequete"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="sousDomaineApplication">
+    <rdfs:domain rdf:resource="#AnnotationRequete"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="sousDomaineSimple">
+    <rdfs:domain rdf:resource="#AnnotationRequete"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#actualiteRequete">
+    <rdfs:domain rdf:resource="#AnnotationRequete"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="sujetRequete">
+    <rdfs:domain rdf:resource="#AnnotationRequete"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="destinationRequete">
+    <rdfs:domain rdf:resource="#AnnotationRequete"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="thematiqueRequete">
+    <rdfs:domain rdf:resource="#AnnotationRequete"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="origineRequete">
+    <rdfs:domain rdf:resource="#AnnotationRequete"/>
+  </owl:ObjectProperty>
+  <DomaineApplicationType rdf:ID="Stationnement_automobile"/>
+  <DomaineSimple rdf:ID="TapisRoulants"/>
+  <DomaineApplicationType rdf:ID="Caisses_de_paiement_disposees_en_batterie"/>
+  <DomaineSimple rdf:ID="ERPassis"/>
+  <TexteLEGType rdf:ID="decret"/>
+  <DomaineApplicationType rdf:ID="Acces_etablissement_installation"/>
+  <DomaineSimple rdf:ID="PlaceStationnement"/>
+  <DestinationRequeteType rdf:ID="Habitation_collective"/>
+  <DomaineSimple rdf:ID="EclairagE"/>
+  <DomaineSimple rdf:ID="Porte"/>
+  <DomaineApplicationType rdf:ID="Circulations_interieures_horizontales"/>
+  <DomaineSimple rdf:ID="DouchesCabines"/>
+  <DomaineSimple rdf:ID="CheminementExterieur"/>
+  <DomaineApplicationType rdf:ID="Portes_portiques_et_sas"/>
+  <DomaineApplicationType rdf:ID="Etablissements_comportant_locaux_hebergement"/>
+  <DomaineApplicationType rdf:ID="Locaux_ouverts_au_public_aux_equipements_et_dispositifs_de_commande"/>
+  <TexteLEGType rdf:ID="circulaire"/>
+  <TexteLEGType rdf:ID="arrete_municipal"/>
+  <DestinationRequeteType rdf:ID="LT">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >lieux de travail</rdfs:comment>
+  </DestinationRequeteType>
+  <TexteLEGType rdf:ID="arrete"/>
+  <DomaineSimple rdf:ID="SanitaireS"/>
+  <DestinationRequeteType rdf:ID="ERP"/>
+  <DestinationRequeteType rdf:ID="Habitation_individuelle"/>
+  <DomaineApplicationType rdf:ID="Circulations_interieures_verticales"/>
+  <DomaineApplicationType rdf:ID="Eclairage"/>
+  <DomaineApplicationType rdf:ID="Escaliers"/>
+  <DomaineApplicationType rdf:ID="Sanitaires"/>
+  <DomaineSimple rdf:ID="AccesBatiment"/>
+  <DomaineSimple rdf:ID="RevetementSolMurPlafond"/>
+  <TexteLEGType rdf:ID="lois"/>
+  <DomaineApplicationType rdf:ID="Tapis_roulants_escaliers_et_plans_inclines_mecaniques"/>
+  <DestinationRequeteType rdf:ID="GA"/>
+  <DomaineApplicationType rdf:ID="Douches_et_cabines"/>
+  <DomaineApplicationType rdf:ID="Revetements_sols_murs_plafonds"/>
+  <TexteLEGType rdf:ID="question_ecrite"/>
+  <TexteLEGType rdf:ID="code">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >codes are not yet specified</rdfs:comment>
+  </TexteLEGType>
+  <DomaineApplicationType rdf:ID="Cheminements_exterieurs"/>
+  <DomaineSimple rdf:ID="InformationSignalisation"/>
+  <TexteLEGType rdf:ID="arrete_prefectoral"/>
+  <DomaineApplicationType rdf:ID="Accueil_du_public"/>
+  <DestinationRequeteType rdf:ID="CHP">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Constructions pour handicapés physiques</rdfs:comment>
+  </DestinationRequeteType>
+  <DestinationRequeteType rdf:ID="BHCN">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >bâtiments d'habitation collectifs neufs</rdfs:comment>
+  </DestinationRequeteType>
+  <DomaineApplicationType rdf:ID="Sorties"/>
+  <DomaineSimple rdf:ID="ERPsommeil"/>
+  <DomaineSimple rdf:ID="CirculationInterieureHorizontale"/>
+  <DomaineSimple rdf:ID="Sortie"/>
+  <DomaineSimple rdf:ID="DispositifAccueilCommande"/>
+  <TexteLEGType rdf:ID="norme">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >in fact, it is NOT LEG, but we add it here as "type" of regulation text</rdfs:comment>
+  </TexteLEGType>
+  <DestinationRequeteType rdf:ID="Agricole"/>
+  <DestinationRequeteType rdf:ID="IGH"/>
+  <TexteLEGType rdf:ID="texte_informatif"/>
+  <DestinationRequeteType rdf:ID="Industriel"/>
+  <DomaineSimple rdf:ID="CirculationInterieureVerticale"/>
+  <DomaineSimple rdf:ID="CaissePaiement"/>
+  <rdf:List>
+    <rdf:rest>
+      <rdf:List>
+        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+        <rdf:first rdf:resource="#nouveau"/>
+      </rdf:List>
+    </rdf:rest>
+    <rdf:first rdf:resource="#modifie"/>
+  </rdf:List>
+  <DomaineApplicationType rdf:ID="Etablissements_recevant_du_public_assis"/>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.3.1, Build 430)  http://protege.stanford.edu -->

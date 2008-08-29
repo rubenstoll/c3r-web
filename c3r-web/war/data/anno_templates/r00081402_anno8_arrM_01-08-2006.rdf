@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- document 8 article 14 --> 
+<!-- l’éclairage -->
+
+<rdf:RDF 
+    xmlns:rdf ="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:xsd ="http://www.w3.org/2001/XMLSchema#" 
+    xmlns:annoComplexe     ="http://www.owl-ontologies.com/Ontology1215697160.owl#" 
+    xmlns:ontoCC     ="http://www.owl-ontologies.com/Ontology1205837312.owl#" 
+    xmlns     ="http://www.owl-ontologies.com/Ontology1215697160.owl#" 
+    xml:base  ="http://www.owl-ontologies.com/Ontology1215697160.owl-instances"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance#"
+    >
+    
+
+<AnnotationRegle rdf:ID="r00081402">
+    <verifiableRequete>VP-E</verifiableRequete>
+    <origineRegle>validation</origineRegle>
+    <actualiteRegle>consolide</actualiteRegle>
+    <thematiqueRegle>accessibilite_des_handicapes</thematiqueRegle>
+    <exigenceRegle>Accessibilite</exigenceRegle>
+    <extraitTypeTexteReglementaire>
+        LEG
+    </extraitTypeTexteReglementaire>
+    <extraitTypeLEG>
+        arrete
+    </extraitTypeLEG>            
+    <extraitEmanant></extraitEmanant>
+    <extraitSigle></extraitSigle>
+    <extraitNumero></extraitNumero>
+    <extraitDate>       
+        2006-08-01
+    </extraitDate>
+    <extraitJO>       
+        2006-08-24
+    </extraitJO>
+    <extraitDateModif>       
+        2007-11-30
+    </extraitDateModif>
+    <extraitJOModif>       
+        
+    </extraitJOModif>
+    <extraitTitre>
+        Arrêté du 1er août 2006 fixant les dispositions prises pour l’application des articles R. 111-19 à R. 111-19-3 et R. 111-19-6 du code de la construction et de l’habitation relatives à l’accessibilité aux personnes handicapées des établissements recevant du public et des installations ouvertes au public lors de leur construction ou de leur création
+    </extraitTitre>
+    <extraitRelatifA>
+        l’accessibilité aux personnes handicapées des établissements recevant du public et des installations ouvertes au public lors de leur construction ou de leur création      </extraitRelatifA>
+    <extraitReference>
+        la directive 98/34/CE du 22 juin 1998 prévoyant une procédure d’information dans le domaine des normes et réglementations techniques, modifiée par la directive 98/48/CE du 20 juillet 1998 ; 
+        le code de la construction et de l’habitation ; 
+        l’avis du Conseil national consultatif des personnes handicapées en date du 20 juin 2006        
+    </extraitReference>
+    <extraitInfoExtractionUIS></extraitInfoExtractionUIS>
+    <extraitInfoExtractionArticle>14</extraitInfoExtractionArticle>
+    <extraitInfoExtractionParagraphe></extraitInfoExtractionParagraphe>
+    <extraitInfoExtractionNumeroOrdreDansParagraphe></extraitInfoExtractionNumeroOrdreDansParagraphe>
+
+    <sujetRegle></sujetRegle>
+
+    <domaineApplication>
+        <ontoCC:Eclairage/>
+    </domaineApplication>
+    <sousDomaineApplication></sousDomaineApplication>
+    <domaineSimple>
+        Eclairage
+    </domaineSimple>     
+    <sousDomaineSimple>
+        
+    </sousDomaineSimple>
+    
+    <destinationRegle>ERP</destinationRegle>
+    <textRegle>
+        Il doit permettre d’assurer des valeurs d’éclairement mesurées au sol d’au moins :  
+        - 20 lux en tout point du cheminement extérieur accessible ; 
+    </textRegle>
+    
+    <interpretationExpert> 
+        (1 requête)
+        Eclairage concernsElementEclairage (different Elements) AND Eclairage luminosity (different values)
+    </interpretationExpert>
+    
+    <aboutIFCData></aboutIFCData>
+
+    <contenuRegle rdf:ID="r00081402q">
+        PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl#&gt;   
+        select * display xml 
+        where
+        {
+        ?eclairage  				rdf:type   	ontoCC:Eclairage
+        ?property_concernsElementEclairage	rdf:type 	rdf:Property
+        FILTER (?property_concernsElementEclairage=ontoCC:concernsElementEclairage)
+        
+        ?eclairage	?property_concernsElementEclairage	?element
+        ?element	rdf:type	ontoCC:CheminementExterieur
+        {
+        OPTIONAL
+        {
+        ?property_luminosity	rdf:type 	rdf:Property
+        FILTER (?property_luminosity=ontoCC:luminosity)	
+        OPTIONAL
+        {
+        ?eclairage	?property_luminosity ?lum
+        FILTER ( xsd:integer(?lum) &gt; 20) 
+        }}
+        
+        }
+        FILTER (! bound( ?lum  ))
+        }
+    </contenuRegle>
+    
+    <!-- added by Birahim -->
+    <proprieteConcerne rdf:resource="http://rainbow.essi.fr/~anastasiya/data/ifc.rdfs#overallWidth"/>
+    
+    <conditionAVerifier>être supérieur ou égal à 10</conditionAVerifier>
+    
+</AnnotationRegle>
+
+</rdf:RDF>

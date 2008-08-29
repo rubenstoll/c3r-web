@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- document 8 article 9 --> 
+<!-- revêtements des sols, murs et plafonds -->
+
+<rdf:RDF 
+    xmlns:rdf ="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:xsd ="http://www.w3.org/2001/XMLSchema#" 
+    xmlns:annoComplexe     ="http://www.owl-ontologies.com/Ontology1215697160.owl#" 
+    xmlns:ontoCC     ="http://www.owl-ontologies.com/Ontology1205837312.owl#" 
+    xmlns     ="http://www.owl-ontologies.com/Ontology1215697160.owl#" 
+    xml:base  ="http://www.owl-ontologies.com/Ontology1215697160.owl-instances"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance#"
+    >
+    
+
+<AnnotationRequete rdf:ID="r00080305">
+    <verifiableRequete>VP-E</verifiableRequete>
+    <origineRequete>validation</origineRequete>
+    <actualiteRequete>consolide</actualiteRequete>
+    <thematiqueRequete>accessibilite_des_handicapes</thematiqueRequete>
+    <exigenceRequete>Accessibilite</exigenceRequete>
+    <extraitTypeTexteReglementaire>
+        LEG
+    </extraitTypeTexteReglementaire>
+    <extraitTypeLEG>
+        arrete
+    </extraitTypeLEG>            
+    <extraitEmanant></extraitEmanant>
+    <extraitSigle></extraitSigle>
+    <extraitNumero></extraitNumero>
+    <extraitDate>       
+        2006-08-01
+    </extraitDate>
+    <extraitJO>       
+        2006-08-24
+    </extraitJO>
+    <extraitDateModif>       
+        2007-11-30
+    </extraitDateModif>
+    <extraitJOModif>       
+        
+    </extraitJOModif>
+    <extraitTitre>
+        Arrêté du 1er août 2006 fixant les dispositions prises pour l'application des articles R. 111-19 à R. 111-19-3 et R. 111-19-6 du code de la construction et de l'habitation relatives à l'accessibilité aux personnes handicapées des établissements recevant du public et des installations ouvertes au public lors de leur construction ou de leur création
+    </extraitTitre>
+    <extraitRelatifA>
+        l'accessibilité aux personnes handicapées des établissements recevant du public et des installations ouvertes au public lors de leur construction ou de leur création      </extraitRelatifA>
+    <extraitReference>
+        la directive 98/34/CE du 22 juin 1998 prévoyant une procédure d'information dans le domaine des normes et réglementations techniques, modifiée par la directive 98/48/CE du 20 juillet 1998 ; 
+        le code de la construction et de l'habitation ; 
+        l'avis du Conseil national consultatif des personnes handicapées en date du 20 juin 2006        
+    </extraitReference>
+    <extraitInfoExtractionUIS></extraitInfoExtractionUIS>
+    <extraitInfoExtractionArticle>3</extraitInfoExtractionArticle>
+    <extraitInfoExtractionParagraphe></extraitInfoExtractionParagraphe>
+    <extraitInfoExtractionNumeroOrdreDansParagraphe></extraitInfoExtractionNumeroOrdreDansParagraphe>
+
+    <sujetRequete></sujetRequete>
+    
+    <conceptsCle>PlaceStationnement, SignalisationVerticale, MarquageSol</conceptsCle>
+    
+    <domaineApplication>
+        <ontoCC:PlaceStationnement/>
+    </domaineApplication>
+    <sousDomaineApplication></sousDomaineApplication>
+    <domaineSimple>
+        PlaceStationnement
+    </domaineSimple>     
+    <sousDomaineSimple>
+        
+    </sousDomaineSimple>
+    <destinationRequete>ERP</destinationRequete>
+    <textRequete>
+        Chaque place adaptée destinée au public doit être repérée par un marquage au sol ainsi qu'une signalisation verticale. 
+    </textRequete>
+    <aboutIFCData></aboutIFCData>
+
+    <interpretationExpert> 
+        (1 requête)
+        PlaceStationnementAdaptee AND SignalisationVerticale concernsElementMarquage PlaceStationnementAdaptee AND MarquageSol concernsElementMarquage PlaceStationnementAdaptee
+    </interpretationExpert>
+    <contenuRequete rdf:ID="r00080305q">
+        PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl#&gt;  
+        select ?sign ?stationnement display xml 
+        where
+        {
+        ?stationnement rdf:type ontoCC:PlaceStationnement 
+        ?stationnement ontoCC:hasSignalisation ?sign
+        ?stationnement ontoCC:hasSignalisation ?sign2
+        ?sign	rdf:type 		ontoCC:Signalisation
+        OPTIONAL 
+        {
+        ?sign	rdf:type		 ?t
+        FILTER ( ?t = ontoCC:MarquageSol)
+        ?sign2	rdf:type		 ?t2
+        FILTER ( ?t = ontoCC:SignalisationVerticale)
+        }
+        FILTER ( ! bound( ?t ) || ! bound( ?t2 ))	
+        } 
+    </contenuRequete>
+    
+    <!-- added by Birahim -->
+    <proprieteConcerne rdf:resource="http://rainbow.essi.fr/~anastasiya/data/ifc.rdfs#overallWidth"/>
+    
+    <conditionAVerifier>être supérieur ou égal à 10</conditionAVerifier>
+    
+</AnnotationRequete>
+
+</rdf:RDF>
