@@ -24,9 +24,9 @@ public class SemQryReader {
 
 	private XMLReader parser;
 	private SemQryHandler handler;
-	private List<AnnotationRegle> annotationRegles; // list of annotations
-	private File annotationReglePath;
-	private URI annotationReglePathURL;
+	private List<AnnotationRegle> semQryFiles; // list of annotations
+	private File semQryFilesPath;
+	private URI semQryFilesPathURL;
 	
 	/**
 	 * Create a parser object, depending on which parser is available.
@@ -51,7 +51,7 @@ public class SemQryReader {
 	/*
 	 * Creates an XML parser and reads instance's specified ifc file
 	 */
-	private void parse(List<String> annotationReglesFiles) {
+	private void parse(List<String> semQryFiles) {
 
 		// create a parser instance
 		createReader();
@@ -69,11 +69,11 @@ public class SemQryReader {
 
 		parser.setContentHandler(handler);
 
-		for (String currAnnoRegleFile : annotationReglesFiles) {
+		for (String semQryFile : semQryFiles) {
 
-			String currAnnoRegleFileAndPath = this.annotationReglePath
+			String filePath = this.semQryFilesPath
 					.toString()
-					+ File.separator + currAnnoRegleFile;
+					+ File.separator + semQryFile;
 
 			// DEBUG
 			// System.out.println("parsing: " + currAnnoRegleFileAndPath);
@@ -81,7 +81,7 @@ public class SemQryReader {
 
 				// needs this strange long system depent path - this is not
 				// needed in UNIX - crap windows!
-				parser.parse(new File(currAnnoRegleFileAndPath).toURI()
+				parser.parse(new File(filePath).toURI()
 						.toString());
 
 				out.flush();
@@ -91,13 +91,13 @@ public class SemQryReader {
 				e.printStackTrace();
 			} catch (SAXException e) {
 				System.out.println("SAX exception");
-				System.out.println(currAnnoRegleFileAndPath
+				System.out.println(filePath
 						+ " is not well-formed.");
 			}
 
 		}
 
-		this.annotationRegles = handler.getCollectedRules();
+		this.semQryFiles = handler.getCollectedRules();
 
 	}
 	/**
@@ -123,7 +123,7 @@ public class SemQryReader {
 		try {
 			parser.parse(fileToParse);
 			out.flush();
-			this.annotationRegles = handler.getCollectedRules();
+			this.semQryFiles = handler.getCollectedRules();
 		} catch (IOException e) {
 			System.out.println("Parsing IO error occurred");
 			e.printStackTrace();
