@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+
+<rdf:RDF 
+    xmlns:rdf ="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:xsd ="http://www.w3.org/2001/XMLSchema#" 
+    xmlns:annoComplexe     ="http://www.owl-ontologies.com/Ontology1215697160.owl#" 
+    xmlns:ontoCC     ="http://www.owl-ontologies.com/Ontology1205837312.owl#" 
+    xmlns     ="http://www.owl-ontologies.com/Ontology1215697160.owl#" 
+    xml:base  ="http://www.owl-ontologies.com/Ontology1215697160.owl-instances"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance#"
+    >
+
+<AnnotationRequete rdf:ID="r00061200">
+    <verifiableRequete>VP-E</verifiableRequete>
+    <origineRequete>validation</origineRequete>
+    <actualiteRequete>nouveau</actualiteRequete>
+    <thematiqueRequete>accessibilite_des_handicapes</thematiqueRequete>
+    <exigenceRequete>Accessibilite</exigenceRequete>
+    <extraitTypeTexteReglementaire>
+        LEG
+    </extraitTypeTexteReglementaire>
+    <extraitTypeLEG>
+        norme
+    </extraitTypeLEG>            
+    <extraitEmanant></extraitEmanant>
+    <extraitSigle>NF P</extraitSigle>
+    <extraitNumero>91-201</extraitNumero>
+    <extraitDate>       
+        1978-07
+    </extraitDate>
+    <extraitTitre></extraitTitre>
+    <extraitRelatifA></extraitRelatifA>
+    <extraitReference></extraitReference>
+    <extraitInfoExtractionUIS></extraitInfoExtractionUIS>
+    <extraitInfoExtractionArticle>2.2.2</extraitInfoExtractionArticle>
+    <extraitInfoExtractionParagraphe></extraitInfoExtractionParagraphe>
+    <extraitInfoExtractionNumeroOrdreDansParagraphe></extraitInfoExtractionNumeroOrdreDansParagraphe>
+    <classificationISTforCE>NV</classificationISTforCE>
+    <sujetRequete></sujetRequete>
+    <domaineApplication>
+        <ontoCC:Cheminement/>
+    </domaineApplication>
+    <sousDomaineApplication>
+        <ontoCC:Escalier/>
+    </sousDomaineApplication>
+    <domaineSimple>CheminementExterieur</domaineSimple>     
+    <sousDomaineSimple>
+        Escalier
+    </sousDomaineSimple>
+    <destinationRequete>ERP</destinationRequete>
+    <textRequete>     
+        Escaliers extérieurs :
+        Hauteurs maximales des mains courantes :
+        - 96 cm : adultes
+        - 76 cm : enfant et si possible des deux côtés
+    </textRequete>
+    <aboutIFCData>
+    </aboutIFCData>
+    <notesFormalisation>    
+    </notesFormalisation>
+    <interpretationVersions>
+    </interpretationVersions>
+    <interpretationExpert> 
+        (1 requête)
+    </interpretationExpert>
+    
+    <contenuRequete rdf:ID="r00061200q1">
+        PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl#&gt;
+        select ?building ?escalier ?mc ?heightMC display xml 
+        where
+        {
+        ?building	rdf:type	ontoCC:ERPrecevantEnfants
+        ?escalier 	rdf:type 	ontoCC:EscalierExterieur
+        ?mc		rdf:type	ontoCC:IfcRailing
+        
+        ?rspst		rdf:type	ontoCC:IfcRelContainedInSpatialStructure 
+        ?rspst		ontoCC:relatedElements	?escalier 
+        ?rspst		ontoCC:relatingStructure ?building
+        
+        ?rce		rdf:type	ontoCC:IfcRelConnectsElements
+        ?rce		ontoCC:relatingElement	?escalier 
+        ?rce		ontoCC:relatedElement	?mc	
+        
+        OPTIONAL
+        {
+        ?mc	ontoCC:height	?heightMC
+        FILTER  ( xsd:integer(?heightMC) &lt; 76) 
+        }
+        FILTER ( ! bound( ?heightMC ) )	
+        }         
+    </contenuRequete>
+    
+    <contenuRequete rdf:ID="r00061200q2">
+        PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl#&gt;
+        select ?building ?escalier ?mc ?heightMC display xml 
+        where
+        {
+        ?building	rdf:type	ontoCC:ERPrecevantAdultes
+        ?escalier 	rdf:type 	ontoCC:EscalierExterieur
+        ?mc		rdf:type	ontoCC:IfcRailing
+        
+        ?rspst		rdf:type	ontoCC:IfcRelContainedInSpatialStructure 
+        ?rspst		ontoCC:relatedElements	?escalier 
+        ?rspst		ontoCC:relatingStructure ?building
+        
+        ?rce		rdf:type	ontoCC:IfcRelConnectsElements
+        ?rce		ontoCC:relatingElement	?escalier 
+        ?rce		ontoCC:relatedElement	?mc	
+        
+        OPTIONAL
+        {
+        ?mc	ontoCC:height	?heightMC
+        FILTER  ( xsd:integer(?heightMC) &lt; 96) 
+        }
+        FILTER ( ! bound( ?heightMC ) )	
+        }         
+    </contenuRequete>
+    
+    <!-- added by Birahim -->
+    <proprieteConcerne rdf:resource="http://rainbow.essi.fr/~anastasiya/data/ifc.rdfs#overallWidth"/>
+    
+    <conditionAVerifier>être supérieur ou égal à 10</conditionAVerifier>
+          
+</AnnotationRequete>    
+        
+</rdf:RDF>

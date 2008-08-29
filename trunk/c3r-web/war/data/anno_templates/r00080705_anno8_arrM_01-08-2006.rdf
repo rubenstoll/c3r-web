@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!-- document 8 article 7 --> 
+<!-- circulations intérieures verticales -->
+
+<rdf:RDF 
+    xmlns:rdf ="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:xsd ="http://www.w3.org/2001/XMLSchema#" 
+    xmlns:annoComplexe     ="http://www.owl-ontologies.com/Ontology1215697160.owl#" 
+    xmlns:ontoCC     ="http://www.owl-ontologies.com/Ontology1205837312.owl#" 
+    xmlns     ="http://www.owl-ontologies.com/Ontology1215697160.owl#" 
+    xml:base  ="http://www.owl-ontologies.com/Ontology1215697160.owl-instances"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance#"
+    >
+    
+
+<AnnotationRequete rdf:ID="r00080705">
+    <verifiableRequete>VP-I</verifiableRequete>
+    <origineRequete>validation</origineRequete>
+    <actualiteRequete>consolide</actualiteRequete>
+    <thematiqueRequete>accessibilite_des_handicapes</thematiqueRequete>
+    <exigenceRequete>Accessibilite</exigenceRequete>
+    <extraitTypeTexteReglementaire>
+        LEG
+    </extraitTypeTexteReglementaire>
+    <extraitTypeLEG>
+        arrete
+    </extraitTypeLEG>            
+    <extraitEmanant></extraitEmanant>
+    <extraitSigle></extraitSigle>
+    <extraitNumero></extraitNumero>
+    <extraitDate>       
+        2006-08-01
+    </extraitDate>
+    <extraitJO>       
+        2006-08-24
+    </extraitJO>
+    <extraitDateModif>       
+        2007-11-30
+    </extraitDateModif>
+    <extraitJOModif>       
+        
+    </extraitJOModif>
+    <extraitTitre>
+        Arrêté du 1er août 2006 fixant les dispositions prises pour l'application des articles R. 111-19 à R. 111-19-3 et R. 111-19-6 du code de la construction et de l'habitation relatives à l'accessibilité aux personnes handicapées des établissements recevant du public et des installations ouvertes au public lors de leur construction ou de leur création
+    </extraitTitre>
+    <extraitRelatifA>
+        l'accessibilité aux personnes handicapées des établissements recevant du public et des installations ouvertes au public lors de leur construction ou de leur création      </extraitRelatifA>
+    <extraitReference>
+        la directive 98/34/CE du 22 juin 1998 prévoyant une procédure d'information dans le domaine des normes et réglementations techniques, modifiée par la directive 98/48/CE du 20 juillet 1998 ; 
+        le code de la construction et de l'habitation ; 
+        l'avis du Conseil national consultatif des personnes handicapées en date du 20 juin 2006        
+    </extraitReference>
+    <extraitInfoExtractionUIS></extraitInfoExtractionUIS>
+    <extraitInfoExtractionArticle>7</extraitInfoExtractionArticle>
+    <extraitInfoExtractionParagraphe></extraitInfoExtractionParagraphe>
+    <extraitInfoExtractionNumeroOrdreDansParagraphe></extraitInfoExtractionNumeroOrdreDansParagraphe>
+
+    <sujetRequete>CirculationInterieureVerticale</sujetRequete>
+    
+    <conceptsCle>Escalier, Marche, IfcStairFlight</conceptsCle>
+    
+    <domaineApplication>
+        <ontoCC:CirculationInterieureVerticale/>
+    </domaineApplication>
+    <sousDomaineApplication>
+        <ontoCC:Escalier/>
+    </sousDomaineApplication>
+    <domaineSimple>
+        CirculationInterieureVerticale
+    </domaineSimple>     
+    <sousDomaineSimple>
+        Escalier
+    </sousDomaineSimple>
+    <destinationRequete>ERP</destinationRequete>
+    <textRequete>
+        Les marches doivent répondre aux exigences suivantes :  
+        - hauteur inférieure ou égale à 16 cm ;  
+        - largeur du giron supérieure ou égale à 28 cm.
+    </textRequete>
+    <aboutIFCData></aboutIFCData>
+    <interpretationExpert> 
+        (1 requête)
+        FOR IfcStairFlight : 
+        riserHeight_IfcStairFlight  (or IfcStair) inférieure ou égale à 16 cm AND treadLength_IfcStairFlight supérieure ou égale à 28 cm   
+    </interpretationExpert>
+
+    <contenuRequete>
+        PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl#&gt;
+        select ?stair ?l ?h display xml 
+        where
+        {
+        {
+        ?stair rdf:type ontoCC:IfcStairFlight
+        }
+        UNION
+        {
+        ?stair rdf:type ontoCC:IfcStair
+        }
+        OPTIONAL 
+        {        
+        ?stair ontoCC:riserHeight ?h
+        ?stair ontoCC:treadLength ?l        
+        FILTER ( xsd:integer(?h) &lt;16)        
+        FILTER ( xsd:integer(?l) &gt; 28)
+        }
+        FILTER (! bound( ?h  )|| (! bound( ?l  )))
+        } 
+    </contenuRequete>    
+    
+    <!-- added by Birahim -->
+    <proprieteConcerne rdf:resource="http://rainbow.essi.fr/~anastasiya/data/ifc.rdfs#overallWidth"/>
+    
+    <conditionAVerifier>être supérieur ou égal à 10</conditionAVerifier>
+    
+</AnnotationRequete>
+        
+</rdf:RDF>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<rdf:RDF 
+    xmlns:rdf ="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:xsd ="http://www.w3.org/2001/XMLSchema#" 
+    xmlns:annoComplexe     ="http://www.owl-ontologies.com/Ontology1215697160.owl#" 
+    xmlns:ontoCC     ="http://www.owl-ontologies.com/Ontology1205837312.owl#" 
+    xmlns     ="http://www.owl-ontologies.com/Ontology1215697160.owl#" 
+    xml:base  ="http://www.owl-ontologies.com/Ontology1215697160.owl-instances"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance#"
+    >
+    
+
+<AnnotationRequete rdf:ID="r00050700">
+    <verifiableRequete>VP-E</verifiableRequete>
+    <origineRequete>validation</origineRequete>
+    <actualiteRequete>nouveau</actualiteRequete>
+    <thematiqueRequete>accessibilite_des_handicapes</thematiqueRequete>
+    <exigenceRequete>Accessibilite</exigenceRequete>
+    <extraitTypeTexteReglementaire>
+        LEG
+    </extraitTypeTexteReglementaire>
+    <extraitTypeLEG>
+        circulaire
+    </extraitTypeLEG>            
+    <extraitEmanant></extraitEmanant>
+    <extraitSigle></extraitSigle>
+    <extraitNumero>94-55</extraitNumero>
+    <extraitDate>       
+        1994-07-07
+    </extraitDate>
+    <extraitJO>       
+    </extraitJO>
+    <extraitTitre>
+        Circulaire n° 94-55 du 7 juillet 1994 relative à l'accessibilité aux personnes handicapées des établissements recevant du public et des installations ouvertes au public.        
+    </extraitTitre>
+    <extraitRelatifA>
+        l'accessibilité aux personnes handicapées des établissements recevant du public et des installations ouvertes au public.        
+    </extraitRelatifA>
+    <extraitReference>
+        Articles L.111-7, L.111-8 à L.111-8-3 du Code de la Construction et de l'Habitation et articles L.421-1, L.421-3 du Code de l'Urbanisme institués ou modifiés par la loi no 91-663 du 13 juillet 1991 portant diverses mesures destinées à favoriser l'accessibilité aux personnes handicapées des locaux d'habitation, des lieux de travail et des installations recevant du public.
+        Articles R.111-19 à R.111-19-11 du Code de la Construction et de l'Habitation, articles R.421-5 à R.421-5-2, R.421-38-20, R.421-53 du Code de l'Urbanisme, institués ou modifiés par le décret no 94-86 du 26 janvier 1994.
+        Arrêté du 31 mai 1994 (paru au J.0. du 22 juin 1994) fixant les dispositions techniques destinées à rendre accessibles aux personnes handicapées les établissements recevant du public et les installations ouvertes au public lors de leur construction, leur création ou leur modification, pris en application de l'article R.111-19-1 du code de la construction et de l'habitation.
+        Circulaire DAU / JC.3 no 224 du 3 mai 1994 relative à l'entrée en vigueur des articles du code de l'urbanisme institués ou modifiés par le décret no 94-86 du 26 janvier 1994.
+        Circulaire abrogée : circulaire n' AS 2 du 29 janvier 1979 relative à l'accessibilité des équipements aux personnes handicapées.
+        Le décret no 94-86 du 26 janvier 1994 (J.0. du 28 janvier 1994) est pris en application des articles L.111-7, L.111-8-1 et L.111-8-3 du Code de la Construction et de l'Habitation (CCH) tels qu'ils résultent des articles 1 et 5 de la loi no 91-663 du 13 juillet 1991 portant diverses mesures destinées à favoriser l'accessibilité aux personnes handicapées des locaux d'habitation, des lieux de travail et des installations recevant du public.        
+    </extraitReference>
+    <extraitInfoExtractionUIS></extraitInfoExtractionUIS>
+    <extraitInfoExtractionArticle>commentaires techniques.3.5</extraitInfoExtractionArticle>
+    <extraitInfoExtractionParagraphe></extraitInfoExtractionParagraphe>
+    <extraitInfoExtractionNumeroOrdreDansParagraphe></extraitInfoExtractionNumeroOrdreDansParagraphe>
+    <classificationISTforCE>NV</classificationISTforCE>
+    <sujetRequete></sujetRequete>
+    <domaineApplication>
+        <ontoCC:SalleHygiene/>
+    </domaineApplication>
+    <sousDomaineApplication>
+        <ontoCC:WC/>
+    </sousDomaineApplication>
+    <domaineSimple>
+        SanitaireS
+    </domaineSimple>     
+    <sousDomaineSimple>
+        WC
+    </sousDomaineSimple>
+    <destinationRequete>ERP</destinationRequete>
+    <textRequete>
+        Les cabinets d'aisances accessibles doivent être signalés lorsqu'ils ne sont pas repérables de l'extérieur.        
+    </textRequete>
+    <aboutIFCData>
+    </aboutIFCData>
+    <notesFormalisation>    
+    </notesFormalisation>
+    <interpretationVersions>
+    </interpretationVersions>
+    <interpretationExpert> 
+        (1 requête)
+        il existe SignalisationAdaptee à CabinetAisanceAmenageHandicapees: CabinetAisanceAmenageHandicapee hasSignalisation SignalisationAdaptee 
+    </interpretationExpert>
+    
+    <contenuRequete rdf:ID="r00050700q1">
+        PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl#&gt;
+        select ?sign ?cabinet display xml 
+        where
+        {
+        ?cabinet rdf:type ontoCC:CabinetAisance 
+        ?cabinet ontoCC:hasSignalisation ?sign
+        ?sign	rdf:type 		ontoCC:Signalisation
+        OPTIONAL 
+        {
+        ?sign	rdf:type		 ?t
+        FILTER ( ?t = ontoCC:SignalisationAdaptee)
+        }
+        FILTER ( ! bound( ?t ) )	
+        }
+    </contenuRequete> 
+    
+    <!-- added by Birahim -->
+    <proprieteConcerne rdf:resource="http://rainbow.essi.fr/~anastasiya/data/ifc.rdfs#overallWidth"/>    
+    <conditionAVerifier>être supérieur ou égal à 10</conditionAVerifier>  
+    
+</AnnotationRequete>
+    
+    
+</rdf:RDF>

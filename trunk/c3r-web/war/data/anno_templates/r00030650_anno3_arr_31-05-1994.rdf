@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+    
+<rdf:RDF 
+    xmlns:rdf ="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:xsd ="http://www.w3.org/2001/XMLSchema#" 
+    xmlns:annoComplexe     ="http://www.owl-ontologies.com/Ontology1215697160.owl#" 
+    xmlns:ontoCC     ="http://www.owl-ontologies.com/Ontology1205837312.owl#" 
+    xmlns     ="http://www.owl-ontologies.com/Ontology1215697160.owl#" 
+    xml:base  ="http://www.owl-ontologies.com/Ontology1215697160.owl-instances"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance#"
+    >
+    
+<AnnotationRequete rdf:ID="r00030650">
+    <verifiableRequete>VC-E</verifiableRequete>
+    <origineRequete>validation</origineRequete>
+    <actualiteRequete>nouveau</actualiteRequete>
+    <thematiqueRequete>accessibilite_des_handicapes</thematiqueRequete>
+    <exigenceRequete>Accessibilite</exigenceRequete>
+    <extraitTypeTexteReglementaire>
+        LEG
+    </extraitTypeTexteReglementaire>
+    <extraitTypeLEG>
+        arrete
+    </extraitTypeLEG>            
+    <extraitEmanant></extraitEmanant>
+    <extraitSigle></extraitSigle>
+    <extraitNumero></extraitNumero>
+    <extraitDate>       
+        1994-05-31
+    </extraitDate>
+    <extraitJO>      
+    </extraitJO>
+    <extraitTitre>
+        Arrêté du 31 mai 1994 fixant les dispositions techniques destinées à rendre accessibles aux personnes handicapés les établissements recevant du public et les installations ouvertes au public lors de leur construction, leur création ou leur modification, pris en application de l'article R.111-19-1 du code de la construction et de l'habitation       
+    </extraitTitre>
+    <extraitRelatifA>
+        dispositions techniques destinées à rendre accessibles aux personnes handicapés les établissements recevant du public et les installations ouvertes au public lors de leur construction, leur création ou leur modification, pris en application de l'article R.111-19-1 du code de la construction et de l'habitation
+    </extraitRelatifA>
+    <extraitReference>
+        le décret no 94-86 du 26 janvier 1994 relatif à l'accessibilité aux personnes handicapées des locaux d'habitation, des établissements et installations recevant du public, modifiant et complétant le code de la construction et de l'habitation et le code de l'urbanisme
+    </extraitReference>
+    <extraitInfoExtractionUIS></extraitInfoExtractionUIS>
+    <extraitInfoExtractionArticle>5</extraitInfoExtractionArticle>
+    <extraitInfoExtractionParagraphe></extraitInfoExtractionParagraphe>
+    <extraitInfoExtractionNumeroOrdreDansParagraphe></extraitInfoExtractionNumeroOrdreDansParagraphe>
+    <classificationISTforCE>NV</classificationISTforCE>
+    <sujetRequete></sujetRequete>
+    <conceptsCle>Cuvette</conceptsCle>
+    <domaineApplication>
+        <ontoCC:SalleHygiene/>
+    </domaineApplication>
+    <sousDomaineApplication>
+        <ontoCC:WC/>
+    </sousDomaineApplication>
+    <domaineSimple>
+        SanitaireS
+    </domaineSimple>     
+    <sousDomaineSimple>
+        WC
+    </sousDomaineSimple>
+    <destinationRequete>ERP</destinationRequete>
+    <textRequete>
+        La hauteur de la cuvette, lunette abattante éventuelle comprise, est située entre 0,46 mètre et 0,50 mètre.        
+    </textRequete>
+    <aboutIFCData>
+    </aboutIFCData>
+    <notesFormalisation> 
+        Les équipements ne sont pas représentés dans les Ifc.
+        Les équipements en question sont aussi bien les lits pour les chambres, les divers appareils ménagers et les meubles pour la cuisine que la cuvette pour les cabinets
+        d'aisances ou encore le lavabo, la baignoire ou la douche pour la salle de bains.
+    </notesFormalisation>
+    <interpretationVersions>
+    </interpretationVersions>
+    <interpretationExpert> 
+        (1 requêtes)
+    Cuvette overallWidth more 46, less 50
+    </interpretationExpert>
+    
+    <contenuRequete rdf:ID="r00030650q">
+        PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl#&gt;
+        select ?cuvette display xml 
+        where
+        {
+        ?cuvette 	rdf:type 		ontoCC:Cuvette
+        OPTIONAL 
+        {
+        ?cuvette	ontoCC:overallHeight 	?h
+        FILTER ( xsd:integer(?h) &gt;= 46)
+        FILTER ( xsd:integer(?h) &lt;= 50)
+            }
+            FILTER (! bound( ?h) )
+            } 
+    </contenuRequete>
+    
+    <!-- added by Birahim -->
+    <proprieteConcerne rdf:resource="http://rainbow.essi.fr/~anastasiya/data/ifc.rdfs#overallWidth"/>
+    
+    <conditionAVerifier>être supérieur ou égal à 10</conditionAVerifier>
+       
+</AnnotationRequete>
+    
+</rdf:RDF>
