@@ -34,13 +34,14 @@ public class Dispatcher extends HttpServlet {
 //			getServletContext().setAttribute("cart", something);
 //		}
 
-		if (selectedScreen.equals("/checker/process.do")) {
+		// like this it works
+		if (selectedScreen.equals("/checker/date")) {
+			selectedScreen = "/checker/date";
+		} else if(selectedScreen.equals("/checker/processQueryGroupConfigurations")) {
 			String submit = request.getParameter("submit");
-			if(submit == "Cancel") {
-				selectedScreen = "main";
-			} else {
-				selectedScreen = "processQueryGroupConfigurations";
-			}
+			if(submit.equalsIgnoreCase("Cancel")) {
+				selectedScreen = "/checker/main";
+			}			
 		}
 
 		String screen = "/jsp" + selectedScreen + ".jsp";
