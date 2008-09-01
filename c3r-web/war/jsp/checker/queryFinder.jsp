@@ -9,6 +9,7 @@
 
 <!--create an engine-->
 <c:if test="${empty applicationScope['defaultEngineWrapper']}">
+Engine does not exits ... initialized a new one
 <stl:init
 		ontoDir="/data/schemas"
 		annotDir="/data/anno_templates" 

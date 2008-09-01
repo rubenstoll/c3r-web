@@ -30,7 +30,6 @@ servlet path:
 <a href="<c:url value="/checker/loadProject"/>">Load Project</a><br />
 <a href="<c:url value="/checker/configure"/>">Configure</a><br />
 <a href="<c:url value="/checker/queryFinder"/>">Get Queries</a><br />
-<a href="<c:url value="/checker/send-query"/>">example send query</a><br />
 <a href="<c:url value="/checker/date"/>">Sun Date Example</a><br />
 </div><br /><br />
 
