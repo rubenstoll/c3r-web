@@ -2,6 +2,7 @@
  * Copyright (c) 2003 UnitedStollutions, Inc.  
  * All rights reserved. Switzerland.
 --%>
+<%@ include file="/jsp/include.jsp"%>
 <%@ page import="javax.servlet.http.*" %>
 servlet path:
 <% out.print(request.getServletPath()); %>
@@ -25,10 +26,11 @@ servlet path:
 	class="org.unitedstollutions.c3r.model.SubDomainApplicationQueryGroupConfiguration" scope="session"/>
 
 
-
 <div> 
 <a href="<c:url value="/checker/loadProject"/>">Load Project</a><br />
 <a href="<c:url value="/checker/configure"/>">Configure</a><br />
+<a href="<c:url value="/checker/queryFinder"/>">Get Queries</a><br />
+<a href="<c:url value="/checker/send-query"/>">example send query</a><br />
 <a href="<c:url value="/checker/date"/>">Sun Date Example</a><br />
 </div><br /><br />
 
