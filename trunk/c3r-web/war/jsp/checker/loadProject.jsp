@@ -9,5 +9,11 @@
 </head>
 <body>
 Loading project
+
+Load local project
+<form name="fileChooser" method="POST" action="loadFile">
+<input type="file" name="fileName">
+</form>
+
 </body>
 </html>
