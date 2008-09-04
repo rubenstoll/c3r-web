@@ -51,13 +51,7 @@ choose only circulaire
 complex search - does not work
 <div>
 <ul>
-	<stl:for-each-result
-		query="SELECT ?subclasses ?numberQuery ?applicationValue ?correspondingClass WHERE 
-				{ ?subclasses direct::rdfs:subClassOf ?correspondingClass filter(?subclasses ^ontoCC:) 
-				?numberQuery annoComplexe:sousDomaineApplication ?applicationValue ?applicationValue rdf:type 
-				?correspondingClass FILTER (?correspondingClass ~ 'salle') }">
-		<li>${subclasses} number ${numberQuery} hqs the follozing applicationValue <br /> ${applicationValue} </li>
-	</stl:for-each-result>
+
 </ul>
 </div>
 </body>
