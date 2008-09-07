@@ -6,6 +6,21 @@
 </head>
 <body>
 
+<jsp:useBean
+	id="thematicConfig"
+	class="org.unitedstollutions.c3r.model.ThematicQueryGroupConfiguration" scope="session"/>
+<jsp:useBean id="destinationRequete"
+	class="org.unitedstollutions.c3r.model.DestinationQueryGroupConfiguration" scope="session"/>
+<jsp:useBean id="extraitTypeLEG"
+	class="org.unitedstollutions.c3r.model.ExtraiteTypeLEGQueryGroupConfiguration" scope="session"/>
+<jsp:useBean id="extraitTitre"
+	class="org.unitedstollutions.c3r.model.ExtraiteTitreQueryGroupConfiguration" scope="session"/>
+<jsp:useBean id="domainApplication"
+	class="org.unitedstollutions.c3r.model.DomainApplicationQueryGroupConfiguration" scope="session"/>
+<jsp:useBean id="subDomainApplication"
+	class="org.unitedstollutions.c3r.model.SubDomainApplicationQueryGroupConfiguration" scope="session"/>
+
+
 
 <!--create an engine-->
 <c:if test="${empty applicationScope['defaultEngineWrapper']}">
@@ -20,7 +35,8 @@ Engine does not exits ... initialized a new one
 </c:if>
 <!--<stl:reload engine="${c3rEngine}" />-->
 
-Found the following queries:
+Found the following queries for thematic:
+<jsp:getProperty name="thematicConfig"  property="value"/>
 <div>
 <ul>
 	<stl:for-each-result
@@ -29,11 +45,15 @@ Found the following queries:
 	</stl:for-each-result>
 </ul>
 </div>
-choose thematics
+
+
+Found the following queries for thematic: heere
 <div>
 <ul>
 	<stl:for-each-result
-		query="SELECT ?nameQuery ?themQuery WHERE { ?nameQuery annoComplexe:thematiqueRequete ?themQuery }">
+		query="SELECT ?nameQuery ?themQuery ?textR WHERE { ?nameQuery annoComplexe:thematiqueRequete ?themQuery 
+				FILTER (xsd:string(?themQuery) ~ 'acc') ?nameQuery annoComplexe:textRequete ?textR }">
+
 		<li>${nameQuery} <br/> ${themQuery}</li>
 	</stl:for-each-result>
 </ul>
@@ -48,11 +68,7 @@ choose only circulaire
 	</stl:for-each-result>
 </ul>
 </div>
-complex search - does not work
-<div>
-<ul>
 
-</ul>
-</div>
+
 </body>
 </html>
