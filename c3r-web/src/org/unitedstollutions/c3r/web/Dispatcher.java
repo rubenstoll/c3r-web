@@ -28,23 +28,24 @@ public class Dispatcher extends HttpServlet {
 //		HttpSession session = request.getSession();
 		String selectedScreen = request.getServletPath();
 
-//		Object something = getServletContext().getAttribute("someattribute");
-//		if (something == null) {
-//			something = new Object();
-//			getServletContext().setAttribute("cart", something);
-//		}
+		String screen= "/jsp/checker/main.jsp";
 
 		// like this it works
 		if (selectedScreen.equals("/checker/date")) {
-			selectedScreen = "/checker/date";
+			screen = "/jsp/checker/date.jsp";
 		} else if(selectedScreen.equals("/checker/processQueryGroupConfigurations")) {
 			String submit = request.getParameter("submit");
 			if(submit.equalsIgnoreCase("Cancel")) {
-				selectedScreen = "/checker/main";
-			}			
+				screen = "/jsp/checker/main.jsp";
+			} else {
+				screen = "/jsp/checker/processQueryGroupConfigurations.jsp";
+			}
+		} else if(selectedScreen.equals("/checker/ifcReader")) {
+			screen = "/IfcReaderController";
+		} else {
+			screen = "/jsp" + selectedScreen + ".jsp";
 		}
-
-		String screen = "/jsp" + selectedScreen + ".jsp";
+		
 
 		try {
 			RequestDispatcher dispatcher = request.getRequestDispatcher(screen);

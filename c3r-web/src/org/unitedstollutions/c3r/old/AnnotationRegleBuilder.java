@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.unitedstollutions.c3r.model.AnnotationRegle;
+import org.unitedstollutions.c3r.old.IfcReaderHandler;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;
@@ -29,7 +30,7 @@ public class AnnotationRegleBuilder {
 	private List<AnnotationRegle> annotationReglesSubSet = null;
 	// objects
 	private XMLReader parser;
-	private RuleExtractor handler;
+	private IfcReaderHandler handler;
 	// possible values: modifie or nouveau
 	// this should be replaced by enumerator or something
 	private String ruleStateSearch = "modifie";
@@ -237,7 +238,7 @@ public class AnnotationRegleBuilder {
 	 */
 	private void registerContentHandler(Writer out) {
 
-		handler = new RuleExtractor();
+		handler = new IfcReaderHandler();
 
 	}
 

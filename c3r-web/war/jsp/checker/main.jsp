@@ -18,6 +18,8 @@
 <jsp:useBean id="subDomainApplication"
 	class="org.unitedstollutions.c3r.model.SubDomainApplicationQueryGroupConfiguration" scope="session"/>
 
+<jsp:useBean id="ifcReader"
+	class="org.unitedstollutions.c3r.model.IfcReader" scope="session"/>
 
 <div> 
 <a href="<c:url value="/checker/loadProject"/>">Load Project</a><br />
@@ -25,6 +27,14 @@
 <a href="<c:url value="/checker/queryFinder"/>">Get Queries</a><br />
 <a href="<c:url value="/checker/date"/>">Sun Date Example</a><br />
 </div><br /><br />
+
+
+<div>
+The project uses the following IFC file:
+<jsp:getProperty name="ifcReader"  property="ifcFile"/>
+</div>
+
+<br /><br />
 
 
 <div> 

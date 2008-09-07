@@ -24,6 +24,15 @@
 		<servlet-class>org.unitedstollutions.c3r.web.Dispatcher</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>
+		IfcReaderController</display-name>
+		<servlet-name>IfcReaderController</servlet-name>
+		<servlet-class>
+		org.unitedstollutions.c3r.web.IfcReaderController</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>Dispatcher</servlet-name>
 		<url-pattern>/checker/main</url-pattern>
@@ -51,6 +60,13 @@
 	<servlet-mapping>
 		<servlet-name>Dispatcher</servlet-name>
 		<url-pattern>/checker/queryFinder</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Dispatcher</servlet-name>
+		<url-pattern>/checker/ifcReader</url-pattern>
+	</servlet-mapping>	<servlet-mapping>
+		<servlet-name>IfcReaderController</servlet-name>
+		<url-pattern>/IfcReaderController</url-pattern>
 	</servlet-mapping>
 	<error-page>
 		<exception-type>java.lang.Throwable</exception-type>

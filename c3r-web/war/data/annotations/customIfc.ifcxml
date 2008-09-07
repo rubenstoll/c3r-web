@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE rdf:RDF [
+<!ENTITY ifc      "http://rainbow.essi.fr/~anastasiya/data/ifc.rdfs"> 
+<!ENTITY ontoCC      "http://www.owl-ontologies.com/Ontology1205837312.owl"> 
+<!ENTITY rdf     "http://www.w3.org/1999/02/22-rdf-syntax-ns">
+<!ENTITY xsd      "http://www.w3.org/2001/XMLSchema#">
+<!ENTITY ex    "urn:iso10303-28:ex">
+]>
+
+<rdf:RDF 
+    xmlns:rdf ="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd ="&xsd;" 
+    xmlns:ifc     ="&ifc;#" 
+    xmlns:ontoCC     ="&ontoCC;#"
+    xmlns     ="&ontoCC;#" 
+    xml:base  ="&ontoCC;-instances"
+    xmlns:ex  ="&ex;#" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance#"
+    >
+    
+       
+        <!--http://www.iai-tech.org/ifcXML/IFC2x3/FINAL/ex.xsd-->
+        
+        <IfcProject rdf:ID="toto"/>
+        
+        <IfcProject rdf:ID="i1545">
+            <globalId>
+                32qoDp9B9CmAOHdQt$_EOS
+            </globalId>
+            <ownerHistory>
+                <IfcOwnerHistory xsi:nil="true" ref="i1516"/>            
+            </ownerHistory>
+            <name>
+                Default Project
+            </name>
+            <representationContexts ex:cType="set">
+                <IfcGeometricRepresentationContext ex:pos="0" xsi:nil="true" ref="i1543"/>
+                <IfcGeometricRepresentationContext ex:pos="1" xsi:nil="true" ref="i1625"/>
+            </representationContexts>
+            <unitsInContext>
+                <IfcUnitAssignment xsi:nil="true" ref="i1529"/>
+            </unitsInContext>            
+        </IfcProject>
+        
+        
+        <IfcDoor rdf:ID="i1707">
+            <globalId>
+                23qCusdXqHseOb00sJH0zG
+            </globalId>
+            <ownerHistory>
+                <IfcOwnerHistory xsi:nil="true" ref="i1516"/>            
+            </ownerHistory>        
+            <name>
+                Tur003
+            </name>
+            <objectPlacement>
+                <IfcLocalPlacement xsi:nil="true" ref="i1705"/>
+            </objectPlacement>
+            <overallHeight>324</overallHeight>	
+            <overallWidth>346</overallWidth>
+        </IfcDoor>
+        
+        <IfcDoor rdf:ID="i1718">
+            <overallHeight>324</overallHeight>	
+            <overallWidth>46</overallWidth>
+        </IfcDoor>
+        
+        <IfcDoor rdf:ID="i1714444">
+            <overallHeight>324</overallHeight>	
+            <overallWidth>44</overallWidth>
+        </IfcDoor>
+        
+        
+        <IfcDoor rdf:ID="i56567567">
+            <overallHeight>324</overallHeight>	
+            <overallWidth>90</overallWidth>
+            <attributes>
+                <LargeurUtilePorte rdf:ID="i7646464">56</LargeurUtilePorte>
+            </attributes>
+        </IfcDoor>
+        
+        <Cuvette rdf:ID="i4537298">
+            <overallHeight>47</overallHeight>	
+            <overallWidth>90</overallWidth>
+            <containsCorrespondingElement>
+                <LunetteAbattante rdf:ID="i54656565"/>
+            </containsCorrespondingElement>
+            <attributes>
+                <LargeurUtilePorte rdf:ID="i7646464">47</LargeurUtilePorte>
+            </attributes>
+        </Cuvette>
+        
+        <Sol rdf:ID="i17338">
+            <hasRevetement>
+                <RevetementGlissant rdf:ID="i3457687678"/>
+            </hasRevetement>	
+            <overallWidth>46</overallWidth>
+            <containsCorrespondingElement>
+                <TrouFente rdf:ID="i4527298">
+                    <diametre>34</diametre>
+                </TrouFente>
+            </containsCorrespondingElement>
+        </Sol>
+        
+        <SolGlissant rdf:ID="i1736667778"/>
+        
+        
+        <Sol rdf:ID="i17339">
+            <hasRevetement>
+                <Revetement rdf:ID="i4764384378"/>
+            </hasRevetement>	
+            <overallWidth>14</overallWidth>
+            <containsCorrespondingElement>
+                <TrouFente rdf:ID="i345356667">
+                    <diametre>1</diametre>
+                </TrouFente>
+            </containsCorrespondingElement>
+        </Sol>
+        
+        <Sol rdf:ID="i3426">
+            <hasRevetement>
+                <RevetementGlissant rdf:ID="i46852345555"/>
+            </hasRevetement>	
+            <overallWidth>46</overallWidth>
+        </Sol>
+        
+        <Logement rdf:ID="i45683">
+            <placementRelTo>
+                <RezDeChaussee rdf:ID="i438752"/>
+            </placementRelTo>	
+            <overallWidth>46</overallWidth>
+        </Logement>
+        
+        <Logement rdf:ID="i456845">
+            <placementRelTo>
+                <HallEntree rdf:ID="i438333"/>
+            </placementRelTo>	
+            <overallWidth>46</overallWidth>
+        </Logement>
+        
+        <IfcBuilding rdf:ID="i4777">
+            <placementRelTo>
+                <RezDeChaussee rdf:ID="i438752"/>
+            </placementRelTo>	
+            <overallWidth>26</overallWidth>
+        </IfcBuilding>
+        
+        <Pente rdf:ID="i17232438">
+            <avoirInclinaison>23
+            </avoirInclinaison>	
+            <containsCorrespondingElement>
+                <PalierReposDixMetres rdf:ID="i46383">sfdgvnsvm</PalierReposDixMetres >
+            </containsCorrespondingElement>
+        </Pente>
+        
+        <Pente rdf:ID="i1723333">
+            <avoirInclinaison>32
+            </avoirInclinaison>	
+            <containsCorrespondingElement>
+                <PalierRepos rdf:type="PalierRepos">gsd</PalierRepos>
+            </containsCorrespondingElement>
+        </Pente>    
+        
+        <PalierRepos rdf:ID="i174444">
+            <overallWidth>32
+            </overallWidth>	
+        </PalierRepos>
+    
+    <PalierRepos rdf:ID="i174444bis">
+	
+    </PalierRepos>
+        
+        <IfcRelFillsElement  rdf:ID="i1724">
+            <globalId>
+                1mATH2hlL1Tu9maMAt_$hB
+            </globalId>
+            <ownerHistory>
+                <IfcOwnerHistory xsi:nil="true" ref="i1516"/>            
+            </ownerHistory>
+            <relatingOpeningElement>
+                <IfcOpeningElement xsi:nil="true" ref="i1682"/>
+            </relatingOpeningElement>
+            <relatedBuildingElement>
+                <IfcDoor xsi:nil="true" ref="i1707"/>
+            </relatedBuildingElement>
+        </IfcRelFillsElement>
+        
+        <ZoneAssise rdf:ID="i2333">
+            <overallHeight>56</overallHeight>
+        </ZoneAssise>
+        
+        <ZoneAssise rdf:ID="i23344">
+            <overallHeight>36</overallHeight>
+        </ZoneAssise>
+        
+        <BarreAppui rdf:ID="i23345675">
+            <containsCorrespondingElement>
+                <IfcLocalPlacement>
+                    <overallHeight>
+                        75
+                    </overallHeight>
+                </IfcLocalPlacement>
+            </containsCorrespondingElement>
+        </BarreAppui>
+        
+        <BarreAppui rdf:ID="i233455484">
+            <containsCorrespondingElement>
+                <IfcLocalPlacement>
+                    <overallHeight>
+                        84
+                    </overallHeight>
+                </IfcLocalPlacement>
+            </containsCorrespondingElement>
+        </BarreAppui>
+        
+        <Ressaut  rdf:ID="i4777454545">
+            <overallHeight>
+                1
+            </overallHeight>
+        </Ressaut>
+        
+        <Lavabo  rdf:ID="i47777">
+            <overallHeight>
+                54
+            </overallHeight>
+        </Lavabo>
+        
+        <CabineDouche rdf:ID="i47777111">
+            <containsCorrespondingElement>
+                <EquipmentObject  rdf:ID="i47447">
+                    <overallHeight>56</overallHeight>
+                </EquipmentObject>            
+            </containsCorrespondingElement>
+        </CabineDouche>
+        
+        <DispositifCommande rdf:ID="i477773311">
+            <placementRelTo>
+                <Sol  rdf:ID="i47771"/>
+            </placementRelTo>
+            <overallHeight>
+                145
+            </overallHeight>
+        </DispositifCommande>
+        
+        <PortiqueSecurite rdf:ID="i78767">
+            <overallWidth>145</overallWidth>
+        </PortiqueSecurite>
+        
+        <PortiqueSecurite rdf:ID="i6786">
+            <overallWidth>5</overallWidth>
+        </PortiqueSecurite>
+        
+        <PortiqueSecurite rdf:ID="i6789">
+            <overallWidth>75</overallWidth>
+        </PortiqueSecurite>
+        
+        <Hippodrome rdf:ID="i766890"/>
+        
+        <Hippodrome rdf:ID="i766897"/>
+        
+        <Gymnase rdf:ID="i766794"/>
+        
+        <EquipementSportifAcceptantSpectacles  rdf:ID="i766796"/>
+        
+        <Porte rdf:ID="i1455864556">
+            <overallHeight>324</overallHeight>	
+            <overallWidth>90</overallWidth>
+            <attributes>
+                <LargeurUtilePorte rdf:ID="i7646464">56</LargeurUtilePorte>
+            </attributes>
+            <automaticIfcDoor>
+                true
+            </automaticIfcDoor>
+        </Porte>
+        
+        <Locaux rdf:ID="i222">
+            <overallHeight>324</overallHeight>	
+        </Locaux>
+        
+        <Locaux rdf:ID="i223322">
+            <destinationLocaux>poussettes</destinationLocaux>	
+        </Locaux>
+        
+        <LocauxPoussette rdf:ID="i1455222864556"/>
+    
+    <PalierRepos rdf:ID="i122palierrepos">
+        <overallWidth>1222</overallWidth>
+    </PalierRepos>
+    
+    <Vantaux rdf:ID="i5455vantaux">
+        <!--connectedToIfcElement rdf:ID="i1707"/-->
+        <overallWidth>122</overallWidth>    
+        
+    </Vantaux>
+        
+    <Vantaux rdf:ID="i5455vantauxBis">
+        <!--connectedToIfcElement rdf:ID="i1707"/-->
+        <overallWidth>122</overallWidth>    
+        <!--connectedToIfcElement rdf:ID="i1707"></connectedToIfcElement-->
+        
+    </Vantaux>
+        
+        
+    </rdf:RDF>
+    
