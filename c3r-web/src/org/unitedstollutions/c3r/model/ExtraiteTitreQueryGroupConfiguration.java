@@ -20,13 +20,14 @@ public class ExtraiteTitreQueryGroupConfiguration extends
 	public ExtraiteTitreQueryGroupConfiguration() {
 
 		String[][] cont = new String[][] { 
+				{ "none_selected", "" },
 				{ "arrete", "arrete" },
 				{ "circulaire", "circulaire" } };
 
 		setContents(cont);
 
 		// sets the default here from available list above
-		String defaultValue = "arrete";
+		String defaultValue = "none_selected";
 		setDefaults(defaultValue);
 	}
 

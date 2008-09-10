@@ -19,6 +19,7 @@ public class ExtraiteTypeLEGQueryGroupConfiguration extends
 	 */
 	public ExtraiteTypeLEGQueryGroupConfiguration() {
 		String [][] contents = new String[][] { 
+				{ "none_selected", "" },
 				{ "decret", "Décret" },
 				{ "arrete", "Arrêté" }, 
 				{ "circulaire", "Circulaire" },
@@ -33,7 +34,7 @@ public class ExtraiteTypeLEGQueryGroupConfiguration extends
 		setContents(contents);
 
 		// sets the default here from available list above
-		String defaultValue = "arrete_municipal";
+		String defaultValue = "none_selected";
 		setDefaults(defaultValue);
 
 	}

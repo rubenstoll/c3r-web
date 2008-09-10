@@ -21,6 +21,7 @@ public class ThematicQueryGroupConfiguration extends QueryGroupConfiguration {
 	public ThematicQueryGroupConfiguration() {
 		
 		String[][] contents = new String[][] {
+				{ "none_selected", "" },
 				{ "plomb_saturnisme", "plomb_saturnisme" },
 				{ "accessibilite_des_handicapes","accessibilite_des_handicapes" },
 				{ "acoustique", "acoustique" }, 
@@ -31,7 +32,7 @@ public class ThematicQueryGroupConfiguration extends QueryGroupConfiguration {
 		setContents(contents);
 
 		// sets the default here from available list above
-		String defaultValue = "securite_incendie";
+		String defaultValue = "accessibilite_des_handicapes";
 		setDefaults(defaultValue);
 		
 	}

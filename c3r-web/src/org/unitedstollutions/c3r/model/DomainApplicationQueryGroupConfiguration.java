@@ -22,6 +22,7 @@ public class DomainApplicationQueryGroupConfiguration extends
 	public DomainApplicationQueryGroupConfiguration() {
 		// TODO - finish list once doc is finished (C3Rdescription.doc)
 		String [][] contents = new String[][] {
+				{ "none_selected", "" },
 				{ "Cheminement", "Cheminements extérieures" },
 				{ "CirculationInterieureVerticale",
 						"Circulations intérieures verticales" },
@@ -34,7 +35,7 @@ public class DomainApplicationQueryGroupConfiguration extends
 		setContents(contents);
 		
 		// sets the default here from available list above
-		String defaultValue = "Cheminement";
+		String defaultValue = "none_selected";
 		setDefaults(defaultValue);
 		
 	}
