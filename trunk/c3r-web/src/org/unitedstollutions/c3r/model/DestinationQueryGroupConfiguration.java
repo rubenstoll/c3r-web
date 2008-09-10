@@ -22,7 +22,8 @@ public class DestinationQueryGroupConfiguration extends QueryGroupConfiguration 
 	public DestinationQueryGroupConfiguration() {
 
 		String [][] conts = new String[][] {
-				{ "ERP ", "Etablissements Recevant du Public" },
+				{ "none_selected", "" },
+				{ "ERP", "Etablissements Recevant du Public" },
 				{ "BHCN", "Bâtiments d'habitation collectifs neufs" },
 				{ "CHP", "Constructions pour handicapés physiques" },
 				{ "Agricole", "Installations agricoles" }, { "GA", "GA" },
@@ -34,7 +35,7 @@ public class DestinationQueryGroupConfiguration extends QueryGroupConfiguration 
 		setContents(conts);
 		
 		// sets the default here from available list above
-		String defaultValue = "CHP";
+		String defaultValue = "ERP";
 		setDefaults(defaultValue);
 		
 	}

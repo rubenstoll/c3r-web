@@ -26,13 +26,14 @@ public class SubDomainApplicationQueryGroupConfiguration extends
 		 */
 		// TODO - finish list
 		String[][] contents = new String[][] {
+				{ "none_selected", "" },
 				{ "Cheminement.generalities", "Généralités" },
 				{ "Cheminement.Pente", "Pente" } };
 		
 		setContents(contents);
 
 		// sets the default here from available list above
-		String defaultValue = "Cheminement.Pente";
+		String defaultValue = "none_selected";
 		setDefaults(defaultValue);
 		
 	}
