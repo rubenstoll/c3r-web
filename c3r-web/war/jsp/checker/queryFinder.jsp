@@ -70,7 +70,7 @@ New engine created ... <br />
 			FILTER (xsd:string(?domaine) ~ '${selectedDomainApplication}')
 
 			?queryName annoComplexe:sousDomaineSimple ?sousdomaine
-			FILTER (xsd:string(?sousdomaine) ~ '${subDomainApplicationQuery}')        
+			FILTER (xsd:string(?sousdomaine) ~ '${subDomainApplicationQuery}')
 	}
 </c:set>
 
@@ -155,11 +155,34 @@ Found the following queries for the complex query:
 <br />
 Found the following queries for thematic:
 <div>
-<ul>
+<form name="qryResults" method="post"
+	action="">
+
+<table> 
+<select name="thematic" size="1">
+
 	<stl:for-each-result query="${thematicQuery}">
-		<li>${queryType} <br /> ${queryName} <br /> ${queryDescription} </li>
+		<tr>
+			<td>
+				<input type="checkbox" name="${queryName}" />
+			</td>
+			<td>
+				${queryDescription} 
+			</td>
 	</stl:for-each-result>
-</ul>
+
+
+	<c:forEach var="configurations" items="${thematicConfig.contents}">
+		<c:if test="${configurations.key == selected}">
+			<option selected value="${configurations.key}" name="value">${configurations.value} </option>
+		</c:if>
+		<c:if test="${configurations.key != selected}">
+			<option value="${configurations.key}" name="value">${configurations.value} </option>
+		</c:if>
+	</c:forEach>
+</select><br />
+<br />
+
 </div>
 
 Found the following queries for destination request:
