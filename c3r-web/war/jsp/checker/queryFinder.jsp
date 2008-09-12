@@ -158,29 +158,31 @@ Found the following queries for thematic:
 <form name="qryResults" method="post"
 	action="">
 
+<%-- 
+	the value or query name returned with the results after running the query looks
+    something like this:
+     	value="http://www.owl-ontologies.com/Ontology1215697160.owl-instances#r00080705"
+    The idea is to grab the name after the pound sign at the end as the query name
+    hashmap key, and checkbox item value: r00080705
+--%>
 <table> 
-<select name="thematic" size="1">
-
 	<stl:for-each-result query="${thematicQuery}">
 		<tr>
 			<td>
-				<input type="checkbox" name="${queryName}" />
+				<input type="checkbox" name="queryResult" value="${queryName}">
 			</td>
 			<td>
 				${queryDescription} 
 			</td>
 	</stl:for-each-result>
+</table>
 
 
-	<c:forEach var="configurations" items="${thematicConfig.contents}">
-		<c:if test="${configurations.key == selected}">
-			<option selected value="${configurations.key}" name="value">${configurations.value} </option>
-		</c:if>
-		<c:if test="${configurations.key != selected}">
-			<option value="${configurations.key}" name="value">${configurations.value} </option>
-		</c:if>
-	</c:forEach>
-</select><br />
+<input type="submit" name="submit" value="Cancel">
+<input type="submit" name="submit" value="Submitz">
+</form>
+
+<br />
 <br />
 
 </div>
