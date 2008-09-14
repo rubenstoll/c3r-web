@@ -64,13 +64,13 @@ New engine created ... <br />
 			FILTER (xsd:string(?leg) ~ '${selectedExtraitTypeLEG}')
 
 			?queryName annoComplexe:extraitTitre ?titre
-			FILTER (xsd:string(?titre) ~ '${selectedExtractedTitle}')
+			FILTER (xsd:string(?titre) ~ 'arr')
 
 			?queryName annoComplexe:domaineSimple ?domaine
 			FILTER (xsd:string(?domaine) ~ '${selectedDomainApplication}')
 
 			?queryName annoComplexe:sousDomaineSimple ?sousdomaine
-			FILTER (xsd:string(?sousdomaine) ~ '${subDomainApplicationQuery}')
+			FILTER (xsd:string(?sousdomaine) ~ '')
 	}
 </c:set>
 
@@ -101,14 +101,14 @@ New engine created ... <br />
 <c:set var="extraitTitreQuery">
 	SELECT ?queryName ?queryType ?queryDescription WHERE {
 		?queryName annoComplexe:extraitTitre ?queryType 
-		FILTER (xsd:string(?queryType) ~ '${selectedExtractedTitle}') 
+		FILTER (xsd:string(?queryType) ~ '') 
 		?queryName annoComplexe:textRequete ?queryDescription 
 	}
 </c:set>
 
 <c:set var="domainApplicationQuery">
 	SELECT ?queryName ?queryType ?queryDescription WHERE {
-		?queryName annoComplexe:domaineApplication ?queryType 
+		?queryName annoComplexe:domaineSimple ?queryType 
 		FILTER (xsd:string(?queryType) ~ '${selectedDomainApplication}') 
 		?queryName annoComplexe:textRequete ?queryDescription 
 	}
@@ -116,7 +116,7 @@ New engine created ... <br />
 
 <c:set var="subDomainApplicationQuery">
 	SELECT ?queryName ?queryType ?queryDescription WHERE {
-		?queryName annoComplexe:sousDomaineApplication ?queryType 
+		?queryName annoComplexe:sousDomaineSimple ?queryType 
 		FILTER (xsd:string(?queryType) ~ '${selectedSubDomainApplication}') 
 		?queryName annoComplexe:textRequete ?queryDescription 
 	}
