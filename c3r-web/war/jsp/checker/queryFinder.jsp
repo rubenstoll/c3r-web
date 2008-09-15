@@ -19,6 +19,13 @@ New engine created ... <br />
 		rdfs="http://www.w3.org/2000/01/rdf-schema#"/>
 </c:if>
 
+<stl:init var="checkingEngine" scope="session" 
+		ontoDir="/data/schemas"
+		annotDir="/data/annotations" 
+		ruleDir="/data/rules"
+		ontoCC="http://www.owl-ontologies.com/Ontology1205837312.owl#"
+		rdfs="http://www.w3.org/2000/01/rdf-schema#"/>
+
 <!--use the query configuration beans-->
 <jsp:useBean
 	id="thematicConfig"
@@ -49,76 +56,28 @@ New engine created ... <br />
  	feature does not work yet -->
 <c:set var="complexQuery">
 	PREFIX annoComplexe:<http://www.owl-ontologies.com/Ontology1215697160.owl#>
-	SELECT ?queryName ?queryDescription ?them ?dest ?leg ?titre ?domaine ?sousdomaine ?sparqlContent display xml WHERE {
+	SELECT DISTINCT ?queryName ?queryDescription ?them ?dest ?leg ?titre ?domaine ?sousdomaine ?sparqlContent display xml WHERE {
 
 			?queryName annoComplexe:textRequete ?queryDescription
 			?queryName annoComplexe:contenuRequete ?sparqlContent
 
 			?queryName annoComplexe:thematiqueRequete ?them
-			FILTER (xsd:string(?them) ~ '${selectedThematic}')
+			FILTER (xsd:string(?them) ~ 'accessibilite_des_handicapes')
 
 			?queryName annoComplexe:destinationRequete ?dest
-			FILTER (xsd:string(?dest) ~ '${selectedDestinationRequest}')
+			FILTER (xsd:string(?dest) ~ 'ERP')
 
 			?queryName annoComplexe:extraitTypeLEG ?leg
-			FILTER (xsd:string(?leg) ~ '${selectedExtraitTypeLEG}')
+			FILTER (xsd:string(?leg) ~ 'cir')
 
 			?queryName annoComplexe:extraitTitre ?titre
-			FILTER (xsd:string(?titre) ~ 'arr')
+			FILTER (xsd:string(?titre) ~ '')
 
 			?queryName annoComplexe:domaineSimple ?domaine
-			FILTER (xsd:string(?domaine) ~ '${selectedDomainApplication}')
+			FILTER (xsd:string(?domaine) ~ '')
 
 			?queryName annoComplexe:sousDomaineSimple ?sousdomaine
 			FILTER (xsd:string(?sousdomaine) ~ '')
-	}
-</c:set>
-
-<c:set var="thematicQuery">
-	SELECT ?queryName ?queryType ?queryDescription WHERE { 
-		?queryName annoComplexe:thematiqueRequete ?queryType 
-		FILTER (xsd:string(?queryType) ~ '${selectedThematic}') 
-		?queryName annoComplexe:textRequete ?queryDescription
-	}
-</c:set>
-
-<c:set var="destinationRequestQuery">
-	SELECT ?queryName ?queryType ?queryDescription WHERE {
-		?queryName annoComplexe:destinationRequete ?queryType 
-		FILTER (xsd:string(?queryType) ~ '${selectedDestinationRequest}') 
-		?queryName annoComplexe:textRequete ?queryDescription 
-	}
-</c:set>
-
-<c:set var="extraitTypeLEGQuery">
-	SELECT ?queryName ?queryType ?queryDescription WHERE { 
-		?queryName annoComplexe:extraitTypeLEG ?queryType 
-		FILTER (xsd:string(?queryType) ~ '${selectedExtraitTypeLEG}') 
-		?queryName annoComplexe:textRequete ?queryDescription 
-	}
-</c:set>
-
-<c:set var="extraitTitreQuery">
-	SELECT ?queryName ?queryType ?queryDescription WHERE {
-		?queryName annoComplexe:extraitTitre ?queryType 
-		FILTER (xsd:string(?queryType) ~ '') 
-		?queryName annoComplexe:textRequete ?queryDescription 
-	}
-</c:set>
-
-<c:set var="domainApplicationQuery">
-	SELECT ?queryName ?queryType ?queryDescription WHERE {
-		?queryName annoComplexe:domaineSimple ?queryType 
-		FILTER (xsd:string(?queryType) ~ '${selectedDomainApplication}') 
-		?queryName annoComplexe:textRequete ?queryDescription 
-	}
-</c:set>
-
-<c:set var="subDomainApplicationQuery">
-	SELECT ?queryName ?queryType ?queryDescription WHERE {
-		?queryName annoComplexe:sousDomaineSimple ?queryType 
-		FILTER (xsd:string(?queryType) ~ '${selectedSubDomainApplication}') 
-		?queryName annoComplexe:textRequete ?queryDescription 
 	}
 </c:set>
 
@@ -134,30 +93,7 @@ Sub Domain Application: <c:out value="${selectedSubDomainApplication}" /><br />
 
 <br /><br />
 
-Found the following queries for the complex query:
 <div>
-	<c:set var="queryErrors" value="${stl:validateQuery(pageContext, complexQuery)}" />
-	<c:choose>
-	<c:when test="${empty queryErrors}">
-		<ul>
-			<stl:for-each-result query="${complexQuery}">
- 				<li>
-					${queryName}<br /> ${queryDescription}<br /> ${them}<br /> ${dest}<br /> 
- 					${leg}<br />${titre} <br />${domaine}<br />${sousdomaine}<br /> 
- 					${sparqlContent}<br /> 
-				</li>
-			</stl:for-each-result>
-		</ul>
-	</c:when>
-	<c:otherwise>${queryErrors}</c:otherwise>
-	</c:choose>
-</div>
-<br />
-Found the following queries for thematic:
-<div>
-<form name="qryResults" method="post"
-	action="">
-
 <%-- 
 	the value or query name returned with the results after running the query looks
     something like this:
@@ -165,72 +101,52 @@ Found the following queries for thematic:
     The idea is to grab the name after the pound sign at the end as the query name
     hashmap key, and checkbox item value: r00080705
 --%>
-<table> 
-	<stl:for-each-result query="${thematicQuery}">
-		<tr>
-			<td>
-				<input type="checkbox" name="queryResult" value="${queryName}">
-			</td>
-			<td>
-				${queryDescription} 
-			</td>
-	</stl:for-each-result>
-</table>
 
+<form name="qryResults" method="post" action="">
 
+	<c:set var="queryErrors" value="${stl:validateQuery(pageContext, complexQuery)}" />
+	<c:choose>
+	<c:when test="${empty queryErrors}">
+		<table border="1"> 
+			<thead>
+				<tr>	
+				<td>
+				</td>
+				<td>
+					name
+				</td>
+				<td>
+					description
+				</td>
+				<td>
+					sparql content
+				</td>
+				</tr>
+			</thead>
+			<stl:for-each-result query="${complexQuery}">
+				<tr>
+					<td>
+						<input type="checkbox" name="queryResult" value="${queryName}">
+					</td>
+					<td>
+						${fn:substringAfter(queryName,#)}
+					</td>
+					<td>
+						${queryDescription} 
+					</td>
+					<td>
+						${sparqlContent} 
+					</td>
+			</stl:for-each-result>
+		</table>
+	</c:when>
+	<c:otherwise>${queryErrors}</c:otherwise>
+	</c:choose>
+
+<br /><br />
 <input type="submit" name="submit" value="Cancel">
-<input type="submit" name="submit" value="Submitz">
+<input type="submit" name="submit" value="Submit">
 </form>
-
-<br />
-<br />
-
-</div>
-
-Found the following queries for destination request:
-<div>
-<ul>
-	<stl:for-each-result query="${destinationRequestQuery}">
-		<li>${queryType} <br /> ${queryName} <br /> ${queryDescription} </li>
-	</stl:for-each-result>
-</ul>
-</div>
-
-Found the following queries for extraitTypeLEG:
-<div>
-<ul>
-	<stl:for-each-result query="${extraitTypeLEGQuery}">
-		<li>${queryType} <br /> ${queryName} <br /> ${queryDescription} </li>
-	</stl:for-each-result>
-</ul>
-</div>
-
-Found the following queries for extrait Titre:
-<div>
-<ul>
-	<stl:for-each-result query="${extraitTitreQuery}">
-		<li>${queryType} <br /> ${queryName} <br /> ${queryDescription} </li>
-	</stl:for-each-result>
-</ul>
-</div>
-
-Found the following queries for domain application:
-<div>
-<ul>
-	<stl:for-each-result query="${domainApplicationQuery}">
-		<li>${queryType} <br /> ${queryName} <br /> ${queryDescription} </li>
-	</stl:for-each-result>
-</ul>
-</div>
-
-Found the following queries for sub domain application:
-<div>
-<ul>
-	<stl:for-each-result query="${subDomainApplicationQuery}">
-		<li>${queryType} <br /> ${queryName} <br /> ${queryDescription} </li>
-	</stl:for-each-result>
-</ul>
-</div>
 
 
 
