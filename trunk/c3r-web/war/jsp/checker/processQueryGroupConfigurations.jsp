@@ -34,18 +34,5 @@
 
 <jsp:forward page="/checker/main" />
 
-<!--Configuration done ...-->
-<!---->
-<!---->
-<!--The following values were configured:-->
-<!---->
-<!--Thematic:-->
-<!--<jsp:getProperty name="thematicConfig"  property="value"/>-->
-<!--<jsp:getProperty name="destinationRequete"  property="value"/>-->
-<!--<jsp:getProperty name="extraitTypeLEG"  property="value"/>-->
-<!--<jsp:getProperty name="extraitTitre"  property="value"/>-->
-<!--<jsp:getProperty name="domainApplication"  property="value"/>-->
-<!--<jsp:getProperty name="subDomainApplication"  property="value"/>-->
-
 </body>
 </html>

@@ -19,13 +19,6 @@ New engine created ... <br />
 		rdfs="http://www.w3.org/2000/01/rdf-schema#"/>
 </c:if>
 
-<stl:init var="checkingEngine" scope="session" 
-		ontoDir="/data/schemas"
-		annotDir="/data/annotations" 
-		ruleDir="/data/rules"
-		ontoCC="http://www.owl-ontologies.com/Ontology1205837312.owl#"
-		rdfs="http://www.w3.org/2000/01/rdf-schema#"/>
-
 <!--use the query configuration beans-->
 <jsp:useBean
 	id="thematicConfig"
@@ -41,16 +34,36 @@ New engine created ... <br />
 <jsp:useBean id="subDomainApplication"
 	class="org.unitedstollutions.c3r.model.SubDomainApplicationQueryGroupConfiguration" scope="session"/>
 
-<!--variables to be used for the SPARQL queries-->
+<!--
+variables to be used for the SPARQL queries.
+    
+NOTE: all of this would be better if it was implemented in a formController 
+      like an MVC pattern
+-->
 <c:set var="selectedThematic" value="${thematicConfig.value}" />
-<c:if test="${thematicConfig.value} == "not_selected">
+<c:if test="${thematicConfig.value eq 'none_selected'}">
 	<c:set var="selectedThematic" value="" />
 </c:if>
 <c:set var="selectedDestinationRequest" value="${destinationRequete.value}" />
+<c:if test="${destinationRequete.value eq 'none_selected'}">
+	<c:set var="selectedDestinationRequest" value="" />
+</c:if>
 <c:set var="selectedExtraitTypeLEG" value="${extraitTypeLEG.value}" />
+<c:if test="${extraitTypeLEG.value eq 'none_selected'}">
+	<c:set var="selectedExtraitTypeLEG" value="" />
+</c:if>
 <c:set var="selectedExtractedTitle" value="${extraitTitre.value}" />
+<c:if test="${extraitTitre.value eq 'none_selected'}">
+	<c:set var="selectedExtractedTitle" value="" />
+</c:if>
 <c:set var="selectedDomainApplication" value="${domainApplication.value}" />
+<c:if test="${domainApplication.value eq 'none_selected'}">
+	<c:set var="selectedDomainApplication" value="" />
+</c:if>
 <c:set var="selectedSubDomainApplication" value="${subDomainApplication.value}" />
+<c:if test="${subDomainApplication.value eq 'none_selected'}">
+	<c:set var="selectedSubDomainApplication" value="" />
+</c:if>
 
 
 <!--sparql query definitions-->
