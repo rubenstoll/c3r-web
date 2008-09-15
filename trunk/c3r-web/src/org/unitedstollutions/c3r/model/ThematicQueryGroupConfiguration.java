@@ -23,7 +23,7 @@ public class ThematicQueryGroupConfiguration extends QueryGroupConfiguration {
 		String[][] contents = new String[][] {
 				{ "none_selected", "" },
 				{ "plomb_saturnisme", "plomb_saturnisme" },
-				{ "accessibilite_des_handicapes","accessibilite_des_handicapes" },
+				{ "accessibilite_des_handicapes","handicap accessability" },
 				{ "acoustique", "acoustique" }, 
 				{ "aeration", "aeration" },
 				{ "energies_durables", "Durable Engergies" },
