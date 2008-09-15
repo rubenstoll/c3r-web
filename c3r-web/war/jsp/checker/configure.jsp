@@ -115,7 +115,7 @@ SousDomaineApplication
 <br />
 
 <input type="submit" name="submit" value="Cancel">
-<input type="submit" name="submit" value="Configure">
+<input type="submit" name="submit" value="Submit">
 </form>
 
 

@@ -43,6 +43,9 @@ New engine created ... <br />
 
 <!--variables to be used for the SPARQL queries-->
 <c:set var="selectedThematic" value="${thematicConfig.value}" />
+<c:if test="${thematicConfig.value} == "not_selected">
+	<c:set var="selectedThematic" value="" />
+</c:if>
 <c:set var="selectedDestinationRequest" value="${destinationRequete.value}" />
 <c:set var="selectedExtraitTypeLEG" value="${extraitTypeLEG.value}" />
 <c:set var="selectedExtractedTitle" value="${extraitTitre.value}" />
@@ -62,35 +65,38 @@ New engine created ... <br />
 			?queryName annoComplexe:contenuRequete ?sparqlContent
 
 			?queryName annoComplexe:thematiqueRequete ?them
-			FILTER (xsd:string(?them) ~ 'accessibilite_des_handicapes')
+			FILTER (xsd:string(?them) ~ '${selectedThematic}')
 
 			?queryName annoComplexe:destinationRequete ?dest
-			FILTER (xsd:string(?dest) ~ 'ERP')
+			FILTER (xsd:string(?dest) ~ '${selectedDestinationRequest}')
 
 			?queryName annoComplexe:extraitTypeLEG ?leg
-			FILTER (xsd:string(?leg) ~ 'cir')
+			FILTER (xsd:string(?leg) ~ '${selectedExtraitTypeLEG}')
 
 			?queryName annoComplexe:extraitTitre ?titre
-			FILTER (xsd:string(?titre) ~ '')
+			FILTER (xsd:string(?titre) ~ '${selectedExtractedTitle}')
 
 			?queryName annoComplexe:domaineSimple ?domaine
-			FILTER (xsd:string(?domaine) ~ '')
+			FILTER (xsd:string(?domaine) ~ '${selectedDomainApplication}')
 
 			?queryName annoComplexe:sousDomaineSimple ?sousdomaine
-			FILTER (xsd:string(?sousdomaine) ~ '')
+			FILTER (xsd:string(?sousdomaine) ~ '${selectedSubDomainApplication}')
 	}
 </c:set>
 
 <!-- all below is what the user sees -->
 
 <b>The query group configuration values</b> <br />
-Thematic: <c:out value="${selectedThematic}" /><br />
+Thematic: <c:out value="${selectedThematic}" /> <br />
 Destination Request: <c:out value="${selectedDestinationRequest}" /><br />
 Extrait Type LEG: <c:out value="${selectedExtraitTypeLEG}" /><br />
 Extracted Title: <c:out value="${selectedExtractedTitle}" /><br />
 Domain Application: <c:out value="${selectedDomainApplication}" /><br />
 Sub Domain Application: <c:out value="${selectedSubDomainApplication}" /><br />
 
+<br /><br />
+The query being executed is:<br />
+${complexQuery}
 <br /><br />
 
 <div>
@@ -102,7 +108,7 @@ Sub Domain Application: <c:out value="${selectedSubDomainApplication}" /><br />
     hashmap key, and checkbox item value: r00080705
 --%>
 
-<form name="qryResults" method="post" action="">
+<form name="qryResults" method="post" action="runSelectedQueries">
 
 	<c:set var="queryErrors" value="${stl:validateQuery(pageContext, complexQuery)}" />
 	<c:choose>
@@ -126,10 +132,10 @@ Sub Domain Application: <c:out value="${selectedSubDomainApplication}" /><br />
 			<stl:for-each-result query="${complexQuery}">
 				<tr>
 					<td>
-						<input type="checkbox" name="queryResult" value="${queryName}">
+						<input type="checkbox" name="queryResult" value="${fn:substringAfter(queryName,"#")}">
 					</td>
 					<td>
-						${fn:substringAfter(queryName,#)}
+						${fn:substringAfter(queryName,"#")}
 					</td>
 					<td>
 						${queryDescription} 
