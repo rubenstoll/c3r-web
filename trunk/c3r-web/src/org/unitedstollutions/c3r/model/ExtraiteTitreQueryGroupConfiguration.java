@@ -22,13 +22,6 @@ public class ExtraiteTitreQueryGroupConfiguration extends
 		String[][] cont = new String[][] { 
 				{ "none_selected", "" },
 				{ "Arrete_24_dec_1980_modifie", "Arrete_24_12_1980_modifie" },
-				{ "Circulaire_82-81_04_oct_1982", "Circulaire_82-81_04_oct_1982" },
-				{ "Circulaire_82-81_04_oct_1982", "Circulaire_82-81_04_oct_1982" },
-				{ "Circulaire_82-81_04_oct_1982", "Circulaire_82-81_04_oct_1982" },
-				{ "Circulaire_82-81_04_oct_1982", "Circulaire_82-81_04_oct_1982" },
-				{ "Circulaire_82-81_04_oct_1982", "Circulaire_82-81_04_oct_1982" },
-				{ "Circulaire_82-81_04_oct_1982", "Circulaire_82-81_04_oct_1982" },
-				{ "Circulaire_82-81_04_oct_1982", "Circulaire_82-81_04_oct_1982" },
 				{ "Circulaire_82-81_04_oct_1982", "Circulaire_82-81_04_oct_1982" }};
 
 		setContents(cont);
