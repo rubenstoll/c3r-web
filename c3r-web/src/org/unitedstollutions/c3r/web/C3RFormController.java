@@ -9,49 +9,49 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.catalina.Session;
-import org.unitedstollutions.c3r.model.IfcReader;
-
 /**
- * Servlet implementation class IfcReaderController
+ * Servlet implementation class C3RFormController
  */
-public class IfcReaderController extends HttpServlet {
+public class C3RFormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void processRequest(HttpServletRequest request,
 			HttpServletResponse response) {
 
-		String ifcProject = request.getParameter("ProjectIfc");
-		String ifcFile;
-		String ifcFileUri;
 		
-		// Get the user's session and shopping cart
+		// Get the user's session
 		HttpSession session = request.getSession();
-		IfcReader ir = (IfcReader)session.getAttribute("ifcReader");
-		if(ir == null) {
-			ir = new IfcReader();
-			session.setAttribute("ifcReader", ir);
-		}
-		
-		if (ifcProject.equals("Custom")) {
-			ifcFile = request.getParameter("ifcFileName");
-			ir.createCustomIfc(ifcFile);
-		} else if(ifcProject.equals("Uri")) {
-			ifcFileUri = request.getParameter("ifcUri");
-			ir.readFromUri(ifcFileUri);
+		String selectedScreen = request.getServletPath();
+		String screen = "";
+
+		if (selectedScreen.equals("/checker/runSelectedQueries")) {
+			String selectedQueries = (String)session.getAttribute("queryResult");
+			String queries = "hey hey hey" + selectedQueries;
+			session.setAttribute("checkedResults", queries);
+			
+			screen = "/jsp/checker/runSelectedQueries.jsp";
 		} else {
-			ir.setDefaultIfcfile();
+			screen = "/jsp" + selectedScreen + ".jsp";
 		}
 
-		String screen = "/jsp/checker/main.jsp";
+
 		try {
 			RequestDispatcher dispatcher = request.getRequestDispatcher(screen);
 			dispatcher.forward(request, response);
 		} catch (Exception ex) {
-			System.out.println("IfcReaderController Exception");
+			System.out.println("Form Controller Exception");
 			ex.printStackTrace();
-		}	
-		
+		}
+
+	}
+
+
+	/**
+	 * @see Servlet#getServletInfo()
+	 */
+	public String getServletInfo() {
+		// TODO add servlet information data if needed
+		return super.getServletInfo();
 	}
 
 	/**
