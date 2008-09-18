@@ -25,10 +25,25 @@ public class C3RFormController extends HttpServlet {
 		String screen = "";
 
 		if (selectedScreen.equals("/checker/runSelectedQueries")) {
-			String selectedQueries = (String)session.getAttribute("queryResult");
-			String queries = "hey hey hey" + selectedQueries;
-			session.setAttribute("checkedResults", queries);
-			
+			String selectedQueries = (String)session.getAttribute("selectedQueries");
+			String selectedQs = (String)request.getParameter("selectedQueries");
+			request.setAttribute("mymessage", "this");
+			if (selectedQueries != null) {
+				String queries = "hey hey hey" + selectedQueries;
+				session.setAttribute("checkedResults1", queries);			
+				request.setAttribute("message1", "queries in session!");
+			} else {
+				session.setAttribute("checkedResults1", "No Results");
+				request.setAttribute("message1", "No queries in session");
+			}
+			if (selectedQs != null) {
+				String Qs =  selectedQs;
+				session.setAttribute("checkedResults2", Qs);			
+				request.setAttribute("message2", "queries in request");
+			} else {
+				session.setAttribute("checkedResults2", "No Results");
+				request.setAttribute("message2", "No queries in request");
+			}
 			screen = "/jsp/checker/runSelectedQueries.jsp";
 		} else {
 			screen = "/jsp" + selectedScreen + ".jsp";
