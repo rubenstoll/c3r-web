@@ -28,15 +28,6 @@
 		<description>
 		</description>
 		<display-name>
-		IfcReaderController</display-name>
-		<servlet-name>IfcReaderController</servlet-name>
-		<servlet-class>
-		org.unitedstollutions.c3r.web.IfcReaderController</servlet-class>
-	</servlet>
-	<servlet>
-		<description>
-		</description>
-		<display-name>
 		C3RFormController</display-name>
 		<servlet-name>C3RFormController</servlet-name>
 		<servlet-class>
@@ -75,11 +66,7 @@
 		<url-pattern>/checker/ifcReader</url-pattern>
 	</servlet-mapping>	
 	<servlet-mapping>
-		<servlet-name>IfcReaderController</servlet-name>
-		<url-pattern>/IfcReaderController</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>Dispatcher</servlet-name>
+		<servlet-name>C3RFormController</servlet-name>
 		<url-pattern>/checker/runSelectedQueries</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>

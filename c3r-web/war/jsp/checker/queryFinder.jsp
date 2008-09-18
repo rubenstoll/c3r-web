@@ -145,7 +145,7 @@ ${complexQuery}
 			<stl:for-each-result query="${complexQuery}">
 				<tr>
 					<td>
-						<input type="checkbox" name="queryResult" value="${fn:substringAfter(queryName,"#")}">
+						<input type="checkbox" name="selectedQueries" value="${fn:substringAfter(queryName,"#")}">
 					</td>
 					<td>
 						${fn:substringAfter(queryName,"#")}

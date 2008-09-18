@@ -40,8 +40,6 @@ public class Dispatcher extends HttpServlet {
 			} else {
 				screen = "/jsp/checker/processQueryGroupConfigurations.jsp";
 			}
-		} else if(selectedScreen.equals("/checker/ifcReader")) {
-			screen = "/IfcReaderController";
 		} else {
 			screen = "/jsp" + selectedScreen + ".jsp";
 		}
