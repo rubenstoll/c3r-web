@@ -11,7 +11,11 @@ import java.util.HashMap;
  */
 public class QueryManager {
 
-	private HashMap<String, Query> queries = new HashMap<String, Query>();
+	private HashMap<String, Query> queries;
+
+	public QueryManager() {
+		queries = new HashMap<String, Query>();
+	}
 
 	/**
 	 * @return the queries
@@ -26,6 +30,5 @@ public class QueryManager {
 	public void setQueries(HashMap<String, Query> queries) {
 		this.queries = queries;
 	}
-	
 	
 }

@@ -1,8 +1,10 @@
 package org.unitedstollutions.c3r.web;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -27,6 +29,7 @@ public class C3RFormController extends HttpServlet {
 		if (selectedScreen.equals("/checker/runSelectedQueries")) {
 			String selectedQueries = (String)session.getAttribute("selectedQueries");
 			String selectedQs = (String)request.getParameter("selectedQueries");
+			String[] kinkos = request.getParameterValues("selectedQueries");
 			request.setAttribute("mymessage", "this");
 			if (selectedQueries != null) {
 				String queries = "hey hey hey" + selectedQueries;
@@ -44,6 +47,11 @@ public class C3RFormController extends HttpServlet {
 				session.setAttribute("checkedResults2", "No Results");
 				request.setAttribute("message2", "No queries in request");
 			}
+			System.out.println("HEREREEEEEEEEEEEEEEEEEEEEEEEE");
+			for (String pu : kinkos) {
+				System.out.println(pu);
+			}
+			
 			screen = "/jsp/checker/runSelectedQueries.jsp";
 		} else {
 			screen = "/jsp" + selectedScreen + ".jsp";
