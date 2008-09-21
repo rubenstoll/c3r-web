@@ -34,12 +34,12 @@ New engine created ... <br />
 <jsp:useBean id="subDomainApplication"
 	class="org.unitedstollutions.c3r.model.SubDomainApplicationQueryGroupConfiguration" scope="session"/>
 
-<!--
+<%--
 variables to be used for the SPARQL queries.
     
 NOTE: all of this would be better if it was implemented in a formController 
       like an MVC pattern
--->
+--%>
 <c:set var="selectedThematic" value="${thematicConfig.value}" />
 <c:if test="${thematicConfig.value eq 'none_selected'}">
 	<c:set var="selectedThematic" value="" />
@@ -120,6 +120,10 @@ ${complexQuery}
     The idea is to grab the name after the pound sign at the end as the query name
     hashmap key, and checkbox item value: r00080705
 --%>
+
+<jsp:useBean
+	id="qryManager"
+	class="org.unitedstollutions.c3r.model.QueryManager" />
 
 <form name="qryResults" method="post" action="runSelectedQueries">
 
