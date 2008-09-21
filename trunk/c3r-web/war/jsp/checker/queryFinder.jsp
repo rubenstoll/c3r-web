@@ -156,6 +156,7 @@ ${complexQuery}
 					<td>
 						${sparqlContent} 
 					</td>
+				</tr>
 			</stl:for-each-result>
 		</table>
 	</c:when>
