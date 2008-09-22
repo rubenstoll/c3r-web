@@ -113,6 +113,7 @@ ${complexQuery}
 <br /><br />
 
 <div>
+
 <%-- 
 	the value or query name returned with the results after running the query looks
     something like this:
@@ -121,15 +122,12 @@ ${complexQuery}
     hashmap key, and checkbox item value: r00080705
 --%>
 
-<jsp:useBean
-	id="qryManager"
-	class="org.unitedstollutions.c3r.model.QueryManager" />
-
 <form name="qryResults" method="post" action="runSelectedQueries">
 
 	<c:set var="queryErrors" value="${stl:validateQuery(pageContext, complexQuery)}" />
 	<c:choose>
 	<c:when test="${empty queryErrors}">
+		<stl:store-result query="${complexQuery}" var="tmpQueryResponse" scope="session"/>
 		<table border="1"> 
 			<thead>
 				<tr>	
