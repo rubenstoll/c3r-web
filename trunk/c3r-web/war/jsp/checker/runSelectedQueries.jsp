@@ -17,27 +17,10 @@ New Checking Engine created ... <br />
 		rdfs="http://www.w3.org/2000/01/rdf-schema#"/>
 </c:if>
 <br /><br />
-message 1: <c:out value="${requestScope.message1}" /><br />
-message 2: <c:out value="${requestScope.message2}" /><br />
-result 1: <c:out value="${sessionScope.checkedResults1}" /><br />
-result 2: <c:out value="${sessionScope.checkedResults2}" /><br />
-mymessage: <c:out value="${requestScope.mymessage}" /><br />
-query results: <c:out value="${requestScope.queryResponse}" /><br />
-list queries using paramValues.name: <c:out value="${param.selectedQueries}" /><br />
+<c:out value="${requestScope.message}" /><br /><br />
 
-<c:choose>
-	<c:when test="${not empty paramValues.selectedQueries}">
-		Queries you selected:
-		<ul>
-			<c:forEach items="${paramValues.selectedQueries}" var="adj">
-				<li><c:out value="${adj}"/></li>
-			</c:forEach>
-		</ul>
-	</c:when>
-	<c:otherwise>
-		You didn't choose any feedback checkboxes.
-	</c:otherwise>
-</c:choose>
+Selected Queries Query run results:<br />
+
 
 </body>
 </html>

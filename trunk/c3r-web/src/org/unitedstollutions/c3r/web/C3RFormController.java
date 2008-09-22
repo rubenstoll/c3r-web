@@ -1,6 +1,8 @@
 package org.unitedstollutions.c3r.web;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.Servlet;
@@ -29,23 +31,13 @@ public class C3RFormController extends HttpServlet {
 		String screen = "";
 
 		if (selectedScreen.equals("/checker/runSelectedQueries")) {
-			String selectedQueries = (String) session
-					.getAttribute("selectedQueries");
-			String selectedQs = (String) request
-					.getParameter("selectedQueries");
-			String[] kinkos = request.getParameterValues("selectedQueries");
-			request.setAttribute("mymessage", "this");
-			if (selectedQueries != null) {
-				String queries = "hey hey hey" + selectedQueries;
-				session.setAttribute("checkedResults1", queries);
-				request.setAttribute("message1", "queries in session!");
-			} else {
-				session.setAttribute("checkedResults1", "No Results");
-				request.setAttribute("message1", "No queries in session");
-			}
-			if (selectedQs != null) {
-				String Qs = selectedQs;
+			
+			String[] selectedQueries = request.getParameterValues("selectedQueries");
 
+			
+			if (selectedQueries != null) {
+				ArrayList<String> selectedQs = new ArrayList<String>(Arrays.asList(selectedQueries));
+				
 				if ((IResults) session.getAttribute("tmpQueryResponse") != null) {
 					IResults res = (IResults) session
 							.getAttribute("tmpQueryResponse");
@@ -58,25 +50,15 @@ public class C3RFormController extends HttpServlet {
 						qm = (QueryResultsManager) session
 								.getAttribute("queryManager");
 					}
-
-					qm.setResults(res);
-					request.setAttribute("queryResponse","RESPONSE INCLUDED ....");
-				} else {
-					request.setAttribute("queryResponse","NO RESPONSE!!!");
+					
+					qm.setResults(res,selectedQs);
 				}
-				session.setAttribute("checkedResults2", Qs);
-				request.setAttribute("message2", "queries in request");
-
+				request.setAttribute("message", "queries successfully processed");
 			} else {
-				session.setAttribute("checkedResults2", "No Results");
-				request.setAttribute("message2", "No queries in request");
+				request.setAttribute("message", "queries NOT successfully processed!");
 			}
-			System.out.println("HEREREEEEEEEEEEEEEEEEEEEEEEEE");
-			for (String pu : kinkos) {
-				System.out.println(pu);
-			}
-
 			screen = "/jsp/checker/runSelectedQueries.jsp";
+			
 		} else {
 			screen = "/jsp" + selectedScreen + ".jsp";
 		}
