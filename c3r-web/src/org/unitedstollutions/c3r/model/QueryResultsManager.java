@@ -3,11 +3,11 @@
  */
 package org.unitedstollutions.c3r.model;
 
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
 
 import fr.inria.acacia.corese.api.IResult;
-import fr.inria.acacia.corese.api.IResultValue;
 import fr.inria.acacia.corese.api.IResults;
 
 /**
@@ -39,10 +39,10 @@ public class QueryResultsManager {
 		this.queries = queries;
 	}
 
-	public void setResults(IResults res) {
+	public void setResults(IResults res, ArrayList<String> selectedQueries) {
 
-		HashMap<String, Query> selectedQueries = new HashMap<String, Query>();
-		
+		HashMap<String, Query> finalQueries = new HashMap<String, Query>();
+
 		// go through all results
 		for (Enumeration<IResult> en = res.getResults(); en.hasMoreElements();) {
 			// get a result
@@ -51,29 +51,42 @@ public class QueryResultsManager {
 			String queryName = "";
 			String queryDescription = "";
 			String querySparql = "";
-			
+
 			if (r.isBound("?queryName")) {
-				System.out.println("+++ " + r.getStringValue("?queryName"));
-				queryName = r.getStringValue("?queryName");
+				String tmp = r.getStringValue("?queryName");
+				// get the part of the string after the pound
+//				System.out.println("String is:" + tmp);
+				int hashIndex = tmp.indexOf("#") + 1;
+//				System.out.println("index is at: " + hashIndex);
+				queryName = tmp.substring(hashIndex);
+//				System.out.println("+++ " + queryName);
 				q.setQueryName(queryName);
 			}
-			if (r.isBound("?queryDescription")) {
-				System.out.println("+++ "
-						+ r.getStringValue("?queryDescription"));
-				queryDescription = r.getStringValue("?queryDescription");
-				q.setQueryDescription(queryDescription);
+			// check to see if the result is one of the selected queries 
+			// and if it is get the rest of the information and add it 
+			// to the hashmap
+			if (selectedQueries.contains(queryName)) {
+				if (r.isBound("?queryDescription")) {
+					// remove leading and trailing spaces
+					queryDescription = r.getStringValue("?queryDescription")
+							.trim();
+//					System.out.println("+++ " + queryDescription);
+					q.setQueryDescription(queryDescription);
+				}
+				if (r.isBound("?sparqlContent")) {
+					// remove leading and trailing spaces
+					querySparql = r.getStringValue("?sparqlContent").trim();
+//					System.out.println("+++ " + querySparql);
+					q.setSparql(querySparql);
+				}
+
+				finalQueries.put(queryName, q);
+				System.out.println("added query: " + queryName);
+				
 			}
-			if (r.isBound("?sparqlContent")) {
-				System.out.println("+++ " + r.getStringValue("?sparqlContent"));
-				querySparql = r.getStringValue("?sparqlContent");
-				q.setSparql(querySparql);
-			}
-			
-			selectedQueries.put(queryName, q);
-			
 		}
-		
-		setQueries(selectedQueries);
+
+		setQueries(finalQueries);
 	}
 
 }; // end of class
