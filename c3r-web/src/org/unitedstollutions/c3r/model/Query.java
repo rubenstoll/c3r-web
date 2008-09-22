@@ -12,6 +12,8 @@ public class Query {
 	private String queryName;
 	private String queryType;
 	private String queryDescription;
+	private String sparql;
+	
 	/**
 	 * @return the queryName
 	 */
@@ -47,6 +49,18 @@ public class Query {
 	 */
 	public void setQueryDescription(String queryDescription) {
 		this.queryDescription = queryDescription;
+	}
+	/**
+	 * @return the sparql
+	 */
+	public String getSparql() {
+		return sparql;
+	}
+	/**
+	 * @param sparql the sparql to set
+	 */
+	public void setSparql(String sparql) {
+		this.sparql = sparql;
 	}
 	
 	

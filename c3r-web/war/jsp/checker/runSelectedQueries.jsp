@@ -22,6 +22,7 @@ message 2: <c:out value="${requestScope.message2}" /><br />
 result 1: <c:out value="${sessionScope.checkedResults1}" /><br />
 result 2: <c:out value="${sessionScope.checkedResults2}" /><br />
 mymessage: <c:out value="${requestScope.mymessage}" /><br />
+query results: <c:out value="${requestScope.queryResponse}" /><br />
 list queries using paramValues.name: <c:out value="${param.selectedQueries}" /><br />
 
 <c:choose>
