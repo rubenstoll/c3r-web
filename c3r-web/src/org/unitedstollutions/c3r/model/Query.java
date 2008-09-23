@@ -9,46 +9,46 @@ package org.unitedstollutions.c3r.model;
  */
 public class Query {
 
-	private String queryName;
-	private String queryType;
-	private String queryDescription;
+	private String name;
+	private String type;
+	private String description;
 	private String sparql;
 	
 	/**
 	 * @return the queryName
 	 */
-	public String getQueryName() {
-		return queryName;
+	public String getName() {
+		return name;
 	}
 	/**
 	 * @param queryName the queryName to set
 	 */
-	public void setQueryName(String queryName) {
-		this.queryName = queryName;
+	public void setName(String queryName) {
+		this.name = queryName;
 	}
 	/**
 	 * @return the queryType
 	 */
-	public String getQueryType() {
-		return queryType;
+	public String getType() {
+		return type;
 	}
 	/**
 	 * @param queryType the queryType to set
 	 */
-	public void setQueryType(String queryType) {
-		this.queryType = queryType;
+	public void setType(String queryType) {
+		this.type = queryType;
 	}
 	/**
 	 * @return the queryDescription
 	 */
-	public String getQueryDescription() {
-		return queryDescription;
+	public String getDescription() {
+		return description;
 	}
 	/**
 	 * @param queryDescription the queryDescription to set
 	 */
-	public void setQueryDescription(String queryDescription) {
-		this.queryDescription = queryDescription;
+	public void setDescription(String queryDescription) {
+		this.description = queryDescription;
 	}
 	/**
 	 * @return the sparql
