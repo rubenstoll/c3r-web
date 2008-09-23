@@ -60,7 +60,7 @@ public class QueryResultsManager {
 //				System.out.println("index is at: " + hashIndex);
 				queryName = tmp.substring(hashIndex);
 //				System.out.println("+++ " + queryName);
-				q.setQueryName(queryName);
+				q.setName(queryName);
 			}
 			// check to see if the result is one of the selected queries 
 			// and if it is get the rest of the information and add it 
@@ -71,7 +71,7 @@ public class QueryResultsManager {
 					queryDescription = r.getStringValue("?queryDescription")
 							.trim();
 //					System.out.println("+++ " + queryDescription);
-					q.setQueryDescription(queryDescription);
+					q.setDescription(queryDescription);
 				}
 				if (r.isBound("?sparqlContent")) {
 					// remove leading and trailing spaces
@@ -81,7 +81,7 @@ public class QueryResultsManager {
 				}
 
 				finalQueries.put(queryName, q);
-				System.out.println("added query: " + queryName);
+				System.out.println("++++++ added query: " + queryName);
 				
 			}
 		}
