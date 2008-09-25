@@ -64,7 +64,7 @@ Selected Queries Query run results:<br />
 	<c:set var="queryErrors" value="${stl:validateQuery(pageContext, q)}" />
 	<c:choose>
 	<c:when test="${empty queryErrors}">
-		<stl:send-query query="${q}" engine="${checkingEngine}" /><br />
+		<stl:send-query query="${q}" engine="${checkingEngine}" /><br /><br />
 	</c:when>
 	<c:otherwise>${queryErrors}</c:otherwise>
 	</c:choose>
