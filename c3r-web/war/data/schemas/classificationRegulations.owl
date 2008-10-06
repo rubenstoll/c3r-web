@@ -1,0 +1,184 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns="http://www.owl-ontologies.com/Ontology1218712676.owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xml:base="http://www.owl-ontologies.com/Ontology1218712676.owl">
+  <owl:Ontology rdf:about=""/>
+  <owl:Class rdf:ID="Application_Rules_for_ATec">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Rules_Of_Application"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Rules_Of_Application">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Technical"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Written_Question">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Character_Information"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Code_Urbanisme">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Code"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="HOM">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Norm"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Certification_Of_Products">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Concerning_ProductsProceduresEquipment"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Character_Information">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Official"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Claculation_Rules_DTU">
+    <rdfs:subClassOf rdf:resource="#Rules_Of_Application"/>
+  </owl:Class>
+  <owl:Class rdf:ID="EXP">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Norm"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Reglementation_Acts">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Character_Obligations"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="CCS">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="DTU"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Application_Rules_for_DTA">
+    <rdfs:subClassOf rdf:resource="#Rules_Of_Application"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Technical">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="FrenchRegulation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="CGM">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#DTU"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Minicipal_Arrete">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Arrete"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ATec">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Concerning_ProductsProceduresEquipment"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Norm">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Concerning_ProductsProceduresEquipment"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Code_Marches_Publics">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Code"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="RE">
+    <rdfs:subClassOf rdf:resource="#Norm"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Norm-DTU">
+    <rdfs:subClassOf rdf:resource="#Rules_Of_Application"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Code_Civil">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Code"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Character_Obligations">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Official"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Code_Travail">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Code"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ENR">
+    <rdfs:subClassOf rdf:resource="#Norm"/>
+  </owl:Class>
+  <owl:Class rdf:ID="CCT">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#DTU"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ATEx">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Concerning_ProductsProceduresEquipment"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Code_Consommation">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Code"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Code">
+    <rdfs:subClassOf rdf:resource="#Character_Obligations"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Prefectoral_Arrete">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Arrete"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Arrete">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Decret"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Reglementation_Acts"/>
+  </owl:Class>
+  <owl:Class rdf:about="#DTU">
+    <rdfs:subClassOf rdf:resource="#Rules_Of_Application"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Concerning_ProductsProceduresEquipment">
+    <rdfs:subClassOf rdf:resource="#Technical"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Decret">
+    <rdfs:subClassOf rdf:resource="#Reglementation_Acts"/>
+  </owl:Class>
+  <owl:Class rdf:ID="DTA">
+    <rdfs:subClassOf rdf:resource="#Concerning_ProductsProceduresEquipment"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Official">
+    <rdfs:subClassOf rdf:resource="#FrenchRegulation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Circulaire">
+    <rdfs:subClassOf rdf:resource="#Character_Information"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Code_Construction_Habitation">
+    <rdfs:subClassOf rdf:resource="#Code"/>
+  </owl:Class>
+  <owl:Class rdf:ID="FD">
+    <rdfs:subClassOf rdf:resource="#Norm"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Lois">
+    <rdfs:subClassOf rdf:resource="#Character_Obligations"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Professional_Recommendation">
+    <rdfs:subClassOf rdf:resource="#Rules_Of_Application"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Code_Sante_Publique">
+    <rdfs:subClassOf rdf:resource="#Code"/>
+  </owl:Class>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.3.1, Build 430)  http://protege.stanford.edu -->

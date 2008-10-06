@@ -1566,9 +1566,6 @@ The occurrences of the IfcDuctSilencerType are represented by instances of IfcFl
   <owl:Class rdf:ID="CheminementAccessible">
     <rdfs:subClassOf rdf:resource="#Cheminement"/>
   </owl:Class>
-  <owl:Class rdf:ID="EspaceSecurise">
-    <rdfs:subClassOf rdf:resource="#Espace"/>
-  </owl:Class>
   <owl:Class rdf:ID="IfcRelCoversBldgElements">
     <rdfs:subClassOf>
       <owl:Class rdf:about="#IfcRelConnects"/>
@@ -1585,6 +1582,9 @@ The occurrences of the IfcDuctSilencerType are represented by instances of IfcFl
     </rdfs:subClassOf>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Objectified relationship between an element and one to many coverings, which do cover the building element.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="EspaceSecurise">
+    <rdfs:subClassOf rdf:resource="#Espace"/>
   </owl:Class>
   <owl:Class rdf:ID="IfcDimensionCurveTerminator">
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
@@ -3897,9 +3897,9 @@ The IfcAnnotationFillAreaOccurrence determines how an IfcFillAreaStyle, and in p
   <owl:Class rdf:ID="IfcReinforcingMesh">
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:allValuesFrom rdf:resource="http://www.iai-tech.org/ifcXML/IFC2x3/FINAL#IfcAreaMeasure"/>
+        <owl:allValuesFrom rdf:resource="http://www.iai-tech.org/ifcXML/IFC2x3/FINAL#IfcPositiveLengthMeasure"/>
         <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="transverseBarCrossSectionArea"/>
+          <owl:ObjectProperty rdf:ID="transverseBarSpacing"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -3933,7 +3933,7 @@ The IfcAnnotationFillAreaOccurrence determines how an IfcFillAreaStyle, and in p
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="transverseBarNominalDiameter"/>
+          <owl:ObjectProperty rdf:ID="longitudinalBarNominalDiameter"/>
         </owl:onProperty>
         <owl:allValuesFrom rdf:resource="http://www.iai-tech.org/ifcXML/IFC2x3/FINAL#IfcPositiveLengthMeasure"/>
       </owl:Restriction>
@@ -3949,16 +3949,16 @@ The IfcAnnotationFillAreaOccurrence determines how an IfcFillAreaStyle, and in p
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="transverseBarSpacing"/>
+          <owl:ObjectProperty rdf:ID="transverseBarCrossSectionArea"/>
         </owl:onProperty>
-        <owl:allValuesFrom rdf:resource="http://www.iai-tech.org/ifcXML/IFC2x3/FINAL#IfcPositiveLengthMeasure"/>
+        <owl:allValuesFrom rdf:resource="http://www.iai-tech.org/ifcXML/IFC2x3/FINAL#IfcAreaMeasure"/>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:allValuesFrom rdf:resource="http://www.iai-tech.org/ifcXML/IFC2x3/FINAL#IfcPositiveLengthMeasure"/>
         <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="longitudinalBarNominalDiameter"/>
+          <owl:ObjectProperty rdf:ID="transverseBarNominalDiameter"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -5278,7 +5278,7 @@ NOTE The definition of this class relates to the STEP entity geometric_represent
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:onProperty>
-          <owl:InverseFunctionalProperty rdf:ID="connectedFrom"/>
+          <owl:InverseFunctionalProperty rdf:ID="connectedTo"/>
         </owl:onProperty>
         <owl:allValuesFrom rdf:resource="#IfcRelConnectsElements"/>
       </owl:Restriction>
@@ -5294,33 +5294,35 @@ EXAMPLEs for element assembly are complete Roof Structures, made by several Roof
 Elements that performs the same function may be grouped by an "Element Group By Function". It is realized by an instance of IfcGroup with the ObjectType = 'ElementGroupByFunction".</rdfs:comment>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:allValuesFrom rdf:resource="http://www.iai-tech.org/ifcXML/IFC2x3/FINAL#IfcIdentifier"/>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#IfcRelSpaceBoundary"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:InverseFunctionalProperty rdf:ID="providesBoundaries"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#IfcRelVoidsElement"/>
+        <owl:onProperty>
+          <owl:InverseFunctionalProperty rdf:ID="hasOpenings"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
         <owl:onProperty>
           <owl:ObjectProperty rdf:ID="tag"/>
         </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="http://www.iai-tech.org/ifcXML/IFC2x3/FINAL#IfcIdentifier"/>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:allValuesFrom rdf:resource="#IfcRelCoversBldgElements"/>
+        <owl:allValuesFrom rdf:resource="#IfcRelReferencedInSpatialStructure"/>
         <owl:onProperty>
-          <owl:InverseFunctionalProperty rdf:ID="hasCoverings"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="containedInStructure"/>
-        </owl:onProperty>
-        <owl:allValuesFrom rdf:resource="#IfcRelContainedInSpatialStructure"/>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:allValuesFrom rdf:resource="#IfcRelConnectsWithRealizingElements"/>
-        <owl:onProperty>
-          <owl:InverseFunctionalProperty rdf:ID="isConnectionRealization"/>
+          <owl:InverseFunctionalProperty rdf:ID="referencedInStructures"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -5338,27 +5340,25 @@ Elements that performs the same function may be grouped by an "Element Group By 
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:onProperty>
-          <owl:InverseFunctionalProperty rdf:ID="fillsVoids"/>
+          <owl:ObjectProperty rdf:ID="containedInStructure"/>
         </owl:onProperty>
-        <owl:allValuesFrom>
-          <owl:Class rdf:about="#IfcRelFillsElement"/>
-        </owl:allValuesFrom>
+        <owl:allValuesFrom rdf:resource="#IfcRelContainedInSpatialStructure"/>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:allValuesFrom rdf:resource="#IfcRelConnectsElements"/>
+        <owl:allValuesFrom rdf:resource="#IfcRelCoversBldgElements"/>
         <owl:onProperty>
-          <owl:InverseFunctionalProperty rdf:ID="connectedTo"/>
+          <owl:InverseFunctionalProperty rdf:ID="hasCoverings"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:onProperty>
-          <owl:InverseFunctionalProperty rdf:ID="referencedInStructures"/>
+          <owl:InverseFunctionalProperty rdf:ID="hasPorts"/>
         </owl:onProperty>
-        <owl:allValuesFrom rdf:resource="#IfcRelReferencedInSpatialStructure"/>
+        <owl:allValuesFrom rdf:resource="#IfcRelConnectsPortToElement"/>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
@@ -5374,27 +5374,27 @@ Elements that performs the same function may be grouped by an "Element Group By 
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:onProperty>
-          <owl:InverseFunctionalProperty rdf:ID="hasOpenings"/>
+          <owl:InverseFunctionalProperty rdf:ID="connectedFrom"/>
         </owl:onProperty>
-        <owl:allValuesFrom rdf:resource="#IfcRelVoidsElement"/>
+        <owl:allValuesFrom rdf:resource="#IfcRelConnectsElements"/>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:allValuesFrom>
-          <owl:Class rdf:about="#IfcRelSpaceBoundary"/>
+          <owl:Class rdf:about="#IfcRelFillsElement"/>
         </owl:allValuesFrom>
         <owl:onProperty>
-          <owl:InverseFunctionalProperty rdf:ID="providesBoundaries"/>
+          <owl:InverseFunctionalProperty rdf:ID="fillsVoids"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:onProperty>
-          <owl:InverseFunctionalProperty rdf:ID="hasPorts"/>
+          <owl:InverseFunctionalProperty rdf:ID="isConnectionRealization"/>
         </owl:onProperty>
-        <owl:allValuesFrom rdf:resource="#IfcRelConnectsPortToElement"/>
+        <owl:allValuesFrom rdf:resource="#IfcRelConnectsWithRealizingElements"/>
       </owl:Restriction>
     </rdfs:subClassOf>
   </owl:Class>
@@ -5937,26 +5937,26 @@ The group collection is handled by an instance of IfcRelAssignsToGroup, which as
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:allValuesFrom rdf:resource="http://www.iai-tech.org/ifcXML/IFC2x3/FINAL#IfcPositiveLengthMeasure"/>
+        <owl:allValuesFrom rdf:resource="http://www.iai-tech.org/ifcXML/IFC2x3/FINAL#IfcAreaMeasure"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="crossSectionAreaIfcTendon"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
         <owl:onProperty>
           <owl:ObjectProperty rdf:ID="nominalDiameterIfcTendon"/>
         </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:allValuesFrom rdf:resource="http://www.iai-tech.org/ifcXML/IFC2x3/FINAL#IfcTendonTypeEnum"/>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="predefinedTypeIfcTendon"/>
-        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="http://www.iai-tech.org/ifcXML/IFC2x3/FINAL#IfcPositiveLengthMeasure"/>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="frictionCoefficient"/>
+          <owl:ObjectProperty rdf:ID="preStress"/>
         </owl:onProperty>
-        <owl:allValuesFrom rdf:resource="http://www.iai-tech.org/ifcXML/IFC2x3/FINAL#IfcNormalisedRatioMeasure"/>
+        <owl:allValuesFrom rdf:resource="http://www.iai-tech.org/ifcXML/IFC2x3/FINAL#IfcPressureMeasure"/>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
@@ -5972,26 +5972,26 @@ The group collection is handled by an instance of IfcRelAssignsToGroup, which as
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="crossSectionAreaIfcTendon"/>
+          <owl:ObjectProperty rdf:ID="predefinedTypeIfcTendon"/>
         </owl:onProperty>
-        <owl:allValuesFrom rdf:resource="http://www.iai-tech.org/ifcXML/IFC2x3/FINAL#IfcAreaMeasure"/>
+        <owl:allValuesFrom rdf:resource="http://www.iai-tech.org/ifcXML/IFC2x3/FINAL#IfcTendonTypeEnum"/>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="anchorageSlip"/>
+          <owl:ObjectProperty rdf:ID="frictionCoefficient"/>
         </owl:onProperty>
-        <owl:allValuesFrom rdf:resource="http://www.iai-tech.org/ifcXML/IFC2x3/FINAL#IfcPositiveLengthMeasure"/>
+        <owl:allValuesFrom rdf:resource="http://www.iai-tech.org/ifcXML/IFC2x3/FINAL#IfcNormalisedRatioMeasure"/>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf rdf:resource="#IfcReinforcingElement"/>
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="preStress"/>
+          <owl:ObjectProperty rdf:ID="anchorageSlip"/>
         </owl:onProperty>
-        <owl:allValuesFrom rdf:resource="http://www.iai-tech.org/ifcXML/IFC2x3/FINAL#IfcPressureMeasure"/>
+        <owl:allValuesFrom rdf:resource="http://www.iai-tech.org/ifcXML/IFC2x3/FINAL#IfcPositiveLengthMeasure"/>
       </owl:Restriction>
     </rdfs:subClassOf>
   </owl:Class>
@@ -6089,6 +6089,11 @@ NOTE Corresponding STEP name: named_unit, please refer to ISO/IS 10303-41:1994 f
   <owl:Class rdf:about="#AscenseurPraticable">
     <rdfs:subClassOf rdf:resource="#Ascenseur"/>
     <rdfs:subClassOf rdf:resource="#AppareilElevateurUsagePermanent"/>
+  </owl:Class>
+  <owl:Class rdf:ID="LieuxTravailPlus20Personnes">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="LieuxTravail"/>
+    </rdfs:subClassOf>
   </owl:Class>
   <owl:Class rdf:ID="IfcFurnitureStandard">
     <rdfs:subClassOf>
@@ -6939,6 +6944,17 @@ Informal propositions:
 (1) The surface shall not self-intersect 
 (2) The swept curve shall not be coincident with the axis line for any finite part of its legth.</rdfs:comment>
   </owl:Class>
+  <owl:Class rdf:ID="FunctionalityBuilding">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:oneOf rdf:parseType="Collection">
+          <FunctionalityBuilding rdf:ID="travail"/>
+          <FunctionalityBuilding rdf:ID="sport"/>
+        </owl:oneOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#SpecialTypes"/>
+  </owl:Class>
   <owl:Class rdf:ID="Douche">
     <rdfs:subClassOf rdf:resource="#Sanitaires"/>
   </owl:Class>
@@ -7256,17 +7272,9 @@ NOTE: The definition of this class relates to the STEP entity shape_aspect. Plea
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="hardeningModule"/>
-        </owl:onProperty>
-        <owl:allValuesFrom rdf:resource="http://www.iai-tech.org/ifcXML/IFC2x3/FINAL#IfcModulusOfElasticityMeasure"/>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:allValuesFrom rdf:resource="http://www.iai-tech.org/ifcXML/IFC2x3/FINAL#IfcPressureMeasure"/>
-        <owl:onProperty>
           <owl:ObjectProperty rdf:ID="ultimateStress"/>
         </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="http://www.iai-tech.org/ifcXML/IFC2x3/FINAL#IfcPressureMeasure"/>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
@@ -7274,6 +7282,14 @@ NOTE: The definition of this class relates to the STEP entity shape_aspect. Plea
         <owl:allValuesFrom rdf:resource="http://www.iai-tech.org/ifcXML/IFC2x3/FINAL#IfcPressureMeasure"/>
         <owl:onProperty>
           <owl:ObjectProperty rdf:ID="proportionalStress"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.iai-tech.org/ifcXML/IFC2x3/FINAL#IfcModulusOfElasticityMeasure"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hardeningModule"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -7516,6 +7532,9 @@ NOTE Corresponding STEP entity: edge. Please refer to ISO/IS 10303-42:1994, p. 1
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#LieuxTravail">
+    <rdfs:subClassOf rdf:resource="#EtablissementRecevantDuPublicAssis"/>
   </owl:Class>
   <owl:Class rdf:ID="IfcGeometricCurveSet">
     <rdfs:subClassOf rdf:resource="#IfcGeometricSet"/>
@@ -8566,10 +8585,10 @@ NOTE  The IfcTextLiteralWithExtent is an entity that had been adopted from ISO 1
 NOTE  Corresponding STEP name: text_literal_with_extent. Please refer to ISO/IS 10303-46:1994 for the final definition of the formal standard.</rdfs:comment>
   </owl:Class>
   <owl:Class rdf:about="#IfcRelDefinesByType">
-    <rdfs:subClassOf rdf:resource="#IfcRelDefines"/>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >This objectified relationship (IfcRelDefinesByType) defines the relationships between an object type and objects.
 The IfcRelDefinesByType is a 1-to-N relationship, as it allows for the assignment of one type information to a single or to many objects. Those objects then share the same object type.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#IfcRelDefines"/>
   </owl:Class>
   <owl:Class rdf:ID="IfcHygroscopicMaterialProperties">
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
@@ -9797,11 +9816,11 @@ NOTE  In case of a 3D placement by IfcAxisPlacement3D the IfcPlanarBox is define
     <rdfs:range rdf:resource="http://www.iai-tech.org/ifcXML/IFC2x3/FINAL#IfcLengthMeasure"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="#nominalDiameterIfcTendon">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >The nominal diameter defining the cross-section size of the tendon.</rdfs:comment>
     <rdfs:subPropertyOf>
       <owl:ObjectProperty rdf:ID="nominalDiameter"/>
     </rdfs:subPropertyOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The nominal diameter defining the cross-section size of the tendon.</rdfs:comment>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="#subsequentAppliedLoads">
     <rdfs:range rdf:resource="#IfcStructuralLoad"/>
@@ -10229,6 +10248,9 @@ Default Value: FALSE</rdfs:comment>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >The vapor permeability relationship of air/material (typically value &gt; 1), measured in low relative humidity (typically in 0/50 % RH).</rdfs:comment>
   </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="functionalityEtablissement">
+    <rdfs:domain rdf:resource="#Etablissement"/>
+  </owl:ObjectProperty>
   <owl:ObjectProperty rdf:ID="relatingSpace">
     <rdfs:domain rdf:resource="#IfcRelSpaceBoundary"/>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
@@ -10419,10 +10441,10 @@ Default Value: FALSE</rdfs:comment>
     >Carbon Dioxide (CO2) content of the products of combustion. This is measured in weight of CO2 per unit weight and is therefore unitless.</rdfs:comment>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="#transverseBarSpacing">
+    <rdfs:range rdf:resource="http://www.iai-tech.org/ifcXML/IFC2x3/FINAL#IfcPositiveLengthMeasure"/>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >The spacing between the transverse bars. Note: an even distribution of bars is presumed; other cases are handled by Psets.</rdfs:comment>
     <rdfs:domain rdf:resource="#IfcReinforcingMesh"/>
-    <rdfs:range rdf:resource="http://www.iai-tech.org/ifcXML/IFC2x3/FINAL#IfcPositiveLengthMeasure"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="#innerRadius">
     <rdfs:domain rdf:resource="#IfcSweptDiskSolid"/>
@@ -10659,8 +10681,8 @@ Latitudes are measured relative to the equator, north of the equator by positive
     <rdfs:domain rdf:resource="#IfcMaterial"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="#frictionCoefficient">
-    <rdfs:range rdf:resource="http://www.iai-tech.org/ifcXML/IFC2x3/FINAL#IfcNormalisedRatioMeasure"/>
     <rdfs:domain rdf:resource="#IfcTendon"/>
+    <rdfs:range rdf:resource="http://www.iai-tech.org/ifcXML/IFC2x3/FINAL#IfcNormalisedRatioMeasure"/>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >The friction coefficient for the bond between the tendon and the surrounding concrete.</rdfs:comment>
   </owl:ObjectProperty>
@@ -11131,12 +11153,12 @@ Definition from VRML97 - ISO/IEC 14772-1:1997: The color field specifies the spe
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="#predefinedTypeIfcTendon">
     <rdfs:domain rdf:resource="#IfcTendon"/>
-    <rdfs:subPropertyOf>
-      <owl:ObjectProperty rdf:about="#predefinedType"/>
-    </rdfs:subPropertyOf>
     <rdfs:range rdf:resource="http://www.iai-tech.org/ifcXML/IFC2x3/FINAL#IfcTendonTypeEnum"/>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Predefined generic types for a tendon.</rdfs:comment>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#predefinedType"/>
+    </rdfs:subPropertyOf>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:ID="intent">
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
@@ -11645,9 +11667,9 @@ Default Value: FALSE</rdfs:comment>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="#anchorageSlip">
     <rdfs:range rdf:resource="http://www.iai-tech.org/ifcXML/IFC2x3/FINAL#IfcPositiveLengthMeasure"/>
-    <rdfs:domain rdf:resource="#IfcTendon"/>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >The deformation of an anchor or slippage of tendons when the prestressing device is released.</rdfs:comment>
+    <rdfs:domain rdf:resource="#IfcTendon"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:ID="treeRootExpression">
     <rdfs:domain rdf:resource="#IfcCsgSolid"/>
@@ -11761,6 +11783,12 @@ NOTE: Consider a complex property for glazing properties. The Name attribute of 
       <owl:ObjectProperty rdf:about="#usageName"/>
     </rdfs:subPropertyOf>
     <rdfs:range rdf:resource="http://www.iai-tech.org/ifcXML/IFC2x3/FINAL#IfcIdentifier"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="effectifEtablissement">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >added
+shows the capacity of the building</rdfs:comment>
+    <rdfs:domain rdf:resource="#Etablissement"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="#edgeStart">
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
@@ -11897,9 +11925,9 @@ NOTE: Consider a complex property for glazing properties. The Name attribute of 
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="#preStress">
     <rdfs:range rdf:resource="http://www.iai-tech.org/ifcXML/IFC2x3/FINAL#IfcPressureMeasure"/>
+    <rdfs:domain rdf:resource="#IfcTendon"/>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >The prestress to be applied on the tendon.</rdfs:comment>
-    <rdfs:domain rdf:resource="#IfcTendon"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="#predefinedTypeIfcRailing">
     <rdfs:domain rdf:resource="#IfcRailing"/>
@@ -12300,10 +12328,10 @@ EXAMPLE: Would be FALSE for a center line, identified as shape aspect; would be 
     <rdfs:range rdf:resource="#IfcBoolean"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="#ultimateStress">
-    <rdfs:domain rdf:resource="#IfcMechanicalSteelMaterialProperties"/>
     <rdfs:range rdf:resource="http://www.iai-tech.org/ifcXML/IFC2x3/FINAL#IfcPressureMeasure"/>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >A measure of the ultimate stress of the material.</rdfs:comment>
+    <rdfs:domain rdf:resource="#IfcMechanicalSteelMaterialProperties"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="#predefinedType">
     <rdfs:domain rdf:resource="#IfcBuildingElement"/>
@@ -12407,18 +12435,18 @@ to show if an element has Signalisation</rdfs:comment>
     </rdfs:range>
     <rdfs:domain rdf:resource="#IfcTextLiteral"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:ID="faceSurface">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >The surface which defines the internal shape of the face. This surface may be unbounded. The domain of the face is defined by this surface and the bounding loops in the inherited attribute SELF\FaceBounds.</rdfs:comment>
-    <rdfs:domain rdf:resource="#IfcFaceSurface"/>
-    <rdfs:range rdf:resource="#IfcSurface"/>
-  </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="#unitIfcPropertyListValue">
     <rdfs:range rdf:resource="#IfcUnit"/>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Unit for the list values, if not given, the default value for the measure type (given by the TYPE of nominal value) is used as defined by the global unit assignment at IfcProject.</rdfs:comment>
     <rdfs:subPropertyOf rdf:resource="#unit"/>
     <rdfs:domain rdf:resource="#IfcPropertyListValue"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="faceSurface">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The surface which defines the internal shape of the face. This surface may be unbounded. The domain of the face is defined by this surface and the bounding loops in the inherited attribute SELF\FaceBounds.</rdfs:comment>
+    <rdfs:domain rdf:resource="#IfcFaceSurface"/>
+    <rdfs:range rdf:resource="#IfcSurface"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="#axis">
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
@@ -13096,10 +13124,10 @@ If not given, the start point of the curve style font pattern is at the (virtual
     </rdfs:subPropertyOf>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="#hardeningModule">
+    <rdfs:domain rdf:resource="#IfcMechanicalSteelMaterialProperties"/>
     <rdfs:range rdf:resource="http://www.iai-tech.org/ifcXML/IFC2x3/FINAL#IfcModulusOfElasticityMeasure"/>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >A measure of the hardening module of the material (slope of stress versus strain curve after yield range).</rdfs:comment>
-    <rdfs:domain rdf:resource="#IfcMechanicalSteelMaterialProperties"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:ID="impuritiesContent">
     <rdfs:domain rdf:resource="#IfcWaterProperties"/>
@@ -13789,8 +13817,8 @@ pour distinguer "Ascenseur" et "AppareilEvelateur", par exemple</rdfs:comment>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="#predefinedTypeIfcElementAssembly">
     <rdfs:subPropertyOf rdf:resource="#predefinedType"/>
-    <rdfs:range rdf:resource="http://www.iai-tech.org/ifcXML/IFC2x3/FINAL#IfcElementAssemblyTypeEnum"/>
     <rdfs:domain rdf:resource="#IfcElementAssembly"/>
+    <rdfs:range rdf:resource="http://www.iai-tech.org/ifcXML/IFC2x3/FINAL#IfcElementAssemblyTypeEnum"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:ID="tiles">
     <rdfs:domain rdf:resource="#IfcFillAreaStyleTiles"/>
@@ -13914,11 +13942,11 @@ set to FALSE if the material layer is a solid material layer (the default).</rdf
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="#crossSectionAreaIfcTendon">
     <rdfs:domain rdf:resource="#IfcTendon"/>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >The effective cross-section area of the tendon.</rdfs:comment>
     <rdfs:subPropertyOf>
       <owl:ObjectProperty rdf:about="#crossSectionArea"/>
     </rdfs:subPropertyOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The effective cross-section area of the tendon.</rdfs:comment>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:ID="relatingPriorities">
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
@@ -14046,9 +14074,9 @@ set to FALSE if the material layer is a solid material layer (the default).</rdf
     >Datum elevation relative to sea level.</rdfs:comment>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="#tag">
+    <rdfs:domain rdf:resource="#IfcObjectDefinition"/>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >The tag (or label) identifier at the particular instance of a product, e.g. the serial number, or the position number. It is the identifier at the occurrence level.</rdfs:comment>
-    <rdfs:domain rdf:resource="#IfcObjectDefinition"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="#axis2">
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
@@ -14205,9 +14233,9 @@ Total planned area for the building storey. Used for programming the building.</
     <rdfs:subPropertyOf rdf:resource="#slope"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="#predefinedTypeIfcSlab">
+    <rdfs:subPropertyOf rdf:resource="#predefinedType"/>
     <rdfs:domain rdf:resource="#IfcSlab"/>
     <rdfs:range rdf:resource="http://www.iai-tech.org/ifcXML/IFC2x3/FINAL#IfcSlabTypeEnum"/>
-    <rdfs:subPropertyOf rdf:resource="#predefinedType"/>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Predefined generic types for a slab that are specified in an enumeration. There may be a property set given for the predefined types. 
 NOTE: The use of the predefined type directly at the occurrence object level of IfcSlab is only permitted, if no type object IfcSlabType is assigned.</rdfs:comment>
@@ -14323,8 +14351,8 @@ IFC2x Edition 3 CHANGE  The attribute ProfileOrientation is a new attribute</rdf
     <rdfs:range rdf:resource="http://www.iai-tech.org/ifcXML/IFC2x3/FINAL#IfcShapeAspect"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="#transverseBarNominalDiameter">
-    <rdfs:range rdf:resource="http://www.iai-tech.org/ifcXML/IFC2x3/FINAL#IfcPositiveLengthMeasure"/>
     <rdfs:domain rdf:resource="#IfcReinforcingMesh"/>
+    <rdfs:range rdf:resource="http://www.iai-tech.org/ifcXML/IFC2x3/FINAL#IfcPositiveLengthMeasure"/>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >The nominal diameter denoting the cross-section size of the transverse bars.</rdfs:comment>
   </owl:ObjectProperty>
@@ -14675,8 +14703,8 @@ Default Value: FALSE</rdfs:comment>
     <rdfs:domain rdf:resource="#IfcDimensionalExponents"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="#longitudinalBarNominalDiameter">
-    <rdfs:domain rdf:resource="#IfcReinforcingMesh"/>
     <rdfs:range rdf:resource="http://www.iai-tech.org/ifcXML/IFC2x3/FINAL#IfcPositiveLengthMeasure"/>
+    <rdfs:domain rdf:resource="#IfcReinforcingMesh"/>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >The nominal diameter denoting the cross-section size of the longitudinal bars.</rdfs:comment>
   </owl:ObjectProperty>
@@ -15080,10 +15108,10 @@ Element at which a projection is created by the associated IfcProjectionElement.
     <rdfs:domain rdf:resource="#IfcWaterProperties"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="#transverseBarCrossSectionArea">
-    <rdfs:range rdf:resource="http://www.iai-tech.org/ifcXML/IFC2x3/FINAL#IfcAreaMeasure"/>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >The effective cross-section area of the transverse bars of the mesh.</rdfs:comment>
     <rdfs:domain rdf:resource="#IfcReinforcingMesh"/>
+    <rdfs:range rdf:resource="http://www.iai-tech.org/ifcXML/IFC2x3/FINAL#IfcAreaMeasure"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:ID="relatedProcess">
     <rdfs:domain rdf:resource="#IfcRelSequence"/>
@@ -15172,6 +15200,13 @@ Element at which a projection is created by the associated IfcProjectionElement.
     <rdfs:domain rdf:resource="#IfcStructuralCurveMember"/>
     <rdfs:range rdf:resource="http://www.iai-tech.org/ifcXML/IFC2x3/FINAL#IfcStructuralCurveTypeEnum"/>
     <rdfs:subPropertyOf rdf:resource="#predefinedType"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="correspondsBuilding">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >added
+shows to which type of a building this parking is related</rdfs:comment>
+    <rdfs:range rdf:resource="#IfcBuilding"/>
+    <rdfs:domain rdf:resource="#ParcStationnement"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="#fireExit">
     <rdfs:domain>
@@ -15430,11 +15465,11 @@ Longitudes are measured relative to Greenwich as the prime meridian: longitudes 
     </rdfs:subPropertyOf>
   </owl:InverseFunctionalProperty>
   <owl:InverseFunctionalProperty rdf:about="#servicedBySystems">
-    <rdfs:domain rdf:resource="#IfcSpatialStructureElement"/>
     <rdfs:range rdf:resource="#IfcRelServicesBuildings"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="#IfcSpatialStructureElement"/>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Set of relationships to Systems, that provides a certain service to the Building. The relationship is handled by the objectified relationship IfcRelServicesBuildings.</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
   </owl:InverseFunctionalProperty>
   <owl:InverseFunctionalProperty rdf:about="#representationsInContext">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
@@ -15466,17 +15501,17 @@ NOTE  Implementation agreements can restrict the maximum number of layer assignm
     <rdfs:domain rdf:resource="#IfcRepresentationItem"/>
   </owl:InverseFunctionalProperty>
   <owl:InverseFunctionalProperty rdf:about="#connectedFrom">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
     <rdfs:range rdf:resource="#IfcRelConnects"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >added super</rdfs:comment>
   </owl:InverseFunctionalProperty>
   <owl:InverseFunctionalProperty rdf:about="#hasOpenings">
     <rdfs:range rdf:resource="#IfcRelVoidsElement"/>
-    <rdfs:domain rdf:resource="#IfcElement"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Reference to the Voids Relationship that creates an opening in an element. An element can incorporate zero-to-many openings.</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="#IfcElement"/>
   </owl:InverseFunctionalProperty>
   <owl:InverseFunctionalProperty rdf:ID="desservirEtage">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
@@ -15499,8 +15534,8 @@ NOTE  Implementation agreements can restrict the maximum number of layer assignm
     <rdfs:range rdf:resource="#IfcRelFillsElement"/>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Reference to the Fills Relationship that puts the Element into the Opening within another Element.</rdfs:comment>
-    <rdfs:domain rdf:resource="#IfcElement"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="#IfcElement"/>
   </owl:InverseFunctionalProperty>
   <owl:InverseFunctionalProperty rdf:ID="hasCoveringsIfcElement">
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
@@ -15553,10 +15588,10 @@ NOTE  Implementation agreements can restrict the maximum number of layer assignm
   </owl:InverseFunctionalProperty>
   <owl:InverseFunctionalProperty rdf:about="#hasPorts">
     <rdfs:range rdf:resource="#IfcRelConnectsPortToElement"/>
+    <rdfs:domain rdf:resource="#IfcElement"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Reference to the element to port connection relationship. The relationship then refers to the port which is contained in this element.</rdfs:comment>
-    <rdfs:domain rdf:resource="#IfcElement"/>
   </owl:InverseFunctionalProperty>
   <owl:InverseFunctionalProperty rdf:about="#hasAssignments">
     <rdfs:range rdf:resource="#IfcRelAssigns"/>
@@ -15609,12 +15644,12 @@ NOTE  Implementation agreements can restrict the maximum number of layer assignm
     <rdfs:range rdf:resource="#IfcRelFlowControlElements"/>
   </owl:InverseFunctionalProperty>
   <owl:InverseFunctionalProperty rdf:about="#referencedInStructures">
-    <rdfs:range rdf:resource="#IfcRelReferencedInSpatialStructure"/>
-    <rdfs:domain rdf:resource="#IfcElement"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:subPropertyOf rdf:resource="#objectPlacement"/>
+    <rdfs:domain rdf:resource="#IfcElement"/>
+    <rdfs:range rdf:resource="#IfcRelReferencedInSpatialStructure"/>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Reference relationship to the spatial structure element, to which the element is additionally associated.</rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="#objectPlacement"/>
   </owl:InverseFunctionalProperty>
   <owl:InverseFunctionalProperty rdf:about="#annotatedBySymbols">
     <rdfs:domain rdf:resource="#IfcDimensionCurve"/>
@@ -15790,9 +15825,9 @@ EXAMPLE  A curtain wall maybe contained in the ground floor, but maybe reference
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
   </owl:InverseFunctionalProperty>
   <owl:InverseFunctionalProperty rdf:about="#hasCoverings">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >.</rdfs:comment>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
   </owl:InverseFunctionalProperty>
   <owl:InverseFunctionalProperty rdf:about="#isDefinedBy">
     <rdfs:range rdf:resource="#IfcRelDefines"/>
@@ -15861,11 +15896,11 @@ EXAMPLE  A curtain wall maybe contained in the ground floor, but maybe reference
     >Reference to the IfcComplexProperty in which the IfcProperty is contained.</rdfs:comment>
   </owl:InverseFunctionalProperty>
   <owl:InverseFunctionalProperty rdf:about="#isConnectionRealization">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:domain rdf:resource="#IfcElement"/>
     <rdfs:range rdf:resource="#IfcRelConnectsWithRealizingElements"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Reference to the connection relationship with realizing element. The relationship then refers to the realizing element which provides the physical manifestation of the connection relationship.</rdfs:comment>
+    <rdfs:domain rdf:resource="#IfcElement"/>
   </owl:InverseFunctionalProperty>
   <owl:InverseFunctionalProperty rdf:about="#shapeOfProduct">
     <rdfs:range rdf:resource="#IfcProduct"/>
@@ -15888,9 +15923,9 @@ EXAMPLE  A curtain wall maybe contained in the ground floor, but maybe reference
   <IfcRelAssigns rdf:ID="IfcRelAssigns_1"/>
   <owl:DataRange>
     <owl:oneOf rdf:parseType="Resource">
-      <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
       <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
       >44.0</rdf:first>
+      <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
     </owl:oneOf>
   </owl:DataRange>
   <SymbolesAccessibilite rdf:ID="MotriciteReduite"/>

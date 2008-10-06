@@ -86,7 +86,7 @@ NOTE: all of this would be better if it was implemented in a formController
 			?queryName annoComplexe:extraitTypeLEG ?leg
 			FILTER (xsd:string(?leg) ~ '${selectedExtraitTypeLEG}')
 
-			?queryName annoComplexe:extraitTitre ?titre
+			?queryName annoComplexe:extraitTitreShort ?titre
 			FILTER (xsd:string(?titre) ~ '${selectedExtractedTitle}')
 
 			?queryName annoComplexe:domaineSimple ?domaine
