@@ -174,9 +174,15 @@
         <avoirInclinaison>32
         </avoirInclinaison>	
         <containsCorrespondingElement>
-            <PalierRepos rdf:type="PalierRepos">gsd</PalierRepos>
+            <PalierRepos rdf:ID="PalierRepos">
+                   <overallWidth>20</overallWidth>
+            </PalierRepos>
         </containsCorrespondingElement>
     </Pente>    
+    
+    <PalierRepos rdf:ID="PalierRepos20">
+        <overallWidth>20</overallWidth>
+    </PalierRepos>
     
     <PalierRepos rdf:ID="i174444">
         <overallWidth>32
@@ -312,7 +318,11 @@
         <effectifAdmisLocaux>150</effectifAdmisLocaux> 
     </Locaux>
     
-    <LocauxPoussette rdf:ID="i1455222864556"/>
+    <Locaux rdf:ID="iLocVelos">
+        <destinationLocaux>velos</destinationLocaux>	         
+    </Locaux>
+    
+    <LocauxPoussettes rdf:ID="iLocPoussettes"/>
     
     <IfcStairFlight rdf:ID="Escalier01">
         <numberOfRiser>5</numberOfRiser>
@@ -324,6 +334,30 @@
         <numberOfRiser>2</numberOfRiser>
         <riserHeight>5</riserHeight>
         <treadLength>50</treadLength>
+    </IfcStairFlight>
+    
+    <IfcStairFlight rdf:ID="EscStepHeightNonConform">
+        <numberOfRiser>2</numberOfRiser>
+        <riserHeight>55</riserHeight>
+        <treadLength>10</treadLength>
+    </IfcStairFlight>
+    
+    <IfcStairFlight rdf:ID="EscStepWidthNonConform">
+        <numberOfRiser>2</numberOfRiser>
+        <riserHeight>5</riserHeight>
+        <treadLength>2</treadLength>
+    </IfcStairFlight>
+    
+    <IfcStairFlight rdf:ID="EscStepStepNonConform">
+        <numberOfRiser>2</numberOfRiser>
+        <riserHeight>65</riserHeight>
+        <treadLength>2</treadLength>
+    </IfcStairFlight>
+    
+    <IfcStairFlight rdf:ID="EscStepStepConform">
+        <numberOfRiser>2</numberOfRiser>
+        <riserHeight>5</riserHeight>
+        <treadLength>45</treadLength>
     </IfcStairFlight>
     
     <IfcStairFlight rdf:ID="Escalier03">
@@ -478,11 +512,11 @@
     </IfcBuildingStorey>
     
     <IfcStair rdf:ID="iStairOKshape">
-        <shapeType rdf:ID="iStairShape">StraightRunStair</shapeType>
+        <shapeType rdf:ID="iStairShape" rdf:datatype="#IfcStairTypeEnum">StraightRunStair</shapeType>
     </IfcStair>
     
     <IfcStair rdf:ID="iStairNotOKshape">
-        <shapeType rdf:ID="iStairShape">dfikmlkmflmùswfm</shapeType>
+        <shapeType rdf:ID="iStairShape2" rdf:datatype="#IfcStairTypeEnum">dfikmlkmflmùswfm</shapeType>
     </IfcStair>
     
     <IfcTransportElement rdf:ID="iTransportElement01"/>
@@ -606,6 +640,22 @@
         </relatedBuildingElement>
     </IfcRelFillsElement>
     
+    <IfcRelFillsElement rdf:ID="i44RelFillsElement">
+        <GlobalId>1mATH2hlL1Tu9maMAt_$hB</GlobalId>
+        <OwnerHistory>
+            <IfcOwnerHistory xsi:nil="true" ref="i1516"/>
+        </OwnerHistory>
+        <relatingOpeningElement>
+            <Ascenseur xsi:nil="true" rdf:ID="iAscenseurAA"/>
+        </relatingOpeningElement>
+        <relatedBuildingElement>
+            <IfcDoor xsi:nil="true" rdf:ID="iDoorAscAuto">
+                <overallWidth>160</overallWidth>
+                <automaticIfcDoor>true</automaticIfcDoor>
+            </IfcDoor>
+        </relatedBuildingElement>
+    </IfcRelFillsElement>
+    
     <IfcRelSpaceBoundary rdf:ID="i44RelSpaceBoundary">
         <GlobalId>0K9leQH5H4KevCicnPuOYm</GlobalId>
         <OwnerHistory>
@@ -708,12 +758,12 @@
             <IfcOwnerHistory xsi:nil="true" ref="i1516"/>
         </OwnerHistory>
         <Name>IFC2x_SnglDoorSnglSwing</Name>
-        <RelatedObjects ex:cType="set">
+        <relatedObjects ex:cType="set">
             <IfcDoor ex:pos="0" xsi:nil="true" ref="i28728"/>
-        </RelatedObjects>
-        <RelatingType>
+        </relatedObjects>
+        <relatingType>
             <IfcDoorStyle xsi:nil="true" ref="i28754"/>
-        </RelatingType>
+        </relatingType>
     </IfcRelDefinesByType>
     
     <IfcDoor id="i28728">
@@ -739,10 +789,653 @@
             <IfcDoorLiningProperties ex:pos="0" xsi:nil="true" ref="i28746"/>
             <IfcDoorPanelProperties ex:pos="1" xsi:nil="true" ref="i28750"/>
         </HasPropertySets>
-        <OperationType>single_swing_left</OperationType>
+        <operationType>single_swing_left</operationType>
         <ConstructionType>notdefined</ConstructionType>
         <ParameterTakesPrecedence>true</ParameterTakesPrecedence>
         <Sizeable>false</Sizeable>
     </IfcDoorStyle>
+    
+    <IfcRelDefinesByType  rdf:ID="i1737">
+        <GlobalId>1hDrZALuj6JgLPlLgTx_Dw</GlobalId>
+        <OwnerHistory>
+            <IfcOwnerHistory xsi:nil="true" rdf:ID="i1516"/>
+        </OwnerHistory>
+        <Name>IFC2x_SnglDoorSnglSwing</Name>
+        <relatedObjects>
+            <IfcDoor ex:pos="0" xsi:nil="true"  rdf:ID="i1707"/>
+        </relatedObjects>
+        <relatingType>
+            <IfcDoorStyle xsi:nil="true"  rdf:ID="i1733"/>
+        </relatingType>
+    </IfcRelDefinesByType>
+    
+    <IfcDoorStyle  rdf:ID="i1733">
+        <GlobalId>1qLNevhi11z9eove47vxY7</GlobalId>
+        <OwnerHistory>
+            <IfcOwnerHistory xsi:nil="true"  rdf:ID="i1516"/>
+        </OwnerHistory>
+        <Name>IFC2x_SnglDoorSnglSwing</Name>
+        <HasPropertySets ex:cType="list">
+            <IfcDoorLiningProperties ex:pos="0" xsi:nil="true" ref="i1725"/>
+            <IfcDoorPanelProperties ex:pos="1" xsi:nil="true" ref="i1729"/>
+        </HasPropertySets>
+        <operationType>DOUBLE_DOOR_SINGLE_SWING_OPPOSITE_LEFT</operationType>
+        <ConstructionType>notdefined</ConstructionType>
+        <ParameterTakesPrecedence>true</ParameterTakesPrecedence>
+        <Sizeable>false</Sizeable>
+    </IfcDoorStyle>
+    
+    <IfcRelContainedInSpatialStructure rdf:ID="i4569888">
+        <GlobalId>3MvJ2i4hD7JPAOJR7ntQGM</GlobalId>
+        <OwnerHistory>
+            <IfcOwnerHistory xsi:nil="true" ref="i1516"/>
+        </OwnerHistory>
+        <Name>BuildingStoreyContainer</Name>
+        <Description>BuildingStoreyContainer for Building Elements</Description>
+        <relatedElements>
+            <Ascenseur rdf:ID="iAnotherLift"/>
+        </relatedElements>
+        <relatedElements>
+            <EscalierMecanique ex:pos="1" xsi:nil="true" rdf:ID="iEscMec"/>
+        </relatedElements>
+        <relatedElements>
+            <PlanInclineMecanique ex:pos="2" xsi:nil="true" rdf:ID="iPlanIncline"/>
+        </relatedElements>
+        <relatedElements>  
+            <TapisRoulant ex:pos="3" xsi:nil="true" ref="iTapis"/>
+            <IfcWallStandardCase ex:pos="4" xsi:nil="true" ref="i15653"/>
+            <IfcWindow ex:pos="5" xsi:nil="true" ref="i16373"/>
+            <IfcWallStandardCase ex:pos="6" xsi:nil="true" ref="i16794"/>
+            <IfcDoor ex:pos="7" xsi:nil="true" ref="i37487"/>
+            <IfcWallStandardCase ex:pos="8" xsi:nil="true" ref="i38922"/>
+            <IfcWallStandardCase ex:pos="9" xsi:nil="true" ref="i39124"/>
+
+            <IfcStair ex:pos="11" xsi:nil="true" ref="i43782"/>
+            <IfcSlab ex:pos="12" xsi:nil="true" ref="i44623"/>
+            <IfcSlab ex:pos="13" xsi:nil="true" ref="i44893"/>
+        </relatedElements>
+        <relatingStructure>
+            <IfcBuildingStorey xsi:nil="true" rdf:ID="i1512"/>
+        </relatingStructure>
+    </IfcRelContainedInSpatialStructure>
+    
+    <IfcSpace rdf:ID="i45101">
+        <GlobalId>2Gw8c1AG5CiBJdiHmY8pAm</GlobalId>
+        <OwnerHistory>
+            <IfcOwnerHistory xsi:nil="true" ref="i1516"/>
+        </OwnerHistory>
+        <Name>1</Name>
+        <ObjectPlacement>
+            <IfcLocalPlacement xsi:nil="true" ref="i45099"/>
+        </ObjectPlacement>
+        <Representation>
+            <IfcProductDefinitionShape xsi:nil="true" ref="i45093"/>
+        </Representation>
+        <LongName>Espace Ahmed</LongName>
+        <CompositionType>element</CompositionType>
+        <interiorOrExteriorSpace>internal</interiorOrExteriorSpace>
+    </IfcSpace>
+    
+    <IfcRelSpaceBoundary rdf:ID="i50641">
+        <GlobalId>3csTaBSpjD$BuU$O4xrryP</GlobalId>
+        <OwnerHistory>
+            <IfcOwnerHistory xsi:nil="true" ref="i1516"/>
+        </OwnerHistory>
+        <Name>Second Level</Name>
+        <relatingSpace>
+            <IfcSpace xsi:nil="true" rdf:ID="i45101"/>
+        </relatingSpace>
+        <relatedBuildingElement>
+            <IfcDoor xsi:nil="true" rdf:ID="i14144"/>
+        </relatedBuildingElement>
+        <ConnectionGeometry>
+            <IfcConnectionSurfaceGeometry xsi:nil="true" ref="i50640"/>
+        </ConnectionGeometry>
+        <PhysicalOrVirtualBoundary>physical</PhysicalOrVirtualBoundary>
+        <InternalOrExternalBoundary>external</InternalOrExternalBoundary>
+    </IfcRelSpaceBoundary>
+    
+   
+    <IfcOpeningElement rdf:ID="i4148">
+        <GlobalId>1l1oZx6hX0_fVf6b2yD9Hz</GlobalId>
+        <OwnerHistory>
+            <IfcOwnerHistory xsi:nil="true" ref="i1516"/>
+        </OwnerHistory>
+        <ObjectPlacement>
+            <IfcLocalPlacement xsi:nil="true" ref="i4146"/>
+        </ObjectPlacement>
+        <Representation>
+            <IfcProductDefinitionShape xsi:nil="true" ref="i4140"/>
+        </Representation>
+    </IfcOpeningElement>
+    
+    <IfcRelFillsElement rdf:ID="i4190">
+        <GlobalId>3iUuGFrIXE_hynoVHcwpHr</GlobalId>
+        <OwnerHistory>
+            <IfcOwnerHistory xsi:nil="true" ref="i1516"/>
+        </OwnerHistory>
+        <relatingOpeningElement>
+            <IfcOpeningElement xsi:nil="true" rdf:ID="i4148"/>
+        </relatingOpeningElement>
+        <relatedBuildingElement>
+            <IfcDoor xsi:nil="true" rdf:ID="i4173"/>
+        </relatedBuildingElement>
+    </IfcRelFillsElement>
+    
+    <IfcRelSpaceBoundary rdf:ID="i50344">
+        <GlobalId>2raqmap2T8neQKBSIyQhW5</GlobalId>
+        <OwnerHistory>
+            <IfcOwnerHistory xsi:nil="true" ref="i1516"/>
+        </OwnerHistory>
+        <Name>Second Level</Name>
+        <relatingSpace>
+            <IfcSpace xsi:nil="true" rdf:ID="i49874"/>
+        </relatingSpace>
+        <relatedBuildingElement>
+            <IfcOpeningElement xsi:nil="true" rdf:ID="i4148">
+                
+            </IfcOpeningElement>
+        </relatedBuildingElement>
+        <ConnectionGeometry>
+            <IfcConnectionSurfaceGeometry xsi:nil="true" ref="i50295"/>
+        </ConnectionGeometry>
+        <PhysicalOrVirtualBoundary>virtual</PhysicalOrVirtualBoundary>
+        <InternalOrExternalBoundary>internal</InternalOrExternalBoundary>
+    </IfcRelSpaceBoundary>
+    
+    <IfcBuilding rdf:ID="iBuilding">
+        <capaciteStationnement rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">150</capaciteStationnement>
+    </IfcBuilding>
+    
+    <PoigneePorte rdf:ID="iPoigneeR">
+        <isReperable>true</isReperable>
+    </PoigneePorte>
+    
+    <PoigneePorte rdf:ID="iPoigneeRP">
+        <isReperable>true</isReperable>
+        <isPrehensible>true</isPrehensible>
+    </PoigneePorte>
+    
+    <PoigneePorte rdf:ID="iPoigneeNoInfo"/>
+
+    <IfcRelAggregates rdf:ID="i52505">
+        <GlobalId>1lkDnbpr58ZwQjjWUrgl$P</GlobalId>
+        <OwnerHistory>
+            <IfcOwnerHistory xsi:nil="true" rdf:ID="i1516"/>
+        </OwnerHistory>
+        <Name>BuildingContainer</Name>
+        <Description>BuildingContainer for BuildigStories</Description>
+        <relatingObject>
+            <IfcBuilding xsi:nil="true" rdf:ID="iOurBuilding"/>
+        </relatingObject>
+        <relatedObjects>
+            <IfcBuildingStorey rdf:ID="iRDC"/>            
+        </relatedObjects>
+    </IfcRelAggregates>
+    
+    <IfcRelContainedInSpatialStructure rdf:ID="i45698">
+        <GlobalId>3MvJ2i4hD7JPAOJR7ntQGM</GlobalId>
+        <OwnerHistory>
+            <IfcOwnerHistory xsi:nil="true" rdf:ID="i1516"/>
+        </OwnerHistory>
+        <Name>BuildingStoreyContainer</Name>
+        <Description>BuildingStoreyContainer for Building Elements</Description>
+        <relatedElements>
+            <HallEntree rdf:ID="iHallEntree"/>
+        </relatedElements>
+        <relatingStructure>
+            <IfcBuildingStorey xsi:nil="true" rdf:ID="i1566"/>
+        </relatingStructure>
+    </IfcRelContainedInSpatialStructure>
+    
+    <CabinetAisanceAmenageHandicapees rdf:ID="iCabAisanceHandi">
+        <hasSignalisation>
+            <Signalisation rdf:ID="adaptSigna">
+                <isAdapted>true</isAdapted>
+            </Signalisation>
+        </hasSignalisation>
+    </CabinetAisanceAmenageHandicapees>
+    
+    <CabinetAisanceAmenageHandicapees rdf:ID="iCabAisanceNonAdapte">
+        <hasSignalisation>
+            <Signalisation rdf:ID="someSignaNonAdapt"/>
+        </hasSignalisation>
+    </CabinetAisanceAmenageHandicapees>
+    
+
+    
+    <IfcRelContainedInSpatialStructure rdf:ID="iSpStr02">
+        <relatedElements>
+            <EscalierExterieur rdf:ID="iEscalierExterieur"/>
+        </relatedElements>
+        <relatingStructure>
+            <ERPrecevantEnfants rdf:ID="iBuildChildren"/>
+        </relatingStructure>
+    </IfcRelContainedInSpatialStructure>
+    
+    <IfcRelConnectsElements rdf:ID="iConElem">
+       <relatingElement>
+           <EscalierExterieur rdf:ID="iEscalierExterieur"/>
+       </relatingElement>
+        <relatedElement>
+            <IfcRailing rdf:ID="iMainCourantChildren">
+                <height rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">85</height>
+            </IfcRailing>
+        </relatedElement>
+    </IfcRelConnectsElements>
+    
+    <IfcRelContainedInSpatialStructure rdf:ID="iSpStr03">
+        <relatedElements>
+            <EscalierExterieur rdf:ID="iEscalierExterieur03"/>
+        </relatedElements>
+        <relatingStructure>
+            <IfcBuilding rdf:ID="iBuildEnfants">
+                <recevantPublic>enfants</recevantPublic>
+            </IfcBuilding>
+        </relatingStructure>
+    </IfcRelContainedInSpatialStructure>
+    
+    <IfcRelConnectsElements rdf:ID="iConElem03">
+        <relatingElement>
+            <EscalierExterieur rdf:ID="iEscalierExterieur03"/>
+        </relatingElement>
+        <relatedElement>
+            <IfcRailing rdf:ID="iMainCourantChildren03">
+                <height rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">165</height>
+            </IfcRailing>
+        </relatedElement>
+    </IfcRelConnectsElements>
+    
+    <IfcRelContainedInSpatialStructure rdf:ID="iSpStr04">
+        <relatedElements>
+            <EscalierExterieur rdf:ID="iEscalierExterieur04"/>
+        </relatedElements>
+        <relatingStructure>
+            <IfcBuilding rdf:ID="iBuildAdult">
+                <recevantPublic>adultes</recevantPublic>
+            </IfcBuilding>
+        </relatingStructure>
+    </IfcRelContainedInSpatialStructure>
+    
+    <IfcRelConnectsElements rdf:ID="iConElem04">
+        <relatingElement>
+            <EscalierExterieur rdf:ID="iEscalierExterieur04"/>
+        </relatingElement>
+        <relatedElement>
+            <IfcRailing rdf:ID="iMainCourantAdults04">
+                <height rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">165</height>
+            </IfcRailing>
+        </relatedElement>
+    </IfcRelConnectsElements>
+    
+    <IfcRelContainedInSpatialStructure rdf:ID="iSpStr05">
+        <relatedElements>
+            <EscalierExterieur rdf:ID="iEscalierExterieurConfChildren"/>
+        </relatedElements>
+        <relatingStructure>
+            <IfcBuilding rdf:ID="iBuildEnfants">
+                <recevantPublic>enfants</recevantPublic>
+            </IfcBuilding>
+        </relatingStructure>
+    </IfcRelContainedInSpatialStructure>
+    
+    <IfcRelConnectsElements rdf:ID="iConElem05">
+        <relatingElement>
+            <EscalierExterieur rdf:ID="iEscalierExterieurConfChildren"/>
+        </relatingElement>
+        <relatedElement>
+            <IfcRailing rdf:ID="iMainCourantChildren05">
+                <height rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">55</height>
+            </IfcRailing>
+        </relatedElement>
+    </IfcRelConnectsElements>
+    
+    <IfcRelDefinesByType rdf:ID="i14178">
+        <GlobalId>1tH1OPSaX5Pxnqlx972WfQ</GlobalId>
+        <OwnerHistory>
+            <IfcOwnerHistory xsi:nil="true" ref="i1516"/>
+        </OwnerHistory>
+        <Name>P_int pleine 1fixe</Name>
+        <relatedObjects>
+            <IfcDoor rdf:ID="iDoor44"/>
+        </relatedObjects>
+        <relatingType>
+            <IfcDoorStyle xsi:nil="true" rdf:ID="i14174"/>
+        </relatingType>
+    </IfcRelDefinesByType>
+    
+    <IfcDoorStyle rdf:ID="i14174">
+        <GlobalId>2b5i5cpVP9mBssTjYzSzOo</GlobalId>
+        <OwnerHistory>
+            <IfcOwnerHistory xsi:nil="true" ref="i1516"/>
+        </OwnerHistory>
+        <Name>P_int pleine 1fixe</Name>
+        <hasPropertySets>
+            <IfcDoorPanelProperties rdf:ID="i14170"/>
+        </hasPropertySets>
+        <operationType>double_door_single_swing</operationType>
+        <ConstructionType>notdefined</ConstructionType>
+        <ParameterTakesPrecedence>true</ParameterTakesPrecedence>
+        <Sizeable>false</Sizeable>
+    </IfcDoorStyle>
+    
+    <IfcDoorPanelProperties rdf:ID="i14170">
+        <GlobalId>3IAUBxRb92v9QIFGsddTvd</GlobalId>
+        <OwnerHistory>
+            <IfcOwnerHistory xsi:nil="true" ref="i1516"/>
+        </OwnerHistory>
+        <panelWidth rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">77</panelWidth>
+        <PanelDepth>0.04</PanelDepth>
+        <PanelOperation>swinging</PanelOperation>
+        <PanelPosition>right</PanelPosition>
+    </IfcDoorPanelProperties>
+   
+   <TrouFente rdf:ID="iBigTrou">
+       <diametre rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">15</diametre>
+       <referencedBy>
+           <Sol rdf:ID="iSol"/>
+       </referencedBy>
+   </TrouFente>
+    
+   <IfcSlab rdf:ID="iSolDeduced">
+       <predefinedType>
+           floor
+       </predefinedType>
+   </IfcSlab>
+    
+    <TrouFente rdf:ID="iAnotherBigTrou">
+        <overallWidth rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">44</overallWidth>
+        <referencedBy>
+            <IfcSlab rdf:ID="iSolDeduced"/>
+        </referencedBy>
+    </TrouFente>
+    
+    <IfcRelVoidsElement rdf:ID="i44726">
+        <GlobalId>2fj2ZtjHnAnQPArzasPq36</GlobalId>
+        <OwnerHistory>
+            <IfcOwnerHistory xsi:nil="true" ref="i1516"/>
+        </OwnerHistory>
+        <relatingBuildingElement>
+            <Sol xsi:nil="true" rdf:ID="Floor"/>
+        </relatingBuildingElement>
+        <relatedOpeningElement>
+            <IfcOpeningElement xsi:nil="true" rdf:ID="TrouDeduced"/>
+        </relatedOpeningElement>
+    </IfcRelVoidsElement>
+    
+    <PlaceStationnement rdf:ID="iPlaceStationnementAdaptee">
+        <relatedToBuilding>
+            <IfcBuilding rdf:ID="i4777"/>
+        </relatedToBuilding>
+        <hasSignalisation>
+            <Signalisation rdf:ID="signAutoAdapted">
+                <isAdapted>true</isAdapted>
+            </Signalisation>
+        </hasSignalisation>
+    </PlaceStationnement>
+       
+    <PlaceStationnement rdf:ID="iPlaceStationnementNonAdaptee">
+        <relatedToBuilding>
+            <IfcBuilding rdf:ID="i4777"/>
+        </relatedToBuilding>
+        <hasSignalisation>
+            <Signalisation rdf:ID="signAutoNonAdapted"/>
+        </hasSignalisation>
+    </PlaceStationnement>
+    
+    <PlaceStationnement rdf:ID="iPlaceStationnementSansMarquage">
+        <relatedToBuilding>
+            <IfcBuilding rdf:ID="i4777"/>
+        </relatedToBuilding>
+        <hasSignalisation>
+            <SignalisationVerticale rdf:ID="signVerticale"/>
+        </hasSignalisation>
+    </PlaceStationnement>
+
+    <PlaceStationnement rdf:ID="iPlaceStationnementSansSignVert">
+        <relatedToBuilding>
+            <IfcBuilding rdf:ID="i4777"/>
+        </relatedToBuilding>
+        <hasSignalisation>
+            <MarquageSol rdf:ID="signMarquageSol"/>
+        </hasSignalisation>
+    </PlaceStationnement>
+    
+    <MarquageSol rdf:ID="marquageSol">
+        <concernsElementSignalisation>
+            <PlaceStationnement rdf:ID="plStatMark"/>
+        </concernsElementSignalisation>
+    </MarquageSol>
+    
+    <SignalisationVerticale rdf:ID="signVert">
+        <concernsElementSignalisation>
+            <PlaceStationnement rdf:ID="plStatMark"/>
+        </concernsElementSignalisation>
+    </SignalisationVerticale>
+    
+    <PlaceStationnement rdf:ID="PlaceAdaptedDeduced">
+        <overallWidth rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">350</overallWidth>
+        <hasSignalisation>
+            <MarquageSol rdf:ID="mark"/>
+        </hasSignalisation>
+        <hasSignalisation>            
+            <SignalisationVerticale rdf:ID="signVertic"/>
+        </hasSignalisation>
+    </PlaceStationnement>
+    
+    <IfcSpace rdf:ID="parkingDeduced">
+        <objectType>parking for dwkfdvkl,fk,vk,</objectType>
+    </IfcSpace>
+    
+    <Eclairage rdf:ID="eclairageEspaceCom">
+        <concernsElementEclairage>
+            <IfcSpace rdf:ID="espaceCommunicationDeduced">
+                <destination>communication</destination>
+            </IfcSpace>
+        </concernsElementEclairage>
+    </Eclairage>
+    
+    <IfcRelContainedInSpatialStructure rdf:ID="iRelSpacStr">
+        <GlobalId>3MvJ2i4hD7JPAOJR7ntQGM</GlobalId>
+        <OwnerHistory>
+            <IfcOwnerHistory xsi:nil="true" ref="i1516"/>
+        </OwnerHistory>
+        <Name>BuildingStoreyContainer</Name>
+        <Description>BuildingStoreyContainer for Building Elements</Description>
+        <relatedElements>
+            <LocauxOuvertPublic ex:pos="0" xsi:nil="true" rdf:ID="iLocaOuvPub"/>
+        </relatedElements>
+        <relatedElements>
+            <IfcDoor ex:pos="0" xsi:nil="true" rdf:ID="iDoorStoreyLocOuvPub"/>
+        </relatedElements>
+        <relatedElements>
+            <Ascenseur ex:pos="0" xsi:nil="true" rdf:ID="AscenseurEtageOuvPubl"/>
+        </relatedElements>
+        <relatingStructure>
+            <IfcBuildingStorey xsi:nil="true" rdf:ID="storeyWithAscenseur"/>
+        </relatingStructure>
+    </IfcRelContainedInSpatialStructure>
+
+    <IfcRelAggregates rdf:ID="iRegAggr">
+        <GlobalId>3e5oA7mr54Qwa5ZnpBa8hf</GlobalId>
+        <OwnerHistory>
+            <IfcOwnerHistory xsi:nil="true" ref="i1516"/>
+        </OwnerHistory>
+        <Name>BuildingStoreyContainer</Name>
+        <Description>BuildingStoreyContainer for Spaces</Description>
+        <relatingObject>
+            <EnEtage xsi:nil="true" rdf:ID="iEnEtage"/>
+        </relatingObject>
+        <relatedObjects>
+            <IfcSpace ex:pos="0" xsi:nil="true" rdf:ID="iLocauxDeduced">
+                <occupancyNumberPeak>150</occupancyNumberPeak>
+                <rdfs:label>locaux</rdfs:label>
+            </IfcSpace>
+        </relatedObjects>
+    </IfcRelAggregates>
+    
+    <IfcRelAggregates rdf:ID="iRegAggr2">
+        <GlobalId>3e5oA7mr54Qwa5ZnpBa8hf</GlobalId>
+        <OwnerHistory>
+            <IfcOwnerHistory xsi:nil="true" ref="i1516"/>
+        </OwnerHistory>
+        <Name>BuildingStoreyContainer</Name>
+        <Description>BuildingStoreyContainer for Spaces</Description>
+        <relatingObject>
+            <EnEtage xsi:nil="true" rdf:ID="iEnEtage2"/>
+        </relatingObject>
+        <relatedObjects>
+            <IfcSpace ex:pos="0" xsi:nil="true" rdf:ID="iLocauxDeduced2">
+                <occupancyNumberPeak>150</occupancyNumberPeak>
+                <rdfs:label>locaux</rdfs:label>
+            </IfcSpace>
+        </relatedObjects>
+    </IfcRelAggregates>
+    
+    <IfcRelContainedInSpatialStructure rdf:ID="iRelSpacStr2">
+        <relatedElements>
+            <Ascenseur ex:pos="0" xsi:nil="true" rdf:ID="someAscenseur"/>
+        </relatedElements>
+        <relatingStructure>
+            <EnEtage xsi:nil="true" rdf:ID="iEnEtage2"/>
+        </relatingStructure>
+    </IfcRelContainedInSpatialStructure>
+    
+    <Sortie rdf:ID="SomeSortie">
+        <hasSignalisation>
+            <MarquageSol rdf:ID="someMark"/>
+        </hasSignalisation>
+    </Sortie>
+    
+    <Sortie rdf:ID="SomeSortie2">
+        <hasSignalisation>
+            <SignalisationVerticale rdf:ID="someMark2"/>
+        </hasSignalisation>
+    </Sortie>
+    
+    <Sortie rdf:ID="SomeSortie3">
+        <hasSignalisation>
+            <Signalisation rdf:ID="someMark3"/>
+        </hasSignalisation>
+    </Sortie>
+    
+    <Sortie rdf:ID="SomeSortie4">
+        <hasSignalisation>
+            <Siege rdf:ID="someMark4"/>
+        </hasSignalisation>
+    </Sortie>
+    
+    <Sortie rdf:ID="AnotherSortie">
+        <hasSignalisation>
+            <Signalisation rdf:ID="signSortie"/>
+        </hasSignalisation>
+    </Sortie>
+    
+    <Sortie rdf:ID="AnotherBadSortie">
+        <hasSignalisation>
+            <IfcDoor rdf:ID="signDoor"/>
+        </hasSignalisation>
+    </Sortie>
+    
+    <Sortie rdf:ID="SortieNoInfo"/>
+
+    <Eclairage rdf:ID="EclairageChemiNonLumine">
+        <concernsElementEclairage>
+            <CheminementExterieur rdf:ID="CheminementNonLumine"/>              
+        </concernsElementEclairage>
+        <luminosity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">15</luminosity>
+    </Eclairage>
+    
+    <Eclairage rdf:ID="EclairageChemiLumine">
+        <concernsElementEclairage>
+            <CheminementExterieur rdf:ID="CheminementLumine"/>                    
+        </concernsElementEclairage>
+        <luminosity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">45</luminosity>
+    </Eclairage>
+    
+    <Eclairage rdf:ID="EclairageChemiNonLumine2">
+        <concernsElementEclairage>
+            <CheminementExterieur rdf:ID="CheminementNonLumine2"/>              
+        </concernsElementEclairage>
+        <luminosity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</luminosity>
+    </Eclairage>
+    
+    <Eclairage rdf:ID="EclairageChemiLumine2">
+        <concernsElementEclairage>
+            <CheminementExterieur rdf:ID="CheminementLumine2"/>                    
+        </concernsElementEclairage>
+        <luminosity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">115</luminosity>
+    </Eclairage>
+    
+    <Eclairage rdf:ID="EclairageLumineNoInfoElement">
+        <luminosity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">45</luminosity>
+    </Eclairage>
+    
+    <Eclairage rdf:ID="EclairageLumineJustChemi">
+        <concernsElementEclairage>
+            <Cheminement rdf:ID="chemin"/>
+        </concernsElementEclairage>
+        <luminosity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">45</luminosity>
+    </Eclairage>
+    
+    <Eclairage rdf:ID="EclairageLumineEscalier">
+        <concernsElementEclairage>
+            <Escalier rdf:ID="esc"/>
+        </concernsElementEclairage>
+        <luminosity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">45</luminosity>
+    </Eclairage>
+    
+    <Eclairage rdf:ID="EclairageLumineNoInfoLuminosity">
+        <concernsElementEclairage>
+            <CheminementExterieur rdf:ID="cheminExt"/>
+        </concernsElementEclairage>       
+    </Eclairage>
+    
+    <Eclairage rdf:ID="EclairageAccNoInfoLum">
+        <concernsElementEclairage>
+            <Accueil rdf:ID="accNoInfo"/>
+        </concernsElementEclairage>       
+    </Eclairage>
+    
+    <Eclairage rdf:ID="EclairageAccNonLumine">
+        <concernsElementEclairage>
+            <Accueil rdf:ID="accnonLum"/>
+        </concernsElementEclairage>       
+        <luminosity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">45</luminosity>
+    </Eclairage>
+    
+    <Eclairage rdf:ID="EclairageAccLumine">
+        <concernsElementEclairage>
+            <Accueil rdf:ID="accLum"/>
+        </concernsElementEclairage>       
+        <luminosity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">345</luminosity>
+    </Eclairage>
+    
+    <Eclairage rdf:ID="EclairagePosteAccLumine">
+        <concernsElementEclairage>
+            <PosteAccueil rdf:ID="accPosteLum"/>
+        </concernsElementEclairage>       
+        <luminosity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">345</luminosity>
+    </Eclairage>
+    
+    <Eclairage rdf:ID="EclairagePosteAccNonLumine">
+        <concernsElementEclairage>
+            <PosteAccueil rdf:ID="accPosteNonLum"/>
+        </concernsElementEclairage>       
+        <luminosity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</luminosity>
+    </Eclairage>
+    
+    <Eclairage rdf:ID="EclairagePointAccNonLumine">
+        <concernsElementEclairage>
+            <PointAccueilPublic rdf:ID="accPointAccueilNonLum"/>
+        </concernsElementEclairage>       
+        <luminosity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</luminosity>
+    </Eclairage>
+    
+    <Eclairage rdf:ID="EclairagePointAccNoInfoLum">
+        <concernsElementEclairage>
+            <PointAccueilPublic rdf:ID="accPointAccueilNoInfoLum"/>
+        </concernsElementEclairage>               
+    </Eclairage>
     
 </rdf:RDF>

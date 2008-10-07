@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF 
+    
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"  
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance#" 
+    xmlns:cos="http://www.inria.fr/acacia/corese#"  
+    xmlns:ontoCC="http://www.owl-ontologies.com/Ontology1205837312.owl#">
+    
+    <cos:rule rdf:ID="PlaceStationnement">
+        <cos:if>
+            PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl#&gt;
+            {
+            {
+            ?pl    rdf:type    ontoCC:IfcSpace
+            ?pl    ontoCC:objectType    ?t
+            FILTER (?t  ~ 'parking') 
+            }     
+            UNION
+            {
+
+            }
+            }
+        </cos:if>
+        
+        <cos:then>
+            { ?pl rdf:type ontoCC:PlaceStationnement .}
+        </cos:then>
+    </cos:rule>
+    
+   
+    <cos:rule rdf:ID="PlaceStationnementAdaptee">
+        <cos:if>
+            PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl#&gt;
+            {
+            {
+            ?pl    rdf:type    ontoCC:PlaceStationnement
+            ?pl    ontoCC:hasSignalisation    ?x
+            ?pl    ontoCC:hasSignalisation    ?y      
+            ?x     rdf:type    ontoCC:MarquageSol
+            ?y     rdf:type    ontoCC:SignalisationVerticale
+            <!-- add dimension constraints -->
+            ?pl     ontoCC:overallWidth    ?w
+            FILTER ( xsd:integer (?w) &gt;= 330)
+            }     
+            UNION
+            {
+            ?pl    rdf:type    ontoCC:PlaceStationnement
+            ?pl    ontoCC:isAdapted    "true"
+            }
+            UNION
+            {
+            ?pl    rdf:type    ontoCC:PlaceStationnement
+            ?pl    ontoCC:isAdapted    "TRUE"
+            }
+            UNION
+            {
+            ?pl    rdf:type    ontoCC:PlaceStationnement
+            ?pl    ontoCC:handicapAccessible    "true"
+            }
+            }
+        </cos:if>
+        
+        <cos:then>
+            { ?pl rdf:type ontoCC:PlaceStationnementAdaptee .}
+        </cos:then>
+    </cos:rule>
+   
+        
+</rdf:RDF>

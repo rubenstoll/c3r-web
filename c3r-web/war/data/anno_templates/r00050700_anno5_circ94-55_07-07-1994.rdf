@@ -14,6 +14,7 @@
 
 <AnnotationRequete rdf:ID="r00050700">
     <verifiableRequete>VP-E</verifiableRequete>
+    <ifcFormalisableRequete>PI</ifcFormalisableRequete>
     <origineRequete>validation</origineRequete>
     <actualiteRequete>nouveau</actualiteRequete>
     <thematiqueRequete>accessibilite_des_handicapes</thematiqueRequete>
@@ -35,6 +36,9 @@
     <extraitTitre>
         Circulaire n° 94-55 du 7 juillet 1994 relative à l'accessibilité aux personnes handicapées des établissements recevant du public et des installations ouvertes au public.        
     </extraitTitre>
+    <extraitTitreShort>
+        Circulaire_94-55_07_jul_1994
+    </extraitTitreShort>
     <extraitRelatifA>
         l'accessibilité aux personnes handicapées des établissements recevant du public et des installations ouvertes au public.        
     </extraitRelatifA>
@@ -51,7 +55,11 @@
     <extraitInfoExtractionParagraphe></extraitInfoExtractionParagraphe>
     <extraitInfoExtractionNumeroOrdreDansParagraphe></extraitInfoExtractionNumeroOrdreDansParagraphe>
     <classificationISTforCE>NV</classificationISTforCE>
+    
     <sujetRequete></sujetRequete>
+    <conceptsCle></conceptsCle>
+    <definitionIFD></definitionIFD>
+    
     <domaineApplication>
         <ontoCC:SalleHygiene/>
     </domaineApplication>

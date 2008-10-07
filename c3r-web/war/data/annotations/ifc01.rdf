@@ -301,6 +301,11 @@
         <!--connectedToIfcElement rdf:ID="i1707"></connectedToIfcElement-->
         
     </Vantaux>
+    
+    <IfcBuilding rdf:ID="iDeducedLieuxTravailPlus20">
+        <functionalityEtablissement>travail</functionalityEtablissement>
+        <effectifEtablissement>26</effectifEtablissement>
+    </IfcBuilding>
         
         
     </rdf:RDF>

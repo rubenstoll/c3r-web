@@ -16,6 +16,7 @@
 
 <AnnotationRequete rdf:ID="r00081005">
     <verifiableRequete>VP</verifiableRequete>
+    <ifcFormalisableRequete>PI</ifcFormalisableRequete>
     <origineRequete>validation</origineRequete>
     <actualiteRequete rdf:datatype="annoComplexe#ActualiteRequeteType">consolide</actualiteRequete>
     <thematiqueRequete>accessibilite_des_handicapes</thematiqueRequete>
@@ -44,6 +45,9 @@
     <extraitTitre>
         Arrêté du 1er août 2006 fixant les dispositions prises pour l'application des articles R. 111-19 à R. 111-19-3 et R. 111-19-6 du code de la construction et de l'habitation relatives à l'accessibilité aux personnes handicapées des établissements recevant du public et des installations ouvertes au public lors de leur construction ou de leur création
     </extraitTitre>
+    <extraitTitreShort>
+        Arrete_01_aou_2006_consolide
+    </extraitTitreShort>
     <extraitRelatifA>
         l'accessibilité aux personnes handicapées des établissements recevant du public et des installations ouvertes au public lors de leur construction ou de leur création      </extraitRelatifA>
     <extraitReference>
@@ -56,9 +60,9 @@
     <extraitInfoExtractionParagraphe></extraitInfoExtractionParagraphe>
     <extraitInfoExtractionNumeroOrdreDansParagraphe></extraitInfoExtractionNumeroOrdreDansParagraphe>
 
-    <sujetRequete>Porte</sujetRequete>
-    
+    <sujetRequete>Porte</sujetRequete>    
     <conceptsCle>PortePrincipaleDesservantLocauxPlus100Personnes, Vantaux</conceptsCle>
+    <definitionIFD></definitionIFD>
     
     <domaineApplication>
         <ontoCC:Porte/>            

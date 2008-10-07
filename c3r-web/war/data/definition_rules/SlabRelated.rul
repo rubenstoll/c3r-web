@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF 
+    
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"  
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance#" 
+    xmlns:cos="http://www.inria.fr/acacia/corese#"  
+    xmlns:ontoCC="http://www.owl-ontologies.com/Ontology1205837312.owl#">
+    
+    
+   
+    <cos:rule rdf:ID="Sol">
+        <cos:if>
+            PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl#&gt;
+            {
+            {
+            ?x     rdf:type    ontoCC:IfcSlab .
+            ?x     ontoCC:predefinedType ?t
+            FILTER (?t ~ 'floor')
+            }
+            UNION
+            {
+            ?x     rdf:type    ontoCC:IfcSlab .
+            ?x     ontoCC:predefinedType ?t
+            FILTER (?t ~ 'FLOOR')
+            }
+            }
+        </cos:if>
+        
+        <cos:then>
+            { ?x rdf:type ontoCC:Sol .}
+        </cos:then>
+    </cos:rule>
+    
+    <cos:rule rdf:ID="TrouFente">
+        <cos:if>
+            PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl#&gt;
+            {
+            {
+            ?x             rdf:type    ontoCC:IfcOpeningElement .
+            ?rvoids    rdf:type    ontoCC:IfcRelVoidsElement 
+            ?rvoids    ontoCC:relatingBuildingElement ?floor
+            ?floor       rdf:type     ontoCC:Sol
+            ?rvoids    ontoCC:relatedOpeningElement ?x
+            }
+            UNION
+            {
+
+            }
+            }
+        </cos:if>
+        
+        <cos:then>
+            { ?x rdf:type ontoCC:TrouFente .}
+        </cos:then>
+    </cos:rule>
+    
+</rdf:RDF>

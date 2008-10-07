@@ -15,12 +15,13 @@
     >
     
 
-<AnnotationRegle rdf:ID="r00081301">
+<AnnotationRequete rdf:ID="r00081301">
     <verifiableRequete>VP-E</verifiableRequete>
-    <origineRegle>validation</origineRegle>
-    <actualiteRegle>consolide</actualiteRegle>
-    <thematiqueRegle>accessibilite_des_handicapes</thematiqueRegle>
-    <exigenceRegle>Accessibilite</exigenceRegle>
+    <ifcFormalisableRequete>PI</ifcFormalisableRequete>
+    <origineRequete>validation</origineRequete>
+    <actualiteRequete>consolide</actualiteRequete>
+    <thematiqueRequete>accessibilite_des_handicapes</thematiqueRequete>
+    <exigenceRequete>Accessibilite</exigenceRequete>
     <extraitTypeTexteReglementaire>
         LEG
     </extraitTypeTexteReglementaire>
@@ -45,6 +46,9 @@
     <extraitTitre>
         Arrêté du 1er août 2006 fixant les dispositions prises pour l’application des articles R. 111-19 à R. 111-19-3 et R. 111-19-6 du code de la construction et de l’habitation relatives à l’accessibilité aux personnes handicapées des établissements recevant du public et des installations ouvertes au public lors de leur construction ou de leur création
     </extraitTitre>
+    <extraitTitreShort>
+        Arrete_01_aou_2006_consolide
+    </extraitTitreShort>
     <extraitRelatifA>
         l’accessibilité aux personnes handicapées des établissements recevant du public et des installations ouvertes au public lors de leur construction ou de leur création      </extraitRelatifA>
     <extraitReference>
@@ -57,7 +61,10 @@
     <extraitInfoExtractionParagraphe></extraitInfoExtractionParagraphe>
     <extraitInfoExtractionNumeroOrdreDansParagraphe></extraitInfoExtractionNumeroOrdreDansParagraphe>
 
-    <sujetRegle></sujetRegle>
+    <sujetRequete></sujetRequete>
+    <conceptsCle></conceptsCle>
+    <definitionIFD></definitionIFD>
+    
     <domaineApplication>
         <ontoCC:Sortie/>
     </domaineApplication>
@@ -69,9 +76,9 @@
         
     </sousDomaineSimple>
 
-    <destinationRegle>ERP</destinationRegle>
-    <textRegle>
-    </textRegle>
+    <destinationRequete>ERP</destinationRequete>
+    <textRequete>
+    </textRequete>
     <aboutIFCData></aboutIFCData>
     
     <interpretationExpert> 
@@ -79,7 +86,7 @@
         Il existe CheminementAccessible à Sortie, Sortie hasSignalisation Signalisation
     </interpretationExpert>
 
-    <contenuRegle>
+    <contenuRequete>
         PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl#&gt;   
         select distinct * display xml 
         where
@@ -95,7 +102,7 @@
         }
         FILTER (!bound(?type))
         }
-    </contenuRegle>
+    </contenuRequete>
 
     <!-- added by Birahim -->
     <proprieteConcerne rdf:resource="http://rainbow.essi.fr/~anastasiya/data/ifc.rdfs#overallWidth"/>
@@ -104,7 +111,7 @@
     
 
     
-</AnnotationRegle>
+</AnnotationRequete>
    
 
 </rdf:RDF>

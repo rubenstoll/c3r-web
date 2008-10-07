@@ -13,6 +13,7 @@
     
 <AnnotationRequete rdf:ID="r00020040">
     <verifiableRequete>VP-E</verifiableRequete>
+    <ifcFormalisableRequete>PI</ifcFormalisableRequete>
     <origineRequete>validation</origineRequete>
     <actualiteRequete>nouveau</actualiteRequete>
     <thematiqueRequete>accessibilite_des_handicapes</thematiqueRequete>
@@ -35,6 +36,9 @@
     <extraitTitre>
         Circulaire n° 82-81 du 4 octobre 1982 relative à l'application du décret n° 80-637 du 4 août 1980 concernant l'accessibilité et l'adaptabilité des logements aux personnes handicapées dans les bâtiments d'habitation, et de ses arrêtés d'application du 24 décembre 1980 et du 21 septembre 1982        
     </extraitTitre>
+    <extraitTitreShort>
+        Circulaire_82-81_04_oct_1982
+    </extraitTitreShort>
     <extraitRelatifA>
         l'application du décret n° 80-637 du 4 août 1980 concernant l'accessibilité et l'adaptabilité des logements aux personnes handicapées dans les bâtiments d'habitation, et de ses arrêtés d'application du 24 décembre 1980 et du 21 septembre 1982       
     </extraitRelatifA>
@@ -46,8 +50,11 @@
     <extraitInfoExtractionParagraphe></extraitInfoExtractionParagraphe>
     <extraitInfoExtractionNumeroOrdreDansParagraphe></extraitInfoExtractionNumeroOrdreDansParagraphe>
     <classificationISTforCE>VP</classificationISTforCE>
-    <sujetRequete></sujetRequete>
+
+    <sujetRequete></sujetRequete>    
     <conceptsCle>Locaux, LocauxVideOrdures</conceptsCle>
+    <definitionIFD></definitionIFD>
+    
     <domaineApplication>
         <ontoCC:Locaux/>
     </domaineApplication>
