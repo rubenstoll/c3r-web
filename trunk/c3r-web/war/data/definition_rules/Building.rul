@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF 
+    
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"  
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance#" 
+    xmlns:cos="http://www.inria.fr/acacia/corese#"  
+    xmlns:ontoCC="http://www.owl-ontologies.com/Ontology1205837312.owl#">
+    
+    <!--Building related-->
+   
+    <cos:rule rdf:ID="ERPrecevantEnfants">
+        <cos:if>
+            PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl#&gt;
+            {            
+            ?x     rdf:type    ontoCC:IfcBuilding .
+            ?x     ontoCC:recevantPublic    "enfants"
+            }
+        </cos:if>
+        
+        <cos:then>
+            { ?x rdf:type ontoCC:ERPrecevantEnfants .}
+        </cos:then>
+    </cos:rule>    
+    
+    <cos:rule rdf:ID="ERPrecevantAdultes">
+        <cos:if>
+            PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl#&gt;
+            {            
+            ?x     rdf:type    ontoCC:IfcBuilding .
+            ?x     ontoCC:recevantPublic    "adultes"
+            }
+        </cos:if>
+        
+        <cos:then>
+            { ?x rdf:type ontoCC:ERPrecevantAdultes .}
+        </cos:then>
+    </cos:rule> 
+    
+    <cos:rule rdf:ID="LieuxTravail">
+        <cos:if>
+            PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl#&gt;
+            {            
+            ?x     rdf:type    ontoCC:IfcBuilding .
+            ?x     ontoCC:functionalityEtablissement     "travail".
+            }
+        </cos:if>
+        
+        <cos:then>
+            { ?x rdf:type ontoCC:LieuxTravail .}
+        </cos:then>
+    </cos:rule> 
+       
+    <cos:rule rdf:ID="LieuxTravailPlus20Personnes">
+        <cos:if>
+            PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl#&gt;
+            {            
+            ?x     rdf:type    ontoCC:LieuxTravail .
+            ?x     ontoCC:effectifEtablissement ?eff
+            FILTER ( xsd:integer (?eff) &gt;= 20) .           
+            }
+        </cos:if>
+        
+        <cos:then>
+            { ?x rdf:type ontoCC:LieuxTravailPlus20Personnes .}
+        </cos:then>
+    </cos:rule> 
+</rdf:RDF>

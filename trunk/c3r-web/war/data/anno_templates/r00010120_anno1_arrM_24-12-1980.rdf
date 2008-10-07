@@ -12,6 +12,7 @@
 
 <AnnotationRequete rdf:ID="r00010120">
     <verifiableRequete>VP-I</verifiableRequete>
+    <ifcFormalisableRequete>RI</ifcFormalisableRequete>
     <origineRequete>validation</origineRequete>
     <actualiteRequete>modifie</actualiteRequete>
     <thematiqueRequete>accessibilite_des_handicapes</thematiqueRequete>
@@ -34,6 +35,9 @@
     <extraitTitre>
         arrêté du 24 décembre 1980 dispositions relatives à l'application du décret 80-637 du 4 août 1980 modifiant le code de la construction et de l'habitation (partie réglementaire) en vue de rendre accessibles et adaptables aux personnes handicapées à mobilité réduite les bâtiments d'habitation collectifs neufs et les logements qu'ils contiennent.        
     </extraitTitre>
+    <extraitTitreShort>
+        Arrete_24_dec_1980_modifie
+    </extraitTitreShort>
     <extraitRelatifA></extraitRelatifA>
     <extraitReference>
         le code de la construction et de l'habitation ;
@@ -44,7 +48,11 @@
     <extraitInfoExtractionParagraphe></extraitInfoExtractionParagraphe>
     <extraitInfoExtractionNumeroOrdreDansParagraphe></extraitInfoExtractionNumeroOrdreDansParagraphe>
     <classificationISTforCE>VC</classificationISTforCE>
+    
     <sujetRequete></sujetRequete>
+    <conceptsCle></conceptsCle>
+    <definitionIFD></definitionIFD>
+    
     <domaineApplication>
         <ontoCC:Cheminement/>
     </domaineApplication>

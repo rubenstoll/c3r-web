@@ -14,12 +14,13 @@
 
 <AnnotationRequete rdf:ID="r00061200">
     <verifiableRequete>VP-E</verifiableRequete>
+    <ifcFormalisableRequete>RI</ifcFormalisableRequete>
     <origineRequete>validation</origineRequete>
     <actualiteRequete>nouveau</actualiteRequete>
     <thematiqueRequete>accessibilite_des_handicapes</thematiqueRequete>
     <exigenceRequete>Accessibilite</exigenceRequete>
     <extraitTypeTexteReglementaire>
-        LEG
+        NOR
     </extraitTypeTexteReglementaire>
     <extraitTypeLEG>
         norme
@@ -30,7 +31,10 @@
     <extraitDate>       
         1978-07
     </extraitDate>
-    <extraitTitre></extraitTitre>
+    <extraitTitre>NF P 91-201 (juillet 1978)</extraitTitre>
+    <extraitTitreShort>
+        NF_P_91-201_jul_1978
+    </extraitTitreShort>
     <extraitRelatifA></extraitRelatifA>
     <extraitReference></extraitReference>
     <extraitInfoExtractionUIS></extraitInfoExtractionUIS>
@@ -38,7 +42,11 @@
     <extraitInfoExtractionParagraphe></extraitInfoExtractionParagraphe>
     <extraitInfoExtractionNumeroOrdreDansParagraphe></extraitInfoExtractionNumeroOrdreDansParagraphe>
     <classificationISTforCE>NV</classificationISTforCE>
+    
     <sujetRequete></sujetRequete>
+    <conceptsCle></conceptsCle>
+    <definitionIFD></definitionIFD>
+    
     <domaineApplication>
         <ontoCC:Cheminement/>
     </domaineApplication>
@@ -58,6 +66,7 @@
     </textRequete>
     <aboutIFCData>
     </aboutIFCData>
+    
     <notesFormalisation>    
     </notesFormalisation>
     <interpretationVersions>

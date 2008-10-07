@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF 
+    
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"  
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance#" 
+    xmlns:cos="http://www.inria.fr/acacia/corese#"  
+    xmlns:ontoCC="http://www.owl-ontologies.com/Ontology1205837312.owl#">
+    
+    <cos:rule rdf:ID="CabineDouche">
+        <cos:if>
+            PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl#&gt;
+            {
+            {
+            ?x     rdf:type    ontoCC:IfcTransportElement .
+            ?x     ontoCC:operationType    "elevator"
+            ?x     ontoCC:destinationTransportElement    "transportPersonnes"
+            }
+            UNION
+            {
+            ?x     rdf:type    ontoCC:IfcTransportElement .
+            ?x     ontoCC:operationType    "ELEVATOR"
+            ?x     ontoCC:destinationTransportElement    "transportPersonnes"
+            }
+            }
+        </cos:if>
+        
+        <cos:then>
+            { ?x rdf:type ontoCC:CabineDouche .}
+        </cos:then>
+    </cos:rule>
+   
+    <cos:rule rdf:ID="CabineDoucheAmenagee">
+        <cos:if>
+            PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl#&gt;
+            {
+            ?x     rdf:type    ontoCC:CabineDouche .
+            }
+        </cos:if>
+        
+        <cos:then>
+            { ?x rdf:type ontoCC:CabineDoucheAmenagee .}
+        </cos:then>
+    </cos:rule>
+    
+    <cos:rule rdf:ID="CabineDoucheAdaptee">
+        <cos:if>
+            PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl#&gt;
+            {
+            ?x     rdf:type    ontoCC:CabineDoucheAmenagee .
+    <!-- il existe un cheminement accessible -->
+            }
+        </cos:if>
+        
+        <cos:then>
+            { ?x rdf:type ontoCC:CabineDoucheAdaptee .}
+        </cos:then>
+    </cos:rule>
+    
+   
+</rdf:RDF>

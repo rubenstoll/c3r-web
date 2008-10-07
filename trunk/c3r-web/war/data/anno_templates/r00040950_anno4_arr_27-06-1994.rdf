@@ -13,6 +13,7 @@
     
     <AnnotationRequete rdf:ID="r00040950">
      <verifiableRequete>VP-E</verifiableRequete>
+     <ifcFormalisableRequete>PI</ifcFormalisableRequete>
     <origineRequete>validation</origineRequete>
     <actualiteRequete>nouveau</actualiteRequete>
     <thematiqueRequete>accessibilite_des_handicapes</thematiqueRequete>
@@ -35,6 +36,9 @@
         <extraitTitre>
             Arrêté du 27 juin 1994 fixant les dispositions destinées à rendre accessibles les lieux de travail aux personnes handicapées (nouvelles constructions ou aménagements) en application de l'article R. 235-3-18 du code du travail        
         </extraitTitre>
+        <extraitTitreShort>
+            Arrete_27_jui_1994
+        </extraitTitreShort>
         <extraitRelatifA>
             dispositions destinées à rendre accessibles les lieux de travail aux personnes handicapées (nouvelles constructions ou aménagements) en application de l'article R. 235-3-18 du code du travail        
         </extraitRelatifA>
@@ -49,8 +53,11 @@
     <extraitInfoExtractionParagraphe></extraitInfoExtractionParagraphe>
     <extraitInfoExtractionNumeroOrdreDansParagraphe></extraitInfoExtractionNumeroOrdreDansParagraphe>
     <classificationISTforCE>NV</classificationISTforCE>
+        
     <sujetRequete></sujetRequete>
         <conceptsCle>IfcDoor, Ascenseur</conceptsCle>
+        <definitionIFD></definitionIFD>
+        
         <domaineApplication>
             <ontoCC:Cheminement/>
         </domaineApplication>

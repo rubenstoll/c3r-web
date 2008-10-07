@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF 
+    
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"  
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance#" 
+    xmlns:cos="http://www.inria.fr/acacia/corese#"  
+    xmlns:ontoCC="http://www.owl-ontologies.com/Ontology1205837312.owl#">
+    
+    
+   
+    <cos:rule rdf:ID="Espace">
+        <cos:if>
+            PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl#&gt;
+            {
+            ?x     rdf:type    ontoCC:IfcSpace .
+            }
+        </cos:if>
+        
+        <cos:then>
+            { ?x rdf:type ontoCC:Espace .}
+        </cos:then>
+    </cos:rule>
+    
+    <cos:rule rdf:ID="EspaceExterieur">
+        <cos:if>
+            PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl#&gt;
+            {
+            ?x     rdf:type    ontoCC:Espace 
+            ?x     ontoCC:interiorOrExteriorSpace "external".
+            }
+        </cos:if>
+        
+        <cos:then>
+            { ?x rdf:type ontoCC:EspaceExterieur .}
+        </cos:then>
+    </cos:rule>
+    
+    <cos:rule rdf:ID="EspaceInterieur">
+        <cos:if>
+            PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl#&gt;
+            {
+            ?x     rdf:type    ontoCC:Espace 
+            ?x     ontoCC:interiorOrExteriorSpace "internal".
+            }
+        </cos:if>
+        
+        <cos:then>
+            { ?x rdf:type ontoCC:EspaceInterieur .}
+        </cos:then>
+    </cos:rule>
+    
+    <cos:rule rdf:ID="EspaceDevantPorte">
+        <cos:if>
+            PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl#&gt;
+            {
+            ?x     rdf:type    ontoCC:Espace 
+            ?x     ontoCC:interiorOrExteriorSpace "internal".
+            }
+        </cos:if>
+        
+        <cos:then>
+            { ?x rdf:type ontoCC:EspaceDevantPorte .}
+        </cos:then>
+    </cos:rule>
+    
+    <cos:rule rdf:ID="EspaceAccessible">
+        <cos:if>
+            PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl#&gt;
+            {
+            ?x     rdf:type    ontoCC:Espace 
+            ?x     ontoCC:interiorOrExteriorSpace "internal".
+            }
+        </cos:if>
+        
+        <cos:then>
+            { ?x rdf:type ontoCC:EspaceAccessible .}
+        </cos:then>
+    </cos:rule>
+    
+    <cos:rule rdf:ID="EspaceCommunication">
+        <cos:if>
+            PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl#&gt;
+            {
+            ?x     rdf:type    ontoCC:Espace 
+            ?x     ontoCC:interiorOrExteriorSpace "internal".
+            }
+        </cos:if>
+        
+        <cos:then>
+            { ?x rdf:type ontoCC:EspaceCommunication .}
+        </cos:then>
+    </cos:rule>
+    
+    <cos:rule rdf:ID="EspaceConcerneEclairage">
+        <cos:if>
+            PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl#&gt;
+            {
+            ?x     rdf:type    ontoCC:Espace 
+            ?x     ontoCC:interiorOrExteriorSpace "internal".
+            }
+        </cos:if>
+        
+        <cos:then>
+            { ?x rdf:type ontoCC:EspaceConcerneEclairage .}
+        </cos:then>
+    </cos:rule>
+    
+    <cos:rule rdf:ID="EspaceEmpriseLit">
+        <cos:if>
+            PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl#&gt;
+            {
+            ?x     rdf:type    ontoCC:Espace 
+            ?x     ontoCC:interiorOrExteriorSpace "internal".
+            }
+        </cos:if>
+        
+        <cos:then>
+            { ?x rdf:type ontoCC:EspaceEmpriseLit .}
+        </cos:then>
+    </cos:rule>
+    
+    <cos:rule rdf:ID="EspaceHorizontal">
+        <cos:if>
+            PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl#&gt;
+            {
+            ?x     rdf:type    ontoCC:Espace 
+            ?x     ontoCC:interiorOrExteriorSpace "internal".
+            }
+        </cos:if>
+        
+        <cos:then>
+            { ?x rdf:type ontoCC:EspaceHorizontal .}
+        </cos:then>
+    </cos:rule>
+    
+    <cos:rule rdf:ID="EspaceManoeuvre">
+        <cos:if>
+            PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl#&gt;
+            {
+            ?x     rdf:type    ontoCC:Espace 
+            ?x     ontoCC:interiorOrExteriorSpace "internal".
+            }
+        </cos:if>
+        
+        <cos:then>
+            { ?x rdf:type ontoCC:EspaceManoeuvre .}
+        </cos:then>
+    </cos:rule>
+    
+    <cos:rule rdf:ID="EspaceOuvertPublic">
+        <cos:if>
+            PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl#&gt;
+            {
+            ?x     rdf:type    ontoCC:Espace 
+            ?x     ontoCC:interiorOrExteriorSpace "internal".
+            }
+        </cos:if>
+        
+        <cos:then>
+            { ?x rdf:type ontoCC:EspaceOuvertPublic .}
+        </cos:then>
+    </cos:rule>
+    
+    <cos:rule rdf:ID="EspaceSecurise">
+        <cos:if>
+            PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl#&gt;
+            {
+            ?x     rdf:type    ontoCC:Espace 
+            ?x     ontoCC:interiorOrExteriorSpace "internal".
+            }
+        </cos:if>
+        
+        <cos:then>
+            { ?x rdf:type ontoCC:EspaceSecurise .}
+        </cos:then>
+    </cos:rule>
+    
+    <cos:rule rdf:ID="EspaceUsageEquipment">
+        <cos:if>
+            PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl#&gt;
+            {
+            ?x     rdf:type    ontoCC:Espace 
+            ?x     ontoCC:interiorOrExteriorSpace "internal".
+            }
+        </cos:if>
+        
+        <cos:then>
+            { ?x rdf:type ontoCC:EspaceUsageEquipment .}
+        </cos:then>
+    </cos:rule>
+    
+    <cos:rule rdf:ID="EspaceManoeuvrePorte">
+        <cos:if>
+            PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl#&gt;
+           {
+           {
+            ?x            rdf:type    ontoCC:EspaceManoeuvre 
+            ?relsb    rdf:type    ontoCC:IfcRelSpaceBoundary
+            ?relsb    ontoCC:relatingSpace    ?x
+            ?relsb    ontoCC:relatedBuildingElement    ?op
+            ?op        rdf:type    ontoCC:IfcOpeningElement
+            ?relf        rdf:type    ontoCC:IfcRelFillsElement
+            ?relf        ontoCC:relatedBuildingElement    ?op
+            ?relf        ontoCC:relatingOpeningElement    ?door
+            ?door    rdf:type    ontoCC:IfcDoor
+            }
+            UNION
+            {
+            ?x            rdf:type    ontoCC:EspaceManoeuvre 
+            ?relcon    rdf:type    ontoCC:IfcRelSpaceBoundary  
+            ?relcon    ontoCC:relatingSpace    ?x
+            ?relcon    ontoCC:relatedBuildingElement    ?door
+            ?door    rdf:type    ontoCC:IfcDoor  
+            }
+            }
+        </cos:if>
+        
+        <cos:then>
+            { 
+            ?x rdf:type ontoCC:EspaceManoeuvrePorte .
+            }
+        </cos:then>
+    </cos:rule>
+    
+    <cos:rule rdf:ID="EspaceManoeuvrePossibiliteDemiTour">
+        <cos:if>
+            PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl#&gt;
+            {
+            ?x     rdf:type    ontoCC:EspaceManoeuvre 
+            }
+        </cos:if>
+        
+        <cos:then>
+            { ?x rdf:type ontoCC:EspaceManoeuvrePossibiliteDemiTour .}
+        </cos:then>
+    </cos:rule>
+    
+    <cos:rule rdf:ID="EspaceCommunication">
+        <cos:if>
+            PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl#&gt;
+            {
+            ?x     rdf:type    ontoCC:Espace 
+            ?x    ontoCC:destination ?t
+            FILTER (?t ~ 'communication')
+            }
+        </cos:if>
+        
+        <cos:then>
+            { ?x rdf:type ontoCC:EspaceCommunication .}
+        </cos:then>
+    </cos:rule>
+    
+ </rdf:RDF>

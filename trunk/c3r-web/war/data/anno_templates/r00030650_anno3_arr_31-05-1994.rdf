@@ -14,6 +14,7 @@
     
 <AnnotationRequete rdf:ID="r00030650">
     <verifiableRequete>VC-E</verifiableRequete>
+    <ifcFormalisableRequete>PI</ifcFormalisableRequete>
     <origineRequete>validation</origineRequete>
     <actualiteRequete>nouveau</actualiteRequete>
     <thematiqueRequete>accessibilite_des_handicapes</thematiqueRequete>
@@ -35,6 +36,9 @@
     <extraitTitre>
         Arrêté du 31 mai 1994 fixant les dispositions techniques destinées à rendre accessibles aux personnes handicapés les établissements recevant du public et les installations ouvertes au public lors de leur construction, leur création ou leur modification, pris en application de l'article R.111-19-1 du code de la construction et de l'habitation       
     </extraitTitre>
+    <extraitTitreShort>
+        Arrete_31_mai_1994
+    </extraitTitreShort>
     <extraitRelatifA>
         dispositions techniques destinées à rendre accessibles aux personnes handicapés les établissements recevant du public et les installations ouvertes au public lors de leur construction, leur création ou leur modification, pris en application de l'article R.111-19-1 du code de la construction et de l'habitation
     </extraitRelatifA>
@@ -46,8 +50,11 @@
     <extraitInfoExtractionParagraphe></extraitInfoExtractionParagraphe>
     <extraitInfoExtractionNumeroOrdreDansParagraphe></extraitInfoExtractionNumeroOrdreDansParagraphe>
     <classificationISTforCE>NV</classificationISTforCE>
+    
     <sujetRequete></sujetRequete>
     <conceptsCle>Cuvette</conceptsCle>
+    <definitionIFD></definitionIFD>
+    
     <domaineApplication>
         <ontoCC:SalleHygiene/>
     </domaineApplication>

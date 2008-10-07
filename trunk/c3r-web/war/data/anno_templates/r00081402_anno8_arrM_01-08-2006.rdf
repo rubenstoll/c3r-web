@@ -15,12 +15,13 @@
     >
     
 
-<AnnotationRegle rdf:ID="r00081402">
+<AnnotationRequete rdf:ID="r00081402">
     <verifiableRequete>VP-E</verifiableRequete>
-    <origineRegle>validation</origineRegle>
-    <actualiteRegle>consolide</actualiteRegle>
-    <thematiqueRegle>accessibilite_des_handicapes</thematiqueRegle>
-    <exigenceRegle>Accessibilite</exigenceRegle>
+    <ifcFormalisableRequete>PI</ifcFormalisableRequete>
+    <origineRequete>validation</origineRequete>
+    <actualiteRequete>consolide</actualiteRequete>
+    <thematiqueRequete>accessibilite_des_handicapes</thematiqueRequete>
+    <exigenceRequete>Accessibilite</exigenceRequete>
     <extraitTypeTexteReglementaire>
         LEG
     </extraitTypeTexteReglementaire>
@@ -45,6 +46,9 @@
     <extraitTitre>
         Arrêté du 1er août 2006 fixant les dispositions prises pour l’application des articles R. 111-19 à R. 111-19-3 et R. 111-19-6 du code de la construction et de l’habitation relatives à l’accessibilité aux personnes handicapées des établissements recevant du public et des installations ouvertes au public lors de leur construction ou de leur création
     </extraitTitre>
+    <extraitTitreShort>
+        Arrete_01_aou_2006_consolide
+    </extraitTitreShort>
     <extraitRelatifA>
         l’accessibilité aux personnes handicapées des établissements recevant du public et des installations ouvertes au public lors de leur construction ou de leur création      </extraitRelatifA>
     <extraitReference>
@@ -57,7 +61,9 @@
     <extraitInfoExtractionParagraphe></extraitInfoExtractionParagraphe>
     <extraitInfoExtractionNumeroOrdreDansParagraphe></extraitInfoExtractionNumeroOrdreDansParagraphe>
 
-    <sujetRegle></sujetRegle>
+    <sujetRequete></sujetRequete>
+    <conceptsCle></conceptsCle>
+    <definitionIFD></definitionIFD>
 
     <domaineApplication>
         <ontoCC:Eclairage/>
@@ -70,11 +76,11 @@
         
     </sousDomaineSimple>
     
-    <destinationRegle>ERP</destinationRegle>
-    <textRegle>
+    <destinationRequete>ERP</destinationRequete>
+    <textRequete>
         Il doit permettre d’assurer des valeurs d’éclairement mesurées au sol d’au moins :  
         - 20 lux en tout point du cheminement extérieur accessible ; 
-    </textRegle>
+    </textRequete>
     
     <interpretationExpert> 
         (1 requête)
@@ -83,7 +89,7 @@
     
     <aboutIFCData></aboutIFCData>
 
-    <contenuRegle rdf:ID="r00081402q">
+    <contenuRequete rdf:ID="r00081402q">
         PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl#&gt;   
         select * display xml 
         where
@@ -108,13 +114,13 @@
         }
         FILTER (! bound( ?lum  ))
         }
-    </contenuRegle>
+    </contenuRequete>
     
     <!-- added by Birahim -->
     <proprieteConcerne rdf:resource="http://rainbow.essi.fr/~anastasiya/data/ifc.rdfs#overallWidth"/>
     
     <conditionAVerifier>être supérieur ou égal à 10</conditionAVerifier>
     
-</AnnotationRegle>
+</AnnotationRequete>
 
 </rdf:RDF>

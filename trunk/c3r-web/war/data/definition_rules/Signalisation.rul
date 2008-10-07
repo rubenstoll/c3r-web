@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF 
+    
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"  
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance#" 
+    xmlns:cos="http://www.inria.fr/acacia/corese#"  
+    xmlns:ontoCC="http://www.owl-ontologies.com/Ontology1205837312.owl#">
+    
+    
+   
+    <cos:rule rdf:ID="Signalisation">
+        <cos:if>
+            PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl#&gt;
+            {
+            ?x  rdfs:comment "signalisation"
+            }
+        </cos:if>
+        
+        <cos:then>
+            { ?x rdf:type ontoCC:Signalisation .}
+        </cos:then>
+    </cos:rule>
+    
+    <cos:rule rdf:ID="SignalisationAdaptee">
+        <cos:if>
+            PREFIX ontoCC: &lt;http://www.owl-ontologies.com/Ontology1205837312.owl#&gt;
+            {
+            {?x     rdf:type    ontoCC:Signalisation .
+            ?x    ontoCC:isAdapted "true"}
+            UNION
+            {?x     rdf:type    ontoCC:Signalisation .
+            ?x    ontoCC:isAdapted "TRUE"}
+            UNION
+            {?x     rdf:type    ontoCC:MarquageSol
+            ?x     ontoCC:concernsElementSignalisation ?pl
+            ?pl    rdf:type    ontoCC:PlaceStationnement
+
+            ?y     rdf:type    ontoCC:SignalisationVerticale
+            ?y    ontoCC:concernsElementSignalisation ?pl
+            }
+            UNION
+            {?x     rdf:type    ontoCC:MarquageSol
+            ?pl    rdf:type    ontoCC:PlaceStationnement
+            ?pl    ontoCC:hasSignalisation    ?x
+            ?pl    ontoCC:hasSignalisation    ?y                              
+            ?y     rdf:type    ontoCC:SignalisationVerticale
+            }
+            }
+        </cos:if>        
+        <cos:then>
+            { ?x rdf:type ontoCC:SignalisationAdaptee .}
+        </cos:then>
+    </cos:rule>
+    
+</rdf:RDF>
