@@ -6,6 +6,13 @@
 </head>
 <body>
 
+<!--remove the default or first engine wrapper for more heap space-->
+<!--removing the engine doesn't do much ... shame-->
+<c:if test="${not empty applicationScope['defaultEngineWrapper']}">
+	Removing the default engine wrapper ...
+	<c:remove var="defaultEngineWrapper" scope="application" />
+</c:if>
+
 <c:if test="${empty sessionScope['checkingEngine']}">
 Checking Engine does not exits ... <br />
 New Checking Engine created ... <br />
@@ -16,6 +23,7 @@ New Checking Engine created ... <br />
 		ontoCC="http://www.owl-ontologies.com/Ontology1205837312.owl#"
 		rdfs="http://www.w3.org/2000/01/rdf-schema#"/>
 </c:if>
+
 <br /><br />
 <c:out value="${requestScope.message}" /><br /><br />
 
