@@ -62,8 +62,8 @@
 		<url-pattern>/checker/queryFinder</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
-		<servlet-name>Dispatcher</servlet-name>
-		<url-pattern>/checker/ifcReader</url-pattern>
+		<servlet-name>C3RFormController</servlet-name>
+		<url-pattern>/checker/loadProject.form</url-pattern>
 	</servlet-mapping>	
 	<servlet-mapping>
 		<servlet-name>C3RFormController</servlet-name>
