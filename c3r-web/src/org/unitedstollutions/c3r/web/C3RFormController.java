@@ -19,6 +19,10 @@ import fr.inria.acacia.corese.api.IResults;
 /**
  * Servlet implementation class C3RFormController
  */
+/**
+ * @author ruben
+ *
+ */
 public class C3RFormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -58,7 +62,17 @@ public class C3RFormController extends HttpServlet {
 				request.setAttribute("message", "queries NOT successfully processed!");
 			}
 			screen = "/jsp/checker/runSelectedQueries.jsp";
+		} else if (selectedScreen.equals("/checker/loadProject.form")) {
 			
+			String projectFile = request.getParameter("projectIfc");
+			if (projectFile.equalsIgnoreCase("uri")) {
+				System.out.println("!!!!!!!!!!!!!!! URI IFC USED ... READING");
+			} else {
+				System.out.println("!!!!!!!!!!!!!!! DEFAULT IFC USED!!!");
+			}
+			// this function is useless cuz sometimes the next screen needs to be with .jsp
+			// and sometimes not. do not use.
+			screen = setNextScreen("/checker/main.jsp");
 		} else {
 			screen = "/jsp" + selectedScreen + ".jsp";
 		}
@@ -71,6 +85,17 @@ public class C3RFormController extends HttpServlet {
 			ex.printStackTrace();
 		}
 
+	}
+	
+	
+	/**
+	 * Returns a next screen path by prepending the current path with /jsp.
+	 * Useless function. Preferably do not use.
+	 * @param currentScreen
+	 * @return String of next screen
+	 */
+	private String setNextScreen(String currentScreen) {
+		return "/jsp" + currentScreen;
 	}
 
 	/**
