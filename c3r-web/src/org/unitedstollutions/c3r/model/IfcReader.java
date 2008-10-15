@@ -118,7 +118,7 @@ public class IfcReader {
 					.toString()));
 
 			while ((inputLine = in.readLine()) != null) {
-				// System.out.println(inputLine);
+				System.out.println(inputLine);
 				fw.write(inputLine + "\n");
 			}
 
