@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.unitedstollutions.c3r.model.IfcReader;
 import org.unitedstollutions.c3r.model.QueryResultsManager;
 
 import fr.inria.acacia.corese.api.IResults;
@@ -66,6 +67,7 @@ public class C3RFormController extends HttpServlet {
 			
 			String projectFile = request.getParameter("projectIfc");
 			if (projectFile.equalsIgnoreCase("uri")) {
+				IfcReader uriReader = new IfcReader();
 				System.out.println("!!!!!!!!!!!!!!! URI IFC USED ... READING");
 			} else {
 				System.out.println("!!!!!!!!!!!!!!! DEFAULT IFC USED!!!");
