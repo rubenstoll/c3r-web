@@ -9,6 +9,11 @@
 </head>
 <body>
 
+<%--
+ * try reading from the following address
+ * http://rainbow.essi.fr/~anastasiya/data/test_ifc.ifcxml
+--%>
+
 <br />
 Select one of the following project configuration location: <br /><br />
 <form name="ifcReader" method="POST" action="loadProject.form">

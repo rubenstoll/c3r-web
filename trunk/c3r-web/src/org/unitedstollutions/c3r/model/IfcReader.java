@@ -12,17 +12,10 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
- * @author yurchyshyna
- * 
- */
-/**
  * @author user
  *
  */
-/**
- * @author user
- * 
- */
+
 public class IfcReader {
 
 	private String ifcFile;
@@ -31,7 +24,7 @@ public class IfcReader {
 	private String customIfcFileName = "customIfc.rdf"; //loaded file
 
 	public IfcReader() {
-		this.ifcLocation = "/data/annotations";
+		this.ifcLocation = "./";
 		this.ifcFile = this.ifcLocation + "/" + defaultIfcFileName;
 
 	}
