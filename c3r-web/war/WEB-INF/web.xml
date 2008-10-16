@@ -15,6 +15,10 @@
 	<listener>
 		<listener-class>org.unitedstollutions.c3r.listeners.ContextListener</listener-class>
 	</listener>
+	<context-param>
+		<param-name>projectIfc</param-name>
+		<param-value>default</param-value>
+	</context-param>
 	<session-config>
 		<session-timeout>5</session-timeout>
 	</session-config>		
