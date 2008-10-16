@@ -67,7 +67,9 @@ public class C3RFormController extends HttpServlet {
 			
 			String projectFile = request.getParameter("projectIfc");
 			if (projectFile.equalsIgnoreCase("uri")) {
+				String uri = request.getParameter("ifcUri");
 				IfcReader uriReader = new IfcReader();
+				uriReader.readFromUri(uri);
 				System.out.println("!!!!!!!!!!!!!!! URI IFC USED ... READING");
 			} else {
 				System.out.println("!!!!!!!!!!!!!!! DEFAULT IFC USED!!!");
