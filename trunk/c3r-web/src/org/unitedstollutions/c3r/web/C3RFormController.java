@@ -64,13 +64,18 @@ public class C3RFormController extends HttpServlet {
 			}
 			screen = "/jsp/checker/runSelectedQueries.jsp";
 		} else if (selectedScreen.equals("/checker/loadProject.form")) {
-			
+			System.out.println("++++++++++ writing to .....");
+			String webRootDir = getServletContext().getRealPath("/");
 			String projectFile = request.getParameter("projectIfc");
 			if (projectFile.equalsIgnoreCase("uri")) {
+				System.out.println("!!!!!!!!!!!!!!! READING URI");
+				// gets the root directory of the web application on the system on which
+				// it is running. Example: /home/webserver/tomcat/webapps/c3r-web
+				String ifcWFile = webRootDir + "/mickey.rdf";
 				String uri = request.getParameter("ifcUri");
 				IfcReader uriReader = new IfcReader();
-				uriReader.readFromUri(uri);
-				System.out.println("!!!!!!!!!!!!!!! URI IFC USED ... READING");
+				uriReader.readFromUri(uri,ifcWFile);
+				System.out.println("!!!!!wrote to: " + ifcWFile);
 			} else {
 				System.out.println("!!!!!!!!!!!!!!! DEFAULT IFC USED!!!");
 			}

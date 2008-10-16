@@ -23,18 +23,6 @@ public class IfcReader {
 	private String defaultIfcFileName = "defaultIfc.rdf";
 	private String customIfcFileName = "customIfc.rdf"; //loaded file
 
-	public IfcReader() {
-		this.ifcLocation = "./";
-		this.ifcFile = this.ifcLocation + "/" + defaultIfcFileName;
-
-	}
-
-	public IfcReader(String ifcFilePath) {
-
-		ifcLocation = ifcFilePath;
-		this.ifcFile = this.ifcLocation + "/" + defaultIfcFileName;
-
-	}
 
 	/**
 	 * @return the ifcFile
@@ -67,12 +55,6 @@ public class IfcReader {
 	}
 
 	
-	/**
-	 *            set default file
-	 */
-	public void setDefaultIfcfile() {
-		this.ifcFile = getIfcLocation() + "/" + this.defaultIfcFileName;
-	}
 	
 	/**
 	 * Reads in a specified file from a client and writes the contents to a
@@ -91,19 +73,20 @@ public class IfcReader {
 	}
 
 	/**
-	 * @param uri
+	 * @param source
 	 * @return
 	 */
-	public void readFromUri(String uri) {
+	public void readFromUri(String source, String destination) {
 
 		BufferedReader in = null;
 		String inputLine = null;
 		File writeFile = null;
-		String wFileName = getIfcLocation() + "/" + this.customIfcFileName;
-
+//		String wFileName = destination + File.pathSeparator + this.customIfcFileName;
+		String wFileName = destination;
+		
 		try {
 
-			URL url = new URL(uri);
+			URL url = new URL(source);
 
 			in = new BufferedReader(new InputStreamReader(url.openStream()));
 			writeFile = new File(wFileName);
