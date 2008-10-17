@@ -34,6 +34,9 @@ public class C3RFormController extends HttpServlet {
 		HttpSession session = request.getSession();
 		String selectedScreen = request.getServletPath();
 		String screen = "";
+		String customIfcFileName = "customIfc.xml";
+		String defaultIfcFileName = "defaultIfc.rdf";
+		String customIfcFile = "/data/annotations/" + customIfcFileName;
 
 		if (selectedScreen.equals("/checker/runSelectedQueries")) {
 			
@@ -71,13 +74,16 @@ public class C3RFormController extends HttpServlet {
 				System.out.println("!!!!!!!!!!!!!!! READING URI");
 				// gets the root directory of the web application on the system on which
 				// it is running. Example: /home/webserver/tomcat/webapps/c3r-web
-				String ifcWFile = webRootDir + "/mickey.rdf";
+				String ifcWFile = webRootDir + customIfcFile;
 				String uri = request.getParameter("ifcUri");
 				IfcReader uriReader = new IfcReader();
 				uriReader.readFromUri(uri,ifcWFile);
+				session.setAttribute("projectIfc", customIfcFileName);
+				// DEBUG remove when complete.
 				System.out.println("!!!!!wrote to: " + ifcWFile);
 			} else {
 				System.out.println("!!!!!!!!!!!!!!! DEFAULT IFC USED!!!");
+				session.setAttribute("projectIfc", defaultIfcFileName);
 			}
 			// this function is useless cuz sometimes the next screen needs to be with .jsp
 			// and sometimes not. do not use.

@@ -18,9 +18,6 @@
 <jsp:useBean id="subDomainApplication"
 	class="org.unitedstollutions.c3r.model.SubDomainApplicationQueryGroupConfiguration" scope="session"/>
 
-<jsp:useBean id="ifcReader"
-	class="org.unitedstollutions.c3r.model.IfcReader" scope="session"/>
-
 <div> 
 <a href="<c:url value="/checker/loadProject"/>">Load Project</a><br />
 <a href="<c:url value="/checker/configure"/>">Configure</a><br />
@@ -31,7 +28,12 @@
 
 <div>
 The project uses the following IFC file:
-<jsp:getProperty name="ifcReader"  property="ifcFile"/>
+<c:if test="${empty sessionScope['projectIfc']}">
+Project IFC not defined you. MUST define!<br />
+</c:if>
+<c:if test="${not empty sessionScope['projectIfc']}">
+<c:out value="${sessionScope.projectIfc}" /><br />
+</c:if>
 </div>
 
 <br /><br />
