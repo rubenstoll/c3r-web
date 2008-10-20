@@ -1,5 +1,6 @@
 package org.unitedstollutions.c3r.web;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,7 +23,7 @@ import fr.inria.acacia.corese.api.IResults;
  */
 /**
  * @author ruben
- *
+ * 
  */
 public class C3RFormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -36,16 +37,18 @@ public class C3RFormController extends HttpServlet {
 		String screen = "";
 		String customIfcFileName = "customIfc.xml";
 		String defaultIfcFileName = "defaultIfc.rdf";
-		String customIfcFile = "/data/annotations/" + customIfcFileName;
+		String customIfcFile = File.separator + "data" + File.separator
+				+ "annotations" + File.separator + customIfcFileName;
 
 		if (selectedScreen.equals("/checker/runSelectedQueries")) {
-			
-			String[] selectedQueries = request.getParameterValues("selectedQueries");
 
-			
+			String[] selectedQueries = request
+					.getParameterValues("selectedQueries");
+
 			if (selectedQueries != null) {
-				ArrayList<String> selectedQs = new ArrayList<String>(Arrays.asList(selectedQueries));
-				
+				ArrayList<String> selectedQs = new ArrayList<String>(Arrays
+						.asList(selectedQueries));
+
 				if ((IResults) session.getAttribute("tmpQueryResponse") != null) {
 					IResults res = (IResults) session
 							.getAttribute("tmpQueryResponse");
@@ -58,34 +61,44 @@ public class C3RFormController extends HttpServlet {
 						qm = (QueryResultsManager) session
 								.getAttribute("queryManager");
 					}
-					
-					qm.setResults(res,selectedQs);
+
+					qm.setResults(res, selectedQs);
 				}
-				request.setAttribute("message", "queries successfully processed");
+				request.setAttribute("message",
+						"queries successfully processed");
 			} else {
-				request.setAttribute("message", "queries NOT successfully processed!");
+				request.setAttribute("message",
+						"queries NOT successfully processed!");
 			}
 			screen = "/jsp/checker/runSelectedQueries.jsp";
 		} else if (selectedScreen.equals("/checker/loadProject.form")) {
-			System.out.println("++++++++++ writing to .....");
 			String webRootDir = getServletContext().getRealPath("/");
 			String projectFile = request.getParameter("projectIfc");
 			if (projectFile.equalsIgnoreCase("uri")) {
-				System.out.println("!!!!!!!!!!!!!!! READING URI");
-				// gets the root directory of the web application on the system on which
-				// it is running. Example: /home/webserver/tomcat/webapps/c3r-web
+				System.out.println("!! Setting project from URI");
+				// gets the root directory of the web application on the system
+				// on which
+				// it is running. Example:
+				// /home/webserver/tomcat/webapps/c3r-web
 				String ifcWFile = webRootDir + customIfcFile;
 				String uri = request.getParameter("ifcUri");
 				IfcReader uriReader = new IfcReader();
-				uriReader.readFromUri(uri,ifcWFile);
-				session.setAttribute("projectIfc", customIfcFileName);
-				// DEBUG remove when complete.
-				System.out.println("!!!!!wrote to: " + ifcWFile);
+				try {
+					uriReader.readFromUri(uri, ifcWFile);
+					session.setAttribute("projectIfc", customIfcFileName);
+					// DEBUG remove when complete.
+					System.out.println("!!!!!wrote to: \n" + ifcWFile);
+				} catch (IOException ioe) {
+					System.out
+							.println("IO exception. You are probably behind a proxy or firewall.");
+				}
+
 			} else {
-				System.out.println("!!!!!!!!!!!!!!! DEFAULT IFC USED!!!");
+				System.out.println("!!!! DEFAULT IFC USED!!!");
 				session.setAttribute("projectIfc", defaultIfcFileName);
 			}
-			// this function is useless cuz sometimes the next screen needs to be with .jsp
+			// this function is useless cuz sometimes the next screen needs to
+			// be with .jsp
 			// and sometimes not. do not use.
 			screen = setNextScreen("/checker/main.jsp");
 		} else {
@@ -101,11 +114,11 @@ public class C3RFormController extends HttpServlet {
 		}
 
 	}
-	
-	
+
 	/**
 	 * Returns a next screen path by prepending the current path with /jsp.
 	 * Useless function. Preferably do not use.
+	 * 
 	 * @param currentScreen
 	 * @return String of next screen
 	 */
