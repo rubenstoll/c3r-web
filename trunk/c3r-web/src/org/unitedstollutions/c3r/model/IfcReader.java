@@ -13,7 +13,7 @@ import java.net.URL;
 
 /**
  * @author user
- *
+ * 
  */
 
 public class IfcReader {
@@ -21,8 +21,7 @@ public class IfcReader {
 	private String ifcFile;
 	private String ifcLocation;
 	private String defaultIfcFileName = "defaultIfc.rdf";
-	private String customIfcFileName = "customIfc.rdf"; //loaded file
-
+	private String customIfcFileName = "customIfc.rdf"; // loaded file
 
 	/**
 	 * @return the ifcFile
@@ -54,8 +53,6 @@ public class IfcReader {
 		this.ifcLocation = ifcLocation;
 	}
 
-	
-	
 	/**
 	 * Reads in a specified file from a client and writes the contents to a
 	 * custom IFC file.
@@ -64,7 +61,7 @@ public class IfcReader {
 	 */
 	public void createCustomIfc(String ifcFile) {
 		this.ifcFile = this.customIfcFileName;
-		
+
 		File ifcFile2read = new File(ifcFile);
 		String processedIfcFile = readFile(ifcFile2read);
 		File customIfcFile = new File(getIfcLocation() + "/"
@@ -76,39 +73,52 @@ public class IfcReader {
 	 * @param source
 	 * @return
 	 */
-	public void readFromUri(String source, String destination) {
+	public void readFromUri(String source, String destination) throws IOException {
 
 		BufferedReader in = null;
+		BufferedWriter fw = null;
 		String inputLine = null;
 		File writeFile = null;
-//		String wFileName = destination + File.pathSeparator + this.customIfcFileName;
+		// String wFileName = destination + File.separator +
+		// this.customIfcFileName;
 		String wFileName = destination;
-		
+
 		try {
 
-			URL url = new URL(source);
-
-			in = new BufferedReader(new InputStreamReader(url.openStream()));
 			writeFile = new File(wFileName);
-			BufferedWriter fw = new BufferedWriter(new FileWriter(writeFile
+			fw = new BufferedWriter(new FileWriter(writeFile
 					.toString()));
+			URL url = new URL(source);
+			in = new BufferedReader(new InputStreamReader(url.openStream()));
 
-			while ((inputLine = in.readLine()) != null) {
-				System.out.println(inputLine);
-				fw.write(inputLine + "\n");
+			if (in == null) {
+				
+			} else {
+				while ((inputLine = in.readLine()) != null) {
+					System.out.println(inputLine);
+					fw.write(inputLine + "\n");
+				}
 			}
-
-			fw.close();
-			in.close();
-
+			
 		} catch (MalformedURLException mue) {
-
+			System.out.println("URI is not correct");
 		} catch (IOException ioe) {
-
+			System.out.println("IO Exception - Connection timed out or couldn't create file writer");
+			throw new IOException();
+		} finally {
+			if(in != null) {
+				System.out.println("url buffered reader object exists and is being closed");
+				in.close();
+			}
+			if(fw != null) {
+				System.out.println("output buffered writer object exists and is being closed");
+				fw.close();
+			}
 		}
-
+		
 	}
 
+	
 	/**
 	 * Reads the contents of a specified file and returns the contents in a long
 	 * string.
