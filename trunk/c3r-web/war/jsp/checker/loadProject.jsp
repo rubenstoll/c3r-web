@@ -21,6 +21,12 @@ Select one of the following project configuration location: <br /><br />
 <input type="radio" name="projectIfc" value="default" checked="checked">
 Default 
 <br>
+<input type="radio" name="projectIfc" value="default2">
+Default 2
+<br>
+<input type="radio" name="projectIfc" value="default3">
+Default 3
+<br>
 <input type="radio" name="projectIfc" value="uri">
 Define URI
 <input type="text" name="ifcUri">

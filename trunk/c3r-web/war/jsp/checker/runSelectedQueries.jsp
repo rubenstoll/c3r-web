@@ -6,6 +6,38 @@
 </head>
 <body>
 
+<!--  
+These are the available engine attributes within sewese.  There is no attribute to specify the
+IFC project file. 
+
+ontoDir 
+The relative (to the webapp directory) path name of the ontologies directory e.g. ontoDir="WEB-INF/data/schemas" 
+
+annotDir 
+The relative (to the webapp directory) path name of the annotations directory e.g. annotDir="WEB-INF/data/annotations" 
+
+ruleDir 
+The relative (to the webapp directory) path name of the rules directory e.g. ruleDir="WEB-INF/data/rules" 
+
+resourcesDir 
+The relative (to the webapp directory) path name of the other resources directory to load. 
+
+projectionMax 
+Maximum number of projection computed to answer a query ; default is 10000. 
+
+resultMax
+Maximum number of results returned after possibly grouping projections ; default is 100. 
+
+resultJoin
+Groups projections that share the same first concept into one result ; default is false. 
+
+var
+The variable name where to store the engine instance ; default is "defaultEngineWrapper" 
+
+scope
+The scope where to store the engine instance. One of 'page', 'request', 'session' or 'application' ; default is 'application'. 
+-->
+
 <!--remove the default or first engine wrapper for more heap space-->
 <!--removing the engine doesn't do much ... shame-->
 <c:if test="${not empty applicationScope['defaultEngineWrapper']}">
