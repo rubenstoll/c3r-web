@@ -10,6 +10,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
 
 /**
  * @author user
@@ -20,9 +21,21 @@ public class IfcReader {
 
 	private String ifcFile;
 	private String ifcLocation;
+	private String assignedFileName;
 	private String defaultIfcFileName = "defaultIfc.rdf";
-	private String customIfcFileName = "customIfc.rdf"; // loaded file
+	private String customIfcFileName = "customIfc.rdf";
+	private static HashMap<String,String> fileNames;
 
+	
+	public IfcReader() {
+	
+		fileNames = new HashMap<String, String>();
+		fileNames.put("default", "defaultIfc.rdf");
+		fileNames.put("default2", "defaultIfc2.rdf");
+		fileNames.put("default3", "defaultIfc3.rdf");
+		fileNames.put("custom", "customIfc.xml");
+	}
+	
 	/**
 	 * @return the ifcFile
 	 */
@@ -51,6 +64,21 @@ public class IfcReader {
 	 */
 	public void setIfcLocation(String ifcLocation) {
 		this.ifcLocation = ifcLocation;
+	}
+
+	/**
+	 * @return the projectFileName
+	 */
+	public String getAssignedFileName(String fieldValue) {
+		//return assignedFileName;
+		return fileNames.get(fieldValue);
+	}
+
+	/**
+	 * @param projectFileName the projectFileName to set
+	 */
+	public void setAssignedFileName(String projectFileName) {
+		this.assignedFileName = projectFileName;
 	}
 
 	/**
