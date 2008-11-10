@@ -3,6 +3,8 @@
  */
 package org.unitedstollutions.c3r.model;
 
+import java.util.ArrayList;
+
 import fr.inria.acacia.corese.api.EngineFactory;
 import fr.inria.acacia.corese.api.IEngine;
 import fr.inria.acacia.corese.api.IResults;
@@ -15,6 +17,7 @@ import fr.inria.acacia.corese.exceptions.EngineException;
 public class C3REngine {
 
 	private String query;
+	private ArrayList<String> queries;
 	private EngineFactory ef;
 	private IEngine engine;
 	private String propertyFile;
@@ -24,8 +27,7 @@ public class C3REngine {
 	private String engineRule;
 	private String log4jProperties;
 	private Boolean engineRun;
-	
-	
+
 	public C3REngine() {
 		ef = new EngineFactory();
 		engine = ef.newInstance();
@@ -33,13 +35,25 @@ public class C3REngine {
 
 	public IResults runQuery() {
 		IResults results = null;
-
+		// TODO add null query string check here
 		try {
 			results = engine.SPARQLQuery(query);
 		} catch (EngineException e) {
 			e.printStackTrace();
 		}
-		
+
+		return results;
+
+	}
+
+	public IResults runQueries() {
+		IResults results = null;
+
+		// TODO add null queries check here
+		for(String query : queries) {
+			this.query = query;
+			results = runQuery();
+		}
 		return results;
 
 	}
@@ -52,10 +66,26 @@ public class C3REngine {
 	}
 
 	/**
-	 * @param query the query to set
+	 * @param query
+	 *            the query to set
 	 */
 	public void setQuery(String query) {
 		this.query = query;
+	}
+
+	/**
+	 * @return the queries
+	 */
+	public ArrayList<String> getQueries() {
+		return queries;
+	}
+
+	/**
+	 * @param queries
+	 *            the queries to set
+	 */
+	public void setQueries(ArrayList<String> queries) {
+		this.queries = queries;
 	}
 
 	/**
@@ -66,10 +96,12 @@ public class C3REngine {
 	}
 
 	/**
-	 * @param propertyFile the propertyFile to set
+	 * @param propertyFile
+	 *            the propertyFile to set
 	 */
 	public void setPropertyFile(String propertyFile) {
 		this.propertyFile = propertyFile;
+		// ef.setProperty(EngineFactory.PROPERTY_FILE, "corese.properties");
 		ef.setProperty(EngineFactory.PROPERTY_FILE, propertyFile);
 	}
 
@@ -81,10 +113,12 @@ public class C3REngine {
 	}
 
 	/**
-	 * @param dataPath the dataPath to set
+	 * @param dataPath
+	 *            the dataPath to set
 	 */
 	public void setDataPath(String dataPath) {
 		this.dataPath = dataPath;
+		// ef.setProperty(EngineFactory.DATAPATH, "D:/toto/corese/data");
 		ef.setProperty(EngineFactory.DATAPATH, dataPath);
 	}
 
@@ -96,13 +130,14 @@ public class C3REngine {
 	}
 
 	/**
-	 * @param engineSchema the engineSchema to set
+	 * @param engineSchema
+	 *            the engineSchema to set
 	 */
 	public void setEngineSchema(String engineSchema) {
 		this.engineSchema = engineSchema;
-//		ef.setProperty(EngineFactory.ENGINE_SCHEMA,
-//		"data/humans.rdfs ontology/owlOntology.owl onto");
-		ef.setProperty(EngineFactory.ENGINE_SCHEMA,engineSchema);
+		// ef.setProperty(EngineFactory.ENGINE_SCHEMA,
+		// "data/humans.rdfs ontology/owlOntology.owl onto");
+		ef.setProperty(EngineFactory.ENGINE_SCHEMA, engineSchema);
 	}
 
 	/**
@@ -113,11 +148,12 @@ public class C3REngine {
 	}
 
 	/**
-	 * @param engineData the engineData to set
+	 * @param engineData
+	 *            the engineData to set
 	 */
 	public void setEngineData(String engineData) {
 		this.engineData = engineData;
-//		ef.setProperty(EngineFactory.ENGINE_DATA, "data/humans.rdf");
+		// ef.setProperty(EngineFactory.ENGINE_DATA, "data/humans.rdf");
 		ef.setProperty(EngineFactory.ENGINE_DATA, engineData);
 	}
 
@@ -129,11 +165,12 @@ public class C3REngine {
 	}
 
 	/**
-	 * @param engineRule the engineRule to set
+	 * @param engineRule
+	 *            the engineRule to set
 	 */
 	public void setEngineRule(String engineRule) {
 		this.engineRule = engineRule;
-//		ef.setProperty(EngineFactory.ENGINE_RULE, "data/humans.rul");
+		// ef.setProperty(EngineFactory.ENGINE_RULE, "data/humans.rul");
 		ef.setProperty(EngineFactory.ENGINE_RULE, engineRule);
 	}
 
@@ -145,7 +182,8 @@ public class C3REngine {
 	}
 
 	/**
-	 * @param log4jProperties the log4jProperties to set
+	 * @param log4jProperties
+	 *            the log4jProperties to set
 	 */
 	public void setLog4jProperties(String log4jProperties) {
 		this.log4jProperties = log4jProperties;
@@ -160,11 +198,13 @@ public class C3REngine {
 	}
 
 	/**
-	 * @param engineRun the engineRun to set
+	 * @param engineRun
+	 *            the engineRun to set
 	 */
 	public void setEngineRun(Boolean engineRun) {
 		this.engineRun = engineRun;
-		// TODO check if toString on a boolean returns True and False respectively.
+		// TODO check if toString on a boolean returns True and False
+		// respectively.
 		ef.setProperty(EngineFactory.ENGINE_RULE_RUN, engineRun.toString());
 	}
 
