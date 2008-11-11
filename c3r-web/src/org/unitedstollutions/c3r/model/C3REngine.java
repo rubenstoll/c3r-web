@@ -36,6 +36,7 @@ public class C3REngine {
 	public IResults runQuery() {
 		IResults results = null;
 		// TODO add null query string check here
+		// TODO add application path must be defined
 		try {
 			results = engine.SPARQLQuery(query);
 		} catch (EngineException e) {
