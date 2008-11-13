@@ -4,9 +4,9 @@
 package org.unitedstollutions.c3r.model;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import java.io.File;
+import java.util.Enumeration;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -15,6 +15,8 @@ import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import fr.inria.acacia.corese.api.IResult;
+import fr.inria.acacia.corese.api.IResultValue;
 import fr.inria.acacia.corese.api.IResults;
 
 /**
@@ -40,14 +42,20 @@ public class C3REngineTest {
 		dataDirectory = currDir.toString() + File.separator + "war"
 				+ File.separator + "data";
 
-		String engineData = dataDirectory + File.separator + "annotations";
+		String engineData = dataDirectory + File.separator + "annotations"
+				+ File.separator + "defaultIfc.rdf";
 		String engineRule = dataDirectory + File.separator + "definition_rules";
-		System.out.println("data directory is: " + dataDirectory);
+		String engineSchema = dataDirectory + File.separator + "schemas"
+				+ File.separator + "ontoCC.owl";
 
 		engine = new C3REngine();
 		engine.setDataPath(dataDirectory);
 		engine.setEngineData(engineData);
 		engine.setEngineRule(engineRule);
+		engine.setEngineSchema(engineSchema);
+
+		System.out.println("data directory is: " + dataDirectory);
+		System.out.println("schema being used is: " + engine.getEngineSchema());
 
 	}
 
@@ -60,16 +68,63 @@ public class C3REngineTest {
 
 	@Test
 	public void setSimpleQueryAndRun() {
-		String query = "select ?palierrepos display xml where { ?palierrepos rdf:type ontoCC:PalierRepos OPTIONAL { ?palierrepos ontoCC:overallWidth ?longueur FILTER ( xsd:integer(?longueur) > 140) } FILTER (! bound( ?longueur ) ) } ";
-		engine.setQuery(query);
-		IResults results = engine.runQuery();
-		assertTrue("yes" == "yes");
+		String prefixOnto = "PREFIX ontoCC: <http://www.owl-ontologies.com/Ontology1205837312.owl#>";
+		String query = prefixOnto
+				+ "select ?x display xml where { ?x rdf:type rdfs:Class } ";
 
+		IResults res = setQueryAndRunEngine(query);
+		showResults(res);
+		// assertTrue("yes" == "yes");
 	}
 
+	
+	@Test
+	public void ifcProjectQueryTest() {
+		String prefixOnto = "PREFIX ontoCC: <http://www.owl-ontologies.com/Ontology1205837312.owl#>";
+		String query = prefixOnto + "select ?x display xml where { ?x  rdf:type   ontoCC:IfcProject }";
+
+		IResults res = setQueryAndRunEngine(query);
+		showResults(res);
+		
+		// assertTrue("yes" == "yes");
+	}
+
+	private IResults setQueryAndRunEngine(String query) {
+		
+		engine.setEngineRun(true);
+		engine.setQuery(query);
+		
+		return engine.runQuery();
+
+	}
+	
+	private void showResults(IResults results) {
+		
+		String[] variables = results.getVariables();
+		// go through all results
+		for (Enumeration<IResult> en = results.getResults(); en.hasMoreElements();) {
+			// get a result
+			IResult r = en.nextElement();
+			// go through this result
+			for (String var : variables) {
+				if (r.isBound(var)) {
+					// get result values for each selected variable
+					IResultValue[] values = r.getResultValues(var);
+					for (int j = 0; j < values.length; j++)
+						System.out.println(var + " = "
+								+ values[j].getStringValue());
+				} else {
+					System.out.println(var + " = Not bound");
+				}
+			}
+		}
+	}
+	
+	
 	@After
 	public void runAfterEveryTest() {
 		engine = null;
+		System.out.println("leaving test ...");
 	}
 
 	@AfterClass
