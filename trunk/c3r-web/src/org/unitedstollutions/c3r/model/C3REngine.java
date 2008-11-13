@@ -204,8 +204,6 @@ public class C3REngine {
 	 */
 	public void setEngineRun(Boolean engineRun) {
 		this.engineRun = engineRun;
-		// TODO check if toString on a boolean returns True and False
-		// respectively.
 		ef.setProperty(EngineFactory.ENGINE_RULE_RUN, engineRun.toString());
 	}
 
