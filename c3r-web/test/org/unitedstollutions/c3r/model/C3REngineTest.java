@@ -3,7 +3,7 @@
  */
 package org.unitedstollutions.c3r.model;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import java.io.File;
 import java.util.Enumeration;
@@ -48,15 +48,23 @@ public class C3REngineTest {
 		String engineSchema = dataDirectory + File.separator + "schemas"
 				+ File.separator + "ontoCC.owl";
 
-		engine = new C3REngine();
-		engine.setDataPath(dataDirectory);
-		engine.setEngineData(engineData);
-		engine.setEngineRule(engineRule);
-		engine.setEngineSchema(engineSchema);
-
 		System.out.println("data directory is: " + dataDirectory);
-		System.out.println("schema being used is: " + engine.getEngineSchema());
+		System.out.println("schema being used is: " + engineSchema);
 
+		engine = C3REngine.getInstance();
+		engine.createEngineFactory();
+//		engine.setDataPath(dataDirectory);
+//		engine.setEngineData(engineData);
+//		engine.setEngineRule(engineRule);
+//		engine.setEngineSchema(engineSchema);
+		
+
+		
+		engine.createIEngine();
+
+		engine.loadFile(engineData);
+		engine.loadFile(engineRule);
+		engine.loadFile(engineSchema);
 	}
 
 	@Ignore("Not Ready to Run")
@@ -66,6 +74,7 @@ public class C3REngineTest {
 		assertEquals(queryResult, engine.getQuery());
 	}
 
+	@Ignore("Easy test")
 	@Test
 	public void setSimpleQueryAndRun() {
 		String prefixOnto = "PREFIX ontoCC: <http://www.owl-ontologies.com/Ontology1205837312.owl#>";
@@ -84,6 +93,7 @@ public class C3REngineTest {
 		String query = prefixOnto + "select ?x display xml where { ?x  rdf:type   ontoCC:IfcProject }";
 
 		IResults res = setQueryAndRunEngine(query);
+		assertNotNull(res);
 		showResults(res);
 		
 		// assertTrue("yes" == "yes");

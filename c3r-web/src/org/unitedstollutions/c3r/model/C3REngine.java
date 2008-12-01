@@ -28,11 +28,104 @@ public class C3REngine {
 	private String log4jProperties;
 	private Boolean engineRun;
 
-	public C3REngine() {
-		ef = new EngineFactory();
-		engine = ef.newInstance();
+	// first alternative to create a singleton
+	private static C3REngine c3rEngineSingleton;
+
+	// second alternative to create a simple, fast and thread safe singleton
+	// public final static C3REngine c3rEngSingleton = new C3REngine();
+
+	protected C3REngine() {
+		// Exists only to defeat instantiation.
 	}
 
+	/**
+	 * @return a single C3REngine instance
+	 */
+	public static C3REngine getInstance() {
+		if (c3rEngineSingleton == null) {
+			synchronized (C3REngine.class) {
+				c3rEngineSingleton = new C3REngine();
+			}
+		}
+		return c3rEngineSingleton;
+	}
+
+	/**
+	 * Creates an engine factory as described in the Corese API
+	 */
+	public void createEngineFactory() {
+
+		ef = new EngineFactory();
+	}
+
+	/**
+	 * Creates an IEngine as described in the Corese API
+	 */
+	public void createIEngine() {
+
+		engine = ef.newInstance();
+
+	}
+
+	/**
+	 * method to create an engine factory and an IEngine instance 
+	 * in one shot. Alternatively each method can be called separately.
+	 */
+	private void create() {
+		createEngineFactory();
+		createIEngine();
+	}
+
+	/**
+	 * Load a single file to the engine.  Try to create an Engine Factory
+	 * and an IEngine first if possible and if you don't one will be created
+	 * automatically
+	 */
+	public void loadFile(String data) {
+		if (!engineExists()) {
+			create();
+		}
+		try {
+			engine.load(data);
+		} catch (EngineException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Load a directory containing data. Try to create an Engine Factory
+	 * and an IEngine first if possible and if you don't one will be created
+	 * automatically
+	 */
+	public void loadDirectory(String directory) {
+		if (!engineExists()) {
+			create();
+		}
+		try {
+			engine.load(directory);
+		} catch (EngineException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * @return
+	 */
+	private Boolean engineExists() {
+
+		if (engine == null) {
+			return false;
+		} else {
+			return true;
+		}
+
+	}
+
+	/**
+	 * @return
+	 */
 	public IResults runQuery() {
 		IResults results = null;
 		// TODO add null query string check here
@@ -47,11 +140,14 @@ public class C3REngine {
 
 	}
 
+	/**
+	 * @return
+	 */
 	public IResults runQueries() {
 		IResults results = null;
 
 		// TODO add null queries check here
-		for(String query : queries) {
+		for (String query : queries) {
 			this.query = query;
 			results = runQuery();
 		}
