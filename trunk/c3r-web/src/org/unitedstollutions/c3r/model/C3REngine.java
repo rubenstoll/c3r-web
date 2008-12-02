@@ -124,6 +124,23 @@ public class C3REngine {
 	}
 
 	/**
+	 * Applies all the data loaded to the Corese engine.  Wrapper method 
+	 * to the original corese runRuleEngine() method.
+	 * 
+	 */
+	public void runRuleEngine() {
+		
+		if (!engineExists()) {
+			// TODO throw an exception or add an assert
+			return;
+		}
+		System.out.println("+++ running rule engine");
+		
+		engine.runRuleEngine();
+		
+	}
+	
+	/**
 	 * @return
 	 */
 	public IResults runQuery() {

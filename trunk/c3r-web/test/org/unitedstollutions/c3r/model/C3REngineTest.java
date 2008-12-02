@@ -58,13 +58,13 @@ public class C3REngineTest {
 //		engine.setEngineRule(engineRule);
 //		engine.setEngineSchema(engineSchema);
 		
-
-		
 		engine.createIEngine();
 
+		engine.loadDirectory(engineRule);
 		engine.loadFile(engineData);
-		engine.loadFile(engineRule);
 		engine.loadFile(engineSchema);
+		engine.runRuleEngine();
+		
 	}
 
 	@Ignore("Not Ready to Run")
@@ -90,8 +90,8 @@ public class C3REngineTest {
 	@Test
 	public void ifcProjectQueryTest() {
 		String prefixOnto = "PREFIX ontoCC: <http://www.owl-ontologies.com/Ontology1205837312.owl#>";
-		String query = prefixOnto + "select ?x display xml where { ?x  rdf:type   ontoCC:IfcProject }";
-
+		//String query = prefixOnto + "select ?x display xml where { ?x  rdf:type   ontoCC:IfcDoor }";
+		String query = prefixOnto + "select ?x display xml where { ?x  rdf:type   ontoCC:PortePrincipale  }";
 		IResults res = setQueryAndRunEngine(query);
 		assertNotNull(res);
 		showResults(res);
@@ -101,7 +101,7 @@ public class C3REngineTest {
 
 	private IResults setQueryAndRunEngine(String query) {
 		
-		engine.setEngineRun(true);
+//		engine.setEngineRun(true);
 		engine.setQuery(query);
 		
 		return engine.runQuery();
