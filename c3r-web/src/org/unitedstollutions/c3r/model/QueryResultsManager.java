@@ -39,7 +39,16 @@ public class QueryResultsManager {
 		this.queries = queries;
 	}
 
-	public void setResults(IResults res, ArrayList<String> selectedQueries) {
+	/**
+	 * Takes a set of results returned by a query run and a and a list of names
+	 * matching the names of the results returned by the query. This method sets
+	 * the object's queries properties with the queries matching the list of names
+	 * which were selected in a checkbox list or through some other way.
+	 * 
+	 * @param res
+	 * @param selectedQueries
+	 */
+	public void setQueries(IResults res, ArrayList<String> selectedQueries) {
 
 		HashMap<String, Query> finalQueries = new HashMap<String, Query>();
 

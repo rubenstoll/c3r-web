@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.unitedstollutions.c3r.model.C3REngine;
 import org.unitedstollutions.c3r.model.IfcReader;
 import org.unitedstollutions.c3r.model.QueryResultsManager;
 
@@ -31,14 +32,24 @@ public class C3RFormController extends HttpServlet {
 	protected void processRequest(HttpServletRequest request,
 			HttpServletResponse response) {
 
+		String webRootDir = getServletContext().getRealPath("/");
+
 		// Get the user's session
 		HttpSession session = request.getSession();
 		String selectedScreen = request.getServletPath();
 		String screen = "";
 		String customIfcFileName = "customIfc.xml";
 		String defaultIfcFileName = "defaultIfc.rdf";
-		String customIfcFile = "data" + File.separator
-				+ "annotations" + File.separator + customIfcFileName;
+		String customIfcFile = "data" + File.separator + "annotations"
+				+ File.separator + customIfcFileName;
+		String dataDir = webRootDir + File.separator + "data";
+		// this engine data will be made define in an attribute
+		// since there is an option to select the project being use - .ifc
+		String engineData = dataDir + File.separator + "annotations"
+				+ File.separator + "defaultIfc.rdf";
+		String engineRule = dataDir + File.separator + "definition_rules";
+		String engineSchema = dataDir + File.separator + "schemas"
+				+ File.separator + "ontoCC.owl";
 
 		if (selectedScreen.equals("/checker/runSelectedQueries")) {
 
@@ -49,20 +60,37 @@ public class C3RFormController extends HttpServlet {
 				ArrayList<String> selectedQs = new ArrayList<String>(Arrays
 						.asList(selectedQueries));
 
+				// check to see if there are any query run results
 				if ((IResults) session.getAttribute("tmpQueryResponse") != null) {
 					IResults res = (IResults) session
 							.getAttribute("tmpQueryResponse");
 					QueryResultsManager qm;
 
+					// create a query manager bean if one doesn't exist in the
+					// session
 					if (session.getAttribute("queryManager") == null) {
 						qm = new QueryResultsManager();
 						session.setAttribute("queryManager", qm);
 					} else {
+						// there exists one - get the instance by looking up
+						// in the session through an attribute
 						qm = (QueryResultsManager) session
 								.getAttribute("queryManager");
 					}
+					// add the selected queries to the manager
+					qm.setQueries(res, selectedQs);
 
-					qm.setResults(res, selectedQs);
+					// use the corese engine to run the selected queries
+					C3REngine engine = C3REngine.getInstance();
+					engine.createEngineFactory();
+					engine.createIEngine();
+
+					// TODO replace engineData with an the projectIfc session
+					// attribute
+					engine.loadFile(engineData);
+					engine.loadFile(engineRule);
+					engine.loadFile(engineSchema);
+
 				}
 				request.setAttribute("message",
 						"queries successfully processed");
@@ -76,7 +104,6 @@ public class C3RFormController extends HttpServlet {
 			// on which
 			// it is running. Example:
 			// /home/webserver/tomcat/webapps/c3r-web
-			String webRootDir = getServletContext().getRealPath("/");
 			String projectFile = request.getParameter("projectIfc");
 			// ifcReader is probably not the best name to give to this
 			// object, but it will do for now
@@ -98,15 +125,18 @@ public class C3RFormController extends HttpServlet {
 
 			} else if (projectFile.equalsIgnoreCase("default2")) {
 				String projectFileName = ifc.getAssignedFileName(projectFile);
-				System.out.println("!!!! DEFAULT 2 IFC USED !!! ==> " + projectFileName);
+				System.out.println("!!!! DEFAULT 2 IFC USED !!! ==> "
+						+ projectFileName);
 				session.setAttribute("projectIfc", projectFileName);
 			} else if (projectFile.equalsIgnoreCase("default3")) {
 				String projectFileName = ifc.getAssignedFileName(projectFile);
-				System.out.println("!!!! DEFAULT 3 IFC USED !!! ==> " + projectFileName);
+				System.out.println("!!!! DEFAULT 3 IFC USED !!! ==> "
+						+ projectFileName);
 				session.setAttribute("projectIfc", projectFileName);
 			} else {
 				String projectFileName = ifc.getAssignedFileName(projectFile);
-				System.out.println("!!!! DEFAULT IFC USED !!! ==> " + projectFileName);
+				System.out.println("!!!! DEFAULT IFC USED !!! ==> "
+						+ projectFileName);
 				session.setAttribute("projectIfc", projectFileName);
 			}
 			// this function is useless cuz sometimes the next screen needs to
