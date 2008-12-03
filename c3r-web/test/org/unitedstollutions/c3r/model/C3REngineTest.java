@@ -3,10 +3,13 @@
  */
 package org.unitedstollutions.c3r.model;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.HashMap;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -71,19 +74,20 @@ public class C3REngineTest {
 	@Test
 	public void multiplication() {
 		String queryResult = "";
-		assertEquals(queryResult, engine.getQuery());
+		assertEquals(queryResult, engine.getEngineSchema());
 	}
 
-	@Ignore("Easy test")
 	@Test
 	public void setSimpleQueryAndRun() {
 		String prefixOnto = "PREFIX ontoCC: <http://www.owl-ontologies.com/Ontology1205837312.owl#>";
-		String query = prefixOnto
-				+ "select ?x display xml where { ?x rdf:type rdfs:Class } ";
+		String query = prefixOnto + "select ?x display xml where { ?x rdf:type rdfs:Class } ";
 
-		IResults res = setQueryAndRunEngine(query);
-		showResults(res);
-		// assertTrue("yes" == "yes");
+		ArrayList<String> results = engine.runQuery(query);
+
+		assertNotNull(results);
+		
+		printResults(results);
+		
 	}
 
 	
@@ -92,49 +96,53 @@ public class C3REngineTest {
 		String prefixOnto = "PREFIX ontoCC: <http://www.owl-ontologies.com/Ontology1205837312.owl#>";
 		//String query = prefixOnto + "select ?x display xml where { ?x  rdf:type   ontoCC:IfcDoor }";
 		String query = prefixOnto + "select ?x display xml where { ?x  rdf:type   ontoCC:PortePrincipale  }";
-		IResults res = setQueryAndRunEngine(query);
-		assertNotNull(res);
-		showResults(res);
-		
-		// assertTrue("yes" == "yes");
-	}
 
-	private IResults setQueryAndRunEngine(String query) {
-		
-//		engine.setEngineRun(true);
-		engine.setQuery(query);
-		
-		return engine.runQuery();
+		ArrayList<String> results = engine.runQuery(query);
 
+		assertNotNull(results);
+		
+		printResults(results);
+		
 	}
 	
-	private void showResults(IResults results) {
+	@Ignore("Not finished yet")
+	@Test
+	public void mappedQueriesTest() {
 		
-		String[] variables = results.getVariables();
-		// go through all results
-		for (Enumeration<IResult> en = results.getResults(); en.hasMoreElements();) {
-			// get a result
-			IResult r = en.nextElement();
-			// go through this result
-			for (String var : variables) {
-				if (r.isBound(var)) {
-					// get result values for each selected variable
-					IResultValue[] values = r.getResultValues(var);
-					for (int j = 0; j < values.length; j++)
-						System.out.println(var + " = "
-								+ values[j].getStringValue());
-				} else {
-					System.out.println(var + " = Not bound");
-				}
-			}
+		HashMap<String, Query> mappedQueries = new HashMap<String, Query>();
+
+		// TODO create hash map reference numbers (r0008) and Query objects as test data
+		
+		HashMap<String, ArrayList<String>> results = engine.runMappedQueries(mappedQueries);
+
+		assertNotNull(results);
+		
+		printResults(results);
+		
+	}
+	
+	private void printResults(ArrayList<String> results) {
+		
+		System.out.println("+++ QUERY RESULTS:\n\n");
+		for(String result : results) {
+			System.out.println(result);
 		}
+		
 	}
-	
+
+
+	private void printResults(HashMap<String,ArrayList<String>> results) {
+		
+		System.out.println("+++ MAPPED QUERY RESULTS:\n\n");
+		// TODO implement results collection iterator to iterate through hash map
+		
+	}
+
 	
 	@After
 	public void runAfterEveryTest() {
 		engine = null;
-		System.out.println("leaving test ...");
+		System.out.println("\n\n++++ leaving test ...");
 	}
 
 	@AfterClass
