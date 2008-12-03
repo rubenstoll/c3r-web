@@ -4,9 +4,14 @@
 package org.unitedstollutions.c3r.model;
 
 import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Iterator;
 
 import fr.inria.acacia.corese.api.EngineFactory;
 import fr.inria.acacia.corese.api.IEngine;
+import fr.inria.acacia.corese.api.IResult;
+import fr.inria.acacia.corese.api.IResultValue;
 import fr.inria.acacia.corese.api.IResults;
 import fr.inria.acacia.corese.exceptions.EngineException;
 
@@ -16,8 +21,8 @@ import fr.inria.acacia.corese.exceptions.EngineException;
  */
 public class C3REngine {
 
-	private String query;
-	private ArrayList<String> queries;
+	// private HashMap<String, Query> mappedQueries;
+//	private HashMap<String, ArrayList<String>> mappedresults;
 	private EngineFactory ef;
 	private IEngine engine;
 	private String propertyFile;
@@ -68,8 +73,8 @@ public class C3REngine {
 	}
 
 	/**
-	 * method to create an engine factory and an IEngine instance 
-	 * in one shot. Alternatively each method can be called separately.
+	 * method to create an engine factory and an IEngine instance in one shot.
+	 * Alternatively each method can be called separately.
 	 */
 	private void create() {
 		createEngineFactory();
@@ -77,8 +82,8 @@ public class C3REngine {
 	}
 
 	/**
-	 * Load a single file to the engine.  Try to create an Engine Factory
-	 * and an IEngine first if possible and if you don't one will be created
+	 * Load a single file to the engine. Try to create an Engine Factory and an
+	 * IEngine first if possible and if you don't one will be created
 	 * automatically
 	 */
 	public void loadFile(String data) {
@@ -94,8 +99,8 @@ public class C3REngine {
 	}
 
 	/**
-	 * Load a directory containing data. Try to create an Engine Factory
-	 * and an IEngine first if possible and if you don't one will be created
+	 * Load a directory containing data. Try to create an Engine Factory and an
+	 * IEngine first if possible and if you don't one will be created
 	 * automatically
 	 */
 	public void loadDirectory(String directory) {
@@ -124,82 +129,94 @@ public class C3REngine {
 	}
 
 	/**
-	 * Applies all the data loaded to the Corese engine.  Wrapper method 
-	 * to the original corese runRuleEngine() method.
+	 * Applies all the data loaded to the Corese engine. Wrapper method to the
+	 * original corese runRuleEngine() method.
 	 * 
 	 */
 	public void runRuleEngine() {
-		
+
 		if (!engineExists()) {
 			// TODO throw an exception or add an assert
 			return;
 		}
 		System.out.println("+++ running rule engine");
-		
+
 		engine.runRuleEngine();
-		
+
 	}
-	
+
 	/**
 	 * @return
 	 */
-	public IResults runQuery() {
+	public ArrayList<String> runQuery(String query) {
 		IResults results = null;
 		// TODO add null query string check here
-		// TODO add application path must be defined
+		// TODO add application path must be defined	
 		try {
 			results = engine.SPARQLQuery(query);
 		} catch (EngineException e) {
 			e.printStackTrace();
 		}
 
-		return results;
+		return parseIResults(results);
 
+	}
+	
+	
+	/**
+	 * @param results
+	 * @return
+	 */
+	private ArrayList<String> parseIResults(IResults results) {
+		
+		ArrayList<String> parsedResults = new ArrayList<String>();
+		
+		String[] variables = results.getVariables();
+		// go through all results
+		for (Enumeration<IResult> en = results.getResults(); en.hasMoreElements();) {
+			// get a result
+			IResult r = en.nextElement();
+			// go through this result
+			for (String var : variables) {
+				if (r.isBound(var)) {
+					// get result values for each selected variable
+					IResultValue[] values = r.getResultValues(var);
+					for (int j = 0; j < values.length; j++) {
+						System.out.println(var + " = "
+								+ values[j].getStringValue());
+						parsedResults.add(values[j].getStringValue());
+					}
+					
+				} else {
+					System.out.println(var + " = Not bound");
+				}
+			}
+		}
+		return parsedResults;
 	}
 
 	/**
 	 * @return
 	 */
-	public IResults runQueries() {
-		IResults results = null;
+	public HashMap<String, ArrayList<String>> runMappedQueries(
+			HashMap<String, Query> mappedQueries) {
 
-		// TODO add null queries check here
-		for (String query : queries) {
-			this.query = query;
-			results = runQuery();
+		HashMap<String, ArrayList<String>> mappedresults = new HashMap<String, ArrayList<String>>();
+		Iterator<String> iterator = mappedQueries.keySet().iterator();
+
+		while (iterator.hasNext()) {
+
+			String queryRefNumber = iterator.next();
+			System.out.println(queryRefNumber);
+			Query currentQuery = mappedQueries.get(queryRefNumber);
+			ArrayList<String> currResults = runQuery(currentQuery.getSparql());
+			
+			mappedresults.put(queryRefNumber, currResults);
+
 		}
-		return results;
+		
+		return mappedresults;
 
-	}
-
-	/**
-	 * @return the query
-	 */
-	public String getQuery() {
-		return query;
-	}
-
-	/**
-	 * @param query
-	 *            the query to set
-	 */
-	public void setQuery(String query) {
-		this.query = query;
-	}
-
-	/**
-	 * @return the queries
-	 */
-	public ArrayList<String> getQueries() {
-		return queries;
-	}
-
-	/**
-	 * @param queries
-	 *            the queries to set
-	 */
-	public void setQueries(ArrayList<String> queries) {
-		this.queries = queries;
 	}
 
 	/**
