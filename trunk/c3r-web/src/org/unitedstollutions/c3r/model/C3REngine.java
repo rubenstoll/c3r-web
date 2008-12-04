@@ -8,6 +8,8 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import org.apache.log4j.Logger;
+
 import fr.inria.acacia.corese.api.EngineFactory;
 import fr.inria.acacia.corese.api.IEngine;
 import fr.inria.acacia.corese.api.IResult;
@@ -22,7 +24,7 @@ import fr.inria.acacia.corese.exceptions.EngineException;
 public class C3REngine {
 
 	// private HashMap<String, Query> mappedQueries;
-//	private HashMap<String, ArrayList<String>> mappedresults;
+	// private HashMap<String, ArrayList<String>> mappedresults;
 	private EngineFactory ef;
 	private IEngine engine;
 	private String propertyFile;
@@ -33,6 +35,8 @@ public class C3REngine {
 	private String log4jProperties;
 	private Boolean engineRun;
 
+	Logger  logger = Logger.getLogger(C3REngine.class);
+	
 	// first alternative to create a singleton
 	private static C3REngine c3rEngineSingleton;
 
@@ -139,7 +143,7 @@ public class C3REngine {
 			// TODO throw an exception or add an assert
 			return;
 		}
-		System.out.println("+++ running rule engine");
+		logger.debug("+++ running rule engine");
 
 		engine.runRuleEngine();
 
@@ -151,7 +155,7 @@ public class C3REngine {
 	public ArrayList<String> runQuery(String query) {
 		IResults results = null;
 		// TODO add null query string check here
-		// TODO add application path must be defined	
+		// TODO add application path must be defined
 		try {
 			results = engine.SPARQLQuery(query);
 		} catch (EngineException e) {
@@ -161,34 +165,39 @@ public class C3REngine {
 		return parseIResults(results);
 
 	}
-	
-	
+
 	/**
 	 * @param results
 	 * @return
 	 */
 	private ArrayList<String> parseIResults(IResults results) {
-		
-		ArrayList<String> parsedResults = new ArrayList<String>();
-		
+
+		ArrayList<String> parsedResults = null;
+
 		String[] variables = results.getVariables();
-		// go through all results
-		for (Enumeration<IResult> en = results.getResults(); en.hasMoreElements();) {
-			// get a result
-			IResult r = en.nextElement();
-			// go through this result
-			for (String var : variables) {
-				if (r.isBound(var)) {
-					// get result values for each selected variable
-					IResultValue[] values = r.getResultValues(var);
-					for (int j = 0; j < values.length; j++) {
-						System.out.println(var + " = "
-								+ values[j].getStringValue());
-						parsedResults.add(values[j].getStringValue());
+		
+		if (variables.length != 0) {
+			
+			parsedResults = new ArrayList<String>();
+			// go through all results
+			for (Enumeration<IResult> en = results.getResults(); en
+					.hasMoreElements();) {
+				// get a result
+				IResult r = en.nextElement();
+				// go through this result
+				for (String var : variables) {
+					if (r.isBound(var)) {
+						// get result values for each selected variable
+						IResultValue[] values = r.getResultValues(var);
+						for (int j = 0; j < values.length; j++) {
+							logger.debug(var + " = "
+									+ values[j].getStringValue());
+							parsedResults.add(values[j].getStringValue());
+						}
+
+					} else {
+						logger.debug(var + " = Not bound");
 					}
-					
-				} else {
-					System.out.println(var + " = Not bound");
 				}
 			}
 		}
@@ -201,20 +210,21 @@ public class C3REngine {
 	public HashMap<String, ArrayList<String>> runMappedQueries(
 			HashMap<String, Query> mappedQueries) {
 
-		HashMap<String, ArrayList<String>> mappedresults = new HashMap<String, ArrayList<String>>();
+		HashMap<String, ArrayList<String>> mappedresults = null;
 		Iterator<String> iterator = mappedQueries.keySet().iterator();
 
+		// run the queries
+		mappedresults = new HashMap<String, ArrayList<String>>();
 		while (iterator.hasNext()) {
 
 			String queryRefNumber = iterator.next();
-			System.out.println(queryRefNumber);
+			logger.debug(queryRefNumber);
 			Query currentQuery = mappedQueries.get(queryRefNumber);
 			ArrayList<String> currResults = runQuery(currentQuery.getSparql());
-			
-			mappedresults.put(queryRefNumber, currResults);
 
+			mappedresults.put(queryRefNumber, currResults);
 		}
-		
+
 		return mappedresults;
 
 	}
