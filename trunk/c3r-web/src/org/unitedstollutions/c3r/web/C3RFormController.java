@@ -82,8 +82,6 @@ public class C3RFormController extends HttpServlet {
 
 					// use the corese engine to run the selected queries
 					C3REngine engine = C3REngine.getInstance();
-					engine.createEngineFactory();
-					engine.createIEngine();
 
 					// TODO replace engineData with an the projectIfc session
 					// attribute

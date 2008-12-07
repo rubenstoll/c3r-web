@@ -28,6 +28,9 @@ public class C3REngineTest {
 	private static final Log log = LogFactory.getLog(C3REngineTest.class);
 	private C3REngine engine;
 	private String dataDirectory;
+	private String engineSchema;
+	private String engineData;
+	private String engineRule;
 
 	@BeforeClass
 	public static void runBeforeClass() {
@@ -43,28 +46,18 @@ public class C3REngineTest {
 		dataDirectory = currDir.toString() + File.separator + "war"
 				+ File.separator + "data";
 
-		String engineData = dataDirectory + File.separator + "annotations"
+		engineData = dataDirectory + File.separator + "annotations"
 				+ File.separator + "defaultIfc.rdf";
-		String engineRule = dataDirectory + File.separator + "definition_rules";
-		String engineSchema = dataDirectory + File.separator + "schemas"
+		engineRule = dataDirectory + File.separator + "ruleTest";
+		engineSchema = dataDirectory + File.separator + "schemas"
 				+ File.separator + "ontoCC.owl";
 
 		log.info("data directory is: " + dataDirectory);
 		log.info("schema being used is: " + engineSchema);
 
 		engine = C3REngine.getInstance();
-		engine.createEngineFactory();
-		// engine.setDataPath(dataDirectory);
-		// engine.setEngineData(engineData);
-		// engine.setEngineRule(engineRule);
-		// engine.setEngineSchema(engineSchema);
 
-		engine.createIEngine();
-
-		engine.loadDirectory(engineRule);
-		engine.loadFile(engineData);
-		engine.loadFile(engineSchema);
-		engine.runRuleEngine();
+		log.info("++++ Starting test");
 
 	}
 
@@ -72,11 +65,22 @@ public class C3REngineTest {
 	@Test
 	public void multiplication() {
 		String queryResult = "";
-		assertEquals(queryResult, engine.getEngineSchema());
+		assertEquals(queryResult, "");
 	}
 
+	@Ignore("Too simple of a test. Ucomment for just checking simple queries")
 	@Test
 	public void setSimpleQueryAndRun() {
+
+		engine.loadDirectory(engineRule);
+		engine.loadFile(engineData);
+		engine.loadFile(engineSchema);
+		try {
+			engine.runRuleEngine();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		String prefixOnto = "PREFIX ontoCC: <http://www.owl-ontologies.com/Ontology1205837312.owl#>";
 		String query = prefixOnto
 				+ "select ?x display xml where { ?x rdf:type rdfs:Class } ";
@@ -88,14 +92,31 @@ public class C3REngineTest {
 		printResults(results);
 
 	}
-
+	
+	@Ignore
+	@Test
+	public void doAllTest() {
+		
+		engine.doAllInOne(engineSchema, engineData, engineRule);
+		
+	}
+	
+	
 	@Test
 	public void ifcProjectQueryTest() {
+
+		log.info("+ running porte principale query test");
+		
+		engine.loadFile(engineData);
+		engine.loadFile(engineSchema);
+		engine.loadDirectory(engineRule);
+		engine.runRuleEngine();
+		
 		String prefixOnto = "PREFIX ontoCC: <http://www.owl-ontologies.com/Ontology1205837312.owl#>";
-		// String query = prefixOnto +
-		// "select ?x display xml where { ?x  rdf:type   ontoCC:IfcDoor }";
+//		String query = prefixOnto
+//				+ "select ?x display xml where { ?x  rdf:type   ontoCC:PortePrincipale }";
 		String query = prefixOnto
-				+ "select ?x display xml where { ?x  rdf:type   ontoCC:PortePrincipale  }";
+				+ "select ?x display xml where { ?x  rdf:type   ontoCC:Sas  }";
 
 		ArrayList<String> results = engine.runQuery(query);
 
