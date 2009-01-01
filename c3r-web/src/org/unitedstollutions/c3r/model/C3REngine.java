@@ -164,9 +164,7 @@ public class C3REngine {
 						// get result values for each selected variable
 						IResultValue[] values = r.getResultValues(var);
 						for (int j = 0; j < values.length; j++) {
-							logger.debug(var + " = "
-									+ values[j].getStringValue());
-							System.out.println(var + " !!!!!!= "
+							logger.info(var + " !!INFO = "
 									+ values[j].getStringValue());
 							parsedResults.add(values[j].getStringValue());
 						}
@@ -194,8 +192,12 @@ public class C3REngine {
 		while (iterator.hasNext()) {
 
 			String queryRefNumber = iterator.next();
-			logger.debug(queryRefNumber);
 			Query currentQuery = mappedQueries.get(queryRefNumber);
+			
+			// TODO initialize logging correctly because debug is not active
+			logger.info("query reference number: " + queryRefNumber);
+			logger.info("query sparql: " + currentQuery.getSparql());
+
 			ArrayList<String> currResults = runQuery(currentQuery.getSparql());
 
 			mappedresults.put(queryRefNumber, currResults);

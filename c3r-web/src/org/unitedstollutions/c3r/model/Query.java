@@ -14,6 +14,14 @@ public class Query {
 	private String description;
 	private String sparql;
 	
+	public Query() {
+		
+	}
+	
+	public Query(String sparql) {
+		this.sparql = sparql;
+	}
+	
 	/**
 	 * @return the queryName
 	 */

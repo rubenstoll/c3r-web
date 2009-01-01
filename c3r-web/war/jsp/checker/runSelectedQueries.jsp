@@ -16,7 +16,7 @@
 <c:out value="${requestScope.message}" /><br /><br />
 
 
-<jsp:useBean id="queryManager" 
+<jsp:useBean id="subQueryRunResults" 
 	class="org.unitedstollutions.c3r.model.QueryResultsManager" scope="session" />
 
 <table border="1"> 
@@ -25,31 +25,27 @@
 			<td>
 			</td>
 			<td>
-				name
+				Query Reference Number
 			</td>
 			<td>
-				description
+				Result
 			</td>
-			<td>
-				sparql content
-			</td>
-			</tr>
+		</tr>
 	</thead>
-	<c:forEach var="query" items="${queryManager.queries}">
+	<c:forEach var="subResults" items="${subQueryRunResults.results}">
 		<tr>
 			<td>
-				<input type="checkbox" name="selectedQueries" value="${query.value.name}">
+				<input type="checkbox" name="selQryRsults" value="${subResults.key}">
 			</td>
 			<td>
-				<c:out value="${query.value.name}" />
+				<c:out value="${subResults.key}" />
 			</td>
+			<c:forEach var="qryResultsValues" items="${subResults.value}">
 			<td>
-				<c:out value="${query.value.description}" />
+				<c:out value="${qryResultsValues}" />
 			</td>
-			<td>
-				${query.value.sparql}
-			</td>
-			</tr>
+			</c:forEach>
+		</tr>
 	</c:forEach>
 </table>
 

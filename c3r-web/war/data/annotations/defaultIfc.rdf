@@ -183,7 +183,7 @@
                 <IfcOpeningElement xsi:nil="true" ref="i1682"/>
             </relatingOpeningElement>
             <relatedBuildingElement>
-                <IfcDoor xsi:nil="true" ref="i1707"/>
+                <IfcDoor rdf:ID="testing" xsi:nil="true"/>
             </relatedBuildingElement>
         </IfcRelFillsElement>
         
@@ -301,7 +301,30 @@
         <!--connectedToIfcElement rdf:ID="i1707"></connectedToIfcElement-->
         
     </Vantaux>
-        
-        
+      
+    <LocauxVideOrdures rdf:ID="i545LocauxVideOrdures">
+
+    </LocauxVideOrdures>  
+
+	<IfcRelFillsElement rdf:ID="hh">
+		<relatingOpeningElement>
+			<IfcOpeningElement rdf:ID="roe"/>
+		</relatingOpeningElement>
+		<relatedBuildingElement>
+			<IfcDoor rdf:ID="doorForTest"/>
+		</relatedBuildingElement>
+	</IfcRelFillsElement>
+	<IfcRelSpaceBoundary rdf:ID="rggfg">
+		<relatingSpace>
+			<CabineDouche rdf:ID="cabineForDouche"/>
+		</relatingSpace>
+		<relatedBuildingElement>
+			<IfcDoor rdf:ID="doorForTest"/>
+		</relatedBuildingElement>
+      </IfcRelSpaceBoundary>
+
+	<IfcDoor rdf:ID="doorForTest">
+		<overallWidth>56</overallWidth>
+	</IfcDoor>
     </rdf:RDF>
     
