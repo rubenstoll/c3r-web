@@ -1,12 +1,14 @@
 package org.unitedstollutions.c3r.web;
 
 import java.io.IOException;
+
+import javax.servlet.Servlet;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.PrintWriter;
+
 import org.apache.log4j.PropertyConfigurator;
 
 /**
@@ -27,8 +29,14 @@ public class Log4jInit extends HttpServlet {
 	 * @see Servlet#init(ServletConfig)
 	 */
 	public void init(ServletConfig config) throws ServletException {
-		String prefix = getServletContext().getRealPath("/");
-		String file = getInitParameter("log4j-init-file");
+
+		// TODO see why the commnted out functions do not work
+//		String prefix =  getServletContext().getRealPath("/");
+		String prefix =  "/c3r-web";
+		System.out.println("LOG4JSERVLET: prefix is " + prefix);
+		
+//		String file = getInitParameter("log4j-init-file");
+		String file = null;
 		// if the log4j-init-file is not set, then no point in trying
 		if (file != null) {
 			PropertyConfigurator.configure(prefix + file);

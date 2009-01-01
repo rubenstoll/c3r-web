@@ -6,6 +6,9 @@ package org.unitedstollutions.c3r.model;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.Iterator;
+
+import org.apache.log4j.Logger;
 
 import fr.inria.acacia.corese.api.IResult;
 import fr.inria.acacia.corese.api.IResults;
@@ -17,11 +20,28 @@ import fr.inria.acacia.corese.api.IResults;
 public class QueryResultsManager {
 
 	private HashMap<String, Query> queries;
+	private HashMap<String, ArrayList<String>> results;
 
+	Logger logger = Logger.getLogger(QueryResultsManager.class);
+	
 	public QueryResultsManager() {
 		if (this.queries == null) {
 			this.queries = new HashMap<String, Query>();
 		}
+	}
+
+	/**
+	 * @return the results
+	 */
+	public HashMap<String, ArrayList<String>> getResults() {
+		return results;
+	}
+
+	/**
+	 * @param results the results to set
+	 */
+	public void setResults(HashMap<String, ArrayList<String>> results) {
+		this.results = results;
 	}
 
 	/**
