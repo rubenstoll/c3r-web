@@ -12,28 +12,63 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 
+import org.apache.log4j.Logger;
+
+import fr.inria.acacia.corese.api.EngineFactory;
+
 /**
  * @author user
  * 
  */
 
-public class IfcReader {
+public class ProjectIfc {
 
+	Logger logger = Logger.getLogger(ProjectIfc.class);
+
+
+	// first alternative to create a singleton
+	private static ProjectIfc projectIfcSingleton;
+
+	// second alternative to create a simple, fast and thread safe singleton
+	// public final static C3REngine c3rEngSingleton = new C3REngine();
+	
 	private String ifcFile;
 	private String ifcLocation;
-	private String assignedFileName;
-	private String defaultIfcFileName = "defaultIfc.rdf";
-	private String customIfcFileName = "customIfc.rdf";
-	private static HashMap<String,String> fileNames;
+	private static HashMap<String,String> fileNames = initProjectIfcFileNames();
 
-	
-	public IfcReader() {
-	
+	public static  HashMap<String,String> initProjectIfcFileNames() {
+
 		fileNames = new HashMap<String, String>();
 		fileNames.put("default", "defaultIfc.rdf");
 		fileNames.put("default2", "defaultIfc2.rdf");
 		fileNames.put("default3", "defaultIfc3.rdf");
 		fileNames.put("custom", "customIfc.xml");
+		
+		return fileNames;
+		
+	}
+	
+
+	/**
+	 * @return a single C3REngine instance
+	 */
+	public static ProjectIfc getInstance() {
+		if (projectIfcSingleton == null) {
+			synchronized (ProjectIfc.class) {
+				projectIfcSingleton = new ProjectIfc();
+			}
+		}
+		return projectIfcSingleton;
+	}
+	
+	public ProjectIfc() {
+		// Exists only to defeat instantiation.	
+	}
+	
+	public ProjectIfc(String ifcFile) {
+		// this constructor is only used when the context is initialized
+		// by the context listener
+		this.ifcFile = ifcFile;
 	}
 	
 	/**
@@ -48,7 +83,22 @@ public class IfcReader {
 	 *            the ifcFile to set
 	 */
 	public void setIfcFile(String ifcFile) {
-		this.ifcFile = ifcFile;
+		
+		// this is not the best implementation. The disadvantage of this method is that
+		// the user or programmer must know the name of the map key in order to get 
+		// the appropriate file name.  This method gets called from the c3r form controller
+		
+		// TODO change this to a better implementation
+		if(ifcFile.equalsIgnoreCase("custom")) {
+			this.ifcFile = ProjectIfc.fileNames.get("custom");
+			// TODO add the xslt transformation here
+		} else if(ifcFile.equalsIgnoreCase("default2")) {
+			this.ifcFile = ProjectIfc.fileNames.get("default2");
+		} else if(ifcFile.equalsIgnoreCase("default3")) {
+			this.ifcFile = ProjectIfc.fileNames.get("default3");
+		} else {
+			this.ifcFile = ProjectIfc.fileNames.get("default");						
+		}
 	}
 
 	/**
@@ -67,36 +117,37 @@ public class IfcReader {
 	}
 
 	/**
-	 * @return the projectFileName
-	 */
-	public String getAssignedFileName(String fieldValue) {
-		//return assignedFileName;
-		return fileNames.get(fieldValue);
-	}
-
-	/**
-	 * @param projectFileName the projectFileName to set
-	 */
-	public void setAssignedFileName(String projectFileName) {
-		this.assignedFileName = projectFileName;
-	}
-
-	/**
 	 * Reads in a specified file from a client and writes the contents to a
 	 * custom IFC file.
 	 * 
 	 * @param ifcFile
 	 */
 	public void createCustomIfc(String ifcFile) {
-		this.ifcFile = this.customIfcFileName;
+		
+		this.ifcFile = ProjectIfc.fileNames.get("custom");
 
 		File ifcFile2read = new File(ifcFile);
 		String processedIfcFile = readFile(ifcFile2read);
 		File customIfcFile = new File(getIfcLocation() + "/"
-				+ customIfcFileName);
+				+ ProjectIfc.fileNames.get("custom"));
 		writeFile(customIfcFile, processedIfcFile);
 	}
 
+	/**
+	 * @param source
+	 * @return
+	 */
+	public void readFromUri(String source) throws IOException {
+		
+		// TODO add a check that the target file is not the defaultIfc
+		//  file to avoid overwriting the default project file.
+		String target = getIfcLocation() + getIfcFile();
+		
+		readFromUri(source, target);
+		
+	}
+	
+	
 	/**
 	 * @param source
 	 * @return

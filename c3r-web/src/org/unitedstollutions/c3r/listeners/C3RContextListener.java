@@ -11,12 +11,16 @@ package org.unitedstollutions.c3r.listeners;
 import javax.servlet.*;
 import javax.persistence.*;
 
-public final class ContextListener implements ServletContextListener {
+import org.unitedstollutions.c3r.model.ProjectIfc;
+
+public final class C3RContextListener implements ServletContextListener {
+	
 	// @PersistenceUnit(unitName = "dukebookstore")
 	// use this definition when there are more than one
 	// persistence units defined in the persistence.xml file
 	// @PersistenceUnit(unitName = "dukebookstore")
 	// private EntityManagerFactory emf;
+
 	private ServletContext context = null;
 
 	public void contextInitialized(ServletContextEvent event) {
@@ -28,6 +32,17 @@ public final class ContextListener implements ServletContextListener {
 		 * System.out.println( "Couldn't create bookstore database bean: " +
 		 * ex.getMessage()); }
 		 */
+		
+		// defined in the data descriptor (web.xml)
+		String projectIfc = context.getInitParameter("projectIfc");
+		String projectDataLocation = context.getInitParameter("projectData");
+		
+		ProjectIfc pi = ProjectIfc.getInstance();
+		pi.setIfcFile(projectIfc);
+		pi.setIfcLocation(projectDataLocation);
+		
+		context.setAttribute("project", pi);
+		
 	}
 
 	public void contextDestroyed(ServletContextEvent event) {

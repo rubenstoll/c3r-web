@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.unitedstollutions.c3r.model.C3REngine;
-import org.unitedstollutions.c3r.model.IfcReader;
+import org.unitedstollutions.c3r.model.ProjectIfc;
 import org.unitedstollutions.c3r.model.QueryResultsManager;
 
 import fr.inria.acacia.corese.api.IResults;
@@ -92,47 +92,43 @@ public class C3RFormController extends HttpServlet {
 			}
 			screen = "/jsp/checker/runSelectedQueries.jsp";
 		} else if (selectedScreen.equals("/checker/loadProject.form")) {
-			// gets the root directory of the web application on the system
-			// on which
-			// it is running. Example:
-			// /home/webserver/tomcat/webapps/c3r-web
+			// the following parameter comes from loadProject.jsp
 			String projectFile = request.getParameter("projectIfc");
-			String customIfcFileName = "customIfc.xml";
-			String defaultIfcFileName = "defaultIfc.rdf";
-			String customIfcFile = "data" + File.separator + "annotations"
-					+ File.separator + customIfcFileName;
-			// ifcReader is probably not the best name to give to this
-			// object, but it will do for now
 			// TODO create a new general object to deal with project files
-			IfcReader ifc = new IfcReader();
+			ProjectIfc ifc = (ProjectIfc) getServletContext().getAttribute("project");
 			if (projectFile.equalsIgnoreCase("uri")) {
 				logger.debug("!! Setting project from URI");
-				String ifcWFile = webRootDir + customIfcFile;
+				ifc.setIfcFile("custom");
 				String uri = request.getParameter("ifcUri");
 				try {
-					ifc.readFromUri(uri, ifcWFile);
-					session.setAttribute("projectIfc", customIfcFileName);
+					ifc.readFromUri(uri);
 					// DEBUG remove when complete.
-					logger.debug("!!!!!wrote to: \n" + ifcWFile);
+					logger.debug("!!!!!wrote to: \n" + ifc.getIfcFile());
 				} catch (IOException ioe) {
 					System.out
 							.println("IO exception. You are probably behind a proxy or firewall.");
 				}
 
 			} else if (projectFile.equalsIgnoreCase("default2")) {
-				String projectFileName = ifc.getAssignedFileName(projectFile);
+				ifc.setIfcFile(projectFile);
+				String projectFileName = ifc.getIfcFile();
 				logger.debug("!!!! DEFAULT 2 IFC USED !!! ==> "
 						+ projectFileName);
+				// this session attribute is not needed because the projectIfc Object is available in the application
 				session.setAttribute("projectIfc", projectFileName);
 			} else if (projectFile.equalsIgnoreCase("default3")) {
-				String projectFileName = ifc.getAssignedFileName(projectFile);
+				ifc.setIfcFile(projectFile);
+				String projectFileName = ifc.getIfcFile();
 				logger.debug("!!!! DEFAULT 3 IFC USED !!! ==> "
 						+ projectFileName);
+				// this session attribute is not needed because the projectIfc Object is available in the application
 				session.setAttribute("projectIfc", projectFileName);
 			} else {
-				String projectFileName = ifc.getAssignedFileName(projectFile);
+				ifc.setIfcFile(projectFile);
+				String projectFileName = ifc.getIfcFile();
 				logger.debug("!!!! DEFAULT IFC USED !!! ==> "
 						+ projectFileName);
+				// this session attribute is not needed because the projectIfc Object is available in the application
 				session.setAttribute("projectIfc", projectFileName);
 			}
 			// this function is useless cuz sometimes the next screen needs to
