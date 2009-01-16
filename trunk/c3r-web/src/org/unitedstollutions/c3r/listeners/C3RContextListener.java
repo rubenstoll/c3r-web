@@ -8,40 +8,50 @@
 
 package org.unitedstollutions.c3r.listeners;
 
-import javax.servlet.*;
-import javax.persistence.*;
+import java.io.File;
 
+import javax.servlet.ServletContext;
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
+
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 import org.unitedstollutions.c3r.model.ProjectIfc;
 
 public final class C3RContextListener implements ServletContextListener {
 	
-	// @PersistenceUnit(unitName = "dukebookstore")
-	// use this definition when there are more than one
-	// persistence units defined in the persistence.xml file
-	// @PersistenceUnit(unitName = "dukebookstore")
-	// private EntityManagerFactory emf;
+	Logger logger = Logger.getLogger(C3RContextListener.class);
 
 	private ServletContext context = null;
 
 	public void contextInitialized(ServletContextEvent event) {
-		context = event.getServletContext();
 
-		/*
-		 * try { BookDBAO bookDBAO = new BookDBAO(emf);
-		 * context.setAttribute("bookDBAO", bookDBAO); } catch (Exception ex) {
-		 * System.out.println( "Couldn't create bookstore database bean: " +
-		 * ex.getMessage()); }
-		 */
-		
+		context = event.getServletContext();
+	
+		// note: getRealPath returns the web app root directory WITH a slash at the end
+		String webRootDir =  context.getRealPath("/");
+		String projectDataLocation = webRootDir + File.separator + context.getInitParameter("projectData");
 		// defined in the data descriptor (web.xml)
 		String projectIfc = context.getInitParameter("projectIfc");
-		String projectDataLocation = context.getInitParameter("projectData");
+
+		// initialize log4j
+		// NOTE: logging context initialization is probably not needed. As long as a log4j.properties
+		//       files is in the WEB-INF/classes directory it will be automatically found by log4j.
+		String file = context.getInitParameter("log4j-init-file");
+		// if the log4j-init-file is not set, then no point in trying
+		if (file != null) {
+			PropertyConfigurator.configure(webRootDir + file);
+		}
+
+		logger.debug("web root dir: " + webRootDir);
+		logger.debug("project data location: " + projectDataLocation);
 		
 		ProjectIfc pi = ProjectIfc.getInstance();
 		pi.setIfcFile(projectIfc);
 		pi.setIfcLocation(projectDataLocation);
 		
 		context.setAttribute("project", pi);
+		
 		
 	}
 

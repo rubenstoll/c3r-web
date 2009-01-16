@@ -31,9 +31,8 @@ public class C3REngine {
 	// first alternative to create a singleton
 	private static C3REngine c3rEngineSingleton;
 
-	// second alternative to create a simple, fast and thread safe singleton
-	// public final static C3REngine c3rEngSingleton = new C3REngine();
-
+	// TODO remove singleton creation.
+	// It may be useful to be able to create different engines and thus many different instances useful.
 	protected C3REngine() {
 		// Exists only to defeat instantiation.
 	}
