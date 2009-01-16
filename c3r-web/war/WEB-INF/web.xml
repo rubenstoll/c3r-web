@@ -41,20 +41,6 @@
 		<servlet-class>
 		org.unitedstollutions.c3r.web.C3RFormController</servlet-class>
 	</servlet>
-	<servlet>
-		<description>
-		</description>
-		<display-name>
-		Log4jInit</display-name>
-		<servlet-name>Log4jInit</servlet-name>
-		<servlet-class>
-		org.unitedstollutions.c3r.web.Log4jInit</servlet-class>
-		<init-param>
-      		<param-name>log4j-init-file</param-name>
-      		<param-value>/WEB-INF/classes/log4jconfig.xml</param-value>
-    	</init-param>
-	    <load-on-startup>1</load-on-startup>	
-	</servlet>
 	<servlet-mapping>
 		<servlet-name>Dispatcher</servlet-name>
 		<url-pattern>/checker/main</url-pattern>
@@ -94,10 +80,6 @@
 	<servlet-mapping>
 		<servlet-name>C3RFormController</servlet-name>
 		<url-pattern>/C3RFormController</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>Log4jInit</servlet-name>
-		<url-pattern>/Log4jInit</url-pattern>
 	</servlet-mapping>
 	<error-page>
 		<exception-type>java.lang.Throwable</exception-type>
