@@ -69,7 +69,7 @@ public class C3REngine {
 
 		try {
 			IResults res = engine.SPARQLQuery(queryString);
-			System.out.println(res);
+			logger.debug(res);
 		} catch (EngineException e) {
 			e.printStackTrace();
 		}
@@ -127,15 +127,17 @@ public class C3REngine {
 	 */
 	public ArrayList<String> runQuery(String query) {
 		IResults results = null;
+		ArrayList<String> parsedResults = null;
 		// TODO add null query string check here
 		// TODO add application path must be defined
 		try {
 			results = engine.SPARQLQuery(query);
+			parsedResults = parseIResults(results);
 		} catch (EngineException e) {
-			e.printStackTrace();
+			logger.debug("Exception thrown when running query: " + query, e);
 		}
 
-		return parseIResults(results);
+		return parsedResults;
 
 	}
 

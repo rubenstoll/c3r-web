@@ -69,10 +69,13 @@ public class C3RFormController extends HttpServlet {
 			String[] selectedQueries = request
 					.getParameterValues("selectedQueries");
 
+			logger.debug("processing selected queries");
+			
 			if (selectedQueries != null) {
 				ArrayList<String> selectedQs = new ArrayList<String>(Arrays
 						.asList(selectedQueries));
-
+				
+				logger.debug("getting results from attribute");
 				// check to see if there are any query run results
 				if ((IResults) session.getAttribute("tmpQueryResponse") != null) {
 					IResults res = (IResults) session
@@ -80,10 +83,16 @@ public class C3RFormController extends HttpServlet {
 
 					QueryResultsManager qm = new QueryResultsManager();
 					// add the selected queries to the manager
+					logger.debug("setting queries");
 					qm.setQueries(res, selectedQs);
 					// use the corese engine to run the selected queries
 					C3REngine engine = C3REngine.getInstance();
 
+					logger.debug("Loading engine with the following data");
+					logger.debug("engine data: " + engineData);
+					logger.debug("engine rules: " + engineRule);
+					logger.debug("engine schemas: " + engineSchema);
+					
 					engine.loadFile(engineData);
 					engine.loadFile(engineRule);
 					engine.loadFile(engineSchema);
@@ -173,8 +182,6 @@ public class C3RFormController extends HttpServlet {
 	 */
 	private void processIfcFromUri(String uri, ProjectIfc ifc) {
 
-		// TODO check that the ifc is really a singleton for the entire
-		// application
 		logger.debug("Reading from URI and writing to local file");
 		URLUtils ut = URLUtils.URLUTIL_INSTANCE;
 
@@ -268,7 +275,6 @@ public class C3RFormController extends HttpServlet {
 	 * @see Servlet#getServletInfo()
 	 */
 	public String getServletInfo() {
-		// TODO add servlet information data if needed
 		return super.getServletInfo();
 	}
 
