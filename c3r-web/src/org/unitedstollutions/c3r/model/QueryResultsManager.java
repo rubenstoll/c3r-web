@@ -110,7 +110,7 @@ public class QueryResultsManager {
 				}
 
 				finalQueries.put(queryName, q);
-				System.out.println("++++++ added query: " + queryName);
+				logger.debug("++++++ added query: " + queryName);
 				
 			}
 		}

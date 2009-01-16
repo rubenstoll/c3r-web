@@ -11,7 +11,6 @@ import java.net.URL;
 import java.util.ArrayList;
 
 import org.apache.log4j.Logger;
-import org.unitedstollutions.c3r.web.C3RFormController;
 
 public class URLUtils {
 
@@ -81,49 +80,31 @@ public class URLUtils {
 	 * @return
 	 */
 	public void readFromUri(String source, String destination)
-			throws IOException {
+			throws IOException, MalformedURLException {
 
 		BufferedReader in = null;
 		BufferedWriter fw = null;
 		String inputLine = null;
 		File writeFile = null;
-		// String wFileName = destination + File.separator +
-		// this.customIfcFileName;
 		String wFileName = destination;
 
-		try {
+		writeFile = new File(wFileName);
+		fw = new BufferedWriter(new FileWriter(writeFile.toString()));
+		URL url = new URL(source);
+		in = new BufferedReader(new InputStreamReader(url.openStream()));
 
-			writeFile = new File(wFileName);
-			fw = new BufferedWriter(new FileWriter(writeFile.toString()));
-			URL url = new URL(source);
-			in = new BufferedReader(new InputStreamReader(url.openStream()));
-
-			if (in == null) {
-
-			} else {
-				while ((inputLine = in.readLine()) != null) {
-					logger.debug(inputLine);
-					fw.write(inputLine + "\n");
-				}
+		if (in != null) {
+			while ((inputLine = in.readLine()) != null) {
+				fw.write(inputLine + "\n");
 			}
+		}
 
-		} catch (MalformedURLException mue) {
-			logger.debug("URI is not correct");
-		} catch (IOException ioe) {
-			System.out
-					.println("IO Exception - Connection timed out or couldn't create file writer");
-			throw new IOException();
-		} finally {
-			if (in != null) {
-				System.out
-						.println("url buffered reader object exists and is being closed");
-				in.close();
-			}
-			if (fw != null) {
-				System.out
-						.println("output buffered writer object exists and is being closed");
-				fw.close();
-			}
+		// close buffers
+		if (in != null) {
+			in.close();
+		}
+		if (fw != null) {
+			fw.close();
 		}
 
 	}
@@ -151,17 +132,14 @@ public class URLUtils {
 		fw = new BufferedWriter(new FileWriter(writeFile.toString()));
 
 		for (String line : data) {
-			logger.debug(line);
 			fw.write(line + "\n");
 		}
 
 		if (fw != null) {
-			logger
-					.debug("output buffered writer object exists and is being closed");
 			fw.close();
 		}
 
-		logger.debug("++ done writing file!");
+		logger.debug("done writing file!");
 
 	}
 
@@ -177,19 +155,15 @@ public class URLUtils {
 
 		if (in != null) {
 			while ((inputLine = in.readLine()) != null) {
-				logger.debug(inputLine);
 				uf.add(inputLine);
 			}
 		}
 
 		if (in != null) {
-			logger
-					.debug("url buffered reader object exists and is being closed");
 			in.close();
 		}
 
-		logger.debug("++ file reading done!");
-		logger.debug("READ FROM URI!!!");
+		logger.debug("done reading from uri");
 
 		return uf;
 	}
