@@ -6,7 +6,6 @@ package org.unitedstollutions.c3r.model;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
-import java.util.Iterator;
 
 import org.apache.log4j.Logger;
 
@@ -72,6 +71,8 @@ public class QueryResultsManager {
 
 		HashMap<String, Query> finalQueries = new HashMap<String, Query>();
 
+		logger.debug("setting queries");
+		
 		// go through all results
 		for (Enumeration<IResult> en = res.getResults(); en.hasMoreElements();) {
 			// get a result
@@ -110,7 +111,7 @@ public class QueryResultsManager {
 				}
 
 				finalQueries.put(queryName, q);
-				logger.debug("++++++ added query: " + queryName);
+				logger.debug("Added query: " + queryName);
 				
 			}
 		}

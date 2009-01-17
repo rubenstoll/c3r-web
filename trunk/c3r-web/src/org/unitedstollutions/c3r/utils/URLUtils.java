@@ -129,6 +129,7 @@ public class URLUtils {
 		String wFileName = destination;
 
 		writeFile = new File(wFileName);
+		logger.debug("writing to file: " + writeFile.getName());
 		fw = new BufferedWriter(new FileWriter(writeFile.toString()));
 
 		for (String line : data) {
@@ -139,7 +140,7 @@ public class URLUtils {
 			fw.close();
 		}
 
-		logger.debug("done writing file!");
+		logger.debug("done writing");
 
 	}
 
@@ -149,6 +150,8 @@ public class URLUtils {
 		BufferedReader in = null;
 		String inputLine = null;
 		ArrayList<String> uf = new ArrayList<String>();
+
+		logger.debug("reading from: " + uri);
 
 		URL url = new URL(uri);
 		in = new BufferedReader(new InputStreamReader(url.openStream()));
@@ -163,7 +166,7 @@ public class URLUtils {
 			in.close();
 		}
 
-		logger.debug("done reading from uri");
+		logger.debug("done reading!");
 
 		return uf;
 	}

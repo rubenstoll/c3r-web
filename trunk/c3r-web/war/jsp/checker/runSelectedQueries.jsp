@@ -9,10 +9,10 @@
 <!--remove the default or first engine wrapper for more heap space-->
 <!--removing the engine doesn't do much ... shame-->
 <c:if test="${not empty applicationScope['defaultEngineWrapper']}">
-	Removing the default engine wrapper ...
 	<c:remove var="defaultEngineWrapper" scope="application" />
+	NOTE: Removing the default engine wrapper
 </c:if>
-
+<br><br>
 <c:out value="${requestScope.message}" /><br /><br />
 
 

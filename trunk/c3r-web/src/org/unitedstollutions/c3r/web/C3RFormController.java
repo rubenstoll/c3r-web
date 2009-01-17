@@ -24,6 +24,7 @@ import org.unitedstollutions.c3r.model.QueryResultsManager;
 import org.unitedstollutions.c3r.utils.URLUtils;
 
 import fr.inria.acacia.corese.api.IResults;
+import fr.inria.acacia.corese.exceptions.EngineException;
 
 /**
  * Servlet implementation class C3RFormController
@@ -38,17 +39,17 @@ public class C3RFormController extends HttpServlet {
 	Logger logger = Logger.getLogger(C3RFormController.class);
 
 	private String webRootDir;
-
+	
 	protected void processRequest(HttpServletRequest request,
 			HttpServletResponse response) {
-
-		this.webRootDir = getServletContext().getRealPath("/");
 
 		// Get the user's session
 		HttpSession session = request.getSession();
 		String selectedScreen = request.getServletPath();
 		String screen = "";
 
+		this.webRootDir = getServletContext().getRealPath("/");
+		
 		if (selectedScreen.equals("/checker/runSelectedQueries")) {
 
 			// project ifc object contains all the project information.
@@ -70,37 +71,52 @@ public class C3RFormController extends HttpServlet {
 					.getParameterValues("selectedQueries");
 
 			logger.debug("processing selected queries");
-			
+
 			if (selectedQueries != null) {
 				ArrayList<String> selectedQs = new ArrayList<String>(Arrays
 						.asList(selectedQueries));
-				
+
+				IResults res = (IResults) session
+						.getAttribute("tmpQueryResponse");
+
 				logger.debug("getting results from attribute");
 				// check to see if there are any query run results
-				if ((IResults) session.getAttribute("tmpQueryResponse") != null) {
-					IResults res = (IResults) session
-							.getAttribute("tmpQueryResponse");
+				if ( res != null) {
+
+					// this engine was initialized in the context listener
+//					C3REngine engine = (C3REngine) getServletContext()
+//							.getAttribute("c3r_engine");
+					
+					// this had to be done because sewese changes the behavior of log4j.
+					C3REngine engine = new C3REngine();
+					String log4jConf = webRootDir + getServletContext().getInitParameter("ENGINE_LOG4J");
+					if(log4jConf != null) {
+						engine.setLog4jProperties(log4jConf);
+					}
+					engine.createIEngineInstance();
 
 					QueryResultsManager qm = new QueryResultsManager();
 					// add the selected queries to the manager
-					logger.debug("setting queries");
 					qm.setQueries(res, selectedQs);
+					
 					// use the corese engine to run the selected queries
-					C3REngine engine = C3REngine.getInstance();
-
 					logger.debug("Loading engine with the following data");
 					logger.debug("engine data: " + engineData);
 					logger.debug("engine rules: " + engineRule);
 					logger.debug("engine schemas: " + engineSchema);
-					
-					engine.loadFile(engineData);
-					engine.loadFile(engineRule);
-					engine.loadFile(engineSchema);
 
-					HashMap<String, ArrayList<String>> results = engine
-							.runMappedQueries(qm.getQueries());
-					qm.setResults(results);
-					session.setAttribute("subQueryRunResults", qm);
+					try {
+						engine.loadFile(engineData);
+						engine.loadFile(engineRule);
+						engine.loadFile(engineSchema);
+
+						HashMap<String, ArrayList<String>> results = engine
+								.runMappedQueries(qm.getQueries());
+						qm.setResults(results);
+						session.setAttribute("subQueryRunResults", qm);
+					} catch (EngineException ee) {
+						ee.printStackTrace();
+					}
 
 				}
 				request.setAttribute("message",
@@ -209,13 +225,13 @@ public class C3RFormController extends HttpServlet {
 		}
 
 	}
-	
-	
+
 	/**
-	 * Resets the project to it's default values.  Used in case of an error during setting
-	 * a project file other than the default.
+	 * Resets the project to it's default values. Used in case of an error
+	 * during setting a project file other than the default.
 	 * 
-	 * @param prjIfc project settings
+	 * @param prjIfc
+	 *            project settings
 	 */
 	private void resetProjectIfc(ProjectIfc prjIfc) {
 
@@ -224,7 +240,6 @@ public class C3RFormController extends HttpServlet {
 
 	}
 
-	
 	/**
 	 * @param prj
 	 * @throws TransformerException
@@ -295,5 +310,6 @@ public class C3RFormController extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		processRequest(request, response);
 	}
+
 
 }

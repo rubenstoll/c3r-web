@@ -62,7 +62,7 @@ public class C3REngineTest {
 		log.info("data directory is: " + dataDirectory);
 		log.info("schema being used is: " + engineSchema);
 
-		engine = C3REngine.getInstance();
+		engine = new C3REngine();
 
 		log.info("++++ Starting test");
 
@@ -100,13 +100,6 @@ public class C3REngineTest {
 
 	}
 
-	@Ignore
-	@Test
-	public void doAllTest() {
-
-		engine.doAllInOne(engineSchema, engineData, engineRule);
-
-	}
 
 	@Test
 	public void ifcProjectQueryTest() {
