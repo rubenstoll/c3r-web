@@ -26,53 +26,160 @@ public class C3REngine {
 	private EngineFactory ef;
 	private IEngine engine;
 
+	private String query;
+	private String propertyFile;
+	private String dataPath;
+	private String engineSchema;
+	private String engineData;
+	private String engineRule;
+	private String log4jProperties;
+	private Boolean engineRun;
+
 	Logger logger = Logger.getLogger(C3REngine.class);
 
-	// first alternative to create a singleton
-	private static C3REngine c3rEngineSingleton;
+	public C3REngine() {
+		this.ef = new EngineFactory();
+	}
 
-	// TODO remove singleton creation.
-	// It may be useful to be able to create different engines and thus many different instances useful.
-	protected C3REngine() {
-		// Exists only to defeat instantiation.
+	public void createIEngineInstance() {
+		
+		if(this.engine == null) {
+			this.engine = this.ef.newInstance();
+		}
+
+	}
+	
+	/**
+	 * @return the query
+	 */
+	public String getQuery() {
+		return query;
 	}
 
 	/**
-	 * @return a single C3REngine instance
+	 * @param query
+	 *            the query to set
 	 */
-	public static C3REngine getInstance() {
-		if (c3rEngineSingleton == null) {
-			synchronized (C3REngine.class) {
-				c3rEngineSingleton = new C3REngine();
-				c3rEngineSingleton.ef = new EngineFactory();
-				c3rEngineSingleton.engine = c3rEngineSingleton.ef.newInstance();
-
-			}
-		}
-		return c3rEngineSingleton;
+	public void setQuery(String query) {
+		this.query = query;
 	}
 
-	public void doAllInOne(String schema, String data, String rule) {
+	/**
+	 * @return the propertyFile
+	 */
+	public String getPropertyFile() {
+		return propertyFile;
+	}
 
-		try {
-			engine.load(schema);
-			engine.load(data);
-			engine.load(rule);
-			engine.runRuleEngine();
-		} catch (EngineException e) {
-			e.printStackTrace();
-		}
+	/**
+	 * @param propertyFile
+	 *            the propertyFile to set
+	 */
+	public void setPropertyFile(String propertyFile) {
+		this.propertyFile = propertyFile;
+		ef.setProperty(EngineFactory.PROPERTY_FILE, propertyFile);
+	}
 
-		String prefixOnto = "PREFIX ontoCC: <http://www.owl-ontologies.com/Ontology1205837312.owl#>";
-		String queryString = prefixOnto
-				+ " select ?x display xml where { ?x  rdf:type   ontoCC:Sas  }";
+	/**
+	 * @return the dataPath
+	 */
+	public String getDataPath() {
+		return dataPath;
+	}
 
-		try {
-			IResults res = engine.SPARQLQuery(queryString);
-			logger.debug(res);
-		} catch (EngineException e) {
-			e.printStackTrace();
-		}
+	/**
+	 * @param dataPath
+	 *            the dataPath to set
+	 */
+	public void setDataPath(String dataPath) {
+		this.dataPath = dataPath;
+		ef.setProperty(EngineFactory.DATAPATH, dataPath);
+	}
+
+	/**
+	 * @return the engineSchema
+	 */
+	public String getEngineSchema() {
+		return engineSchema;
+	}
+
+	/**
+	 * @param engineSchema
+	 *            the engineSchema to set
+	 */
+	public void setEngineSchema(String engineSchema) {
+		this.engineSchema = engineSchema;
+		// ef.setProperty(EngineFactory.ENGINE_SCHEMA,
+		// "data/humans.rdfs ontology/owlOntology.owl onto");
+		ef.setProperty(EngineFactory.ENGINE_SCHEMA, engineSchema);
+	}
+
+	/**
+	 * @return the engineData
+	 */
+	public String getEngineData() {
+		return engineData;
+	}
+
+	/**
+	 * @param engineData
+	 *            the engineData to set
+	 */
+	public void setEngineData(String engineData) {
+		this.engineData = engineData;
+		// ef.setProperty(EngineFactory.ENGINE_DATA, "data/humans.rdf");
+		ef.setProperty(EngineFactory.ENGINE_DATA, engineData);
+	}
+
+	/**
+	 * @return the engineRule
+	 */
+	public String getEngineRule() {
+		return engineRule;
+	}
+
+	/**
+	 * @param engineRule
+	 *            the engineRule to set
+	 */
+	public void setEngineRule(String engineRule) {
+		this.engineRule = engineRule;
+		// ef.setProperty(EngineFactory.ENGINE_RULE, "data/humans.rul");
+		ef.setProperty(EngineFactory.ENGINE_RULE, engineRule);
+	}
+
+	/**
+	 * @return the log4jProperties
+	 */
+	public String getLog4jProperties() {
+		return log4jProperties;
+	}
+
+	/**
+	 * @param log4jProperties
+	 *            the log4jProperties to set
+	 */
+	public void setLog4jProperties(String log4jProperties) {
+		this.log4jProperties = log4jProperties;
+		ef.setProperty(EngineFactory.ENGINE_LOG4J, log4jProperties);
+	}
+
+	/**
+	 * @return the engineRun
+	 */
+	public Boolean getEngineRun() {
+		return engineRun;
+	}
+
+	/**
+	 * @param engineRun
+	 *            the engineRun to set
+	 */
+	public void setEngineRun(Boolean engineRun) {
+		this.engineRun = engineRun;
+		// TODO check if toString on a boolean returns True and False
+		// respectively.
+		ef.setProperty(EngineFactory.ENGINE_RULE_RUN, engineRun.toString());
 	}
 
 	/**
@@ -80,14 +187,12 @@ public class C3REngine {
 	 * IEngine first if possible and if you don't one will be created
 	 * automatically
 	 */
-	public void loadFile(String data) {
+	public void loadFile(String data) throws EngineException {
 
-		try {
-			engine.load(data);
-		} catch (EngineException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if(engine == null) {
+			createIEngineInstance();
 		}
+		engine.load(data);
 	}
 
 	/**
@@ -95,13 +200,13 @@ public class C3REngine {
 	 * IEngine first if possible and if you don't one will be created
 	 * automatically
 	 */
-	public void loadDirectory(String directory) {
-		try {
-			engine.load(directory);
-		} catch (EngineException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	public void loadDirectory(String directory) throws EngineException {
+
+		if(engine == null) {
+			createIEngineInstance();
 		}
+		engine.load(directory);
+
 	}
 
 	/**
@@ -113,29 +218,26 @@ public class C3REngine {
 
 		logger.debug("+++ running rule engine");
 
-		try {
-			engine.runRuleEngine();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if(engine == null) {
+			createIEngineInstance();
 		}
+		engine.runRuleEngine();
 
 	}
 
 	/**
 	 * @return
 	 */
-	public ArrayList<String> runQuery(String query) {
+	public ArrayList<String> runQuery(String query) throws EngineException {
+
 		IResults results = null;
 		ArrayList<String> parsedResults = null;
-		// TODO add null query string check here
-		// TODO add application path must be defined
-		try {
-			results = engine.SPARQLQuery(query);
-			parsedResults = parseIResults(results);
-		} catch (EngineException e) {
-			logger.debug("Exception thrown when running query: " + query, e);
+
+		if(engine == null) {
+			createIEngineInstance();
 		}
+		results = engine.SPARQLQuery(query);
+		parsedResults = parseIResults(results);
 
 		return parsedResults;
 
@@ -165,7 +267,7 @@ public class C3REngine {
 						// get result values for each selected variable
 						IResultValue[] values = r.getResultValues(var);
 						for (int j = 0; j < values.length; j++) {
-							logger.info(var + " !!INFO = "
+							logger.debug(var + " !!INFO = "
 									+ values[j].getStringValue());
 							parsedResults.add(values[j].getStringValue());
 						}
@@ -183,7 +285,7 @@ public class C3REngine {
 	 * @return
 	 */
 	public HashMap<String, ArrayList<String>> runMappedQueries(
-			HashMap<String, Query> mappedQueries) {
+			HashMap<String, Query> mappedQueries) throws EngineException {
 
 		HashMap<String, ArrayList<String>> mappedresults = null;
 		Iterator<String> iterator = mappedQueries.keySet().iterator();
@@ -194,10 +296,9 @@ public class C3REngine {
 
 			String queryRefNumber = iterator.next();
 			Query currentQuery = mappedQueries.get(queryRefNumber);
-			
-			// TODO initialize logging correctly because debug is not active
-			logger.info("query reference number: " + queryRefNumber);
-			logger.info("query sparql: " + currentQuery.getSparql());
+
+			logger.debug("QUERY REFERENCE NUMBER: " + queryRefNumber);
+			logger.debug("QUERY SPARQL: " + currentQuery.getSparql());
 
 			ArrayList<String> currResults = runQuery(currentQuery.getSparql());
 

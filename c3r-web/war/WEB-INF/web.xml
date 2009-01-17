@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+c3r-web application deployment configuration file.
+
+Define paths to data relative to the web application root directory - e.g. WEB-INF/classes/log4j.properties
+
+-->
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:jsp="http://java.sun.com/xml/ns/javaee/jsp"
 	xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-	id="WebApp_ID" version="2.5">
+	id="WebApp_ID" version="2.4">
 	<display-name>c3r-web</display-name>
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
@@ -22,6 +28,14 @@
 	<context-param>
 		<param-name>projectData</param-name>
 		<param-value>data/annotations</param-value>
+	</context-param>
+	<context-param>
+		<param-name>ENGINE_LOG4J</param-name>
+		<param-value>WEB-INF/classes/log4j.properties</param-value>
+	</context-param>
+	<context-param>
+		<param-name>PROPERTY_FILE</param-name>
+		<param-value>WEB-INF/classes/corese.properties</param-value>
 	</context-param>
 	<session-config>
 		<session-timeout>5</session-timeout>
