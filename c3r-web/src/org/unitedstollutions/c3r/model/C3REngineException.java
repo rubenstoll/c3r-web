@@ -4,7 +4,7 @@
 package org.unitedstollutions.c3r.model;
 
 /**
- * @author ruben.stoll
+ * @author yurchyshyna
  *
  */
 

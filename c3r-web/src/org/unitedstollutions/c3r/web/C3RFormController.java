@@ -30,7 +30,7 @@ import fr.inria.acacia.corese.exceptions.EngineException;
  * Servlet implementation class C3RFormController
  */
 /**
- * @author ruben
+ * @author yurchyshyna
  * 
  */
 public class C3RFormController extends HttpServlet {

@@ -8,10 +8,8 @@
 
 
 <center>
-<h1>Query Configuration</h1>
+<h2>Scope of Conformity Checking</h2>
 </center>
-<br />
-
 <!-- query configuration beans available. -->
 <jsp:useBean
 	id="thematicConfig"
@@ -31,7 +29,7 @@
 <form name="qryCfg" method="post"
 	action="processQueryGroupConfigurations">
 
-Thematic 
+Choose the <b>thematics</b> of the conformity requirement to be checked
 <c:set var="selected" value="${thematicConfig.value}" />
 <select name="thematic" size="1">
 	<c:forEach var="configurations" items="${thematicConfig.contents}">
@@ -45,7 +43,7 @@ Thematic
 </select><br />
 <br />
 
-Destination Request 
+Choose the <b>type of the building</b> you want to check 
 <c:set var="selected" value="${destinationRequete.value}" />
 <select name="destination" size="1">
 	<c:forEach var="configurations" items="${destinationRequete.contents}">
@@ -58,7 +56,7 @@ Destination Request
 </select><br />
 <br />
 
-Extrait Type LEG 
+Choose the <b>type of the regulation text</b>  
 <c:set var="selected" value="${extraitTypeLEG.value}" />
 <select name="extraitTyp" size="1">
 	<c:forEach var="configurations" items="${extraitTypeLEG.contents}">
@@ -71,7 +69,7 @@ Extrait Type LEG
 </select><br />
 <br />
 
-Extrait Titre 
+Choose the <b>regulation text</b> from a list of available ones 
 <c:set var="selected" value="${extraitTitre.value}" />
 <select name="extraitTitre" size="1">
 	<c:forEach var="configurations" items="${extraitTitre.contents}">
@@ -84,7 +82,7 @@ Extrait Titre
 </select><br />
 <br />
 
-Domaine Application 
+Which <b>building element</b> you would like to check?  
 <c:set var="selected" value="${domainApplication.value}" />
 <select name="domainApp" size="1">
 	<c:forEach var="configurations" items="${domainApplication.contents}">
@@ -100,7 +98,7 @@ Domaine Application
 <!-- The sub domain depends on what is chosen for the application
 domain.  There is a one to one mapping in the C3R descriptions document.
 A master detail list is needed to implement this. -->
-SousDomaineApplication 
+Would you like to <b>detail</b> the type of the <b>building element</b>?  
 <c:set var="selected" value="${subDomainApplication.value}" />
 <select name="subDomainApp" size="1">
 	<c:forEach var="configurations"

@@ -13,7 +13,7 @@ New engine created ... <br />
 <stl:init
 		ontoDir="/data/schemas"
 		annotDir="/data/anno_templates" 
-		ruleDir="/data/rules"
+		ruleDir="/data/rules" 
 		annoComplexe="http://www.owl-ontologies.com/Ontology1215697160.owl#"
 		ontoCC="http://www.owl-ontologies.com/Ontology1205837312.owl#"
 		rdfs="http://www.w3.org/2000/01/rdf-schema#"/>
@@ -99,16 +99,16 @@ NOTE: all of this would be better if it was implemented in a formController
 
 <!-- all below is what the user sees -->
 
-<b>The query group configuration values</b> <br />
+<b>The current configuration of the checking scope:</b> <br />
 Thematic: <c:out value="${selectedThematic}" /> <br />
-Destination Request: <c:out value="${selectedDestinationRequest}" /><br />
-Extrait Type LEG: <c:out value="${selectedExtraitTypeLEG}" /><br />
-Extracted Title: <c:out value="${selectedExtractedTitle}" /><br />
-Domain Application: <c:out value="${selectedDomainApplication}" /><br />
-Sub Domain Application: <c:out value="${selectedSubDomainApplication}" /><br />
+Destination of a building: <c:out value="${selectedDestinationRequest}" /><br />
+Type of the regulation text: <c:out value="${selectedExtraitTypeLEG}" /><br />
+Regulation text: <c:out value="${selectedExtractedTitle}" /><br />
+Building element to be checked: <c:out value="${selectedDomainApplication}" /><br />
+Components of the building element to be checked: <c:out value="${selectedSubDomainApplication}" /><br />
 
-<br /><br />
-The query being executed is:<br />
+<br />
+<b>The query being executed is:</b><br />
 ${complexQuery}
 <br /><br />
 

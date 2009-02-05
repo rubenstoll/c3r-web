@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<concepts>
+    <concept>
+        IfcDoor
+    </concept>
+    <concept>
+        IfcBuilding
+    </concept>
+    <concept>
+        IfcOwnerHistory
+    </concept>
+    <concept>
+        IfcSIUnit
+    </concept>
+    <concept>
+        sqvjqdk,qm,lqdf
+    </concept>
+    <concept>
+        IfcDirection
+    </concept>
+    <concept>
+        name
+    </concept>
+    <concept>
+        ElectricCurrentExponent
+    </concept>
+    <concept>
+        IfcConversionBasedUnit
+    </concept>
+    <concept>
+        IfcAxis2Placement3D
+    </concept>
+    <concept>
+        IfcProject
+    </concept>
+    <concept>
+        ContextIdentifier
+    </concept>
+    <concept>
+        IfcGeometricRepresentationContext
+    </concept>
+</concepts>

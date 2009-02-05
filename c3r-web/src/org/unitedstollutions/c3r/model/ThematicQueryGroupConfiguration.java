@@ -6,7 +6,7 @@ package org.unitedstollutions.c3r.model;
 import java.util.HashMap;
 
 /**
- * @author ruben.stoll
+ * @author yurchyshyna
  * 
  */
 public class ThematicQueryGroupConfiguration extends QueryGroupConfiguration {
@@ -22,12 +22,12 @@ public class ThematicQueryGroupConfiguration extends QueryGroupConfiguration {
 		
 		String[][] contents = new String[][] {
 				{ "none_selected", "" },
-				{ "plomb_saturnisme", "plomb_saturnisme" },
-				{ "accessibilite_des_handicapes","handicap accessability" },
-				{ "acoustique", "acoustique" }, 
-				{ "aeration", "aeration" },
-				{ "energies_durables", "Durable Engergies" },
-				{ "securite_incendie", "security incendie" } };
+				{ "plomb_saturnisme", "Plomb / Saturnisme" },
+				{ "accessibilite_des_handicapes","Accessability" },
+				{ "acoustique", "Acoustics" }, 
+				{ "aeration", "Aeration" },
+				{ "energies_durables", "Sustainable Energy" },
+				{ "securite_incendie", "Fire Security" } };
 		
 		setContents(contents);
 

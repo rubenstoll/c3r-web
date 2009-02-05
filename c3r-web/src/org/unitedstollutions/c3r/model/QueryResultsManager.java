@@ -13,7 +13,7 @@ import fr.inria.acacia.corese.api.IResult;
 import fr.inria.acacia.corese.api.IResults;
 
 /**
- * @author ruben.stoll
+ * @author yurchyshyna
  * 
  */
 public class QueryResultsManager {

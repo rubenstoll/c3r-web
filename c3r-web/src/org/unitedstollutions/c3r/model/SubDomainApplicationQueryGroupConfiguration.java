@@ -5,7 +5,7 @@ package org.unitedstollutions.c3r.model;
 
 
 /**
- * @author ruben.stoll
+ * @author yurchyshyna
  * 
  */
 public class SubDomainApplicationQueryGroupConfiguration extends
@@ -24,12 +24,21 @@ public class SubDomainApplicationQueryGroupConfiguration extends
 		 * application group and the tag name of the sub domain application
 		 * group.
 		 */
-		// TODO - finish list
 		String[][] contents = new String[][] {
 				{ "none_selected", "" },
 				{ "Cheminement.generalities", "Généralités" },
-				{ "Cheminement.Pente", "Pente" } };
-		
+				{ "Cheminement.palierRepos", "Palier de repos" },
+				{ "Cheminement.seuilsRessauts", "Seuils et ressauts" },
+				{ "Cheminement.reperageCheminement", "Repérage du cheminement" },
+				{ "Cheminement.espaceManoeuvre ", "Espace de manoeuvre " },
+				{ "Cheminement.espaceUsage", "Espace d'usage" },
+				{ "Cheminement.sol", "Sol" },
+				{ "Cheminement.cheminementLibreObstacle", "Cheminement libre de tout obstacle" },
+				{ "Cheminement.voleeEscalierPlusTroisMarches", "Volée d'escalier de 3 marches ou plus" },
+				{ "Cheminement.voleeEscalierMoinsTroisMarches", "Volée d'escalier de moins de 3 marches" },
+				{ "Cheminement.eclairage", "Eclairage" },
+				};
+		// TODO - define list for each DomaineApplication
 		setContents(contents);
 
 		// sets the default here from available list above

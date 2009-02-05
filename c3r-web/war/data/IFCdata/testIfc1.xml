@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="readFromAnotherXML.xslt"?>
+<ex:iso_10303_28 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ex="urn:iso10303-28:ex" xsi:schemaLocation="urn:iso10303-28:ex ./ex.xsd" version="2.0">
+    <ex:uos id="uos_1" description="" configuration="i-ifc2x2" edo="">
+        <IfcOrganization id="i1504">
+            <Id>GS</Id>
+            <Name>Graphisoft</Name>
+            <Description>Graphisoft</Description>
+        </IfcOrganization>
+        <IfcApplication id="i1508">
+            <ApplicationDeveloper>
+                <!-- question -->
+                <IfcOrganization ref="i1504" xsi:nil="true"/>
+            </ApplicationDeveloper>
+            <Version>9.0</Version>
+            <ApplicationFullName>ArchiCAD 9.0</ApplicationFullName>
+            <ApplicationIdentifier>ArchiCAD</ApplicationIdentifier>
+        </IfcApplication>
+        <IfcPerson id="i1509">
+            <FamilyName>Undefined</FamilyName>
+        </IfcPerson>
+        <IfcOrganization id="i1511">
+            <Name>OrganizationName</Name>
+        </IfcOrganization>
+        <IfcPersonAndOrganization id="i1515">
+            <ThePerson>
+                <IfcPerson xsi:nil="true" ref="i1509"/>
+            </ThePerson>
+            <TheOrganization>
+                <IfcOrganization xsi:nil="true" ref="i1511"/>
+            </TheOrganization>
+        </IfcPersonAndOrganization>
+        <IfcOwnerHistory id="i1516">
+            <OwningUser>
+                <IfcPersonAndOrganization xsi:nil="true" ref="i1515"/>
+            </OwningUser>
+            <OwningApplication>
+                <IfcApplication xsi:nil="true" ref="i1508"/>
+            </OwningApplication>
+            <ChangeAction>nochange</ChangeAction>
+            <CreationDate>1173359419</CreationDate>
+        </IfcOwnerHistory>
+        <IfcSIUnit id="i1517">
+            <UnitType>lengthunit</UnitType>
+            <Prefix>milli</Prefix>
+            <Name>metre</Name>
+        </IfcSIUnit>
+        <IfcSIUnit id="i1518">
+            <UnitType>areaunit</UnitType>
+            <Name>square_metre</Name>
+        </IfcSIUnit>
+        <IfcSIUnit id="i1519">
+            <UnitType>volumeunit</UnitType>
+            <Name>cubic_metre</Name>
+        </IfcSIUnit>
+        <IfcSIUnit id="i1520">
+            <UnitType>planeangleunit</UnitType>
+            <Name>radian</Name>
+        </IfcSIUnit>
+        <IfcMeasureWithUnit id="i1521">
+            <ValueComponent>
+                <IfcPlaneAngleMeasure>0.01745329252</IfcPlaneAngleMeasure>
+            </ValueComponent>
+            <UnitComponent>
+                <IfcSIUnit xsi:nil="true" ref="i1520"/>
+            </UnitComponent>
+        </IfcMeasureWithUnit>
+        <IfcDimensionalExponents id="i1522">
+            <LengthExponent>0</LengthExponent>
+            <MassExponent>0</MassExponent>
+            <TimeExponent>0</TimeExponent>
+            <ElectricCurrentExponent>0</ElectricCurrentExponent>
+            <ThermodynamicTemperatureExponent>0</ThermodynamicTemperatureExponent>
+            <AmountOfSubstanceExponent>0</AmountOfSubstanceExponent>
+            <LuminousIntensityExponent>0</LuminousIntensityExponent>
+        </IfcDimensionalExponents>
+        <IfcConversionBasedUnit id="i1523">
+            <Dimensions>
+                <IfcDimensionalExponents xsi:nil="true" ref="i1522"/>
+            </Dimensions>
+            <UnitType>planeangleunit</UnitType>
+            <Name>DEGREE</Name>
+            <ConversionFactor>
+                <IfcMeasureWithUnit xsi:nil="true" ref="i1521"/>
+            </ConversionFactor>
+        </IfcConversionBasedUnit>
+        <IfcSIUnit id="i1524">
+            <UnitType>solidangleunit</UnitType>
+            <Name>steradian</Name>
+        </IfcSIUnit>
+        <IfcSIUnit id="i1525">
+            <UnitType>massunit</UnitType>
+            <Name>gram</Name>
+        </IfcSIUnit>
+        <IfcSIUnit id="i1526">
+            <UnitType>timeunit</UnitType>
+            <Name>second</Name>
+        </IfcSIUnit>
+        <IfcSIUnit id="i1527">
+            <UnitType>thermodynamictemperatureunit</UnitType>
+            <Name>degree_celsius</Name>
+        </IfcSIUnit>
+        <IfcSIUnit id="i1528">
+            <UnitType>luminousintensityunit</UnitType>
+            <Name>lumen</Name>
+        </IfcSIUnit>
+        <IfcUnitAssignment id="i1529">
+            <Units ex:cType="set">
+                <IfcSIUnit ex:pos="0" xsi:nil="true" ref="i1517"/>
+                <IfcSIUnit ex:pos="1" xsi:nil="true" ref="i1518"/>
+                <IfcSIUnit ex:pos="2" xsi:nil="true" ref="i1519"/>
+                <IfcConversionBasedUnit ex:pos="3" xsi:nil="true" ref="i1523"/>
+                <IfcSIUnit ex:pos="4" xsi:nil="true" ref="i1524"/>
+                <IfcSIUnit ex:pos="5" xsi:nil="true" ref="i1525"/>
+                <IfcSIUnit ex:pos="6" xsi:nil="true" ref="i1526"/>
+                <IfcSIUnit ex:pos="7" xsi:nil="true" ref="i1527"/>
+                <IfcSIUnit ex:pos="8" xsi:nil="true" ref="i1528"/>
+            </Units>
+        </IfcUnitAssignment>
+        <IfcDirection id="i1531">
+            <DirectionRatios ex:cType="list">
+                <ex:double-wrapper pos="0">1.</ex:double-wrapper>
+                <ex:double-wrapper pos="1">0.</ex:double-wrapper>
+                <ex:double-wrapper pos="2">0.</ex:double-wrapper>
+            </DirectionRatios>
+        </IfcDirection>
+        <IfcDirection id="i1533">
+            <DirectionRatios ex:cType="list">
+                <ex:double-wrapper pos="0">0.</ex:double-wrapper>
+                <ex:double-wrapper pos="1">1.</ex:double-wrapper>
+                <ex:double-wrapper pos="2">0.</ex:double-wrapper>
+            </DirectionRatios>
+        </IfcDirection>
+        <IfcDirection id="i1535">
+            <DirectionRatios ex:cType="list">
+                <ex:double-wrapper pos="0">0.</ex:double-wrapper>
+                <ex:double-wrapper pos="1">0.</ex:double-wrapper>
+                <ex:double-wrapper pos="2">1.</ex:double-wrapper>
+            </DirectionRatios>
+        </IfcDirection>
+        <IfcCartesianPoint id="i1538">
+            <Coordinates ex:cType="list">
+                <IfcLengthMeasure ex:pos="0">0.</IfcLengthMeasure>
+                <IfcLengthMeasure ex:pos="1">0.</IfcLengthMeasure>
+                <IfcLengthMeasure ex:pos="2">0.</IfcLengthMeasure>
+            </Coordinates>
+        </IfcCartesianPoint>
+        <IfcAxis2Placement3D id="i1540">
+            <Location>
+                <IfcCartesianPoint xsi:nil="true" ref="i1538"/>
+            </Location>
+            <Axis>
+                <IfcDirection xsi:nil="true" ref="i1535"/>
+            </Axis>
+            <RefDirection>
+                <IfcDirection xsi:nil="true" ref="i1531"/>
+            </RefDirection>
+        </IfcAxis2Placement3D>
+        <IfcDirection id="i1541">
+            <DirectionRatios ex:cType="list">
+                <ex:double-wrapper pos="0">6.123031769E-17</ex:double-wrapper>
+                <ex:double-wrapper pos="1">1.</ex:double-wrapper>
+            </DirectionRatios>
+        </IfcDirection>
+        <IfcGeometricRepresentationContext id="i1543">
+            <ContextIdentifier>Plan</ContextIdentifier>
+            <ContextType>Design</ContextType>
+            <CoordinateSpaceDimension>3</CoordinateSpaceDimension>
+            <Precision>1.000000000E-5</Precision>
+            <WorldCoordinateSystem>
+                <IfcAxis2Placement3D xsi:nil="true" ref="i1540"/>
+            </WorldCoordinateSystem>
+            <TrueNorth>
+                <IfcDirection xsi:nil="true" ref="i1541"/>
+            </TrueNorth>
+        </IfcGeometricRepresentationContext>
+        <IfcProject id="i1545">
+            <GlobalId>32qoDp9B9CmAOHdQt$_EOS</GlobalId>
+            <OwnerHistory>
+                <IfcOwnerHistory xsi:nil="true" ref="i1516"/>
+            </OwnerHistory>
+            <Name>Default Project</Name>
+            <RepresentationContexts ex:cType="set">
+                <IfcGeometricRepresentationContext ex:pos="0" xsi:nil="true" ref="i1543"/>
+                <IfcGeometricRepresentationContext ex:pos="1" xsi:nil="true" ref="i1625"/>
+            </RepresentationContexts>
+            <UnitsInContext>
+                <IfcUnitAssignment xsi:nil="true" ref="i1529"/>
+            </UnitsInContext>
+        </IfcProject>
+        <IfcGeometricRepresentationContext id="i1625">
+            <ContextIdentifier>Plan</ContextIdentifier>
+            <ContextType>Sketch</ContextType>
+            <CoordinateSpaceDimension>3</CoordinateSpaceDimension>
+            <Precision>1.000000000E-5</Precision>
+            <WorldCoordinateSystem>
+                <IfcAxis2Placement3D xsi:nil="true" ref="i1540"/>
+            </WorldCoordinateSystem>
+            <TrueNorth>
+                <IfcDirection id="i1623">
+                    <DirectionRatios ex:cType="list">
+                        <ex:double-wrapper pos="0">6.123031769E-17</ex:double-wrapper>
+                        <ex:double-wrapper pos="1">1.</ex:double-wrapper>
+                    </DirectionRatios>
+                </IfcDirection>
+            </TrueNorth>
+        </IfcGeometricRepresentationContext>
+        <IfcLocalPlacement id="i1552">
+            <RelativePlacement>
+                <IfcAxis2Placement3D xsi:nil="true" ref="i1540"/>
+            </RelativePlacement>
+        </IfcLocalPlacement>
+        <IfcSite id="i1554">
+            <GlobalId>15UBf0CGbBbPOlEdWy1XDQ</GlobalId>
+            <OwnerHistory>
+                <IfcOwnerHistory xsi:nil="true" ref="i1516"/>
+            </OwnerHistory>
+            <Name>Default Site</Name>
+            <ObjectPlacement>
+                <IfcLocalPlacement xsi:nil="true" ref="i1552"/>
+            </ObjectPlacement>
+            <CompositionType>element</CompositionType>
+            <RefLatitude ex:cType="list">
+                <ex:integer-wrapper pos="0">52</ex:integer-wrapper>
+                <ex:integer-wrapper pos="1">31</ex:integer-wrapper>
+                <ex:integer-wrapper pos="2">0</ex:integer-wrapper>
+            </RefLatitude>
+            <RefLongitude ex:cType="list">
+                <ex:integer-wrapper pos="0">13</ex:integer-wrapper>
+                <ex:integer-wrapper pos="1">24</ex:integer-wrapper>
+                <ex:integer-wrapper pos="2">0</ex:integer-wrapper>
+            </RefLongitude>
+        </IfcSite>
+        <IfcLocalPlacement id="i1563">
+            <PlacementRelTo>
+                <IfcLocalPlacement xsi:nil="true" ref="i1552"/>
+            </PlacementRelTo>
+            <RelativePlacement>
+                <IfcAxis2Placement3D xsi:nil="true" ref="i1540"/>
+            </RelativePlacement>
+        </IfcLocalPlacement>
+        <IfcBuilding id="i1565">
+            <GlobalId>2QN3Dlx_H39PrEs$$ZiFpF</GlobalId>
+            <OwnerHistory>
+                <IfcOwnerHistory ref="i1516" xsi:nil="true"/>
+            </OwnerHistory>
+            <Name>Default Building</Name>
+            <ObjectPlacement>
+                <IfcLocalPlacement  ref="i1563" xsi:nil="true"/>
+            </ObjectPlacement>
+            <CompositionType>element</CompositionType>
+        </IfcBuilding>
+    </ex:uos>
+</ex:iso_10303_28>
