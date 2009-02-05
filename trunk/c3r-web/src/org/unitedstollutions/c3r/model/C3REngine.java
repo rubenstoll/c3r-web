@@ -18,7 +18,7 @@ import fr.inria.acacia.corese.api.IResults;
 import fr.inria.acacia.corese.exceptions.EngineException;
 
 /**
- * @author ruben.stoll
+ * @author yurchyshyna
  * 
  */
 public class C3REngine {

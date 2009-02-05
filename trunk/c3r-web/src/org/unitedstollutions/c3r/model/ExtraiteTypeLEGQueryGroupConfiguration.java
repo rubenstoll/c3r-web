@@ -4,7 +4,7 @@
 package org.unitedstollutions.c3r.model;
 
 /**
- * @author ruben.stoll
+ * @author yurchyshyna
  * 
  */
 public class ExtraiteTypeLEGQueryGroupConfiguration extends
@@ -20,16 +20,16 @@ public class ExtraiteTypeLEGQueryGroupConfiguration extends
 	public ExtraiteTypeLEGQueryGroupConfiguration() {
 		String [][] contents = new String[][] { 
 				{ "none_selected", "" },
-				{ "decret", "Décret" },
+				{ "decret", "Decree" },
 				{ "arrete", "Arrêté" }, 
-				{ "circulaire", "Circulaire" },
-				{ "Norme", "Norme" },
-				{ "arrete_municipal", "Arrêté municipal" },
-				{ "arrete_prefectoral", "Arrêté préfectoral" },
+				{ "circulaire", "Circular" },
+				{ "Norme", "Norm" },
+				{ "arrete_municipal", "Municipal Arrêté" },
+				{ "arrete_prefectoral", "Prefectoral Arrêté" },
 				{ "code", "Code" }, 
-				{ "lois", "Lois" },
-				{ "question_ecrite", "Question écrite" },
-				{ "texte_informatif", "Texte informaitf" } };
+				{ "lois", "Legal text" },
+				{ "question_ecrite", "Written Question" },
+				{ "texte_informatif", "Informative Text" } };
 		
 		setContents(contents);
 

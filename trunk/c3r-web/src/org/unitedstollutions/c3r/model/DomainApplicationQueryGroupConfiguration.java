@@ -6,7 +6,7 @@ package org.unitedstollutions.c3r.model;
 import java.util.HashMap;
 
 /**
- * @author ruben.stoll
+ * @author yurchyshyna
  * 
  */
 public class DomainApplicationQueryGroupConfiguration extends

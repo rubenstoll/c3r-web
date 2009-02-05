@@ -14,10 +14,9 @@
  * http://rainbow.essi.fr/~anastasiya/data/test_ifc.ifcxml
 --%>
 
-<br />
-Select one of the following project configuration location: <br /><br />
+Load your construction project to be checked.
+<p>You can choose one of the following <b>default</b> projects: <br />
 <form name="ifcReader" method="POST" action="loadProject.form">
-
 <input type="radio" name="projectIfc" value="default" checked="checked">
 Default 
 <br>
@@ -26,13 +25,11 @@ Default 2
 <br>
 <input type="radio" name="projectIfc" value="default3">
 Default 3
+<br><p> ... or upload your own construction project by indicating its <b>URI</b>:
 <br>
 <input type="radio" name="projectIfc" value="uri">
-Define URI
 <input type="text" name="ifcUri">
-<br>
-<br />
-<br />
+<p>Please note that NO syntax verification of your uploaded project is done
 <br />
 <br />
 <input type="submit" name="submit" value="Submit">

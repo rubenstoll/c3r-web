@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * @author ruben
+ * @author yurchyshyna
  *
  */
 public class SemQryFileBuilder {

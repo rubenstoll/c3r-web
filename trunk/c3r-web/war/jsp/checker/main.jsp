@@ -23,31 +23,31 @@
 <a href="<c:url value="/checker/loadProject"/>">Load Project</a><br />
 <a href="<c:url value="/checker/configure"/>">Configure</a><br />
 <a href="<c:url value="/checker/queryFinder"/>">Get Queries</a><br />
-<a href="<c:url value="/checker/date"/>">Sun Date Example</a><br />
-</div><br /><br />
-
-
+<!-- a href="<c:url value="/checker/date"/>">Sun Date Example</a><br /> -->
+</div>
+<p>
+<b>Current settings</b><p>
 <div>
-The project uses the following IFC file: 
+The checking will be done for the following <b>construction project</b>: 
 ${project.ifcFile} 
-<br> <br>
-
+<br> 
 </div>
 
 <div> 
-The following values are configured for query groups<br /><br />
+<br/>
+The <b>scope of conformity checking</b> is defined by the following characteristics:<br />
 
-Thematic:
+ - thematic of conformity requirements:
 <jsp:getProperty name="thematicConfig"  property="value"/> <br />
-destination Request:
+ - destination of a building:
 <jsp:getProperty name="destinationRequete"  property="value"/><br />
-Type extract LEG:
+ - type of the regulation text:
 <jsp:getProperty name="extraitTypeLEG"  property="value"/><br />
-Extract title:
+ - regulation text:
 <jsp:getProperty name="extraitTitre"  property="value"/><br />
-domain application:
+ - building elements to be checked:
 <jsp:getProperty name="domainApplication"  property="value"/><br />
-sub domain application:
+ - and more precisely their components:
 <jsp:getProperty name="subDomainApplication"  property="value"/><br />
 
 </div>

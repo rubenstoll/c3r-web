@@ -4,7 +4,7 @@
 package org.unitedstollutions.c3r.model;
 
 /**
- * @author ruben.stoll
+ * @author yurchyshyna
  *
  */
 public class Query {
@@ -59,7 +59,7 @@ public class Query {
 		this.description = queryDescription;
 	}
 	/**
-	 * @return the sparql
+	 * @return the sparql formalisation
 	 */
 	public String getSparql() {
 		return sparql;

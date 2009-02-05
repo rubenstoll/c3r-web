@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Set;
 
 /**
- * @author ruben.stoll
+ * @author yurchyshyna
  *
  */
 public abstract class QueryGroupConfiguration {

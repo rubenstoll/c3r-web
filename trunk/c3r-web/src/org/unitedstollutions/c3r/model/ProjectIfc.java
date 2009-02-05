@@ -19,7 +19,7 @@ import org.unitedstollutions.c3r.utils.URLUtils;
 import fr.inria.acacia.corese.api.EngineFactory;
 
 /**
- * @author user
+ * @author yurchyshyna
  * 
  */
 
