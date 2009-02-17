@@ -1,5 +1,5 @@
 <%--
- * Copyright (c) 2003 UnitedStollutions, Inc.  All rights reserved.  Switzerland.
+ * Copyright (c) 2003 UnitedStollutions, Inc.  All rights reserved.  Switzerland .
 --%>
 
 <?xml version="1.0" encoding="ISO-8859-1" ?>
