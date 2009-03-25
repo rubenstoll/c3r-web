@@ -40,11 +40,15 @@
 			<td>
 				<c:out value="${subResults.key}" />
 			</td>
-			<c:forEach var="qryResultsValues" items="${subResults.value}">
+		<c:forEach var="qryResultsValues" items="${subResults.value}">
+		<tr>
+			<td></td>
+			<td></td>
 			<td>
 				<c:out value="${qryResultsValues}" />
 			</td>
-			</c:forEach>
+		</tr>
+		</c:forEach>
 		</tr>
 	</c:forEach>
 </table>
