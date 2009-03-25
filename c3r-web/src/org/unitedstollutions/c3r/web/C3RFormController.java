@@ -248,11 +248,11 @@ public class C3RFormController extends HttpServlet {
 
 		IfcTransformer it = new IfcTransformer();
 		String transformDir = webRootDir + File.separator + "data"
-				+ File.separator + "transforms";
+				+ File.separator + "IFCdata";
 		String annoDir = webRootDir + File.separator + "data" + File.separator
 				+ "annotations";
 
-		String xslt = transformDir + File.separator + "attrIntoElem.xslt";
+		String xslt = transformDir + File.separator + "transformation1step.xslt";
 		File xsltFile = new File(xslt);
 		it.setXsltFile(xsltFile);
 
@@ -263,13 +263,27 @@ public class C3RFormController extends HttpServlet {
 
 		// define the name for the transformed file - original with .t.xml
 		// appended to it
-		String txf = uxf + ".t.xml";
+		String txf = uxf + ".t1.xml";
 		String tx = annoDir + File.separator + txf;
 		File transformedFile = new File(tx);
 		it.setTransformedFile(transformedFile);
 
 		it.transform();
 
+		// 2nd transformation
+		u = annoDir + File.separator + txf;
+		untrauntransformedFile = new File(u);
+		it.setUntransformedFile(untrauntransformedFile);
+
+		// define the name for the transformed file - original with .t.xml
+		// appended to it
+		txf = uxf + ".t2.xml";
+		tx = annoDir + File.separator + txf;
+		transformedFile = new File(tx);
+		it.setTransformedFile(transformedFile);
+
+		it.transform();
+		
 		// set the project ifc with the transformed file
 		prj.setIfcFile(transformedFile.getName());
 
